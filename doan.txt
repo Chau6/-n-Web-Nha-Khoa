@@ -1,0 +1,18 @@
+Nha Khoa
+	Index -> Themes có sẵn
+	Giới thiệu -> Themes có sẵn
+	Sản phẩm -> Châu
+		đánh giá sao
+		cmt
+	Liên hệ -> Quân
+		đặt lịch khám -> 30 shine
+	Đơn thuốc -> Thành
+		nhắc hẹn -> gửi gmail nhắc (gg calender)
+		có ô chọn day/time -> API gg
+
+*Themes về nha khoa = done -> Tín
+
+sơ đồ ERD -> draw.io
+sơ đồ ER -> dùng digitalgram
+sơ đồ Usercase
+ppt -> Châu
