@@ -1,6 +1,3 @@
 # -n-Web-Nha-Khoa
 
-Nhóm trưởng: Trương Tấn Châu
-Nhóm phó: Khưu Nhật Tín
-Thành viên: Nguyễn Minh Thành
-Thành viên: Trần Minh Quân
+ghi vào đây mỗi lần lấy dữ liệu, bao gồm tên, ngày giờ, làm cái gì
