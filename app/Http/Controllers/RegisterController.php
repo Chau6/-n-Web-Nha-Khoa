@@ -15,7 +15,7 @@ class RegisterController extends Controller
         $data['password'] = bcrypt($request->password);
         $data['created_at'] = new \DateTime();
 
-        DB::table('customer')->insert($data);
+        DB::table('user')->insert($data);
         return redirect()->route('getLogin');
     }
 }
