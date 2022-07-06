@@ -24,6 +24,7 @@ class LoginController extends Controller
         // $credentials['level'] = 1 || $credentials['level'] = 2;
         // $credentials['level'] = 2;
  
+        
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 

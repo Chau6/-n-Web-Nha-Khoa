@@ -76,7 +76,7 @@
 
 
 @section('breadcrumb')
-<section class="breadcrumb-area" style="background-image: url({{asset('asset/images/resources/breadcrumb-bg.jpg')}});">
+<section class="breadcrumb-area" style="background-image: url({{asset('asset/client/images/resources/breadcrumb-bg.jpg')}});">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
@@ -133,7 +133,7 @@
                                                 <li>
                                                     <div class="text">
                                                         <h5>Phone</h5>
-                                                        <p>Phone 1: 1800 1779<br> Phone 2: (+ 760) 1800 1779.</p>
+                                                        <p>Phone 1: 1800 1779<br> Phone 2: (+ 89) 1800 1779.</p>
                                                     </div>
                                                 </li>
                                                 <li>
@@ -200,8 +200,8 @@
                                     data-map-lat="10.802406382828494" 
                                     data-map-lng="106.71573981064437" 
                                     data-icon-path="{{asset('asset/images/resources/map-marker.png')}}" 
-                                    data-map-title="Brooklyn, New York, United Kingdom" 
-                                    data-map-zoom="12" 
+                                    data-map-title="VietNam, New York, United Kingdom" 
+                                    data-map-zoom="9" 
                                     data-markers='{
                                         "marker-1": [10.802406382828494, 106.71573981064437, "<h4>Aptech Home</h4><p>D5 Nguyễn Gia Trí, Phường 25, Bình Thạnh, Thành phố Hồ Chí Minh, Việt Nam</p>"],
                                         "marker-2": [40.602230, -74.689910, "<h4>Head Office</h4><p>44/108 Brooklyn, UK</p>"]
