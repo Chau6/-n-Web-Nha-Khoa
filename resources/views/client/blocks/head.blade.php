@@ -1,12 +1,14 @@
 <head>
 	<meta charset="UTF-8">
-	<title>Belleville Dentail</title>
+	<title>Belleville Dental</title>
 
 	<!-- responsive meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- For IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
+    <!-- css custom -->
+    <link rel="stylesheet" href="{{ asset('asset/client/css/rating.css')}}">
 	<!-- master stylesheet -->
 	<link rel="stylesheet" href="{{ asset('asset/client/css/style.css')}}">
 	<!-- Responsive stylesheet -->
@@ -20,6 +22,7 @@
     <link rel="icon" type="image/png" href="{{ asset('asset/client/images/favicon/favicon-32x32.png')}}" sizes="32x32">
     <link rel="icon" type="image/png" href="{{ asset('asset/client/images/favicon/favicon-16x16.png')}}" sizes="16x16">
 
+    <script src="https://kit.fontawesome.com/36154dd713.js" crossorigin="anonymous"></script>
     <!-- Fixing Internet Explorer-->
     <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
