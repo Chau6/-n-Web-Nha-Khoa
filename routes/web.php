@@ -49,6 +49,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
 Route::prefix('client')->name('client.')->group(function(){
     Route::prefix('pages')->name('pages.')->group(function(){
     //==========index
+        Route::get('advice', [HomeController::class, 'advice'])->name('advice');
         Route::get('index', [HomeController::class, 'index'])->name('index');
         Route::get('about', [HomeController::class, 'about'])->name('about');
         Route::get('blog', [HomeController::class, 'blog'])->name('blog');

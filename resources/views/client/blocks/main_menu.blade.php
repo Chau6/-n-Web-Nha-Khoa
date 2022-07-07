@@ -1,7 +1,4 @@
-@extends('client.master') 
-  
-@section('main_menu')
-{{-- <section class="mainmenu-area stricky">
+<section class="mainmenu-area stricky">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
@@ -16,25 +13,18 @@
                         </div>
                         <div class="navbar-collapse collapse clearfix">
                             <ul class="navigation clearfix">
-                                <li class="dropdown"><a href="{{route('client.pages.index')}}">Home</a>
+                                <li class="dropdown current"><a href="{{route('client.pages.index')}}">Home</a>
                                 </li>
                                 <li><a href="{{route('client.pages.about')}}">About Us</a></li>
-
-
-
-                                <li class="dropdown current"><a href="{{route('client.pages.specialities')}}">Specialities</a>
+                                <li class="dropdown"><a href="{{route('client.pages.specialities')}}">Specialities</a>
                                     <ul>
-                                        <li><a href="{{ route('client.pages.test') }}">Advice</a></li>
-                                        <li><a href="">Cosmetic Dentistry</a></li>
-                                        <li><a href="">Laser Dentistry</a></li>
-                                        <li><a href="">Orthodontics</a></li>
-                                        <li><a href="">Endodontics</a></li>
-                                        <li><a href="">Periodontics</a></li>
+                                        <li><a href="{{ route('client.pages.advice') }}">Advice</a></li>                                        <li><a href="spec-cosmetic-dentistry.html">Cosmetic Dentistry</a></li>
+                                        <li><a href="spec-laser-dentistry.html">Laser Dentistry</a></li>
+                                        <li><a href="spec-orthodontics.html">Orthodontics</a></li>
+                                        <li><a href="spec-endodontics.html">Endodontics</a></li>
+                                        <li><a href="spec-periodontics.html">Periodontics</a></li>
                                     </ul>
                                 </li>
-
-
-
                                 <li><a href="{{route('client.pages.doctors')}}">Doctors</a></li>
                                 <li class="dropdown"><a href="{{route('client.pages.blog')}}">Blog</a>
                                     <ul>
@@ -77,49 +67,4 @@
             </div>
         </div>
     </div>
-</section>  --}}
-@include('client.blocks.main_menu') 
-@endsection
-
-
-@section('breadcrumb')
-<!--Start breadcrumb area-->     
-<section class="breadcrumb-area" style="background-image: url({{asset('asset/client/images/resources/breadcrumb-bg.jpg')}});">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="inner-content clearfix">
-                    <div class="title float-left">
-                       <h2>Specialities</h2>
-                    </div>
-                    <div class="breadcrumb-menu float-right">
-                        <ul class="clearfix">
-                            <li><a href="index-2.html">Home</a></li>
-                            <li><i class="fa fa-angle-right" aria-hidden="true"></i></li>
-                            <li class="active">Specialities</li>
-                        </ul>    
-                    </div>
-                </div>
-            </div>
-        </div>
-	</div>
 </section>
-<!--End breadcrumb area--> 
-@endsection
-
-@section('content')
-    
-
-<!--Start services style1 area-->
-    @include('client.blocks.services_style1')
-<!--End services style1 area-->
-
-<!--Start Choose area Style2--> 
-    @include('client.blocks.choose_area_style2')
-<!--End Choose area Style2--> 
-
-<!--Start Testimonial Sec style2-->
-    @include('client.blocks.testimonial_sec_style2')
-<!--End Testimonial Sec style2-->  
-
-@endsection

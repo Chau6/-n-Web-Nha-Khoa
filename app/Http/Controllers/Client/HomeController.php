@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    public function advice(){
+        return view('client.pages.advice');
+    }
+
     public function index(){
         return view('client.pages.index');
     }
