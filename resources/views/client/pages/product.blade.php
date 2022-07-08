@@ -21,12 +21,13 @@
                                 <li><a href="{{route('client.pages.about')}}">About Us</a></li>
                                 <li class="dropdown current"><a href="{{route('client.pages.specialities')}}">Specialities</a>
                                     <ul>
-                                        <li><a href="spec-dental-implants.html">Dental Implants</a></li>
-                                        <li><a href="spec-cosmetic-dentistry.html">Cosmetic Dentistry</a></li>
-                                        <li><a href="spec-laser-dentistry.html">Laser Dentistry</a></li>
-                                        <li><a href="spec-orthodontics.html">Orthodontics</a></li>
-                                        <li><a href="spec-endodontics.html">Endodontics</a></li>
-                                        <li><a href="spec-periodontics.html">Periodontics</a></li>
+                                        <li><a href="{{ route('client.pages.advice') }}">Advice</a></li>
+                                        <li><a href="">Cosmetic Dentistry</a></li>
+                                        <li><a href="">Laser Dentistry</a></li>
+                                        <li><a href="">Orthodontics</a></li>
+                                        <li><a href="">Endodontics</a></li>
+                                        <li><a href="">Periodontics</a></li>
+                                        <li><a href="{{route('client.pages.product')}}">Products</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="{{route('client.pages.doctors')}}">Doctors</a></li>
