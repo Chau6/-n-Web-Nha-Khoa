@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +15,7 @@ class LoginController extends Controller
         return view('login');
     }
 
-    public function postLogin(Request $request){
+    public function postLogin(LoginRequest $request){
         $credentials = $request->validate([
             'username' => ['required'],
             'email'=>['required', 'email'],
@@ -33,7 +34,7 @@ class LoginController extends Controller
         return redirect()->route('getLogin');
     }
 
-    public function logout(Request $request){
+    public function getLogout(Request $request){
         Auth::logout();
  
         return redirect()->route('getLogin');

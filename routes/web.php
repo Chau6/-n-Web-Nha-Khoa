@@ -30,7 +30,7 @@ Route::post('login', [LoginController::class, 'postLogin'])->name('postLogin');
 Route::get('logout', [LoginController::class, 'getLogout'])->name('getLogout');
 
 //===================ADMIN=====================
-Route::prefix('admin')->name('admin.')->group(function(){
+Route::prefix('admin')->middleware('login')->name('admin.')->group(function(){
     Route::prefix('user')->name('user.')->group(function(){
         Route::get('index', [UserController::class, 'index'])->name('index');
 
