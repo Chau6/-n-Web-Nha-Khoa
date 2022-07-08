@@ -30,7 +30,7 @@ Route::post('login', [LoginController::class, 'postLogin'])->name('postLogin');
 Route::get('logout', [LoginController::class, 'getLogout'])->name('getLogout');
 
 //===================ADMIN=====================
-Route::prefix('admin')->name('admin.')->group(function(){
+Route::prefix('admin')->middleware('login')->name('admin.')->group(function(){
     Route::prefix('user')->name('user.')->group(function(){
         Route::get('index', [UserController::class, 'index'])->name('index');
 
@@ -59,5 +59,8 @@ Route::prefix('client')->name('client.')->group(function(){
         Route::get('specialities', [HomeController::class, 'specialities'])->name('specialities');
         Route::get('faqs', [HomeController::class, 'faqs'])->name('faqs');
         Route::get('appointment', [HomeController::class, 'appointment'])->name('appointment');
+
+        Route::get('rating', [HomeController::class, 'rating'])->name('rating');
+        Route::get('product_pages', [HomeController::class, 'product_pages'])->name('product_pages');
     });
 });

@@ -46,4 +46,10 @@ class HomeController extends Controller
     public function specialities(){
         return view('client.pages.specialities');
     }
+    public function rating(){
+        return view('client.pages.rating');
+    }
+    public function product_pages(){
+        return view('client.pages.product_pages');
+    }
 }

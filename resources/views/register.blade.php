@@ -23,7 +23,15 @@
     </div>
     <div class="card-body">
       <p class="login-box-msg">Register a new membership</p>
-
+      @if ($errors->any())
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+      @endif
       <form action="{{route('postRegister')}}" method="POST">
         @csrf
         <div class="input-group mb-3">
@@ -51,7 +59,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Confirm password">
+          <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="Confirm password" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
