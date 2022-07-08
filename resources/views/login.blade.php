@@ -1,4 +1,4 @@
-{{-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -101,43 +101,6 @@
 <!-- AdminLTE App -->
 <script src="{{asset('asset/page/dist/js/adminlte.min.js')}}"></script>
 </body>
-</html> --}}
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h2>LOGIN</h2>
-    <form action="{{ route('postLogin') }}" method="POST">
-      @csrf
-        <table>
-            <tr>
-                <td>UserName</td>
-                <td><input type="text" name="username" id=""></td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td><input type="text" name="email" id=""></td>
-            </tr>
-            <tr>
-                <td>Password</td>
-                <td><input type="text" name="password" id=""></td>
-            </tr>
-            <tr>
-                <td colspan="2"><input type="submit" value="Submit"></td>
-            </tr>
-        </table>
-        <table>
-            <tr>
-                <td><a href="{{ route('getRegister') }}">Register</a></td>
-            </tr>
-        </table>
-    </form>
-</body>
 </html>
+
+
