@@ -32,40 +32,53 @@
           </ul>
       </div>
       @endif
-      <form action="{{route('postRegister')}}" method="POST">
+      <form action="{{route('postRegister')}}" method="POST" id="loginForm">
         @csrf
-        <div class="input-group mb-3">
-          <input type="text" name="username" class="form-control" placeholder="Username" value="{{old('username')}}">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-user"></span>
+        <div class="form-group">
+          <div class="input-group mb-3">
+            <input type="text" name="username" class="form-control" placeholder="Username" value="{{old('username')}}">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
             </div>
           </div>
         </div>
-        <div class="input-group mb-3">
-          <input type="email" name="email" class="form-control" placeholder="Email" value="{{old('email')}}">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+
+        <div class="from-group">
+          <div class="input-group mb-3">
+            <input type="email" name="email" class="form-control" placeholder="Email" value="{{old('email')}}">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+              </div>
             </div>
           </div>
         </div>
-        <div class="input-group mb-3">
-          <input type="password" name="password" class="form-control" placeholder="Password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
+
+        <div class="form-group">
+          <div class="input-group mb-3">
+            <input type="password" id="psw" name="password" class="form-control" placeholder="Password">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
             </div>
           </div>
         </div>
-        <div class="input-group mb-3">
-          <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="Confirm password" required>
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
+        
+        <div class="form-group">
+          <div class="input-group mb-3">
+            <input type="password" id="cpsw" name="" class="form-control" placeholder="Confirm password">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
             </div>
           </div>
+          <span id="showError"></span>
         </div>
+
         <div class="row">
           <div class="col-8">
             <div class="icheck-primary">
@@ -77,7 +90,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Register</button>
+            <input type="submit" class="btn btn-primary btn-block" value="Register">
           </div>
           <!-- /.col -->
         </div>
@@ -107,5 +120,22 @@
 <script src="{{asset('asset/page/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('asset/page/dist/js/adminlte.min.js')}}"></script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#loginForm").submit(function(){
+    var psw = $("#psw").val();
+    var cpsw = $("#cpsw").val();
+    if(psw == cpsw){
+      $("#showError").html("");
+      return true;
+    }else{
+      $("#showError").html("Password not match");
+      $("#showError").css("color","red");
+      return false;
+    }
+  })
+})
+</script>
 </body>
 </html>
