@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('rate', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id');
+            $table->tinyInteger('score');
             $table->timestamps();
         });
     }

@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('rate_comment', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('rate_id');
+            $table->bigInteger('comment_id');
+            $table->bigInteger('product_id');
             $table->timestamps();
         });
     }

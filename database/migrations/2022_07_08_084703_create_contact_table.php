@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('contact', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('user');
+            $table->integer('user_id');
+            // $table->foreign('user_id')->references('id')->on('user');
             $table->string('email');
             $table->string('content');
             $table->timestamps();
