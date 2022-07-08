@@ -1,7 +1,7 @@
 @extends('client.master') 
   
 @section('main_menu')
-{{-- <section class="mainmenu-area stricky">
+<section class="mainmenu-area stricky">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
@@ -24,19 +24,10 @@
 
                                 <li class="dropdown current"><a href="{{route('client.pages.specialities')}}">Specialities</a>
                                     <ul>
-<<<<<<< HEAD
-                                        <li><a href="{{ route('client.pages.test') }}">Advice</a></li>
-                                        <li><a href="">Cosmetic Dentistry</a></li>
-                                        <li><a href="">Laser Dentistry</a></li>
-                                        <li><a href="">Orthodontics</a></li>
-                                        <li><a href="">Endodontics</a></li>
-                                        <li><a href="">Periodontics</a></li>
-=======
                                         <li><a href="">Professional education</a></li>
                                         <li><a href="spec-laser-dentistry.html">Patient education</a></li>
                                         <li><a href="spec-orthodontics.html">Research</a></li>
                                         <li><a href="{{route('client.pages.product')}}">Products</a></li>
->>>>>>> tin
                                     </ul>
                                 </li>
 
@@ -84,8 +75,7 @@
             </div>
         </div>
     </div>
-</section>  --}}
-@include('client.blocks.main_menu') 
+</section> 
 @endsection
 
 

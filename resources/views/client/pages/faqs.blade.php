@@ -2,9 +2,6 @@
 @extends('client.master')
 
 @section('main_menu')
-<<<<<<< HEAD
-@include('client.blocks.main_menu') 
-=======
 <section class="mainmenu-area stricky">
     <div class="container">
         <div class="row">
@@ -74,7 +71,6 @@
         </div>
     </div>
 </section> 
->>>>>>> tin
 @endsection
 
 

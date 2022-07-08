@@ -1,7 +1,7 @@
 @extends('client.master') 
 
 @section('main_menu')
-{{-- <section class="mainmenu-area stricky">
+<section class="mainmenu-area stricky">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
@@ -77,8 +77,7 @@
             </div>
         </div>
     </div>
-</section>  --}}
-@include('client.blocks.main_menu') 
+</section> 
 @endsection
 
 @section('breadcrumb')
