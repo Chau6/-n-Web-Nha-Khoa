@@ -26,16 +26,16 @@
                                         <li><a href="">Laser Dentistry</a></li>
                                         <li><a href="">Orthodontics</a></li>
                                         <li><a href="">Endodontics</a></li>
-                                        <li><a href="">Periodontics</a></li>
+                                        <li><a href="{{route('client.pages.category.index')}}">Category</a></li>
                                         <li><a href="{{route('client.pages.product')}}">Products</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="{{route('client.pages.doctors')}}">Doctors</a></li>
                                 <li class="dropdown current"><a href="{{route('client.pages.blog')}}">Blog</a>
                                     <ul>
-                                        <li><a href="blog.html">Blog Default</a></li>
-                                        <li><a href="blog-large.html">Blog Large Image</a></li>
-                                        <li><a href="blog-single.html">Blog Single Post</a></li>
+                                        <li><a href="">Blog Default</a></li>
+                                        <li><a href="">Blog Large Image</a></li>
+                                        <li><a href="">Blog Single Post</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown"><a href="#">More</a>
