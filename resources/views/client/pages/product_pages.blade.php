@@ -22,7 +22,7 @@
                                 <li class="dropdown current"><a href="{{route('client.pages.specialities')}}">Specialities</a>
                                     <ul>
                                         <li><a href="{{ route('client.pages.advice') }}">Advice</a></li>
-                                        <li><a href="">Cosmetic Dentistry</a></li>
+                                        <li><a href="{{ route('client.pages.danh_rang') }}">Đánh Răng</a></li>
                                         <li><a href="">Laser Dentistry</a></li>
                                         <li><a href="">Orthodontics</a></li>
                                         <li><a href="">Endodontics</a></li>
