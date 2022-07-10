@@ -16,22 +16,21 @@
                         </div>
                         <div class="navbar-collapse collapse clearfix">
                             <ul class="navigation clearfix">
-                                <li class="dropdown"><a href="{{route('client.pages.index')}}">Home</a>
-                                </li>
-                                <li><a href="{{route('client.pages.about')}}">About Us</a></li>
-                                <li class="dropdown current"><a href="{{route('client.pages.specialities')}}">Specialities</a>
+                                <li class="dropdown"><a href="">Home</a></li>
+                                <li><a href="">About Us</a></li>
+                                <li class="dropdown current"><a href="">Specialities</a>
                                     <ul>
-                                        <li><a href="{{ route('client.pages.advice') }}">Advice</a></li>
-                                        <li><a href="{{ route('client.pages.danh_rang') }}">Đánh Răng</a></li>
+                                        <li><a href="">Advice</a></li>
+                                        <li><a href="">Đánh Răng</a></li>
                                         <li><a href="">Laser Dentistry</a></li>
                                         <li><a href="">Orthodontics</a></li>
                                         <li><a href="">Endodontics</a></li>
-                                        <li><a href="{{route('client.pages.category.index')}}">Category</a></li>
-                                        <li><a href="{{route('client.pages.product')}}">Products</a></li>
+                                        <li><a href="">Category</a></li>
+                                        <li><a href="">Products</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="{{route('client.pages.doctors')}}">Doctors</a></li>
-                                <li class="dropdown"><a href="{{route('client.pages.blog')}}">Blog</a>
+                                <li><a href="">Doctors</a></li>
+                                <li class="dropdown"><a href="">Blog</a>
                                     <ul>
                                         <li><a href="blog.html">Blog Default</a></li>
                                         <li><a href="blog-large.html">Blog Large Image</a></li>
@@ -40,12 +39,12 @@
                                 </li>
                                 <li class="dropdown"><a href="#">More</a>
                                     <ul>
-                                        <li><a href="{{route('client.pages.faqs')}}">FAQ’s</a></li>
+                                        <li><a href="">FAQ’s</a></li>
                                         <li><a href="timetable.html">Timetable</a></li>
-                                        <li><a href="{{route('client.pages.appointment')}}">Apppointment</a></li>
+                                        <li><a href="">Apppointment</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="{{route('client.pages.contact')}}">Contact</a></li>
+                                <li><a href="">Contact</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -104,8 +103,11 @@
 <section class="services-style1-area sec-pd1">
     <div class="container">
         <div class="sec-title max-width text-center">
-            <h3>Category-Edit</h3>
+            <h3>Category-Index</h3>
             <h1>Dental Category</h1>
+            <ul class="navigation clearfix">
+                <li><a href="{{route('admin.category.create')}}">Create</a></li>
+            </ul>  
         </div>      
     </div>
 
