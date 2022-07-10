@@ -25,11 +25,11 @@
                                 <li class="dropdown current"><a href="{{route('client.pages.specialities')}}">Specialities</a>
                                     <ul>
                                         <li><a href="{{ route('client.pages.advice') }}">Advice</a></li>
-                                        <li><a href="">Cosmetic Dentistry</a></li>
+                                        <li><a href="{{ route('client.pages.danh_rang') }}">Đánh Răng</a></li>
                                         <li><a href="">Laser Dentistry</a></li>
                                         <li><a href="">Orthodontics</a></li>
                                         <li><a href="">Endodontics</a></li>
-                                        <li><a href="">Periodontics</a></li>
+                                        <li><a href="{{route('client.pages.category.index')}}">Category</a></li>
                                         <li><a href="{{route('client.pages.product')}}">Products</a></li>
                                     </ul>
                                 </li>
@@ -109,15 +109,15 @@
 
 @section('content')
     
-
 <!--Start services style1 area-->
 <section class="services-style1-area spec-page">
     <div class="container">
         <div class="sec-title max-width text-center">
             <h3>Specialities</h3>
-            <h1>Dental Care Services</h1>
+            <h1>Dental Care Information</h1>
             <p>Your teeth play an important part in your daily life. It not only helps you to chew and eat your food, but frames your face. Any missing tooth can have a major impact on your quality of life. </p>
         </div>
+        
         <div class="row">
             <!--Start single solution style1--> 
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">

@@ -39,9 +39,9 @@
                                 <li><a href="{{route('client.pages.doctors')}}">Doctors</a></li>
                                 <li class="dropdown current"><a href="{{route('client.pages.blog')}}">Blog</a>
                                     <ul>
-                                        <li><a href="blog.html">Blog Default</a></li>
-                                        <li><a href="blog-large.html">Blog Large Image</a></li>
-                                        <li><a href="blog-single.html">Blog Single Post</a></li>
+                                        <li><a href="">Blog Default</a></li>
+                                        <li><a href="">Blog Large Image</a></li>
+                                        <li><a href="">Blog Single Post</a></li>
                                     </ul>
                                 </li>
                                 

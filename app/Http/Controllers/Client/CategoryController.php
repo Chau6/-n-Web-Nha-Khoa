@@ -1,0 +1,47 @@
+<?php
+
+namespace App\Http\Controllers\Client;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\StoreCategory;
+use App\Http\Requests\StoreUpdateCategory;
+use Illuminate\Support\Facades\Auth;
+
+class CategoryController extends Controller
+{
+    public function index(){
+        $result = DB::table('category')->orderBy('parent', 'desc')->get();
+        return view('client.pages.category.index', ['categorys' => $result]);
+    }
+    public function delete($id){
+        $result = DB::table('category')->where('id', $id)->delete();
+        return redirect()->route('client.pages.category.index');
+    }
+    public function create(){
+        $data = DB::table('category')->orderBy('id')->get();
+        return view('client.pages.category.create', ['categorys' => $data]);
+    }
+    public function store(Request $request){
+        $data = $request->except('_token'); //loại trừ thằng _token ra; only chỉ hiển thị cái mình cho phép; get lấy hết
+        $data['created_at'] = new \DateTime(); //insert datetime
+        
+        DB::table('category')->insert($data); //câu lệnh insert 
+
+        return redirect()->route('client.pages.category.index')->with('success','Insert Successfully') ; //trả về đường dẫn
+    }
+    public function edit($id){
+        $edit = DB::table('category')->where('id','=', $id)->first();
+        $data = DB::table('category')->get();
+
+        return view('client.pages.category.edit', ['id' => $id, 'categorys' => $data, 'edit' => $edit]);
+    }
+    public function update(Request $request, $id){
+        $data = $request->except('_token'); //lấy data ngoại trừ
+
+        DB::table('category')->where('id','=', $id)->update($data); //rỗng thì giữ nguyên
+        
+        return redirect()->route('client.pages.category.index')->with('success','Edit Successfully') ; //trả về đường dẫn;
+    }
+}

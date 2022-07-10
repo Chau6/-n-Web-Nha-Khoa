@@ -36,7 +36,7 @@
                                         <li><a href="">Tongue scrapers</a></li>
                                         <li><a href="">Oral medicine</a></li>
                                     </ul>
-                                </li>
+                                    </li>
                                 <li><a href="{{route('client.pages.doctors')}}">Doctors</a></li>
                                 <li class="dropdown"><a href="{{route('client.pages.blog')}}">Blog</a>
                                     <ul>
