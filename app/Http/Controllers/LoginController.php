@@ -29,10 +29,11 @@ class LoginController extends Controller
         
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
+            
             return redirect()->route('admin.user.index');
+
         }
-        return redirect()->route('getLogin');
+        return redirect()->route('getLoginClient');
     }
 
     public function getLogout(Request $request){

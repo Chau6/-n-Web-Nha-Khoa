@@ -23,12 +23,12 @@ class Login_ClientController extends Controller
             'password' => ['required'],
         ]);
 
-        // $credentials["level"] = 0;
+        $credentials["level"] = 0;
         
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->route('client.pages.index');
-        }
+        } 
         return redirect()->route('getLoginClient');
 
     }
