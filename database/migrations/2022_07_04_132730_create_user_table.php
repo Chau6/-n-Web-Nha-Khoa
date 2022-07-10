@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('password');
             $table->tinyInteger('gender')->nullable();
             $table->string('phone')->nullable();
+            $table->tinyInt('status')->default(0);
+            $table->string('token')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

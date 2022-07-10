@@ -17,18 +17,24 @@
                         </div>
                         <div class="navbar-collapse collapse clearfix">
                             <ul class="navigation clearfix">
-                                <li class="dropdown"><a href="{{route('client.pages.index')}}">Home</a>
-                                </li>
                                 <li><a href="{{route('client.pages.about')}}">About Us</a></li>
-                                <li class="dropdown"><a href="{{route('client.pages.specialities')}}">Specialities</a>
+                                <li class="dropdown"><a href="{{route('client.pages.specialities')}}">Health Screening</a>
                                     <ul>
                                         <li><a href="{{ route('client.pages.advice') }}">Advice</a></li>
-                                        <li><a href="">Cosmetic Dentistry</a></li>
-                                        <li><a href="">Laser Dentistry</a></li>
-                                        <li><a href="">Orthodontics</a></li>
-                                        <li><a href="">Endodontics</a></li>
-                                        <li><a href="">Periodontics</a></li>
-                                        <li><a href="{{route('client.pages.product')}}">Products</a></li>
+                                        <li><a href="">Care Services</a></li>
+                                        <li><a href="{{route('client.pages.product')}}">Support Products</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown"><a href="{{route('client.pages.specialities')}}">Products</a>
+                                    <ul>
+                                        <li><a href="{{ route('client.pages.advice') }}">Advice</a></li>
+                                        <li><a href="">Toothbrushes</a></li>
+                                        <li><a href="">Toothpaste</a></li>
+                                        <li><a href="">Dental floss</a></li>
+                                        <li><a href="">Face mask</a></li>
+                                        <li><a href="">Dental picks and sticks</a></li>
+                                        <li><a href="">Tongue scrapers</a></li>
+                                        <li><a href="">Oral medicine</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="{{route('client.pages.doctors')}}">Doctors</a></li>
@@ -39,13 +45,7 @@
                                         <li><a href="blog-single.html">Blog Single Post</a></li>
                                     </ul>
                                 </li>
-                                <li class="dropdown current"><a href="#">More</a>
-                                    <ul>
-                                        <li><a href="{{route('client.pages.faqs')}}">FAQ’s</a></li>
-                                        <li><a href="timetable.html">Timetable</a></li>
-                                        <li><a href="{{route('client.pages.appointment')}}">Apppointment</a></li>
-                                    </ul>
-                                </li>
+                                
                                 <li><a href="{{route('client.pages.contact')}}">Contact</a></li>
                             </ul>
                         </div>

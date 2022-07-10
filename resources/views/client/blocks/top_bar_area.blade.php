@@ -14,10 +14,10 @@
                 <div class="top-right">
                     <p><span class="icon-clock"></span>Mon - Sat: 09.00 to 18.00, Sunday: Closed.</p>
                     <ul class="sociallinks-style-one">
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        {{-- <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li> --}}
+                        <li style="padding-left: 3px"><a href="{{route('getLogin')}}" style="color: #AFBDBB; font-size: 15px">Login</a></li>
                     </ul>
                 </div>    
             </div>   

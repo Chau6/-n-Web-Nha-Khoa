@@ -24,6 +24,11 @@
     </div>
     <div class="card-body">
       <p class="login-box-msg">Sign in to start your session</p>
+      @if (Session::has('success'))
+      <div class="alert alert-success alert-block">
+          <strong>{{Session::get('success')}}</strong>
+      </div>
+      @endif
       @if ($errors->any())
       <div class="alert alert-danger">
           <ul>
@@ -91,7 +96,7 @@
       <!-- /.social-auth-links -->
 
       <p class="mb-1">
-        <a href="#">I forgot my password</a>
+        <a href="{{route('reset_password')}}">I forgot my password</a>
       </p>
       <p class="mb-0">
         <a href="{{route('getRegister')}}" class="text-center">Register</a>

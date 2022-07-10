@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\RegisterRequest;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -19,4 +20,6 @@ class RegisterController extends Controller
         DB::table('user')->insert($data);
         return redirect()->route('getLogin');
     }
+
+    
 }

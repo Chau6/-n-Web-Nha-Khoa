@@ -24,10 +24,16 @@ Route::get('/', [LoginController::class, 'getLogin'])->name('getLogin');
 Route::get('register', [RegisterController::class, 'getRegister'])->name('getRegister');
 Route::post('register', [RegisterController::class, 'postRegister'])->name('postRegister');
 
+
 //================Login/Logout=================
 Route::get('login', [LoginController::class, 'getLogin'])->name('getLogin');
 Route::post('login', [LoginController::class, 'postLogin'])->name('postLogin');
 Route::get('logout', [LoginController::class, 'getLogout'])->name('getLogout');
+
+//=================Send Mail===================
+Route::get('reset_password', [LoginController::class, 'reset_password'])->name('reset_password');
+Route::post('reset_password', [LoginController::class, 'post_reset_password'])->name('post_reset_password');
+Route::get('testmail', [LoginController::class, 'testMail'])->name('testmail');
 
 //===================ADMIN=====================
 Route::prefix('admin')->middleware('login')->name('admin.')->group(function(){

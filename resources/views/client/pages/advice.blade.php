@@ -19,9 +19,6 @@
                                 <li class="dropdown"><a href="{{route('client.pages.index')}}">Home</a>
                                 </li>
                                 <li><a href="{{route('client.pages.about')}}">About Us</a></li>
-
-
-
                                 <li class="dropdown current"><a href="{{route('client.pages.specialities')}}">Specialities</a>
                                     <ul>
                                         <li><a href="{{ route('client.pages.advice') }}">Advice</a></li>
