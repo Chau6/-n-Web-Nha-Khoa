@@ -25,22 +25,22 @@
                                         <li><a href="">Laser Dentistry</a></li>
                                         <li><a href="">Orthodontics</a></li>
                                         <li><a href="">Endodontics</a></li>
-                                        <li><a href="">Category</a></li>
+                                        <li><a href="{{route('admin.category.index')}}">Category</a></li>
                                         <li><a href="">Products</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="">Doctors</a></li>
                                 <li class="dropdown"><a href="">Blog</a>
                                     <ul>
-                                        <li><a href="blog.html">Blog Default</a></li>
-                                        <li><a href="blog-large.html">Blog Large Image</a></li>
-                                        <li><a href="blog-single.html">Blog Single Post</a></li>
+                                        <li><a href="">Blog Default</a></li>
+                                        <li><a href="">Blog Large Image</a></li>
+                                        <li><a href="">Blog Single Post</a></li>
                                     </ul>
                                 </li>
-                                <li class="dropdown"><a href="#">More</a>
+                                <li class="dropdown"><a href="">More</a>
                                     <ul>
                                         <li><a href="">FAQ’s</a></li>
-                                        <li><a href="timetable.html">Timetable</a></li>
+                                        <li><a href="">Timetable</a></li>
                                         <li><a href="">Apppointment</a></li>
                                     </ul>
                                 </li>
@@ -101,15 +101,50 @@
 
 @section('content')
 <section class="services-style1-area sec-pd1">
-    <div class="container">
-        <div class="sec-title max-width text-center">
-            <h3>Category-Index</h3>
-            <h1>Dental Category</h1>
-            <ul class="navigation clearfix">
-                <li><a href="{{route('admin.category.create')}}">Create</a></li>
-            </ul>  
-        </div>      
+    
+    <div class="sec-title max-width text-center">
+        <h3>Category-Index</h3>
+        <h1>Dental Category</h1>
+        <ul class="navigation clearfix">
+            <li><a href="{{route('admin.category.create')}}">Create</a></li>
+        </ul>  
+    </div>      
+    
+
+    <div class="sec-title max-width">
+        <div class="card-header">
+            <h3 class="card-title">Danh sách thể loại</h3>
+        </div>
+        <div class="card-body p-0">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Tên thể loại</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <?php
+                        $data=array();
+                        $datas=array();
+                        ?>
+                        @foreach($categorys as $category)
+                            <?php
+                                $data['id'] = $category->id;
+                                $data['name'] = $category->name;
+                                $data['parent'] = $category->parent;
+                                $datas[] = $data;
+                            ?>
+                        @endforeach
+                        <?php 
+                            recursiveTable($datas);
+                        ?>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
+    
 
     
 </section>

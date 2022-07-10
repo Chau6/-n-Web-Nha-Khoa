@@ -16,36 +16,36 @@
                         </div>
                         <div class="navbar-collapse collapse clearfix">
                             <ul class="navigation clearfix">
-                                <li class="dropdown"><a href="('admin.index')}}">Home</a>
+                                <li class="dropdown"><a href="">Home</a>
                                 </li>
-                                <li><a href="('admin.about')}}">About Us</a></li>
-                                <li class="dropdown current"><a href="('admin.specialities')}}">Specialities</a>
+                                <li><a href="">About Us</a></li>
+                                <li class="dropdown current"><a href="">Specialities</a>
                                     <ul>
                                         <li><a href="">Advice</a></li>
                                         <li><a href="">Đánh Răng</a></li>
                                         <li><a href="">Laser Dentistry</a></li>
                                         <li><a href="">Orthodontics</a></li>
                                         <li><a href="">Endodontics</a></li>
-                                        <li><a href="('admin.category.index')}}">Category</a></li>
-                                        <li><a href="('admin.product')}}">Products</a></li>
+                                        <li><a href="{{ route('admin.category.index')}}">Category</a></li>
+                                        <li><a href="">Products</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="('admin.doctors')}}">Doctors</a></li>
-                                <li class="dropdown"><a href="('admin.blog')}}">Blog</a>
+                                <li class="dropdown"><a href="">Blog</a>
                                     <ul>
-                                        <li><a href="blog.html">Blog Default</a></li>
-                                        <li><a href="blog-large.html">Blog Large Image</a></li>
-                                        <li><a href="blog-single.html">Blog Single Post</a></li>
+                                        <li><a href="">Blog Default</a></li>
+                                        <li><a href="">Blog Large Image</a></li>
+                                        <li><a href="">Blog Single Post</a></li>
                                     </ul>
                                 </li>
-                                <li class="dropdown"><a href="#">More</a>
+                                <li class="dropdown"><a href="">More</a>
                                     <ul>
-                                        <li><a href="('admin.faqs')}}">FAQ’s</a></li>
-                                        <li><a href="timetable.html">Timetable</a></li>
-                                        <li><a href="('admin.appointment')}}">Apppointment</a></li>
+                                        <li><a href="">FAQ’s</a></li>
+                                        <li><a href="">Timetable</a></li>
+                                        <li><a href="">Apppointment</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="('admin.contact')}}">Contact</a></li>
+                                <li><a href="">Contact</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -102,14 +102,70 @@
 
 @section('content')
 <section class="services-style1-area sec-pd1">
-    <div class="container">
-        <div class="sec-title max-width text-center">
-            <h3>Category-Create</h3>
-            <h1>Dental Category</h1>
-        </div>      
-    </div>
-
     
+    <div class="sec-title max-width text-center">
+        <h3>Category-Create</h3>
+        <h1>Dental Category</h1>
+        <ul class="navigation clearfix">
+            <li><a href="{{route('admin.category.index')}}">Index</a></li>
+        </ul>
+    </div>      
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+    <form method="POST" action="{{ route('admin.category.store') }}" enctype="multipart/form-data">
+        @csrf
+        <div class="sec-title max-width">
+            <div class="card-header">
+                <h3 class="card-title">Thêm thể loại</h3>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Thể loại cha</label>
+                    <select class="form-control" name="parent">
+                        <option value="0">---- ROOT ----</option>
+                        <?php
+                            $data=array();
+                            $datas=array();
+                        ?>
+                        @foreach($categorys as $category)
+                            @if(!empty($category))
+                                <?php
+                                    $data['id'] = $category->id;
+                                    $data['name'] = $category->name;
+                                    $data['parent'] = $category->parent;
+                                    $datas[] = $data;
+                                ?>
+                            @endif
+                        @endforeach
+                        <?php recursiveOption($datas,0);?>
+                    </select>
+                </div>
+    
+                <div class="form-group">
+                    <label>Tên thể loại</label>
+                    <input type="text" name="name" class="form-control" placeholder="Vui lòng nhập tên thể loại">
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-info">Thêm</button>
+    
+                <button type="reset" class="btn btn-default float-right">Xóa</button>
+            </div>
+        </div>
+    </form>
+    {{-- <pre>
+        <?php
+            print_r($datas)
+        ?>
+    </pre> --}}
 </section>
 @endsection
 

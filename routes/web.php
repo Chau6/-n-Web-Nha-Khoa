@@ -49,7 +49,7 @@ Route::post('reset_password', [LoginController::class, 'post_reset_password'])->
 Route::get('testmail', [LoginController::class, 'testMail'])->name('testmail');
 
 //===================ADMIN=====================
-Route::prefix('admin')->middleware('login')->name('admin.')->group(function(){
+Route::prefix('admin')->name('admin.')->group(function(){ /** ->middleware('login') */
     Route::prefix('user')->name('user.')->group(function(){
         Route::get('index', [UserController::class, 'index'])->name('index');
 

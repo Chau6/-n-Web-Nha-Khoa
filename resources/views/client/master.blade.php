@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
+    <script>
+        function deleteConfirm() {
+            if(window.confirm("Do you want to delete this")==true){
+                return true;
+            }
+            return false;
+        }
+    </script>
 <!-- Mirrored from st.ourhtmldemo.com/new/Dento/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 05 Jan 2021 02:04:57 GMT -->
     @include('client.blocks.head')
 

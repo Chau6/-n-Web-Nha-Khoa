@@ -23,8 +23,8 @@ function recursiveTable ($data,$parent = 0,$str = "") { //hiển thị danh sác
             echo '
             <tr>
                 <td>'.$str.$value["name"].'</td>
-                <td><a onClick="return deleteConfirm()" href="http://127.0.0.1:8000/category/delete/'.$value['id'].'">Xóa</a></td>
-                <td><a href="http://127.0.0.1:8000/category/edit/'.$value['id'].'">Sửa</a></td>
+                <td><a onClick="return deleteConfirm()" href="http://127.0.0.1:8000/admin/category/delete/'.$value['id'].'">Xóa</a></td>
+                <td><a href="http://127.0.0.1:8000/admin/category/edit/'.$value['id'].'">Sửa</a></td>
             </tr>';
             unset($data[$key]);
 

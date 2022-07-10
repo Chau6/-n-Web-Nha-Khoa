@@ -29,7 +29,7 @@
                                         <li><a href="">Laser Dentistry</a></li>
                                         <li><a href="">Orthodontics</a></li>
                                         <li><a href="">Endodontics</a></li>
-                                        <li><a href="{{route('client.pages.category.index')}}">Category</a></li>
+                                        <li><a href="">Category</a></li>
                                         <li><a href="{{route('client.pages.product')}}">Products</a></li>
                                     </ul>
                                 </li>

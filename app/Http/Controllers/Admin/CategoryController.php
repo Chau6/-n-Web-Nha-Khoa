@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class CategoryController extends Controller
 {
     public function index(){
-        $result = DB::table('category')->orderBy('parent_name', 'desc')->get();
+        $result = DB::table('category')->orderBy('parent', 'desc')->get();
         return view('admin.category.index', ['categorys' => $result]);
     }
     public function delete($id){
