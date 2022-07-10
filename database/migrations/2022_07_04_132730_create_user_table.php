@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('password');
             $table->tinyInteger('gender')->nullable();
+            $table->tinyInteger('level');
             $table->string('phone')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->string('token')->nullable();

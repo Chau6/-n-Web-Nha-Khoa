@@ -17,7 +17,8 @@
                         {{-- <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                         <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li> --}}
-                        <li style="padding-left: 3px"><a href="{{route('getLogin')}}" style="color: #AFBDBB; font-size: 15px">Login</a></li>
+                        <li style="padding-left: 3px"><a href="{{route('getLoginClient')}}" style="color: #AFBDBB; font-size: 15px">Login</a></li>
+                        <li style="padding-left: 3px"><a href="{{route('getLogoutClient')}}" style="color: #AFBDBB; font-size: 15px">Logout</a></li>
                     </ul>
                 </div>    
             </div>   

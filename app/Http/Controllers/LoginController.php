@@ -45,7 +45,7 @@ class LoginController extends Controller
         $name = "Tin";
         Mail::send('email.test', compact('name'), function($email) use($name){
             $email->subject('Demo test mail');
-            $email->to('khuunhattin123@gmail.com', $name);
+            $email->to('tanchau0602@gmail.com', $name);
         });
         return redirect()->route('getLogin')->with('success', 'Email has been sent');
     }

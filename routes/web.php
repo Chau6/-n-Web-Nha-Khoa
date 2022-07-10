@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\Login_ClientController;
+use App\Http\Controllers\Register_ClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,14 +24,24 @@ use App\Http\Controllers\RegisterController;
 Route::get('/', [LoginController::class, 'getLogin'])->name('getLogin');
 
 //==================Register===================
+// Admin
 Route::get('register', [RegisterController::class, 'getRegister'])->name('getRegister');
 Route::post('register', [RegisterController::class, 'postRegister'])->name('postRegister');
 
+// Client
+Route::get('register_client', [Register_ClientController::class, 'getRegisterClient'])->name('getRegisterClient');
+Route::post('register_client', [Register_ClientController::class, 'postRegisterClient'])->name('postRegisterClient');
 
-//================Login/Logout=================
+// ================Login/Logout=================
+// Admin
 Route::get('login', [LoginController::class, 'getLogin'])->name('getLogin');
 Route::post('login', [LoginController::class, 'postLogin'])->name('postLogin');
 Route::get('logout', [LoginController::class, 'getLogout'])->name('getLogout');
+
+//Client
+Route::get('login_client', [Login_ClientController::class, 'getLoginClient'])->name('getLoginClient');
+Route::post('login_client', [Login_ClientController::class, 'postLoginClient'])->name('postLoginClient');
+Route::get('logout_client', [Login_ClientController::class, 'getLogoutClient'])->name('getLogoutClient');
 
 //=================Send Mail===================
 Route::get('reset_password', [LoginController::class, 'reset_password'])->name('reset_password');
