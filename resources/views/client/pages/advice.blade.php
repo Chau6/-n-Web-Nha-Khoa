@@ -1,6 +1,6 @@
 @extends('client.master') 
 
-@section('main_menu')
+{{-- @section('main_menu')
 <section class="mainmenu-area stricky">
     <div class="container">
         <div class="row">
@@ -76,7 +76,7 @@
         </div>
     </div>
 </section> 
-@endsection
+@endsection --}}
 
 @section('breadcrumb')
 <!--Start breadcrumb area-->     

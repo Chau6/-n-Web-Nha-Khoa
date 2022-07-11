@@ -25,7 +25,7 @@
     <!--End header style1 area-->
         
     <!--Start mainmenu area-->
-        @yield('main_menu')               
+        @include('client.blocks.main_menu')               
     <!--End mainmenu area--> 
     
     <!-- Hidden Navigation Bar -->
