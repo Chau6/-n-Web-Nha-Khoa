@@ -24,13 +24,16 @@ use App\Http\Controllers\Register_ClientController;
 Route::get('/', [LoginController::class, 'getLogin'])->name('getLogin');
 
 //==================Register===================
-// Admin
-Route::get('register', [RegisterController::class, 'getRegister'])->name('getRegister');
-Route::post('register', [RegisterController::class, 'postRegister'])->name('postRegister');
+Route::middleware('register')->group(function(){
+    // Admin
+    Route::get('register', [RegisterController::class, 'getRegister'])->name('getRegister');
+    Route::post('register', [RegisterController::class, 'postRegister'])->name('postRegister');
+    
+    // Client
+    Route::get('register_client', [Register_ClientController::class, 'getRegisterClient'])->name('getRegisterClient');
+    Route::post('register_client', [Register_ClientController::class, 'postRegisterClient'])->name('postRegisterClient');
+});
 
-// Client
-Route::get('register_client', [Register_ClientController::class, 'getRegisterClient'])->name('getRegisterClient');
-Route::post('register_client', [Register_ClientController::class, 'postRegisterClient'])->name('postRegisterClient');
 
 // ================Login/Logout=================
 // Admin
@@ -49,6 +52,7 @@ Route::post('reset_password', [LoginController::class, 'post_reset_password'])->
 Route::get('testmail', [LoginController::class, 'testMail'])->name('testmail');
 
 //===================ADMIN=====================
+<<<<<<< Updated upstream
 Route::prefix('admin')->name('admin.')->group(function(){ /** ->middleware('login') */
     Route::prefix('user')->name('user.')->group(function(){
         Route::get('index', [UserController::class, 'index'])->name('index');
@@ -72,11 +76,40 @@ Route::prefix('admin')->name('admin.')->group(function(){ /** ->middleware('logi
         Route::post('update/{id}', [CategoryController::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update member
         /** Delete member */
         Route::get('delete/{id}', [CategoryController::class, 'delete'])->name('delete')->where('id','[0-9]+');
+=======
+Route::middleware('admin', 'login')->group(function(){
+    Route::prefix('admin')->name('admin.')->group(function(){
+        Route::prefix('user')->name('user.')->group(function(){
+            Route::get('index', [UserController::class, 'index'])->name('index');
+    
+            Route::get('create', [UserController::class, 'create'])->name('create');
+            Route::post('store', [UserController::class, 'store'])->name('store');
+    
+            Route::get('edit/{id}', [UserController::class, 'edit'])->name('edit')->where('id', '[0-9]+');
+            Route::post('update/{id}', [UserController::class, 'update'])->name('update')->where('id', '[0-9]+');
+    
+            Route::get('delete/{id}', [UserController::class, 'delete'])->name('delete')->where('id', '[0-9]+');
+        });
+        Route::prefix('category')->name('category.')->group(function(){
+            /** Show list of members */
+            Route::get('index', [CategoryController::class, 'index'])->name('index');
+            /** Create member */
+            Route::get('create', [CategoryController::class, 'create'])->name('create'); //Show form to create member
+            Route::post('store', [CategoryController::class, 'store'])->name('store'); //set action in form to create member
+            /** Edit member */
+            Route::get('edit/{id}', [CategoryController::class, 'edit'])->name('edit')->where('id','[0-9]+'); //Show form to edit member
+            Route::post('update/{id}', [CategoryController::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update member
+            /** Delete member */
+            Route::get('delete/{id}', [CategoryController::class, 'delete'])->name('delete')->where('id','[0-9]+');
+        });
+>>>>>>> Stashed changes
     });
 });
 
 
+
 //====================Client=====================
+
 Route::prefix('client')->name('client.')->group(function(){
     Route::prefix('pages')->name('pages.')->group(function(){
     //==========index

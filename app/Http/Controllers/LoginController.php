@@ -23,17 +23,13 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
     
-        // $credentials['level'] = 1;
-        // $credentials['level'] = 2;
-    
+        // $credentials['level'] = 1;    
         
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            
+            $request->session()->regenerate();     
             return redirect()->route('admin.user.index');
-
         }
-        return redirect()->route('getLoginClient');
+        return redirect()->route('getLogin');
     }
 
     public function getLogout(Request $request){
