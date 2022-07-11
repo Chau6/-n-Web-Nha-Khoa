@@ -4,6 +4,15 @@
 <head>
     @include('admin.blocks.head')
 </head>
+<script type="text/javascript">
+    function deleteConfirm () {
+        if(window.confirm('Are you sure you want to delete') == true) {
+            return true;
+        }
+        return false;
+    }   
+</script>
+
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <body class="hold-transition sidebar-mini">
