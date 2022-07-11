@@ -102,5 +102,7 @@ Route::prefix('client')->name('client.')->group(function(){
         Route::get('appointment', [HomeController::class, 'appointment'])->name('appointment');
         Route::get('rating', [HomeController::class, 'rating'])->name('rating');
         Route::get('product_pages', [HomeController::class, 'product_pages'])->name('product_pages');
+        Route::get('information_client', [HomeController::class, 'information_client'])->name('information_client');
+        
     });
 });
