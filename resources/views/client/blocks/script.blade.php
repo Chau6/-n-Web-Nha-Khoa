@@ -53,5 +53,24 @@
 <script src="{{ asset('asset/client/plugins/revolution/js/extensions/revolution.extension.video.min.js')}}"></script>
 <script src="{{ asset('asset/client/js/main-slider-script.js')}}"></script>
 
+{{-- Rating --}}
+<script type="text/javascript">
+    const allStars = document.querySelectorAll('.star');
+        let current_rating = document.querySelector('.current_rating');
+        allStars.forEach( (star, i)=> {
+            star.onclick =  function () { 
+                let current_start_level = i + 1;
+                current_rating.innerHTML = `${current_start_level} of 5`;
+                
+                allStars.forEach((star, j)=>{
+                    if( current_start_level >=j+1){
+                        star.innerHTML = '&#9733';
+                    }else{
+                        star.innerHTML = '&#9734';
+                    }
+                })
+             }
+        });
+</script>
 <!-- thm custom script -->
 <script src="{{ asset('asset/client/js/custom.js')}}"></script>

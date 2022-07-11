@@ -2,7 +2,6 @@
 
 @section('content')
 <form action="">
-
     <div class="card">
         <div class="card-header">
           <h3 class="card-title">User</h3>
@@ -19,6 +18,7 @@
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Full Name</th>
+                    <th>Username</th>
                     <th>Gender</th>
                     <th>Email</th>
                     <th>Phone</th>
@@ -34,6 +34,7 @@
                     <td>{{ $user->first_name }}</td>
                     <td>{{ $user->last_name }}</td>
                     <td>{{ $user->first_name }} {{$user->last_name}}</td>
+                    <td>{{ $user->username}}</td>
                     <td>
                         @switch($user->gender)
                             @case(1)
@@ -60,4 +61,5 @@
             
         </div>
     </div>
+  </form>
 @endsection

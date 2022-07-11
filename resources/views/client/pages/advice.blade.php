@@ -1,7 +1,7 @@
 @extends('client.master') 
 
-@section('main_menu')
-{{-- <section class="mainmenu-area stricky">
+{{-- @section('main_menu')
+<section class="mainmenu-area stricky">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
@@ -19,17 +19,15 @@
                                 <li class="dropdown"><a href="{{route('client.pages.index')}}">Home</a>
                                 </li>
                                 <li><a href="{{route('client.pages.about')}}">About Us</a></li>
-
-
-
                                 <li class="dropdown current"><a href="{{route('client.pages.specialities')}}">Specialities</a>
                                     <ul>
-                                        <li><a href="{{ route('client.pages.test') }}">Advice</a></li>
-                                        <li><a href="">Cosmetic Dentistry</a></li>
+                                        <li><a href="{{ route('client.pages.advice') }}">Advice</a></li>
+                                        <li><a href="{{ route('client.pages.danh_rang') }}">Đánh Răng</a></li>
                                         <li><a href="">Laser Dentistry</a></li>
                                         <li><a href="">Orthodontics</a></li>
                                         <li><a href="">Endodontics</a></li>
-                                        <li><a href="">Periodontics</a></li>
+                                        <li><a href="">Category</a></li>
+                                        <li><a href="{{route('client.pages.product')}}">Products</a></li>
                                     </ul>
                                 </li>
 
@@ -77,9 +75,8 @@
             </div>
         </div>
     </div>
-</section>  --}}
-@include('client.blocks.main_menu') 
-@endsection
+</section> 
+@endsection --}}
 
 @section('breadcrumb')
 <!--Start breadcrumb area-->     

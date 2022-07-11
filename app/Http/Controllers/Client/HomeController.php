@@ -11,6 +11,10 @@ class HomeController extends Controller
         return view('client.pages.advice');
     }
 
+    public function danh_rang(){
+        return view('client.pages.danh_rang');
+    }
+
     public function index(){
         return view('client.pages.index');
     }
@@ -45,5 +49,11 @@ class HomeController extends Controller
 
     public function specialities(){
         return view('client.pages.specialities');
+    }
+    public function rating(){
+        return view('client.pages.rating');
+    }
+    public function product_pages(){
+        return view('client.pages.product_pages');
     }
 }

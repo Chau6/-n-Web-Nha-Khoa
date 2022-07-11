@@ -5,7 +5,7 @@
                 <div class="inner-content clearfix">
                     <div class="header-style1-logo float-left">
                         <a href="{{route('client.pages.index')}}">
-                            <img src="{{ asset('asset/client/images/resources/logo.png') }}" alt="Awesome Logo">
+                            <img src="{{ asset('asset/client/images/resources/logo.png') }}" alt="Awesome Logo" weight="30px" height="30px">
                         </a>
                     </div>   
                     <div class="header-contact-info float-left">
