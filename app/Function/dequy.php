@@ -3,9 +3,9 @@ function hello(){
     echo "Hello World";
 }
 
-function recursiveOption ($data,$selected,$parent = 0,$str = "") { //đệ quy thể loại cha
+function recursiveOption ($data,$selected,$parent_name = 0,$str = "") { //đệ quy thể loại cha
     foreach ($data as $key => $value) {
-        if ($value["parent"] == $parent) {
+        if ($value["parent_name"] == $parent_name) {
             $selected_option = '';
             if ($value["id"] == $selected) {
                 $selected_option = "selected";
@@ -17,9 +17,9 @@ function recursiveOption ($data,$selected,$parent = 0,$str = "") { //đệ quy t
     }
 }
 
-function recursiveTable ($data,$parent = 0,$str = "") { //hiển thị danh sách thể loại
+function recursiveTable ($data,$parent_name = 0,$str = "") { //hiển thị danh sách thể loại
     foreach ($data as $key => $value) {
-        if ($value["parent"] == $parent) {
+        if ($value["parent_name"] == $parent_name) {
             echo '
             <tr>
                 <td>'.$str.$value["name"].'</td>

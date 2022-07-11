@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\IndexPageController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -54,6 +55,7 @@ Route::get('testmail', [LoginController::class, 'testMail'])->name('testmail');
 //===================ADMIN=====================
 Route::middleware('admin', 'login')->group(function(){
     Route::prefix('admin')->name('admin.')->group(function(){
+        Route::get('index_pages', [IndexPageController::class, 'index'])->name('index_pages');
         Route::prefix('user')->name('user.')->group(function(){
             Route::get('index', [UserController::class, 'index'])->name('index');
     

@@ -2,7 +2,6 @@
 
 @section('content')
 <form action="">
-
     <div class="card">
         <div class="card-header">
           <h3 class="card-title">User</h3>
@@ -62,4 +61,5 @@
             
         </div>
     </div>
+  </form>
 @endsection
