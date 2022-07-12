@@ -72,5 +72,8 @@
              }
         });
 </script>
+
+{{-- Jquerry --}}
+
 <!-- thm custom script -->
 <script src="{{ asset('asset/client/js/custom.js')}}"></script>
