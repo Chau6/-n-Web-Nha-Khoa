@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\IndexPageController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\LoginController;
@@ -68,16 +69,28 @@ Route::middleware('admin', 'login')->group(function(){
             Route::get('delete/{id}', [UserController::class, 'delete'])->name('delete')->where('id', '[0-9]+');
         });
         Route::prefix('category')->name('category.')->group(function(){
-            /** Show list of members */
+            /** Show list of category */
             Route::get('index', [CategoryController::class, 'index'])->name('index');
-            /** Create member */
-            Route::get('create', [CategoryController::class, 'create'])->name('create'); //Show form to create member
-            Route::post('store', [CategoryController::class, 'store'])->name('store'); //set action in form to create member
-            /** Edit member */
-            Route::get('edit/{id}', [CategoryController::class, 'edit'])->name('edit')->where('id','[0-9]+'); //Show form to edit member
-            Route::post('update/{id}', [CategoryController::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update member
-            /** Delete member */
+            /** Create category */
+            Route::get('create', [CategoryController::class, 'create'])->name('create'); //Show form to create category
+            Route::post('store', [CategoryController::class, 'store'])->name('store'); //set action in form to create category
+            /** Edit category */
+            Route::get('edit/{id}', [CategoryController::class, 'edit'])->name('edit')->where('id','[0-9]+'); //Show form to edit category
+            Route::post('update/{id}', [CategoryController::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update category
+            /** Delete category */
             Route::get('delete/{id}', [CategoryController::class, 'delete'])->name('delete')->where('id','[0-9]+');
+        });
+        Route::prefix('post')->name('post.')->group(function(){
+            /** Show list of post */
+            Route::get('index', [PostController::class, 'index'])->name('index');
+            /** Create post */
+            Route::get('create', [PostController::class, 'create'])->name('create'); //Show form to create post
+            Route::post('store', [PostController::class, 'store'])->name('store'); //set action in form to create post
+            /** Edit post */
+            Route::get('edit/{id}', [PostController::class, 'edit'])->name('edit')->where('id','[0-9]+'); //Show form to edit post
+            Route::post('update/{id}', [PostController::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update post
+            /** Delete post */
+            Route::get('delete/{id}', [PostController::class, 'delete'])->name('delete')->where('id','[0-9]+');
         });
     });
 });
