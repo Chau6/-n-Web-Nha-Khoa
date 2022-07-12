@@ -23,7 +23,7 @@ class PostController extends Controller
         $data = DB::table('category')->orderBy('id')->get();
         return view('admin.post.create', ['categorys' => $data]);
     }
-    public function store(StoreCategory $request){
+    public function store(Request $request){
         $data = $request->except('_token'); //loại trừ thằng _token ra; only chỉ hiển thị cái mình cho phép; get lấy hết
         $data['created_at'] = new \DateTime(); //insert datetime
         
@@ -37,7 +37,7 @@ class PostController extends Controller
 
         return view('admin.post.edit', ['id' => $id, 'categorys' => $data, 'edit' => $edit]);
     }
-    public function update(StoreCategory $request, $id){
+    public function update(Request $request, $id){
         $data = $request->except('_token'); //lấy data ngoại trừ
 
         DB::table('category')->where('id','=', $id)->update($data); //rỗng thì giữ nguyên

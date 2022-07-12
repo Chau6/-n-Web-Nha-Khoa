@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\IndexPageController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\Login_ClientController;
@@ -56,6 +57,7 @@ Route::get('testmail', [LoginController::class, 'testMail'])->name('testmail');
 //===================ADMIN=====================
 Route::middleware('admin', 'login')->group(function(){
     Route::prefix('admin')->name('admin.')->group(function(){
+        //User
         Route::get('index_pages', [IndexPageController::class, 'index'])->name('index_pages');
         Route::prefix('user')->name('user.')->group(function(){
             Route::get('index', [UserController::class, 'index'])->name('index');
@@ -68,6 +70,8 @@ Route::middleware('admin', 'login')->group(function(){
     
             Route::get('delete/{id}', [UserController::class, 'delete'])->name('delete')->where('id', '[0-9]+');
         });
+
+        //Category
         Route::prefix('category')->name('category.')->group(function(){
             /** Show list of category */
             Route::get('index', [CategoryController::class, 'index'])->name('index');
@@ -115,5 +119,7 @@ Route::prefix('client')->name('client.')->group(function(){
         Route::get('appointment', [HomeController::class, 'appointment'])->name('appointment');
         Route::get('rating', [HomeController::class, 'rating'])->name('rating');
         Route::get('product_pages', [HomeController::class, 'product_pages'])->name('product_pages');
+        Route::get('information_client', [HomeController::class, 'information_client'])->name('information_client');
+        
     });
 });
