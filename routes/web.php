@@ -6,7 +6,6 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\IndexPageController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\Login_ClientController;
