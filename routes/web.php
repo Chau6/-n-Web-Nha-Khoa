@@ -5,6 +5,7 @@ use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\IndexPageController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\Login_ClientController;
@@ -55,6 +56,7 @@ Route::get('testmail', [LoginController::class, 'testMail'])->name('testmail');
 //===================ADMIN=====================
 Route::middleware('admin', 'login')->group(function(){
     Route::prefix('admin')->name('admin.')->group(function(){
+        //User
         Route::get('index_pages', [IndexPageController::class, 'index'])->name('index_pages');
         Route::prefix('user')->name('user.')->group(function(){
             Route::get('index', [UserController::class, 'index'])->name('index');
@@ -67,6 +69,8 @@ Route::middleware('admin', 'login')->group(function(){
     
             Route::get('delete/{id}', [UserController::class, 'delete'])->name('delete')->where('id', '[0-9]+');
         });
+
+        //Category
         Route::prefix('category')->name('category.')->group(function(){
             /** Show list of members */
             Route::get('index', [CategoryController::class, 'index'])->name('index');
@@ -78,6 +82,19 @@ Route::middleware('admin', 'login')->group(function(){
             Route::post('update/{id}', [CategoryController::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update member
             /** Delete member */
             Route::get('delete/{id}', [CategoryController::class, 'delete'])->name('delete')->where('id','[0-9]+');
+        });
+
+        //Post
+        Route::prefix('post')->name('post.')->group(function(){
+            Route::get('index', [PostController::class, 'index'])->name('index');
+    
+            Route::get('create', [PostController::class, 'create'])->name('create');
+            Route::post('store', [PostController::class, 'store'])->name('store');
+    
+            Route::get('edit/{id}', [PostController::class, 'edit'])->name('edit')->where('id', '[0-9]+');
+            Route::post('update/{id}', [PostController::class, 'update'])->name('update')->where('id', '[0-9]+');
+    
+            Route::get('delete/{id}', [PostController::class, 'delete'])->name('delete')->where('id', '[0-9]+');
         });
     });
 });
