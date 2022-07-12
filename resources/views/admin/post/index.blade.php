@@ -23,29 +23,29 @@
                     <td>Delete</td>
                 </tr>
                 </thead>
-                {{-- @foreach ($users as $user) --}}
+                @foreach ($post as $posts)
                 <tbody>
                 <tr>
-                    <td>Id</td>
+                    <td>{{$posts->id}}</td>
                     <td>
                         <div class="media">
                             <a href="pull-left" href="">
                                 <img class="media-object" src="#" alt="Image">
                             </a>
                             <div class="media-body">
-                                <h4 class="media-heading">Tin</h4>
-                                {{-- <p>{{$post->created_at->format('d-m-Y')}}</p> --}}
+                                <h4 class="media-heading">{{$posts->name}}</h4>
+                                <p>{{ date('d/m/Y | H:i:s', strtotime($posts->created_at)) }}</p>
                             </div>
                         </div>
                     </td>
-                    <td>Category</td>
-                    <td>Status</td>
-                    <td>Created_at</td>
-                    <td><a href="">Edit</a></td>
-                    <td><a href="">Delete</a></td>
+                    <td>{{$posts->category_name}}</td>
+                    <td>{{$posts->status}}</td>
+                    <td>{{ date('d/m/Y | H:i:s', strtotime($posts->created_at)) }}</td>
+                    <td><a href="{{ route('admin.post.edit', ['id'=>$posts->id]) }}">Edit</td>
+                      <td><a onclick="return confirmDelete()" href="{{ route('admin.post.delete', ['id'=>$posts->id]) }}">Delete</td>
                 </tr>            
                 </tbody>
-                {{-- @endforeach --}}
+                @endforeach
               </table>
             </div>
           </div>

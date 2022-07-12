@@ -10,11 +10,11 @@
     </ul>
 </div>
 @endif
-<form action="{{ route('admin.user.store') }}" method="POST">  
+<form action="{{ route('admin.post.store') }}" method="POST">  
     @csrf
     <div class="card">
         <div class="card-header">
-        <h3 class="card-title">Edit User</h3>
+        <h3 class="card-title">Create Post</h3>
         <div class="card-tools">
         </div>
         </div>
@@ -25,8 +25,10 @@
             </div>
 
             <div class="form-group">
-                <label for="email">Content</label>
-                <input type="text" class="form-control" name="content" value="{{ old('content') }}">
+                <div class="form-group shadow-textarea">
+                    <label for="content">Content</label>
+                    <textarea class="form-control z-depth-1" name="content" id="content" rows="3" placeholder="Write something here..."></textarea>
+                  </div>
             </div>
 
             <div class="form-group">
@@ -34,26 +36,28 @@
                 <select class="form-control" name="parent_name">
                     <option value="0">---- ROOT ----</option>
                     <?php
-                        $data=array();
-                        $datas=array();
+                    $data=array();
+                    $datas=array();
                     ?>
                     @foreach($categorys as $category)
-                        @if(!empty($category))
-                            <?php
-                                $data['id'] = $category->id;
-                                $data['name'] = $category->name;
-                                $data['parent_name'] = $category->parent_name;
-                                $datas[] = $data;
-                            ?>
-                        @endif
+                        <?php
+                            $data['id'] = $category->id;
+                            $data['name'] = $category->name;
+                            $data['parent_name'] = $category->parent_name;
+                            $datas[] = $data;
+                        ?>
                     @endforeach
-                    <?php recursiveOption($datas,$edit->parent_name);?>
+                    <?php 
+                        recursiveTable($datas,'parent');
+                    ?>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="email">Status</label>
-                <input type="text" class="form-control" name="phone" value="{{ old('phone') }}">
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="status">
+                    <label class="custom-control-label" for="status">Status</label>
+                  </div>
             </div>
 
             <div class="card-footer">
