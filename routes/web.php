@@ -23,7 +23,7 @@ use App\Http\Controllers\Register_ClientController;
 */
 
 
-Route::get('/', [LoginController::class, 'getLogin'])->name('getLogin');
+Route::get('/', [Login_ClientController::class, 'getLoginClient'])->name('getLoginClient');
 
 //==================Register===================
 Route::middleware('register')->group(function(){
@@ -56,8 +56,8 @@ Route::get('testmail', [LoginController::class, 'testMail'])->name('testmail');
 //===================ADMIN=====================
 Route::middleware('admin', 'login')->group(function(){
     Route::prefix('admin')->name('admin.')->group(function(){
-        //User
         Route::get('index_pages', [IndexPageController::class, 'index'])->name('index_pages');
+        //User
         Route::prefix('user')->name('user.')->group(function(){
             Route::get('index', [UserController::class, 'index'])->name('index');
     
