@@ -35,7 +35,7 @@
                         if ($user->level == 1) {
                           echo "<span class='badge badge-danger'>Admin</span>";
                         }else {
-                          echo "<span class='badge badge-warning'>Admin</span>";
+                          echo "<span class='badge badge-info'>Member</span>";
                         }
                       ?>
                     </td>
