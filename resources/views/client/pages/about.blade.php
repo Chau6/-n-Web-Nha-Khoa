@@ -82,7 +82,7 @@
             <div class="col-xl-12">
                 <div class="inner-content clearfix">
                     <div class="title float-left">
-                       <h2>About Us</h2>
+                       <h2>About</h2>
                     </div>
                     <div class="breadcrumb-menu float-right">
                         <ul class="clearfix">
