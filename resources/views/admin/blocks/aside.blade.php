@@ -127,7 +127,7 @@
                 </li>
 
                 <li class="nav-item has-treeview">
-                    <a href="{{route('getLogout')}}" class="nav-link">
+                    <a href="{{route('getLogoutClient')}}" class="nav-link">
                         <i class=""></i>
                         <p style="color: aqua">
                             LOGOUT
