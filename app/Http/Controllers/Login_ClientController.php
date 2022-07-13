@@ -27,7 +27,12 @@ class Login_ClientController extends Controller
         
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->route('client.pages.index');
+            if (Auth::user()->level == 1){
+                return redirect()->route('admin.index_pages');
+            }else{
+                return redirect()->route('client.pages.index');
+            }
+            
         } 
         return redirect()->route('getLoginClient');
 
