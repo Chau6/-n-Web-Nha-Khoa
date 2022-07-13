@@ -33,9 +33,9 @@
                     <td>
                       <?php
                         if ($user->level == 1) {
-                          echo "<b class='badge badge-warning'>Admin</b>";
+                          echo "<span class='badge badge-danger'>Admin</span>";
                         }else {
-                          echo "<b style='color:green'>User</b>";
+                          echo "<span class='badge badge-warning'>Admin</span>";
                         }
                       ?>
                     </td>
