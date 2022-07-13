@@ -14,7 +14,7 @@
               <table class="table table-striped">
                 <thead>
                 <tr>
-                    <td>ID</td>
+                    <td>Level</td>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Full Name</th>
@@ -30,7 +30,15 @@
                 @foreach ($users as $user)
                 <tbody>
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
+                    <td>
+                      <?php
+                        if ($user->level == 1) {
+                          echo "<b class='badge badge-warning'>Admin</b>";
+                        }else {
+                          echo "<b style='color:green'>User</b>";
+                        }
+                      ?>
+                    </td>
                     <td>{{ $user->first_name }}</td>
                     <td>{{ $user->last_name }}</td>
                     <td>{{ $user->first_name }} {{$user->last_name}}</td>
