@@ -39,7 +39,7 @@
       </div>
       @endif
 
-      <form action="{{route('postLogin')}}" method="POST">
+      <form action="{{route('postLogin')}}" method="POST" id="quickForm">
         @csrf
             <div class="input-group mb-3">
                 <input type="text" class="form-control" name="username" placeholder="UserName" value="{{old('username')}}">

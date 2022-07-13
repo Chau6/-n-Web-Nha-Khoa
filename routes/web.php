@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\IndexPageController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\LoginController;
@@ -22,7 +23,7 @@ use App\Http\Controllers\Register_ClientController;
 */
 
 
-Route::get('/', [LoginController::class, 'getLogin'])->name('getLogin');
+Route::get('/', [Login_ClientController::class, 'getLoginClient'])->name('getLoginClient');
 
 //==================Register===================
 Route::middleware('register')->group(function(){
@@ -56,6 +57,7 @@ Route::get('testmail', [LoginController::class, 'testMail'])->name('testmail');
 Route::middleware('admin', 'login')->group(function(){
     Route::prefix('admin')->name('admin.')->group(function(){
         Route::get('index_pages', [IndexPageController::class, 'index'])->name('index_pages');
+        //User
         Route::prefix('user')->name('user.')->group(function(){
             Route::get('index', [UserController::class, 'index'])->name('index');
     
@@ -67,17 +69,31 @@ Route::middleware('admin', 'login')->group(function(){
     
             Route::get('delete/{id}', [UserController::class, 'delete'])->name('delete')->where('id', '[0-9]+');
         });
+
+        //Category
         Route::prefix('category')->name('category.')->group(function(){
-            /** Show list of members */
+            /** Show list of category */
             Route::get('index', [CategoryController::class, 'index'])->name('index');
-            /** Create member */
-            Route::get('create', [CategoryController::class, 'create'])->name('create'); //Show form to create member
-            Route::post('store', [CategoryController::class, 'store'])->name('store'); //set action in form to create member
-            /** Edit member */
-            Route::get('edit/{id}', [CategoryController::class, 'edit'])->name('edit')->where('id','[0-9]+'); //Show form to edit member
-            Route::post('update/{id}', [CategoryController::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update member
-            /** Delete member */
+            /** Create category */
+            Route::get('create', [CategoryController::class, 'create'])->name('create'); //Show form to create category
+            Route::post('store', [CategoryController::class, 'store'])->name('store'); //set action in form to create category
+            /** Edit category */
+            Route::get('edit/{id}', [CategoryController::class, 'edit'])->name('edit')->where('id','[0-9]+'); //Show form to edit category
+            Route::post('update/{id}', [CategoryController::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update category
+            /** Delete category */
             Route::get('delete/{id}', [CategoryController::class, 'delete'])->name('delete')->where('id','[0-9]+');
+        });
+        Route::prefix('post')->name('post.')->group(function(){
+            /** Show list of post */
+            Route::get('index', [PostController::class, 'index'])->name('index');
+            /** Create post */
+            Route::get('create', [PostController::class, 'create'])->name('create'); //Show form to create post
+            Route::post('store', [PostController::class, 'store'])->name('store'); //set action in form to create post
+            /** Edit post */
+            Route::get('edit/{id}', [PostController::class, 'edit'])->name('edit')->where('id','[0-9]+'); //Show form to edit post
+            Route::post('update/{id}', [PostController::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update post
+            /** Delete post */
+            Route::get('delete/{id}', [PostController::class, 'delete'])->name('delete')->where('id','[0-9]+');
         });
     });
 });
@@ -102,5 +118,7 @@ Route::prefix('client')->name('client.')->group(function(){
         Route::get('appointment', [HomeController::class, 'appointment'])->name('appointment');
         Route::get('rating', [HomeController::class, 'rating'])->name('rating');
         Route::get('product_pages', [HomeController::class, 'product_pages'])->name('product_pages');
+        Route::get('information_client', [HomeController::class, 'information_client'])->name('information_client');
+        
     });
 });

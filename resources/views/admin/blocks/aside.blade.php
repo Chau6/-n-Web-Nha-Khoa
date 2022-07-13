@@ -55,7 +55,7 @@
                 </li>
 
                 <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('admin.category.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-bars"></i>
                         <p>
                             Category
@@ -103,7 +103,7 @@
                 </li>
 
                 <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('admin.post.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-archive"></i>
                         <p>
                             Post
@@ -112,13 +112,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{ route('admin.post.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>List</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{ route('admin.post.create')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Create Post</p>
                             </a>
@@ -127,7 +127,7 @@
                 </li>
 
                 <li class="nav-item has-treeview">
-                    <a href="{{route('getLogout')}}" class="nav-link">
+                    <a href="{{route('getLogoutClient')}}" class="nav-link">
                         <i class=""></i>
                         <p style="color: aqua">
                             LOGOUT
