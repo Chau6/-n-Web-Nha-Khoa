@@ -3,12 +3,15 @@
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12">
                 <div class="inner-content clearfix">
-                    <div class="header-style1-logo float-left">
-                        <a href="{{route('client.pages.index')}}">
-                            <img src="{{ asset('asset/client/images/resources/logo.png') }}" alt="Awesome Logo" weight="30px" height="30px">
-                        </a>
-                    </div>   
+                       
                     <div class="header-contact-info float-left">
+                        <li>
+                            <div class="header-style1-logo float-left" style="max-width: 200px; padding-right: 30px; margin-top:10px;">
+                                <a href="{{route('client.pages.index')}}">
+                                    <img src="{{ asset('asset/client/images/resources/logo10.png') }}" alt="Awesome Logo" weight="30px" height="30px">
+                                </a>
+                            </div>
+                            </li>
                         <ul>
                             <li>
                                 <div class="single-item">

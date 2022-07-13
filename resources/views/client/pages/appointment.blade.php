@@ -227,7 +227,6 @@
                                 <li><span>Age</span><b>:</b> 36 Years</li>
                                 <li><span>Service</span><b>:</b> Root Canel</li>
                                 <li><span>Date & Time</span><b>:</b> Nov 22nd, 2018. 11.30am</li>
-                                <li><span>Price</span><b>:</b> $65.00</li>
                             </ul>    
                         </div>
                         <div class="button-box">
