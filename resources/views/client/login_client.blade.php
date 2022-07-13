@@ -61,7 +61,6 @@
                         <div class="form-outline mb-4">
                             <label class="form-label" for="form2Example27">Password</label>
                             <input type="password" name="password" value="" id="form2Example27" class="form-control form-control-lg" />
-                          
                         </div>
       
                         <div class="pt-1 mb-4">
