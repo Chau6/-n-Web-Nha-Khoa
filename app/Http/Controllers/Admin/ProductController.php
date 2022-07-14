@@ -25,6 +25,11 @@ class ProductController extends Controller
     public function store(StoreProduct $request){
         $data = $request->except('_token'); //loại trừ thằng _token ra; only chỉ hiển thị cái mình cho phép; get lấy hết
         $data['created_at'] = new \DateTime(); //insert datetime
+
+        $imageName = time().'.'.$request->image->extension();
+        
+        $request->image->move(public_path('images'), $imageName);
+        $data['image'] = $imageName;
         
         DB::table('products')->insert($data); //câu lệnh insert 
 

@@ -4,7 +4,7 @@
 <form action="">
     <div class="card">
         <div class="card-header">
-          <h3 class="card-title">User</h3>
+          <h3 class="card-title">Products</h3>
           <div class="card-tools">
           </div>
         </div>
@@ -23,6 +23,13 @@
                         $data=array();
                         $datas=array();
                         ?>
+                        @foreach($products as $product)
+                            <?php
+                                $data['id'] = $product->id;
+                                $data['name'] = $product->name;
+                                $datas[] = $data;
+                            ?>
+                        @endforeach
                         <?php 
                             recursiveTable($datas);
                         ?>
