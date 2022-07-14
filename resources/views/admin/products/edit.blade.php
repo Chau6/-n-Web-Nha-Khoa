@@ -12,7 +12,7 @@
         </ul>
     </div>
     @endif
-    <form action="{{ route('admin.product.update', ['id' => $id]) }}" method="POST" enctype="multipart/form-data">  
+    <form action="{{ route('admin.products.update', ['id' => $id]) }}" method="POST" enctype="multipart/form-data">  
         @csrf
         <div class="card-header">
                 <h3 class="card-title">Update Product</h3>
