@@ -12,19 +12,37 @@
         </ul>
     </div>
     @endif
-    <form action="{{ route('admin.category.update', ['id' => $id]) }}" method="POST" enctype="multipart/form-data">  
+    <form action="{{ route('admin.product.update', ['id' => $id]) }}" method="POST" enctype="multipart/form-data">  
         @csrf
-        <div class="sec-title max-width">
-            <div class="card-header">
-                <h3 class="card-title">Create Products</h3>
+        <div class="card-header">
+                <h3 class="card-title">Update Product</h3>
             </div>
             <div class="card-body">
                 <div class="form-group">
+                    <label>Parent_name</label>
+                    <select class="form-control" name="parent_name">
+                        <option value="0">---- ROOT ----</option>
+                        <?php
+                            $data=array();
+                            $datas=array();
+                        ?>
+                        @foreach($products as $product)
+                            @if(!empty($product))
+                                <?php
+                                    $data['id'] = $product->id;
+                                    $data['name'] = $product->name;
+                                    $data['parent_name'] = $product->parent_name;
+                                    $datas[] = $data;
+                                ?>
+                            @endif
+                        @endforeach
+                        <?php recursiveOption($datas,$edit->parent_name);?>
+                    </select>
                 </div>
     
                 <div class="form-group">
-                    <label>Category Name</label>
-                    <input type="text" name="name" class="form-control" placeholder="Enter Category Name">
+                    <label>Product Name</label>
+                    <input type="text" name="name" class="form-control" placeholder="Enter Product Name">
                 </div>
             </div>
             <div class="card-footer">

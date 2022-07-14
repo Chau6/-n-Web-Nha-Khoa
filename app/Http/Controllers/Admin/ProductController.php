@@ -33,7 +33,6 @@ class ProductController extends Controller
     public function edit($id){
         $edit = DB::table('products')->where('id','=', $id)->first();
         $data = DB::table('products')->get();
-
         return view('admin.products.edit', ['id' => $id, 'products' => $data, 'edit' => $edit]);
     }
     public function update(StoreProduct $request, $id){
