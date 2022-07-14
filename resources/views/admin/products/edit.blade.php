@@ -12,7 +12,7 @@
         </ul>
     </div>
     @endif
-    <form action="{{ route('admin.category.update', ['id' => $id]) }}" method="POST" enctype="multipart/form-data">  
+    <form action="{{ route('admin.product.update', ['id' => $id]) }}" method="POST" enctype="multipart/form-data">  
         @csrf
         <div class="sec-title max-width">
             <div class="card-header">
@@ -23,8 +23,8 @@
                 </div>
     
                 <div class="form-group">
-                    <label>Category Name</label>
-                    <input type="text" name="name" class="form-control" placeholder="Enter Category Name">
+                    <label>product Name</label>
+                    <input type="text" name="name" class="form-control" placeholder="Enter Product Name">
                 </div>
             </div>
             <div class="card-footer">

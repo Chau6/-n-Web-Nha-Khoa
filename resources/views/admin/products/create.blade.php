@@ -12,18 +12,26 @@
         </ul>
     </div>
     @endif
-    <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">  
+    <form action="{{ route('admin.product.store') }}" method="POST" enctype="multipart/form-data">  
         @csrf
         <div class="sec-title max-width">
             <div class="card-header">
-                <h3 class="card-title">Create products</h3>
+                <h3 class="card-title">Create product</h3>
             </div>
             <div class="card-body">
+    
                 <div class="form-group">
-                    <label>Products Name</label>
-                    <input type="text" name="name" class="form-control" placeholder="Enter Category Name">
+                    <label>Product Name</label>
+                    <input type="text" name="name" class="form-control" placeholder="Enter Product Name">
                 </div>
             </div>
+        </div>
+    
+        <div class="form-group">
+            <label>Product Content</label>
+            <input type="textarea" name="content" class="form-control">
+        </div>
+    </div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-info">Create</button>
     
