@@ -44,6 +44,12 @@
                     <label>Product Image</label>
                     <input type="file" name="image">
                 </div>
+
+                <div class="form-group">
+                    <label>Extra Image</label>
+                    <input type="file" name="extraimage">
+                    <input type="button" value="Add" >
+                </div>
         
                 <div class="form-group">
                     <label>Status</label>
@@ -62,8 +68,9 @@
                 <button type="reset" class="btn btn-default float-right">Reset</button>
             </div>
         </div>
-
-
+        <script src="{{ asset('assets/client/js/jquery-3.6.0.min.js') }}"></script>
+        <script src="{{ asset('assets/client/js/myjquery.js') }}"></script>
+        
     </form>
     {{-- <pre>
         <?php
