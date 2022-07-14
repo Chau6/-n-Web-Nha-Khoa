@@ -26,12 +26,36 @@
                 </div>
             </div>
         </div>
+        <div class="form-group">
+            <label>Category</label>
+            <input type="text" name="category" class="form-control" placeholder="Enter Category">
+        </div>
     
+
+        <div class="form-group">
+            <label>Product Image</label>
+            <input type="file" name="image">
+        </div>
+        <div class="form-group">
+            <label>Exta Image</label>
+            <input type="file" name="image">
+        </div>
         <div class="form-group">
             <label>Product Content</label>
-            <input type="textarea" name="content" class="form-control">
+            <textarea name="content" class="form-control" placeholder="Enter Product Content" ></textarea>
         </div>
-    </div>
+        <div class="form-group">
+            <label>Product Price</label>
+            <input type="money" name="price" class="form-control" placeholder="Enter Price">
+        </div>
+        <div class="form-group">
+            <label>Status</label>
+            <input type="text" name="status" class="form-control" placeholder="Enter Status">
+        </div>
+
+
+        
+        <div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-info">Create</button>
     
