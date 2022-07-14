@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\IndexPageController;
 use App\Http\Controllers\Admin\UserController;
@@ -82,6 +83,19 @@ Route::middleware('admin', 'login')->group(function(){
             Route::post('update/{id}', [CategoryController::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update category
             /** Delete category */
             Route::get('delete/{id}', [CategoryController::class, 'delete'])->name('delete')->where('id','[0-9]+');
+        });
+        //Products
+        Route::prefix('product')->name('product.')->group(function(){
+            /** Show list of product */
+            Route::get('index', [ProductController::class, 'index'])->name('index');
+            /** Create product */
+            Route::get('create', [ProductController::class, 'create'])->name('create'); //Show form to create product
+            Route::post('store', [ProductController::class, 'store'])->name('store'); //set action in form to create product
+            /** Edit product */
+            Route::get('edit/{id}', [ProductController::class, 'edit'])->name('edit')->where('id','[0-9]+'); //Show form to edit product
+            Route::post('update/{id}', [ProductController::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update product
+            /** Delete product */
+            Route::get('delete/{id}', [ProductController::class, 'delete'])->name('delete')->where('id','[0-9]+');
         });
         Route::prefix('post')->name('post.')->group(function(){
             /** Show list of post */
