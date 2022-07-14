@@ -26,10 +26,10 @@ class ProductController extends Controller
         $data = $request->except('_token'); //loại trừ thằng _token ra; only chỉ hiển thị cái mình cho phép; get lấy hết
         $data['created_at'] = new \DateTime(); //insert datetime
 
-        $imageName = time().'.'.$request->image->extension();
+        $imagesName = time().'.'.$request->images->extension();
         
-        $request->image->move(public_path('images'), $imageName);
-        $data['image'] = $imageName;
+        $request->images->move(public_path('images'), $imagesName);
+        $data['images'] = $imagesName;
         
         DB::table('products')->insert($data); //câu lệnh insert 
 
