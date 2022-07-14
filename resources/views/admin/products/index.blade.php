@@ -23,14 +23,6 @@
                         $data=array();
                         $datas=array();
                         ?>
-                        @foreach($categorys as $category)
-                            <?php
-                                $data['id'] = $category->id;
-                                $data['name'] = $category->name;
-                                $data['parent_name'] = $category->parent_name;
-                                $datas[] = $data;
-                            ?>
-                        @endforeach
                         <?php 
                             recursiveTable($datas);
                         ?>
