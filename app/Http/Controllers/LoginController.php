@@ -39,16 +39,16 @@ class LoginController extends Controller
     }
 
     public function testMail(){
-        $name = "Tin";
+        $name = "Viinhh";
         Mail::send('email.test', compact('name'), function($email) use($name){
             $email->subject('Demo test mail');
-            $email->to('tanchau0602@gmail.com', $name);
+            $email->to('quangvinhnguyen4523@gmail.com', $name);
         });
         return redirect()->route('getLogin')->with('success', 'Email has been sent');
     }
 
     public function reset_password(){
-        return view('email.reset_password');
+        return view('email.send_mail_pass');
     }
 
     public function post_reset_password(){
