@@ -23,10 +23,6 @@
                         $data=array();
                         $datas=array();
                         ?>
-<<<<<<< HEAD
-                        
-=======
->>>>>>> b5cc0024e83d8f52df255e11f76ebeef8484a484
                         <?php 
                             recursiveTable($datas);
                         ?>

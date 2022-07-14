@@ -41,11 +41,9 @@
                 </div>
     
                 <div class="form-group">
-<<<<<<< HEAD
                     <label>product Name</label>
-=======
                     <label>Product Name</label>
->>>>>>> b5d4b5c5828bef8d602602cf8c14b331c689f2ac
+
                     <input type="text" name="name" class="form-control" placeholder="Enter Product Name">
                 </div>
             </div>
