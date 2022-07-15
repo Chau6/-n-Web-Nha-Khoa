@@ -33,7 +33,7 @@ class ProductController extends Controller
         
         DB::table('products')->insert($data); //câu lệnh insert 
 
-        return redirect()->route('admin.product .index')->with('success','Insert Successfully') ; //trả về đường dẫn
+        return redirect()->route('admin.product.index')->with('success','Insert Successfully') ; //trả về đường dẫn
     }
     public function edit($id){
         $edit = DB::table('products')->where('id','=', $id)->first();

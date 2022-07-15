@@ -62,8 +62,7 @@
                 <button type="reset" class="btn btn-default float-right">Reset</button>
             </div>
         </div>
-
-
+        
     </form>
     {{-- <pre>
         <?php
