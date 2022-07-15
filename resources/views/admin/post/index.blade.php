@@ -1,4 +1,4 @@
-@extends('admin.master') 
+@extends('admin.master')
 
 @section('content')
 <form action="">
@@ -14,36 +14,38 @@
               <table class="table table-striped">
                 <thead>
                 <tr>
-                    
+                    <td>ID</td>
+                    <td>Name</td>
+                    <td>Category</td>
+                    <td>Status</td>
+                    <td>Created At</td>
+                    <td>Edit</td>
+                    <td>Delete</td>
                 </tr>
                 </thead>
+                @foreach ($post as $posts)
                 <tbody>
-                    <tr>
-                        <?php
-                        $data=array();
-                        $datas=array();
-                        ?>
-                        @foreach($categorys as $category)
-                            <?php
-                                $data['id'] = $category->id;
-                                $data['name'] = $category->name;
-                                $data['parent_name'] = $category->parent_name;
-                                $datas[] = $data;
-                            ?>
-                        @endforeach
-                        <?php 
-                            recursiveTablePost($datas);
-                        ?>
-                    </tr>
-                    {{-- </td> --}}
-                    {{-- <td>{{$user->email}}</td>
-                    <td>{{$user->phone}}</td>
-                    <td>{{ date('d/m/Y | H:i:s', strtotime($user->created_at)) }}</td>
-                    <td><a href="{{ route('admin.user.edit', ['id'=>$user->id]) }}">Edit</td>
-                    <td><a onclick="return confirmDelete()" href="{{ route('admin.user.delete', ['id'=>$user->id]) }}">Delete</td> --}}
+                <tr>
+                    <td>Id</td>
+                    <td>
+                        <div class="media">
+                            <a href="pull-left" href="">
+                                <img class="media-object" src="#" alt="Image">
+                            </a>
+                            <div class="media-body">
+                              <h4 class="media-heading">{{$posts->name}}</h4>
+                              <p>{{ date('d/m/Y | H:i:s', strtotime($posts->created_at)) }}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{$posts->category_name}}</td>
+                    <td>{{$posts->status}}</td>
+                    <td>{{ date('d/m/Y | H:i:s', strtotime($posts->created_at)) }}</td>
+                    <td><a href="{{ route('admin.post.edit', ['id'=>$posts->id]) }}">Edit</td>
+                      <td><a onclick="return confirmDelete()" href="{{ route('admin.post.delete', ['id'=>$posts->id]) }}">Delete</td>
                 </tr>            
                 </tbody>
-
+                @endforeach
               </table>
             </div>
           </div>

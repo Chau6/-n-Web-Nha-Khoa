@@ -16,6 +16,9 @@
 <link href="{{ asset("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700") }}" rel="stylesheet">
 <script type="text/javascript" src="{{ asset("asset/page/plugins/ckeditor/ckeditor.js") }}"></script>
 <script type="text/javascript" src="{{ asset("asset/page/plugins/ckfinder/ckfinder.js") }}"></script>
+<!--Bootstrap-->
+<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 
 <script type="text/javascript">
 function confirmDelete () {
