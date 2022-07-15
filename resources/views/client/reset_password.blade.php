@@ -18,17 +18,8 @@
           
           <div class="px-5 ms-xl-4">
             <i class="fa fa-solid fa-tooth me-3 pt-5 mt-xl-4" style="color: #06e4e472; font-size: 2em"></i>
-            <span class="h1 fw-bold mb-0">Register</span>
+            <span class="h1 fw-bold mb-0">Reset Password</span>
           </div>
-          {{-- @if ($errors->any())
-          <div class="alert alert-danger">
-              <ul>
-                  @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                  @endforeach
-              </ul>
-          </div>
-          @endif --}}
           @if (Session::has('error'))
             <div class="alert alert-danger">
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>{{Session::get('error')}}
@@ -36,39 +27,17 @@
           @endif
           <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
   
-            <form id="checkform" style="width: 23rem;" action="{{route('postRegisterClient')}}" method="POST">
+            <form id="checkform" style="width: 23rem;" action="{{route('PostResetPass',['customer'=>$customer->id])}}" method="POST">
               @csrf
-              <div class="row">
-                <div class="col-md-6 mb-4">
-                  <div class="form-outline">
-                    <label class="form-label" for="form3Example1">First name</label>
-                    <input type="text" name="first_name" id="form3Example1" class="form-control" />
-                  </div>
-                </div>
-                <div class="col-md-6 mb-4">
-                  <div class="form-outline">
-                    <label class="form-label" for="form3Example2">Last name</label>
-                    <input type="text" name="last_name" id="form3Example2" class="form-control" /> 
-                  </div>
-                </div>
-              </div>
   
-              <div class="form-outline mb-4">
-                <label class="form-label" for="form2Example18">Email address</label>
-                <input type="email" name="email" id="form2Example18" class="form-control form-control-lg" value="{{old('email')}}"/>
-                @error('email')
-                      <span style="color: red">{{$message}}</span>
-                  @enderror
-              </div>
+              <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;"></h3>
   
               <div class="form-outline mb-4">
                 <label class="form-label" for="form2Example28">Password</label>
                 <input type="password" name="password" id="psw" class="form-control form-control-lg" />
-                
                   @error('password')
                       <span style="color: red">{{$message}}</span>
                   @enderror
-                
               </div>
               
               <div class="form-outline mb-4">
@@ -78,11 +47,8 @@
               </div>
   
               <div class="pt-1 mb-4">
-                <button class="btn btn-info btn-lg btn-block" type="submit" style="background: #06e4e472; border: #06e4e472 1px solid">Sign up</button>
+                <button class="btn btn-info btn-lg btn-block" type="submit" style="background: #06e4e472; border: #06e4e472 1px solid">Reset Password</button>
               </div>
-  
-              <p>Have an account? <a href="{{route('getLoginClient')}}" class="link-info">Login Here</a></p>
-  
             </form>
   
           </div>

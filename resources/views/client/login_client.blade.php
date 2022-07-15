@@ -18,13 +18,9 @@
               <strong>{{Session::get('success')}}</strong>
           </div>
           @endif
-          @if ($errors->any())
+          @if (Session::has('error'))
           <div class="alert alert-danger">
-              <ul>
-                  @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                  @endforeach
-              </ul>
+              <strong>{{Session::get('error')}}</strong>
           </div>
           @endif
           <div class="px-5 ms-xl-4">
@@ -42,20 +38,24 @@
               <div class="form-outline mb-4">
                 <label class="form-label" for="form2Example18">Email address</label>
                 <input type="email" name="email" id="form2Example18" class="form-control form-control-lg" value="{{old('email')}}"/>
-                
+                @error('email')
+                      <span style="color: red">{{$message}}</span>
+                @enderror
               </div>
   
               <div class="form-outline mb-4">
                 <label class="form-label" for="form2Example28">Password</label>
                 <input type="password" name="password" id="form2Example28" class="form-control form-control-lg" />
-                
+                @error('password')
+                      <span style="color: red">{{$message}}</span>
+                @enderror
               </div>
   
               <div class="pt-1 mb-4">
                 <button class="btn btn-info btn-lg btn-block" type="submit" style="background: #06e4e472; border: #06e4e472 1px solid">Login</button>
               </div>
   
-              <p class="small mb-5 pb-lg-2"><a class="text-muted" href="#!">Forgot password?</a></p>
+              <p class="small mb-5 pb-lg-2"><a class="text-muted" href="{{route('send_mail_pass')}}">Forgot password?</a></p>
               <p>Don't have an account? <a href="{{route('getRegisterClient')}}" class="link-info">Register here</a></p>
   
             </form>

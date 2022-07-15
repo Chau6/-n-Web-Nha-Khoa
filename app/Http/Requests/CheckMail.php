@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterRequest extends FormRequest
+class CheckMail extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,18 +24,15 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            "email" => "required|unique:user",
-            "password" => "required|min:6",
+            "email" => "required|exists:user,email"
         ];
     }
 
     public function messages()
     {
-        return [
-            "email.required" => "Enter Email",
-            "email.unique" => "Email already exist",
-            "password.required" => "Enter Password",
-            "password.min" => "Password at last 6 character",
+        return [ 
+            "email.exists" => "Email Not Exists",
+            "email.required" => "Please Enter Email"
         ];
     }
 }

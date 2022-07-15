@@ -47,11 +47,5 @@ class LoginController extends Controller
         return redirect()->route('getLogin')->with('success', 'Email has been sent');
     }
 
-    public function reset_password(){
-        return view('email.send_mail_pass');
-    }
-
-    public function post_reset_password(){
-        
-    }
+    
 }

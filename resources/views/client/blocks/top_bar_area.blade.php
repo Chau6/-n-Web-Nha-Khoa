@@ -12,7 +12,7 @@
                         @if (Auth::check())
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item dropdown">
-                                <a href="{{route('client.pages.information_client')}}" style="color: #AFBDBB; font-size: 15px; border: 2px #AFBDBB solid; border-radius: 0.3em; padding: 3px">{{auth()->user()->email}}</a>  ||   
+                                <a href="{{route('client.pages.information_client')}}" style="color: #AFBDBB; font-size: 15px; border: 2px #AFBDBB solid; border-radius: 0.3em; padding: 3px">{{auth()->user()->last_name}} {{auth()->user()->first_name}}</a>  ||   
                                 <a href="{{route('getLogoutClient')}}" style="color: #AFBDBB; font-size: 15px; border: 2px #AFBDBB solid; border-radius: 0.3em; padding: 3px">Logout</a> 
                             </li>
                         </ul>
