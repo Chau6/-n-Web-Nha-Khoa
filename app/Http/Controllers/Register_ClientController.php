@@ -11,7 +11,7 @@ class Register_ClientController extends Controller
     public function getRegisterClient(){
         return view('client.register_client');
     }
-    public function postRegisterClient(Request $request){
+    public function postRegisterClient(RegisterRequest $request){
         $data = $request->except('_token');
         $data['password'] = bcrypt($request->password);
         $data['created_at'] = new \DateTime();

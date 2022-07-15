@@ -44,7 +44,7 @@
             <div class="input-group mb-3">
                 <input type="text" class="form-control" name="username" placeholder="UserName" value="{{old('username')}}">
                 <div class="input-group-append">
-                <div class="input-group-text">
+                <div class="input-group-text">a
                     <span class="fas fa-user"></span>
                 </div>
                 </div>

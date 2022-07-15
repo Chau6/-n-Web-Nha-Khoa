@@ -16,9 +16,8 @@ class Login_ClientController extends Controller
         return view('client.login_client');
     }
 
-    public function postLoginClient(Request $request){
+    public function postLoginClient(LoginRequest $request){
         $credentials = $request->validate([
-            'username' => ['required'],
             'email'=>['required', 'email'],
             'password' => ['required'],
         ]);
