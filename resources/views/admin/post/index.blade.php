@@ -14,7 +14,7 @@
               <table class="table table-striped">
                 <thead>
                 <tr>
-                    
+                    <td>Name</td>
                 </tr>
                 </thead>
                 <tbody>
