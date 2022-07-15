@@ -25,8 +25,11 @@ use App\Http\Controllers\Register_ClientController;
 
 Route::get('/', [Login_ClientController::class, 'getLoginClient'])->name('getLoginClient');
 
-//==================Register===================
+Route::get('logout', [LoginController::class, 'getLogout'])->name('getLogout');
+Route::get('logout_client', [Login_ClientController::class, 'getLogoutClient'])->name('getLogoutClient');
+
 Route::middleware('register')->group(function(){
+    //==================Register===================
     // Admin
     Route::get('register', [RegisterController::class, 'getRegister'])->name('getRegister');
     Route::post('register', [RegisterController::class, 'postRegister'])->name('postRegister');
@@ -34,27 +37,30 @@ Route::middleware('register')->group(function(){
     // Client
     Route::get('register_client', [Register_ClientController::class, 'getRegisterClient'])->name('getRegisterClient');
     Route::post('register_client', [Register_ClientController::class, 'postRegisterClient'])->name('postRegisterClient');
+
+    // ================Login/Logout=================
+    // Admin
+    Route::get('login', [LoginController::class, 'getLogin'])->name('getLogin');
+    Route::post('login', [LoginController::class, 'postLogin'])->name('postLogin');
+
+
+    //Client
+    Route::get('login_client', [Login_ClientController::class, 'getLoginClient'])->name('getLoginClient');
+    Route::post('login_client', [Login_ClientController::class, 'postLoginClient'])->name('postLoginClient');
+
+
+    //=================Send Mail===================
+
+    // ================Forgot Pass=================
+    Route::get('send_mail_pass', [Login_ClientController::class, 'send_mail_pass'])->name('send_mail_pass');
+    Route::post('send_mail_pass', [Login_ClientController::class, 'post_send_mail_pass'])->name('post_send_mail_pass');
+
+    Route::get('get_reset_pass/{customer}', [Login_ClientController::class, 'GetResetPass'])->name('GetResetPass');
+    Route::post('post_reset_pass/{customer}', [Login_ClientController::class, 'PostResetPass'])->name('PostResetPass');
 });
 
 
-// ================Login/Logout=================
-// Admin
-Route::get('login', [LoginController::class, 'getLogin'])->name('getLogin');
-Route::post('login', [LoginController::class, 'postLogin'])->name('postLogin');
-Route::get('logout', [LoginController::class, 'getLogout'])->name('getLogout');
 
-//Client
-Route::get('login_client', [Login_ClientController::class, 'getLoginClient'])->name('getLoginClient');
-Route::post('login_client', [Login_ClientController::class, 'postLoginClient'])->name('postLoginClient');
-Route::get('logout_client', [Login_ClientController::class, 'getLogoutClient'])->name('getLogoutClient');
-
-//=================Send Mail===================
-
-// ================Forgot Pass=================
-Route::get('send_mail_pass', [LoginController::class, 'send_mail_pass'])->name('send_mail_pass');
-Route::post('send_mail_pass', [LoginController::class, 'send_mail_pass'])->name('send_mail_pass');
-Route::get('get_reset_pass', [LoginController::class, 'GetResetPass'])->name('reset_pass');
-Route::post('post_reset_pass', [LoginController::class, 'PostResetPass'])->name('PostResetPass');
 
 Route::get('testmail', [LoginController::class, 'testMail'])->name('testmail');
 
