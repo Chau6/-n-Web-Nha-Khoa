@@ -14,7 +14,7 @@
             </div>
             <div class="info" style="color:white">
                 <a href="#" class="d-block"></a>
-                {{ auth()->user()->username }} 
+                {{ auth()->user()->email }} 
             </div>
         </div>
 
