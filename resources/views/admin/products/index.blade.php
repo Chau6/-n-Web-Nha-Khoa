@@ -20,11 +20,18 @@
                 <tbody>
                     <tr>
                         <?php
-                        $data=array();
-                        $datas=array();
+                          $data=array();
+                          $datas=array();
                         ?>
-                        <?php 
-                            recursiveTable($datas);
+                          @foreach($products as $product)
+                                   <?php
+                                    $data['id'] = $product->id;
+                                    $data['name'] = $product->name;
+                                    $datas[] = $data;
+                                  ?>
+                          @endforeach
+                          <?php 
+                            recursivetableProduct($datas);
                         ?>
                     </tr>
                     {{-- </td> --}}
