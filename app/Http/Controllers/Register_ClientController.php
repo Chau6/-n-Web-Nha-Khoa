@@ -18,6 +18,6 @@ class Register_ClientController extends Controller
         $data['level'] = 0;
 
         DB::table('user')->insert($data);
-        return redirect()->route('getLoginClient');
+        return redirect()->route('getLoginClient')->with('success','Register Success');
     }
 }

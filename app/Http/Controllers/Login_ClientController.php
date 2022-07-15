@@ -32,9 +32,8 @@ class Login_ClientController extends Controller
             }else{
                 return redirect()->route('client.pages.index');
             }
-            
         } 
-        return redirect()->route('getLoginClient');
+        return redirect()->route('getLoginClient')->with('error','Account Not Esist');
 
     }
 

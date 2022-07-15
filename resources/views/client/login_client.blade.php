@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{asset('asset/page/plugins/fontawesome-free/css/all.min.css')}}">
+     <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="{{asset('asset/page/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('asset/page/dist/css/adminlte.min.css')}}">
   </head>
@@ -27,8 +29,17 @@
                   </div>
                   <div class="col-md-6 col-lg-7 d-flex align-items-center">
                     <div class="card-body p-4 p-lg-5 text-black">
-      
                       <div class="card-body">
+                        @if (Session::has('success'))
+                        <div class="alert alert-success alert-block">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>{{Session::get('success')}}
+                        </div>
+                        @endif
+                        @if (Session::has('error'))
+                        <div class="alert alert-danger">
+                          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>{{Session::get('error')}}
+                        </div>
+                        @endif
                         <div class="form-group">
                           <div class="d-flex align-items-center mb-3 pb-1">
                             <i class="fa fa-solid fa-tooth" style="color: #19ffbe"></i>

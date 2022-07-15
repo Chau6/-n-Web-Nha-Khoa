@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CheckLogin
+class CheckAccount
 {
     /**
      * Handle an incoming request.
@@ -17,9 +17,10 @@ class CheckLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check()){
+        if(Auth::user()->status == 1){
             return $next($request);
         }
-        return redirect()->route('getLoginClient')->with('error','Account Not Exist');
+        Auth::logout();
+        return redirect()->route('getLoginClient')->with('error','Account need Actived');
     }
 }

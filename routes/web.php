@@ -49,6 +49,8 @@ Route::post('login_client', [Login_ClientController::class, 'postLoginClient'])-
 Route::get('logout_client', [Login_ClientController::class, 'getLogoutClient'])->name('getLogoutClient');
 
 //=================Send Mail===================
+
+// ================Forgot Pass=================
 Route::get('send_mail_pass', [LoginController::class, 'send_mail_pass'])->name('send_mail_pass');
 Route::post('send_mail_pass', [LoginController::class, 'send_mail_pass'])->name('send_mail_pass');
 Route::get('get_reset_pass', [LoginController::class, 'GetResetPass'])->name('reset_pass');
