@@ -43,7 +43,7 @@
     
                 <div class="form-group">
                     <label>Category Name</label>
-                    <input type="text" name="name" class="form-control" placeholder="Enter Category Name">
+                    <input type="text" name="name" class="form-control" placeholder="Enter Category Name" value="{{ old('name') }}">
                 </div>
             </div>
             <div class="card-footer">
