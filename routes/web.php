@@ -94,6 +94,8 @@ Route::middleware('admin', 'login')->group(function(){
             /** Delete category */
             Route::get('delete/{id}', [CategoryController::class, 'delete'])->name('delete')->where('id','[0-9]+');
         });
+        
+        // Post
         Route::prefix('post')->name('post.')->group(function(){
             /** Show list of post */
             Route::get('index', [PostController::class, 'index'])->name('index');
