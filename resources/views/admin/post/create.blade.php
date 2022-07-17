@@ -25,13 +25,6 @@
             </div>
 
             <div class="form-group">
-                <div class="form-group shadow-textarea">
-                    <label for="content">Content</label>
-                    <textarea class="form-control z-depth-1" name="content" id="content" rows="3" placeholder="Write something here..."></textarea>
-                  </div>
-            </div>
-
-            <div class="form-group">
                 <label>Parent_name</label>
                 <select class="form-control" name="category_id">
                     <option value="0">---- ROOT ----</option>
@@ -48,14 +41,24 @@
                                 $datas[] = $data;
                             ?>
                         @endif  
-                    @endforeach
-                    <?php recursiveOption($datas,$category->parent_name);?>
+                        <?php recursiveOption($datas,$category->parent_name);?>
+                    @endforeach      
                 </select>
             </div>
 
             <div class="form-group">
+                <div class="form-group shadow-textarea">
+                    <label for="content">Content</label>
+                    <textarea class="form-control z-depth-1" name="content" id="content" rows="3" placeholder="Write something here...">{{old('content')}}</textarea>
+                  </div>
+                  <script>
+                        CKEDITOR.replace('content');
+                  </script>
+            </div>
+
+            <div class="form-group">
                 <div class="custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                    <input type="checkbox" name="status" class="custom-control-input" id="customSwitch1" value="1">
                     <label class="custom-control-label" for="customSwitch1">Status</label>
                 </div>
             </div>

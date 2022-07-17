@@ -16,7 +16,7 @@
         @csrf
         <div class="sec-title max-width">
             <div class="card-header">
-                <h3 class="card-title">Create Category</h3>
+                <h3 class="card-title">Edit Category</h3>
             </div>
             <div class="card-body">
                 <div class="form-group">
