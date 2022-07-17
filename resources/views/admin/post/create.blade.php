@@ -72,3 +72,7 @@
     </div>
 </form>
 @endsection
+
+@section('js')
+    <script src="{{url('/')}}/js/"></script>
+@endsection
