@@ -27,8 +27,10 @@
                             @if(!empty($product))
                                 <?php
                                     $data['id'] = $product->id;
+                                    $data['images'] = $product->images;
                                     $data['name'] = $product->name;
                                     $data['price'] = $product->price;
+                                    $data['content'] = $product->content;
                                     $data['category_id'] = $product->category_id;
                                     $datas[] = $data;
                                 ?>
