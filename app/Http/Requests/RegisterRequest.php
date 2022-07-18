@@ -25,6 +25,8 @@ class RegisterRequest extends FormRequest
     {
         return [
             "email" => "required|unique:user",
+            "last_name" => "required",
+            "first_name" => "required",
             "password" => "required|min:6",
         ];
     }
@@ -34,6 +36,8 @@ class RegisterRequest extends FormRequest
         return [
             "email.required" => "Enter Email",
             "email.unique" => "Email already exist",
+            "last_name.required" => "Enter Last Name",
+            "first_name.required" => "Enter First Name",
             "password.required" => "Enter Password",
             "password.min" => "Password at last 6 character",
         ];

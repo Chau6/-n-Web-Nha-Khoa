@@ -32,8 +32,8 @@ Route::get('logout_client', [Login_ClientController::class, 'getLogoutClient'])-
 Route::middleware('register')->group(function(){
     //==================Register===================
     // Admin
-    Route::get('register', [RegisterController::class, 'getRegister'])->name('getRegister');
-    Route::post('register', [RegisterController::class, 'postRegister'])->name('postRegister');
+    Route::get('register', [Register_ClientController::class, 'getRegisterClient'])->name('getRegisterClient');
+    Route::post('register', [Register_ClientController::class, 'postRegisterClient'])->name('postRegisterClient');
     
     // Client
     Route::get('register_client', [Register_ClientController::class, 'getRegisterClient'])->name('getRegisterClient');
@@ -41,8 +41,8 @@ Route::middleware('register')->group(function(){
 
     // ================Login/Logout=================
     // Admin
-    Route::get('login', [LoginController::class, 'getLogin'])->name('getLogin');
-    Route::post('login', [LoginController::class, 'postLogin'])->name('postLogin');
+    Route::get('login', [Login_ClientController::class, 'getLoginClient'])->name('getLoginClient');
+    Route::post('login', [Login_ClientController::class, 'postLoginClient'])->name('postLoginClient');
 
 
     //Client

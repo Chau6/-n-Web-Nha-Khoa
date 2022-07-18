@@ -42,13 +42,19 @@
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
                     <label class="form-label" for="form3Example1">First name</label>
-                    <input type="text" name="first_name" id="form3Example1" class="form-control" />
+                    <input type="text" name="first_name" id="form3Example1" class="form-control" {{old('first_name')}}/>
+                    @error('first_name')
+                      <span style="color: red">{{$message}}</span>
+                    @enderror
                   </div>
                 </div>
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
                     <label class="form-label" for="form3Example2">Last name</label>
-                    <input type="text" name="last_name" id="form3Example2" class="form-control" /> 
+                    <input type="text" name="last_name" id="form3Example2" class="form-control" value="{{old('last_name')}}"/> 
+                    @error('last_name')
+                      <span style="color: red">{{$message}}</span>
+                    @enderror
                   </div>
                 </div>
               </div>
@@ -58,7 +64,7 @@
                 <input type="email" name="email" id="form2Example18" class="form-control form-control-lg" value="{{old('email')}}"/>
                 @error('email')
                       <span style="color: red">{{$message}}</span>
-                  @enderror
+                @enderror
               </div>
   
               <div class="form-outline mb-4">
