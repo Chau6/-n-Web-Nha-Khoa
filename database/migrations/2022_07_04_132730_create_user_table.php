@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
-            $table->string('username');
             $table->string('email');
             $table->string('password');
             $table->tinyInteger('gender')->nullable();
@@ -28,6 +27,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        
     }
 
     /**

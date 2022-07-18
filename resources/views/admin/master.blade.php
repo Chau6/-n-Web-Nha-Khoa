@@ -49,6 +49,7 @@
 
     <!-- jQuery -->
     @include ('admin.blocks.foot') 
-<script src="{{ asset('jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('jquery-3.6.0.min.js') }}"></script>
+    @yield('js')
 </body>
 </html>

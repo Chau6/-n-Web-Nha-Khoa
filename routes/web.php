@@ -26,8 +26,11 @@ use App\Http\Controllers\Register_ClientController;
 
 Route::get('/', [Login_ClientController::class, 'getLoginClient'])->name('getLoginClient');
 
-//==================Register===================
+Route::get('logout', [LoginController::class, 'getLogout'])->name('getLogout');
+Route::get('logout_client', [Login_ClientController::class, 'getLogoutClient'])->name('getLogoutClient');
+
 Route::middleware('register')->group(function(){
+    //==================Register===================
     // Admin
     Route::get('register', [RegisterController::class, 'getRegister'])->name('getRegister');
     Route::post('register', [RegisterController::class, 'postRegister'])->name('postRegister');
@@ -35,23 +38,31 @@ Route::middleware('register')->group(function(){
     // Client
     Route::get('register_client', [Register_ClientController::class, 'getRegisterClient'])->name('getRegisterClient');
     Route::post('register_client', [Register_ClientController::class, 'postRegisterClient'])->name('postRegisterClient');
+
+    // ================Login/Logout=================
+    // Admin
+    Route::get('login', [LoginController::class, 'getLogin'])->name('getLogin');
+    Route::post('login', [LoginController::class, 'postLogin'])->name('postLogin');
+
+
+    //Client
+    Route::get('login_client', [Login_ClientController::class, 'getLoginClient'])->name('getLoginClient');
+    Route::post('login_client', [Login_ClientController::class, 'postLoginClient'])->name('postLoginClient');
+
+
+    //=================Send Mail===================
+
+    // ================Forgot Pass=================
+    Route::get('send_mail_pass', [Login_ClientController::class, 'send_mail_pass'])->name('send_mail_pass');
+    Route::post('send_mail_pass', [Login_ClientController::class, 'post_send_mail_pass'])->name('post_send_mail_pass');
+
+    Route::get('get_reset_pass/{customer}', [Login_ClientController::class, 'GetResetPass'])->name('GetResetPass');
+    Route::post('post_reset_pass/{customer}', [Login_ClientController::class, 'PostResetPass'])->name('PostResetPass');
 });
 
 
-// ================Login/Logout=================
-// Admin
-Route::get('login', [LoginController::class, 'getLogin'])->name('getLogin');
-Route::post('login', [LoginController::class, 'postLogin'])->name('postLogin');
-Route::get('logout', [LoginController::class, 'getLogout'])->name('getLogout');
 
-//Client
-Route::get('login_client', [Login_ClientController::class, 'getLoginClient'])->name('getLoginClient');
-Route::post('login_client', [Login_ClientController::class, 'postLoginClient'])->name('postLoginClient');
-Route::get('logout_client', [Login_ClientController::class, 'getLogoutClient'])->name('getLogoutClient');
 
-//=================Send Mail===================
-Route::get('reset_password', [LoginController::class, 'reset_password'])->name('reset_password');
-Route::post('reset_password', [LoginController::class, 'post_reset_password'])->name('post_reset_password');
 Route::get('testmail', [LoginController::class, 'testMail'])->name('testmail');
 
 //===================ADMIN=====================
@@ -84,19 +95,8 @@ Route::middleware('admin', 'login')->group(function(){
             /** Delete category */
             Route::get('delete/{id}', [CategoryController::class, 'delete'])->name('delete')->where('id','[0-9]+');
         });
-        //Products
-        Route::prefix('product')->name('product.')->group(function(){
-            /** Show list of product */
-            Route::get('index', [ProductController::class, 'index'])->name('index');
-            /** Create product */
-            Route::get('create', [ProductController::class, 'create'])->name('create'); //Show form to create product
-            Route::post('store', [ProductController::class, 'store'])->name('store'); //set action in form to create product
-            /** Edit product */
-            Route::get('edit/{id}', [ProductController::class, 'edit'])->name('edit')->where('id','[0-9]+'); //Show form to edit product
-            Route::post('update/{id}', [ProductController::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update product
-            /** Delete product */
-            Route::get('delete/{id}', [ProductController::class, 'delete'])->name('delete')->where('id','[0-9]+');
-        });
+        
+        // Post
         Route::prefix('post')->name('post.')->group(function(){
             /** Show list of post */
             Route::get('index', [PostController::class, 'index'])->name('index');

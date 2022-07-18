@@ -13,9 +13,9 @@
             <div class="col-12 table-responsive">
               <table class="table table-striped">
                 <thead>
-                <tr>
-                    
-                </tr>
+                  <tr>
+                      <td>Category Name</td>
+                  </tr>
                 </thead>
                 <tbody>
                     <tr>

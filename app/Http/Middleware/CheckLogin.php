@@ -20,6 +20,6 @@ class CheckLogin
         if(Auth::check()){
             return $next($request);
         }
-        return redirect()->route('getLogin');
+        return redirect()->route('getLoginClient')->with('error','Account Not Exist');
     }
 }
