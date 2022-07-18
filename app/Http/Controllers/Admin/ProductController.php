@@ -20,7 +20,8 @@ class ProductController extends Controller
     }
     public function create(){
         $data = DB::table('products')->orderBy('id')->get();
-        return view('admin.products.create', ['products' => $data]);
+        $dataA = DB::table('category')->orderBy('id')->get();
+        return view('admin.products.create', ['products' => $data], ['categorys' => $dataA]);
     }
     public function store(StoreProduct $request){
         $data = $request->except('_token'); //loại trừ thằng _token ra; only chỉ hiển thị cái mình cho phép; get lấy hết

@@ -27,7 +27,24 @@
 
                 <div class="form-group">
                     <label>Category ID</label>
-                    <input type="integer" name="category_id" class="form-control" placeholder="Enter Category ID">
+                    <select class="form-control" name="category_id">
+                        <option value="0">---- ROOT ----</option>
+                        <?php
+                            $data=array();
+                            $datas=array();
+                        ?>
+                        @foreach($categorys as $category)
+                            @if(!empty($category))
+                                <?php
+                                    $data['id'] = $category->id;
+                                    $data['name'] = $category->name;
+                                    $data['parent_name'] = $category->parent_name;
+                                    $datas[] = $data;
+                                ?>
+                            @endif
+                        @endforeach
+                        <?php recursiveOption($datas,0);?>
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -71,4 +88,5 @@
     </pre> --}}
 </section>
 @endsection
+
 

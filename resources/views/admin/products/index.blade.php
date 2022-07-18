@@ -19,19 +19,21 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <?php
-                          $data=array();
-                          $datas=array();
+                    <?php
+                            $data=array();
+                            $datas=array();
                         ?>
-                          @foreach($products as $product)
-                                   <?php
+                        @foreach($products as $product)
+                            @if(!empty($product))
+                                <?php
                                     $data['id'] = $product->id;
                                     $data['name'] = $product->name;
+                                    $data['category_id'] = $product->category_id;
                                     $datas[] = $data;
-                                  ?>
-                          @endforeach
-                          <?php 
-                            recursivetableProduct($datas);
+                                ?>
+                            @endif
+                        @endforeach
+                        <?php recursiveTablePostb($datas,0);?>
                         ?>
                     </tr>
                     {{-- </td> --}}
