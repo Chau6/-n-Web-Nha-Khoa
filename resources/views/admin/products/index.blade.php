@@ -28,6 +28,7 @@
                                 <?php
                                     $data['id'] = $product->id;
                                     $data['name'] = $product->name;
+                                    $data['price'] = $product->price;
                                     $data['category_id'] = $product->category_id;
                                     $datas[] = $data;
                                 ?>
