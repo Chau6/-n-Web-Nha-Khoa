@@ -33,7 +33,7 @@ function recursiveTable ($data,$parent_name = 0,$str = "") { //hiển thị danh
     } 
 }
 
-function recursiveOptionPost ($data,$selected,$parent_name = 0,$str = "") { //đệ quy thể loại cha
+function recursiveOptionPro ($data,$selected,$parent_name = 0,$str = "") { //đệ quy thể loại cha
     foreach ($data as $key => $value) {
         if ($value["parent_name"] == $parent_name) {
             $selected_option = '';
@@ -42,24 +42,25 @@ function recursiveOptionPost ($data,$selected,$parent_name = 0,$str = "") { //đ
             }
             echo '<option value="'.$value["id"].'" '.$selected_option.'>'.$str.$value["name"].'</option>';
             unset($data[$key]);
-            recursiveOptionPost ($data,$selected,$value["id"],$str."---| ");
+            recursiveOptionPro ($data,$selected,$value["id"],$str."---| ");
         }
     }
 }
 
-function recursiveTablePost ($data,$parent_name = 0,$str = "") { //hiển thị danh sách thể loại
-    foreach ($data as $key => $value) {
-        if ($value["parent_name"] == $parent_name) {
-            echo '
-            <tr>
-                <td>'.$str.$value["name"].'</td>
-                <td><a onClick="return deleteConfirm()" href="http://127.0.0.1:8000/admin/post/delete/'.$value['id'].'">Xóa</a></td>
-                <td><a href="http://127.0.0.1:8000/admin/post/edit/'.$value['id'].'">Sửa</a></td>
-            </tr>';
-            unset($data[$key]);
 
-            recursiveTablePost ($data,$value["id"],$str."---| ");
-        }
+function recursiveTablePro ($data) { //hiển thị danh sách thể loại
+    foreach ($data as $key => $value) {
+        echo '
+        <tr>
+            <td>'.$value["id"].'</td>
+            <td>'.$value["name"].'</td>
+            <td>'.$value["category_id"].'</td>
+            <td>'.$value["status"].'</td>
+            <td>'.$value["created_at"].'</td>            
+            <td><a onClick="return deleteConfirm()" href="http://127.0.0.1:8000/admin/product/delete/'.$value['id'].'">Xóa</a></td>
+            <td><a href="http://127.0.0.1:8000/admin/product/edit/'.$value['id'].'">Sửa</a></td>
+        </tr>';
+        unset($data[$key]);
     } 
 }
 

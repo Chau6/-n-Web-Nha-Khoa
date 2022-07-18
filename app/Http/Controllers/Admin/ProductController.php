@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Product\StoreProduct;
+use App\Http\Requests\Product\StoreUpdateProduct;
 use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
@@ -38,14 +39,15 @@ class ProductController extends Controller
     }
     public function edit($id){
         $edit = DB::table('products')->where('id','=', $id)->first();
-        $data = DB::table('products')->get();
-        return view('admin.products.edit', ['id' => $id, 'products' => $data, 'edit' => $edit]);
+        $category = DB::table('category')->get();
+        
+        return view('admin.products.edit', ['id' => $id, 'categorys' => $category, 'edit' => $edit]);
     }
-    public function update(StoreProduct $request, $id){
+    public function update(StoreUpdateProduct $request, $id){
         $data = $request->except('_token'); //lấy data ngoại trừ
 
         DB::table('products')->where('id','=', $id)->update($data); //rỗng thì giữ nguyên
         
-        return redirect()->route('admin.products.index')->with('success','Edit Successfully') ; //trả về đường dẫn;
+        return redirect()->route('admin.product.index')->with('success','Edit Successfully') ; //trả về đường dẫn;
     }
 }

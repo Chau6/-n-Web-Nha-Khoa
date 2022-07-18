@@ -26,7 +26,7 @@
                 @foreach ($post as $posts)
                 <tbody>
                 <tr>
-                    <td>Id</td>
+                    <td>{{$loop->iteration}}</td>
                     <td>
                         <div class="media">
                             <a href="pull-left" href="">

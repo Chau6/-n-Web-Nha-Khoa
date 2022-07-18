@@ -19,30 +19,32 @@
                       <td>Category</td>
                       <td>Status</td>
                       <td>Created At</td>
-                      <td>Edit</td>
                       <td>Delete</td>
+                      <td>Edit</td>
                   </tr>
                   </thead>
                 <tbody>
                     <tr>
                     <?php
-                            $data=array();
-                            $datas=array();
-                        ?>
-                        @foreach($products as $product)
-                            @if(!empty($product))
-                                <?php
-                                    $data['id'] = $product->id;
-                                    $data['images'] = $product->images;
-                                    $data['name'] = $product->name;
-                                    $data['price'] = $product->price;
-                                    $data['content'] = $product->content;
-                                    $data['category_id'] = $product->category_id;
-                                    $datas[] = $data;
-                                ?>
-                            @endif
-                        @endforeach
-                        <?php recursiveTablePostb($datas,0);?>
+                      $data=array();
+                      $datas=array();
+                    ?>
+                    @foreach($products as $product)
+                        @if(!empty($product))
+                            <?php
+                                $data['id'] = $product->id;
+                                $data['images'] = $product->images;
+                                $data['name'] = $product->name;
+                                $data['price'] = $product->price;
+                                $data['content'] = $product->content;
+                                $data['category_id'] = $product->category_id;
+                                $data['status'] = $product->status;
+                                $data['created_at'] = $product->created_at;
+                                $datas[] = $data;
+                            ?>
+                        @endif
+                    @endforeach
+                    <?php recursiveTablePro($datas)?>
                     </tr>
                     {{-- </td> --}}
                     {{-- <td>{{$user->email}}</td>

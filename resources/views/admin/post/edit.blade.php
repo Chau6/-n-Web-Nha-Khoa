@@ -41,8 +41,8 @@
                                 $datas[] = $data;
                             ?>
                         @endif  
-                        <?php recursiveOption($datas,$category->parent_name);?>
-                    @endforeach      
+                    @endforeach
+                    <?php recursiveOption($datas,$edit->category_id);?>      
                 </select>
             </div>
 
@@ -50,10 +50,10 @@
                 <div class="form-group shadow-textarea">
                     <label for="content">Content</label>
                     <textarea class="form-control z-depth-1" name="content" id="content" rows="3" placeholder="Write something here...">{{$post->content}}</textarea>
-                  </div>
-                  <script>
+                </div>
+                <script>
                         CKEDITOR.replace('content');
-                  </script>
+                </script>
             </div>
 
             <div class="form-group">

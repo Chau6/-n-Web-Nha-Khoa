@@ -22,7 +22,7 @@
     
                 <div class="form-group">
                     <label>Product Name</label>
-                    <input type="text" name="name" class="form-control" placeholder="Enter Product Name">
+                    <input type="text" name="name" class="form-control" placeholder="Enter Product Name" value="{{old('name')}}">
                 </div>
 
                 <div class="form-group">
@@ -43,18 +43,18 @@
                                 ?>
                             @endif
                         @endforeach
-                        <?php recursiveOption($datas,0);?>
+                        <?php recursiveOptionPro($datas,0);?>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label>Product Content</label>
-                    <textarea name="content" class="form-control" placeholder="Enter Product Content" ></textarea>
+                    <textarea name="content" class="form-control" placeholder="Enter Product Content">{{old('content')}}</textarea>
                 </div>
 
                 <div class="form-group">
                     <label>Product Price</label>
-                    <input type="money" name="price" class="form-control" placeholder="Enter Price">
+                    <input type="money" name="price" class="form-control" placeholder="Enter Price" value="{{old('price')}}">
                 </div>
         
                 <div class="form-group">
