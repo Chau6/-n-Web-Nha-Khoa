@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\Category\StoreUpdateCategory;
 use App\Http\Requests\Category\StoreCategory;
-use App\Http\Requests\StoreUpdateCategory;
 use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
@@ -37,7 +37,7 @@ class CategoryController extends Controller
 
         return view('admin.category.edit', ['id' => $id, 'categorys' => $data, 'edit' => $edit]);
     }
-    public function update(StoreCategory $request, $id){
+    public function update(StoreUpdateCategory $request, $id){
         $data = $request->except('_token'); //lấy data ngoại trừ
 
         DB::table('category')->where('id','=', $id)->update($data); //rỗng thì giữ nguyên

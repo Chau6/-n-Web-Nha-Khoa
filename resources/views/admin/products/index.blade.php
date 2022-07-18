@@ -41,7 +41,7 @@
                     {{-- </td> --}}
                     {{-- <td>{{$user->email}}</td>
                     <td>{{$user->phone}}</td>
-                    <td>{{ date('d/m/Y | H:i:s', strtotime($user->created_at)) }}</td>
+                    <td>{{date('d/m/Y | H:i:s', strtotime($user->created_at)) }}</td>
                     <td><a href="{{ route('admin.user.edit', ['id'=>$user->id]) }}">Edit</td>
                     <td><a onclick="return confirmDelete()" href="{{ route('admin.user.delete', ['id'=>$user->id]) }}">Delete</td> --}}
                 </tr>            

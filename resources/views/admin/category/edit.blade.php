@@ -16,7 +16,7 @@
         @csrf
         <div class="sec-title max-width">
             <div class="card-header">
-                <h3 class="card-title">Create Category</h3>
+                <h3 class="card-title">Edit Category</h3>
             </div>
             <div class="card-body">
                 <div class="form-group">
@@ -40,10 +40,10 @@
                         <?php recursiveOption($datas,$edit->parent_name);?>
                     </select>
                 </div>
-    
+
                 <div class="form-group">
                     <label>Category Name</label>
-                    <input type="text" name="name" class="form-control" placeholder="Enter Category Name">
+                    <input type="text" name="name" class="form-control" placeholder="Enter Category Name" value="{{$edit->name}}">
                 </div>
             </div>
             <div class="card-footer">

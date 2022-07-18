@@ -44,7 +44,7 @@
             <div class="input-group mb-3">
                 <input type="text" class="form-control" name="username" placeholder="UserName" value="{{old('username')}}">
                 <div class="input-group-append">
-                <div class="input-group-text">
+                <div class="input-group-text">a
                     <span class="fas fa-user"></span>
                 </div>
                 </div>
@@ -96,7 +96,7 @@
       <!-- /.social-auth-links -->
 
       <p class="mb-1">
-        <a href="{{route('reset_password')}}">I forgot my password</a>
+        {{-- <a href="{{route('reset_password')}}">I forgot my password</a> --}}
       </p>
       <p class="mb-0">
         <a href="{{route('getRegister')}}" class="text-center">Register</a>
