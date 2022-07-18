@@ -95,6 +95,20 @@ Route::middleware('admin', 'login')->group(function(){
             /** Delete category */
             Route::get('delete/{id}', [CategoryController::class, 'delete'])->name('delete')->where('id','[0-9]+');
         });
+
+        //Product
+        Route::prefix('product')->name('product.')->group(function(){
+            /** Show list of category */
+            Route::get('index', [ProductController::class, 'index'])->name('index');
+            /** Create category */
+            Route::get('create', [ProductController::class, 'create'])->name('create'); //Show form to create category
+            Route::post('store', [ProductController::class, 'store'])->name('store'); //set action in form to create category
+            /** Edit category */
+            Route::get('edit/{id}', [ProductController::class, 'edit'])->name('edit')->where('id','[0-9]+'); //Show form to edit category
+            Route::post('update/{id}', [ProductController::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update category
+            /** Delete category */
+            Route::get('delete/{id}', [ProductController::class, 'delete'])->name('delete')->where('id','[0-9]+');
+        });
         
         // Post
         Route::prefix('post')->name('post.')->group(function(){
