@@ -63,16 +63,6 @@ function recursiveTablePost ($data,$parent_name = 0,$str = "") { //hiển thị 
     } 
 }
 
-function recursivetableProduct ($data) { //hiển thị danh sách sp
-    foreach ($data as $key => $value) {
-            echo '
-            <tr>
-                <td>'.$value["name"].'</td>
-            </tr>';
-            unset($data[$key]);
-        }
-    }
-
     function recursiveOptionPostb ($data,$selected,$category_id = 0,$str = "") { //đệ quy thể loại cha
         foreach ($data as $key => $value) {
             if ($value["category_id"] == $category_id) {
