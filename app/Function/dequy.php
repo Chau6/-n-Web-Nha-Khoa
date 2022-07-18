@@ -83,11 +83,10 @@ function recursiveTablePost ($data,$parent_name = 0,$str = "") { //hiển thị 
                 echo '
                 <tr>
                     <td>'.$str.$value["name"].'</td>
-                    <td><a onClick="return deleteConfirm()" href="http://127.0.0.1:8000/admin/post/delete/'.$value['id'].'">Xóa</a></td>
-                    <td><a href="http://127.0.0.1:8000/admin/post/edit/'.$value['id'].'">Sửa</a></td>
+                    <td><a onClick="return deleteConfirm()" href="http://127.0.0.1:8000/admin/product/delete/'.$value['id'].'">Xóa</a></td>
+                    <td><a href="http://127.0.0.1:8000/admin/product/edit/'.$value['id'].'">Sửa</a></td>
                 </tr>';
                 unset($data[$key]);
-    
                 recursiveTablePostb ($data,$value["id"],$str."---| ");
             }
         } 
