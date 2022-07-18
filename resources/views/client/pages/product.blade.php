@@ -145,13 +145,4 @@
     </div>
 </section>
 <!--End services style1 area-->
-
-<!--Start Choose area Style2--> 
-    @include('client.blocks.choose_area_style2')
-<!--End Choose area Style2--> 
-
-<!--Start Testimonial Sec style2-->
-    @include('client.blocks.testimonial_sec_style2')
-<!--End Testimonial Sec style2-->  
-
 @endsection
