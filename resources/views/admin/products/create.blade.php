@@ -63,8 +63,10 @@
                 </div>
         
                 <div class="form-group">
-                    <label>Status</label>
-                    <input type="text" name="status" class="form-control" placeholder="Enter Status">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" name="status" class="custom-control-input" id="customSwitch1" value="1">
+                        <label class="custom-control-label" for="customSwitch1">Status</label>
+                    </div>
                 </div>
         
             </div>
