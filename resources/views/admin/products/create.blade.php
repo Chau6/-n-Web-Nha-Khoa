@@ -22,7 +22,11 @@
     
                 <div class="form-group">
                     <label>Product Name</label>
-                    <input type="text" name="name" class="form-control" placeholder="Enter Product Name">
+                    <input type="text" name="name" id="name" class="form-control" placeholder="Enter Product Name" value="{{old('name')}}">
+                </div>
+                <div class="form-group">
+                    <label>Product Slug</label>
+                    <input type="text" name="slug" id="slug" class="form-control" placeholder="Enter Product Name">
                 </div>
 
                 <div class="form-group">
@@ -48,18 +52,29 @@
                 </div>
 
                 <div class="form-group">
+                    <label>Product Intro</label>
+                    <textarea name="intro" id="intro" class="form-control" placeholder="Enter Product Content">{{old('intro')}}</textarea>
+                    <script>
+                        CKEDITOR.replace('intro');
+                  </script>
+                </div>
+
+                <div class="form-group">
                     <label>Product Content</label>
-                    <textarea name="content" class="form-control" placeholder="Enter Product Content" ></textarea>
+                    <textarea name="content" id="content" class="form-control" placeholder="Enter Product Content" >{{old('content')}}</textarea>
+                    <script>
+                        CKEDITOR.replace('content');
+                  </script>
                 </div>
 
                 <div class="form-group">
                     <label>Product Price</label>
-                    <input type="money" name="price" class="form-control" placeholder="Enter Price">
+                    <input type="money" name="price" class="form-control" placeholder="Enter Price" value="{{old('price')}}">
                 </div>
         
                 <div class="form-group">
                     <label>Product Image</label>
-                    <input type="file" name="images">
+                    <input type="file" name="images" value="{{old('price')}}">
                 </div>
         
                 <div class="form-group">
@@ -71,9 +86,6 @@
         
             </div>
         </div>
- 
-
-        
         <div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-info">Create</button>
@@ -90,5 +102,41 @@
     </pre> --}}
 </section>
 @endsection
+@section('js')
+    {{-- Slug --}}
+<script type="text/javascript">
+    $('input#name').keyup(function(event){
 
+    var title, slug;
+    //  lấy text từ thẻ input 
+    title = $(this).val();
 
+    slug = title.toLowerCase();
+
+    slug = slug.replace(/á|à|ả|ã|ạ|ă|ắ|ằ|ẳ|ẵ|ặ|â|ầ|ấ|ẩ|ậ|ẫ/gi, 'a');
+    slug = slug.replace(/é|è|ẹ|ẻ|ẽ|ê|ế|ề|ể|ệ|ễ/gi, 'e');
+    slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
+    slug = slug.replace(/o|ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ợ|ỡ/gi, 'o');
+    slug = slug.replace(/u|ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
+    slug = slug.replace(/y|ý|ỷ|ỳ|ỵ|ỹ/gi, 'y');
+    slug = slug.replace(/đ/gi, 'd');
+
+    slug = slug.replace(/\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\-|\,|\.|\/|\?|\;|\:|\'|\"|_/gi, '');
+    //  Thay đổi khoảng cách thành '-' 
+    slug = slug.replace(/ /gi, "-");
+
+    //  Phòng trường hợp nhiều khoảng trắng 
+    slug = slug.replace(/\-\-\-\-\-/gi, '-');
+    slug = slug.replace(/\-\-\-\-/gi, '-');
+    slug = slug.replace(/\-\-\-/gi, '-');
+    slug = slug.replace(/\-\-/gi, '-');
+
+    //  Xóa kí tự gạch ngang đầu và cuối 
+    slug = '@' + slug + '@';
+    slug = slug.replace(/\@\-|\-\@|\@/gi, '');
+
+    // In giá trị;
+    $('input#slug').val(slug);
+    })
+</script>
+@endsection

@@ -1,6 +1,16 @@
 @extends('admin.master')
 
 @section('content')
+@if (Session::has('success'))
+  <div class="alert alert-success alert-block">
+      <strong>{{Session::get('success')}}</strong>
+  </div>
+@endif
+@if (Session::has('error'))
+  <div class="alert alert-error">
+      <strong>{{Session::get('error')}}</strong>
+  </div>
+@endif
 <form action="">
     <div class="card">
         <div class="card-header">
@@ -31,9 +41,11 @@
                 <tr>
                     <td>
                       <?php
-                        if ($user->level == 1) {
+                        if ($user->level == 1 && $user->id == 1) {
+                          echo "<span class='badge badge-warning' style='color:rgb(76, 98, 117)'>SuperAdmin</span>";
+                        }elseif($user->level == 1) {  
                           echo "<span class='badge badge-danger'>Admin</span>";
-                        }else {
+                        } else{
                           echo "<span class='badge badge-info'>Member</span>";
                         }
                       ?>
@@ -55,8 +67,11 @@
                     </td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->phone}}</td>
+            
                     <td>{{ date('d/m/Y | H:i:s', strtotime($user->created_at)) }}</td>
+
                     <td><a href="{{ route('admin.user.edit', ['id'=>$user->id]) }}">Edit</td>
+
                     <td><a onclick="return confirmDelete()" href="{{ route('admin.user.delete', ['id'=>$user->id]) }}">Delete</td>
                 </tr>            
                 </tbody>

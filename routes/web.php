@@ -32,8 +32,8 @@ Route::get('logout_client', [Login_ClientController::class, 'getLogoutClient'])-
 Route::middleware('register')->group(function(){
     //==================Register===================
     // Admin
-    Route::get('register', [Register_ClientController::class, 'getRegisterClient'])->name('getRegisterClient');
-    Route::post('register', [Register_ClientController::class, 'postRegisterClient'])->name('postRegisterClient');
+    // Route::get('register', [Register_ClientController::class, 'getRegisterClient'])->name('getRegisterClient');
+    // Route::post('register', [Register_ClientController::class, 'postRegisterClient'])->name('postRegisterClient');
     
     // Client
     Route::get('register_client', [Register_ClientController::class, 'getRegisterClient'])->name('getRegisterClient');
@@ -41,8 +41,8 @@ Route::middleware('register')->group(function(){
 
     // ================Login/Logout=================
     // Admin
-    Route::get('login', [Login_ClientController::class, 'getLoginClient'])->name('getLoginClient');
-    Route::post('login', [Login_ClientController::class, 'postLoginClient'])->name('postLoginClient');
+    // Route::get('login', [Login_ClientController::class, 'getLoginClient'])->name('getLoginClient');
+    // Route::post('login', [Login_ClientController::class, 'postLoginClient'])->name('postLoginClient');
 
 
     //Client
@@ -73,7 +73,7 @@ Route::middleware('admin', 'login')->group(function(){
         Route::prefix('user')->name('user.')->group(function(){
             Route::get('index', [UserController::class, 'index'])->name('index');
     
-            Route::get('create', [UserController::class, 'create'])->name('create');
+            // Route::get('create', [UserController::class, 'create'])->name('create');
             Route::post('store', [UserController::class, 'store'])->name('store');
     
             Route::get('edit/{id}', [UserController::class, 'edit'])->name('edit')->where('id', '[0-9]+');
