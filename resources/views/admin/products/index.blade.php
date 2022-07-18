@@ -13,10 +13,16 @@
             <div class="col-12 table-responsive">
               <table class="table table-striped">
                 <thead>
-                <tr>
-                    
-                </tr>
-                </thead>
+                  <tr>
+                      <td>ID</td>
+                      <td>Name</td>
+                      <td>Category</td>
+                      <td>Status</td>
+                      <td>Created At</td>
+                      <td>Edit</td>
+                      <td>Delete</td>
+                  </tr>
+                  </thead>
                 <tbody>
                     <tr>
                     <?php

@@ -27,7 +27,6 @@ class StoreProduct extends FormRequest
             'name' => 'required|unique:products',
             'content' => 'required',
             'price' => 'required',
-            'image' => 'required',
             'status' => 'required',
             'category_id' => 'required',
         ];
@@ -39,7 +38,6 @@ class StoreProduct extends FormRequest
             'name.unique' => "Tên SP đã tồn tại rồi",
             'content.required' => "Vui lòng nhập content",
             'price.required' => "Vui lòng nhập giá",
-            'image.required' => "Vui lòng nhập hình ảnh",
             'status.required' => "Vui lòng nhập status",
             'category_id.required' => "Vui lòng nhập category_id",
 
