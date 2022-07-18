@@ -4,7 +4,7 @@
 <form action="">
     <div class="card">
         <div class="card-header">
-          <h3 class="card-title">User</h3>
+          <h3 class="card-title">Product</h3>
           <div class="card-tools">
           </div>
         </div>
@@ -34,7 +34,6 @@
                             @endif
                         @endforeach
                         <?php recursiveTablePostb($datas,0);?>
-                        ?>
                     </tr>
                     {{-- </td> --}}
                     {{-- <td>{{$user->email}}</td>
