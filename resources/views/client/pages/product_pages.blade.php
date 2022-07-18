@@ -103,177 +103,40 @@
 @endsection
 
 @section('content')
-    <section class="about-area home2">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-6">
-                    <div class="about-image-holder wow fadeInLeft animated" data-wow-delay="900ms" style="visibility: visible; animation-delay: 900ms; animation-name: fadeInLeft;">
-                        <img src="{{asset('asset/client/images/resources/about.jpg')}}" alt="Awesome Image">
-                    </div>
-                </div>
-                <div class="col-xl-6">
-                    <div class="inner-content">
-                        <div class="sec-title">
-                            <h3>Name</h3>
-                            <h1>Product<br> Name</h1>
-                        </div>
-                        <div class="about-text-holder">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores praesentium distinctio qui facere, a minus asperiores magnam quod voluptatibus molestias corporis reprehenderit reiciendis facilis architecto minima eius placeat ipsa adipisci.</p>
-                            <div class="text-box">
-                                <h3>Price: </h3> <span>123</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row" style="padding: 30px">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                    <div class="services-carousel owl-carousel owl-theme">
-                        <!--Start single solution style1--> 
-                            <div class="single-solution-style1">
-                                <div class="img">
-                                    <img src="{{ asset('asset/client/images/services/2.jpg') }}" alt="Awesome Image"> 
-                                </div>
-                            </div>
-                        <!--Start single solution style1--> 
-                            <div class="single-solution-style1">
-                                <div class="img">
-                                    <img src="{{ asset('asset/client/images/services/3.jpg') }}" alt="Awesome Image">
-                                </div>
-                            </div>
-                        <!--Start single solution style1--> 
-                            <div class="single-solution-style1">
-                                <div class="img-holder">
-                                    <img src="{{ asset('asset/client/images/services/1.jpg') }}" alt="Awesome Image">
-                                </div>                          
-                            </div>
-                        <!--Start single solution style1--> 
-                            <div class="single-solution-style1">
-                                <div class="img-holder">
-                                    <img src="{{ asset('asset/client/images/services/2.jpg') }}" alt="Awesome Image"> 
-                                </div>
-                            </div>
-                    </div>
-                </div>
-            </div>  
+<div class="container">
+    <div class="col-md-9">
+        <div class="row">
 
-            {{-- rating --}}
-            {{-- <div class="start_rating">
-                <button class="star">&#9734</button>
-                <button class="star">&#9734</button> 
-                <button class="star">&#9734</button> 
-                <button class="star">&#9734</button> 
-                <button class="star">&#9734</button>
-                <p class="current_rating">0 of 5</p>    
-            </div> --}}
-        </div>
-    </section>
-    <div class="container">
-        <div class="card">
-            <div class="card-header">Review and Rate</div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-sm-4 text-center">
-                        <h1 class="text-warning mt-4 mb-4">
-                            <b><span id="average_rating">0.0</span> / 5</b>
-                        </h1>
-                        <div class="mb-3">
-                            <i class="fas fa-star star-light mr-1 main_star"></i>
-                            <i class="fas fa-star star-light mr-1 main_star"></i>
-                            <i class="fas fa-star star-light mr-1 main_star"></i>
-                            <i class="fas fa-star star-light mr-1 main_star"></i>
-                            <i class="fas fa-star star-light mr-1 main_star"></i>
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                <div class="single-blog-post">
+                    <div class="img-holder">
+                        <img src="{{('http://127.0.0.1:8000/asset/images/blog/v1-1.jpg')}}" alt="Awesome Image">
+                        <div class="categorie-button">
+                            <a class="btn-one" href="#">Healthy Teeth</a>    
                         </div>
-                        <h3><span id="total_review">0</span> Review</h3>
                     </div>
-                    <div class="col-sm-4">
-                        <p>
-                            <div class="progress-label-left"><b>5</b><i class="fas fa-star text-warning"></i></div>
-                            <div class="progress">
-                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="five_star_progress"></div>
+                    <div class="text-holder">
+                        <div class="meta-box">
+                            <div class="author-thumb">
+                                <img src="http://127.0.0.1:8000/asset/images/blog/author-1.png" alt="Image">
                             </div>
-                            <div class="progress-label-right">(<span class="total_five_star_review">0</span>)</div> 
-                        </p>
-                        <p>
-                            <div class="progress-label-left"><b>4</b><i class="fas fa-star text-warning"></i></div>
-                            <div class="progress">
-                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="four_start_progress"></div>
-                            </div>
-                            <div class="progress-label-right">(<span class="total_four_star_review">0</span>)</div>
-                            
-                        </p>
-                        <p>
-                            <div class="progress-label-left"><b>3</b><i class="fas fa-star text-warning"></i></div>
-                            <div class="progress">
-                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="three_start_progress"></div>
-                            </div>
-                            <div class="progress-label-right">(<span class="total_three_star_review">0</span>)</div>
-                            
-                        </p>
-                        <p>
-                            <div class="progress-label-left"><b>2</b><i class="fas fa-star text-warning"></i></div>
-                            <div class="progress">
-                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="two_start_progress"></div>
-                            </div>
-                            <div class="progress-label-right">(<span class="total_two_star_review">0</span>)</div>
-                            
-                        </p>
-                        <p>
-                            <div class="progress-label-left"><b>1</b><i class="fas fa-star text-warning"></i></div>
-                            <div class="progress">
-                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="one_start_progress"></div>
-                            </div> 
-                            <div class="progress-label-right">(<span class="total_one_star_review">0</span>)</div>
-                            
-                        </p>
-                    </div>
-                    <div class="col-sm-4 text-center">
-                        <h3 class="mt-4 mb-3">Write Review Here</h3>
-                        <button type="button" name="add_review" id="add_review" class="btn btn-primary">Review</button>
+                            <ul class="meta-info">
+                                <li>By </li>
+                                <li>Time created_at</li>
+                            </ul>    
+                        </div>
+                        <h3 class="blog-title"><a href="blog-single.html">What you need to know teeth?</a></h3> 
+                        <div class="text-box">
+                            <p>It not only helps you to chew and eat your food frames your faceany missing tooth can major impact your quality of life.</p>
+                        </div>
+                        <div class="readmore-button">
+                            <a class="btn-two" href="#"><span class="flaticon-next"></span>Reading</a>
+                        </div>  
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="mt-5" id="review_content"></div>
-    </div>
-    <div class="review_modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Submit Review</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h4 class="text-center mt-2 mb-4">
-                        <i class="fas fa-star star-light submit_star mr-1" id="submit_star_1" data-rating="1"></i>
-                        <i class="fas fa-star star-light submit_star mr-1" id="submit_star_2" data-rating="1"></i>
-                        <i class="fas fa-star star-light submit_star mr-1" id="submit_star_3" data-rating="1"></i>
-                        <i class="fas fa-star star-light submit_star mr-1" id="submit_star_4" data-rating="1"></i>
-                        <i class="fas fa-star star-light submit_star mr-1" id="submit_star_5" data-rating="1"></i>
-                    </h4>
-                    <div class="form-group">
-                        <input type="text" name="username" id="username" class="form-control" placeholder="Enter Name">
-                    </div>
-                    <div class="form-group">
-                        <textarea name="user_review" id="user_review" class="form-control" placeholder="Enter Review" cols="30" rows="10"></textarea>
-                    </div>
-                    <div class="form-group text-center mt-4">
-                        <button type="button" class="btn btn-primary" id="save_review">Submit</button>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
-    <script>
-        $(document).ready(function(){
-            var rating_data = 0;
-
-            $('#add_review').click(function(){
-                $('#review_modal').modal('show');
-            });
-            
-        });
-    </script>
+</div>
 @endsection

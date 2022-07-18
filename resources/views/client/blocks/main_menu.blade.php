@@ -21,7 +21,7 @@
                                         <li><a href="{{route('client.pages.product')}}">Support Products</a></li>
                                     </ul>
                                 </li>
-                                <li class="dropdown"><a href="{{route('client.pages.specialities')}}">Products</a>
+                                <li class="dropdown"><a href="{{route('client.pages.product')}}">Products</a>
                                     <ul>
                                         <li><a href="{{ route('client.pages.advice') }}">Advice</a></li>
                                         <li><a href="">Toothbrushes</a></li>
@@ -33,7 +33,13 @@
                                         <li><a href="">Oral medicine</a></li>
                                     </ul>
                                 </li>
+                                @if (Auth::check())
                                 <li><a href="{{route('client.pages.doctors')}}">Doctors</a></li>
+                                @else
+                                <li><a href="{{route('client.pages.doctors')}}"cclass="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId" style="background: #dddd">Doctors</a></li>
+                                
+                                @endif
+                                
                                 <li class="dropdown"><a href="{{route('client.pages.blog')}}">Blog</a>
                                     <ul>
                                         <li><a href="blog.html">Blog Default</a></li>
@@ -70,3 +76,37 @@
         </div>
     </div>
 </section>
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+                <div class="modal-header">
+                        <h5 class="modal-title">
+                            Notification</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    You need to login first
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#exampleModal').on('show.bs.modal', event => {
+        var button = $(event.relatedTarget);
+        var modal = $(this);
+        // Use above variables to manipulate the DOM
+        
+    });
+</script>
