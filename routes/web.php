@@ -32,8 +32,8 @@ Route::get('logout_client', [Login_ClientController::class, 'getLogoutClient'])-
 Route::middleware('register')->group(function(){
     //==================Register===================
     // Admin
-    Route::get('register', [RegisterController::class, 'getRegister'])->name('getRegister');
-    Route::post('register', [RegisterController::class, 'postRegister'])->name('postRegister');
+    Route::get('register', [Register_ClientController::class, 'getRegisterClient'])->name('getRegisterClient');
+    Route::post('register', [Register_ClientController::class, 'postRegisterClient'])->name('postRegisterClient');
     
     // Client
     Route::get('register_client', [Register_ClientController::class, 'getRegisterClient'])->name('getRegisterClient');
@@ -41,8 +41,8 @@ Route::middleware('register')->group(function(){
 
     // ================Login/Logout=================
     // Admin
-    Route::get('login', [LoginController::class, 'getLogin'])->name('getLogin');
-    Route::post('login', [LoginController::class, 'postLogin'])->name('postLogin');
+    Route::get('login', [Login_ClientController::class, 'getLoginClient'])->name('getLoginClient');
+    Route::post('login', [Login_ClientController::class, 'postLoginClient'])->name('postLoginClient');
 
 
     //Client
@@ -138,11 +138,11 @@ Route::prefix('client')->name('client.')->group(function(){
         Route::get('about', [HomeController::class, 'about'])->name('about');
         Route::get('blog', [HomeController::class, 'blog'])->name('blog');
         Route::get('contact', [HomeController::class, 'contact'])->name('contact');
-        Route::get('doctors', [HomeController::class, 'doctors'])->name('doctors');
+        Route::get('doctors', [HomeController::class, 'doctors'])->name('doctors')->middleware('login');
         Route::get('product', [HomeController::class, 'product'])->name('product');
         Route::get('specialities', [HomeController::class, 'specialities'])->name('specialities');
         Route::get('faqs', [HomeController::class, 'faqs'])->name('faqs');
-        Route::get('appointment', [HomeController::class, 'appointment'])->name('appointment');
+        Route::get('appointment', [HomeController::class, 'appointment'])->name('appointment')->middleware('login');
         Route::get('rating', [HomeController::class, 'rating'])->name('rating');
         Route::get('product_pages', [HomeController::class, 'product_pages'])->name('product_pages');
         Route::get('information_client', [HomeController::class, 'information_client'])->name('information_client');
