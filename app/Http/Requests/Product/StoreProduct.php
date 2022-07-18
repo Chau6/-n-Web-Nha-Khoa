@@ -35,13 +35,13 @@ class StoreProduct extends FormRequest
 
     public function messages() {
         return [
-            'name.required' => "Vui lòng nhập tên SP",
-            'name.unique' => "Tên SP đã tồn tại rồi",
-            'content.required' => "Vui lòng nhập content",
-            'price.required' => "Vui lòng nhập giá",
-            'image.required' => "Vui lòng nhập hình ảnh",
-            'status.required' => "Vui lòng nhập status",
-            'category_id.required' => "Vui lòng nhập category_id",
+            'name.required' => "Please enter product name",
+            'name.unique' => "Product name is already exists",
+            'content.required' => "Please enter content",
+            'price.required' => "Please enter price",
+            'image.required' => "Please add image",
+            'status.required' => "Please enter status",
+            'category_id.required' => "Please enter category_id",
 
         ];
     }
