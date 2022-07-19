@@ -144,8 +144,9 @@ Route::prefix('client')->name('client.')->group(function(){
         Route::get('faqs', [HomeController::class, 'faqs'])->name('faqs');
         Route::get('appointment', [HomeController::class, 'appointment'])->name('appointment')->middleware('login');
         Route::get('rating', [HomeController::class, 'rating'])->name('rating');
-        Route::get('product_pages', [HomeController::class, 'product_pages'])->name('product_pages');
+        Route::get('health_screening', [HomeController::class, 'health_screening'])->name('health_screening');
+        Route::get('/{slug}', [HomeController::class, 'product_pages'])->name('product_pages');
+        Route::get('/{slug}/{slug_infor}', [HomeController::class, 'product_infor'])->name('product_infor');
         Route::get('information_client', [HomeController::class, 'information_client'])->name('information_client');
-        
     });
 });

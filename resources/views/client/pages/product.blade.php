@@ -115,11 +115,11 @@
         </div>
         
         <div class="row">
-            <!--Start single solution style1--> 
+            @foreach ($products as $product)
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
                 <div class="single-solution-style1 wow fadeInUp" data-wow-delay="300ms">
                     <div class="img-holder">
-                        <img src="{{asset('asset/client/images/services/1.jpg')}}" alt="Awesome Image">
+                        <img src="" alt="Awesome Image">
                         <div class="icon-holder">
                             <div class="inner-content">
                                 <div class="box">
@@ -129,17 +129,20 @@
                         </div>   
                     </div>
                     <div class="text-holder">
-                        <h3><a href="" style="color: rgba(72, 67, 67, 0.867)">Dental Implants</a></h3>
-                        <p>Denouncing pleasure & praising pain was born and wewill give you a complete account of the system.</p>
+                        <h3><a href="" style="color: rgba(72, 67, 67, 0.867)">{{$product->name}}</a></h3>
+                        <p></p>
                         <div class="readmore">
                             <a href="#"><span class="flaticon-next"></span></a>
                             <div class="overlay-button">
-                                <a href="{{route('client.pages.product_pages')}}">Read More</a>    
+                                <a href="{{route('client.pages.product_pages', ['slug'=>$product->slug])}}">Read More</a>    
                             </div>
                         </div>
                     </div>
                 </div> 
             </div>
+            @endforeach
+            <!--Start single solution style1--> 
+            
             
         </div> 
     </div>

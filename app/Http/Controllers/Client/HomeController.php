@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -35,7 +36,27 @@ class HomeController extends Controller
     }
 
     public function product(){
-        return view('client.pages.product');
+        $category = DB::table('category')->where('category.parent_name','category.id')->get();
+        return view('client.pages.product',['products' => $category]);
+    }
+    
+    
+    public function health_screening(){
+        $post_result = DB::table('category')
+            ->join('post', 'category.id', '=', 'post.category_id')
+            ->select('category.name as category_name','post.*')
+            // ->where('category.parent_name',5)
+            ->where('post.slug','health-screening')
+            ->where('post.status', 1)
+            ->orderBy('created_at', 'DESC')
+            ->get();
+
+        return view('client.pages.health_screening',['posts' => $post_result]);
+    }
+
+    public function product_pages($slug){
+        $product = DB::table('products')->where('slug',$slug)->first();
+        return view('client.pages.product_pages', ['products'=>$product]);
     }
 
     public function contact(){
@@ -56,7 +77,5 @@ class HomeController extends Controller
     public function rating(){
         return view('client.pages.rating');
     }
-    public function product_pages(){
-        return view('client.pages.product_pages');
-    }
+    
 }
