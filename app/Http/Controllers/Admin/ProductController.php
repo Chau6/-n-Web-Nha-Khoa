@@ -12,8 +12,13 @@ use Illuminate\Support\Facades\Auth;
 class ProductController extends Controller
 {
     public function index(){
-        $result = DB::table('products')->get();
-        return view('admin.products.index', ['products' => $result]);
+        $post_result = DB::table('category')
+            ->join('products', 'category.id', '=', 'products.category_id')
+            ->select('category.name as category_name','products.*')
+            ->orderBy('created_at', 'DESC')
+            ->get();
+        
+        return view('admin.products.index', ['products' => $post_result]);
     }
     public function delete($id){
         $result = DB::table('products')->where('id', $id)->delete();
