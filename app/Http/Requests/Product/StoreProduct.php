@@ -28,16 +28,18 @@ class StoreProduct extends FormRequest
             'content' => 'required',
             'price' => 'required',
             'category_id' => 'required',
+            'images' => 'required',
+
         ];
     }
 
     public function messages() {
         return [
-            'name.required' => "Vui lòng nhập tên SP",
-            'name.unique' => "Tên SP đã tồn tại rồi",
-            'content.required' => "Vui lòng nhập content",
-            'price.required' => "Vui lòng nhập giá",
-            'category_id.required' => "Vui lòng nhập category_id",
+            'name.required' => "Please enter product name",
+            'name.unique' => "Product already exists",
+            'content.required' => "Please enter content",
+            'price.required' => "Please enter price",
+            'category_id.required' => "Please enter category_id",
         ];
     }
 }
