@@ -36,7 +36,7 @@ class HomeController extends Controller
     }
 
     public function product(){
-        $category = DB::table('category')->where('category.parent_name','category.id')->get();
+        $category = DB::table('category')->get();
         return view('client.pages.product',['products' => $category]);
     }
     
@@ -55,8 +55,20 @@ class HomeController extends Controller
     }
 
     public function product_pages($slug){
-        $product = DB::table('products')->where('slug',$slug)->first();
-        return view('client.pages.product_pages', ['products'=>$product]);
+        $product = DB::table('category')
+            ->join('products', 'category.id', '=', 'products.category_id')
+            ->select('category.name as category_name','products.*')
+            ->where('category.slug',$slug)
+            ->where('products.status', 1)
+            ->orderBy('created_at', 'DESC')
+            ->get();
+        $category = DB::table('category')->where('slug',$slug)->first();
+        // $product = DB::table('products')->where('slug',$slug)->first();
+        return view('client.pages.product_pages', ['product_page'=>$product, 'category'=>$category]);
+    }
+
+    public function product_infor($slug, $slug_infor){
+        return view('client.pages.product_infor');
     }
 
     public function contact(){

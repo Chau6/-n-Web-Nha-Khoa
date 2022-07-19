@@ -31,7 +31,7 @@
             <div class="form-group">
                 <label>Parent_name</label>
                 <select class="form-control" name="category_id">
-                    <option value="0">---- ROOT ----</option>
+                    <option>---- ROOT ----</option>
                     <?php
                         $data=array();
                         $datas=array();

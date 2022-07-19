@@ -28,7 +28,7 @@
 <!-- AdminLTE App -->
 
 <!-- AdminLTE for demo purposes -->
-<script src="{{asset('asset/page/dist/js/demo.js')}}"></script>
+{{-- <script src="{{asset('asset/page/dist/js/demo.js')}}"></script>   --}}
 <!-- Page specific script -->
 
 <!-- AdminLTE for demo purposes -->

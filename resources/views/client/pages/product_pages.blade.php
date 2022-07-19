@@ -106,7 +106,7 @@
 <div class="container">
     <div class="col-md-9">
         <div class="row">
-            @foreach ($products as $product)
+            @foreach ($product_page as $product)
                 <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                     <div class="single-blog-post">
                         <div class="img-holder">
@@ -129,7 +129,7 @@
                                 <p>{!!$product->intro!!}</p>
                             </div>
                             <div class="readmore-button">
-                                <a class="btn-two" href="{{route('client.pages.product_infor',['slug'=>$product->slug])}}"><span class="flaticon-next"></span>Reading</a>
+                                <a class="btn-two" href="{{route('client.pages.product_infor',['slug'=>$category->slug, 'slug_infor'=>$product->slug])}}"><span class="flaticon-next"></span>Reading</a>
                             </div>  
                         </div>
                     </div>
