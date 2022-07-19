@@ -46,7 +46,7 @@
                             ?>
                         @endif  
                     @endforeach
-                    <?php recursiveOption($datas,$edit->category_id);?>      
+                    <?php recursiveOptionPost($datas,$edit->category_id);?>      
                 </select>
             </div>
 

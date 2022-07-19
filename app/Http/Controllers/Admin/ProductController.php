@@ -22,7 +22,7 @@ class ProductController extends Controller
     }
     public function delete($id){
         $result = DB::table('products')->where('id', $id)->delete();
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.product.index');
     }
     public function create(){
         $data = DB::table('products')->orderBy('id')->get();
