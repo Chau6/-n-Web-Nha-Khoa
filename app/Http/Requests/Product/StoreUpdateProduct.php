@@ -32,8 +32,8 @@ class StoreUpdateProduct extends FormRequest
 
     public function messages() {
         return [
-            'name.required' => "Vui lòng nhập tên sản phẩm",
-            'name.unique' => "Tên sản phẩm đã tồn tại rồi",
+            'name.required' => "Please enter product name",
+            'name.unique' => "Product already exists",
             "content.required"=>"Please Enter Content",
             "price.required"=>"Please Enter Price",
         ];
