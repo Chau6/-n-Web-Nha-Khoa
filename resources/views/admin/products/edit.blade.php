@@ -12,41 +12,62 @@
         </ul>
     </div>
     @endif
-    <form action="{{ route('admin.products.update', ['id' => $id]) }}" method="POST" enctype="multipart/form-data">  
+    <form action="{{ route('admin.product.update', ['id' => $id]) }}" method="POST" enctype="multipart/form-data">  
         @csrf
         <div class="card-header">
                 <h3 class="card-title">Update Product</h3>
             </div>
             <div class="card-body">
                 <div class="form-group">
-                    <label>Parent_name</label>
-                    <select class="form-control" name="parent_name">
+                    <label>Product Name</label>
+                    <input type="text" name="name" class="form-control" placeholder="Enter Product Name" value="{{$edit->name}}">
+                </div>
+
+                <div class="form-group">
+                    <label>Category_id</label>
+                    <select class="form-control" name="category_id">
                         <option value="0">---- ROOT ----</option>
                         <?php
                             $data=array();
                             $datas=array();
                         ?>
-                        @foreach($products as $product)
-                            @if(!empty($product))
+                        @foreach($categorys as $category)
+                            @if(!empty($category))
                                 <?php
-                                    $data['id'] = $product->id;
-                                    $data['name'] = $product->name;
-                                    $data['parent_name'] = $product->parent_name;
+                                    $data['id'] = $category->id;
+                                    $data['name'] = $category->name;
+                                    $data['parent_name'] = $category->parent_name;
                                     $datas[] = $data;
                                 ?>
-                            @endif
+                            @endif  
                         @endforeach
-                        <?php recursiveOption($datas,$edit->parent_name);?>
+                        <?php recursiveOptionPro($datas,$edit->category_id);?>      
                     </select>
                 </div>
-    
-                <div class="form-group">
-                    <label>product Name</label>
-                    <label>Product Name</label>
 
-                    <input type="text" name="name" class="form-control" placeholder="Enter Product Name">
+                <div class="form-group">
+                    <label>Product Content</label>
+                    <textarea name="content" class="form-control" placeholder="Enter Product Content">{{$edit->content}}</textarea>
+                    <script>
+                        CKEDITOR.replace('content');
+                    </script>
                 </div>
-            </div>
+
+                <div class="form-group">
+                    <label>Product Price</label>
+                    <input type="money" name="price" class="form-control" placeholder="Enter Price" value="{{$edit->price}}">
+                </div>
+        
+                <div class="form-group">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" name="status" class="custom-control-input" id="customSwitch1" value="1" 
+                        @if ($edit->status == 1)
+                            @checked(true)
+                        @endif>
+                        <label class="custom-control-label" for="customSwitch1">Status</label>
+                    </div>
+                </div>
+
             <div class="card-footer">
                 <button type="submit" class="btn btn-info">Edit</button>
     
