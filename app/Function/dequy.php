@@ -61,6 +61,31 @@ function recursiveOptionPro ($data,$selected,$parent_name = 0,$str = "") { //đ�
     }
 }
 
+function recursiveOptionDoc ($data,$selected) { //đệ quy thể loại cha
+    foreach ($data as $key => $value) {
+            if ($value["id"] == $selected) {
+                $selected_option = "selected";
+            }
+            echo '<option value="'.$value["id"].'" '.$selected_option.'>'.$value["fullname"].'</option>';
+            unset($data[$key]);
+            recursiveOptionDoc ($data,$selected); 
+    }
+}
+
+function recursiveOptionDocTime ($data,$selected,$parent_name = 1) { //đệ quy thể loại cha
+    foreach ($data as $key => $value) {
+        if ($value["id"] == $parent_name) {
+            $selected_option = '';
+            if ($value["id"] == $selected) {
+                $selected_option = "selected";
+            }
+            echo '<option value="'.$value["id"].'" '.$selected_option.'>'.$value["fullname"].'</option>';
+            unset($data[$key]);
+            recursiveOptionDocTime ($data,$selected,$parent_name ++);
+        }
+    }
+}
+
 function recursiveOptionPostb ($data,$selected,$category_id = 0,$str = "") { //đệ quy thể loại cha
     foreach ($data as $key => $value) {
         if ($value["category_id"] == $category_id) {

@@ -1,80 +1,5 @@
 @extends('client.master')
 
-{{-- @section('main_menu')
-<section class="mainmenu-area stricky">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="inner-content clearfix">
-                    <nav class="main-menu style1 clearfix">
-                        <div class="navbar-header clearfix">   	
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <div class="navbar-collapse collapse clearfix">
-                            <ul class="navigation clearfix">
-                                <li><a href="{{route('client.pages.about')}}">About Us</a></li>
-                                <li class="dropdown"><a href="{{route('client.pages.specialities')}}">Health Screening</a>
-                                    <ul>
-                                        <li><a href="{{ route('client.pages.advice') }}">Advice</a></li>
-                                        <li><a href="">Care Services</a></li>
-                                        <li><a href="{{route('client.pages.product')}}">Support Products</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown"><a href="{{route('client.pages.specialities')}}">Products</a>
-                                    <ul>
-                                        <li><a href="{{ route('client.pages.advice') }}">Advice</a></li>
-                                        <li><a href="">Toothbrushes</a></li>
-                                        <li><a href="">Toothpaste</a></li>
-                                        <li><a href="">Dental floss</a></li>
-                                        <li><a href="">Face mask</a></li>
-                                        <li><a href="">Dental picks and sticks</a></li>
-                                        <li><a href="">Tongue scrapers</a></li>
-                                        <li><a href="">Oral medicine</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="{{route('client.pages.doctors')}}">Doctors</a></li>
-                                <li class="dropdown"><a href="{{route('client.pages.blog')}}">Blog</a>
-                                    <ul>
-                                        <li><a href="blog.html">Blog Default</a></li>
-                                        <li><a href="blog-large.html">Blog Large Image</a></li>
-                                        <li><a href="blog-single.html">Blog Single Post</a></li>
-                                    </ul>
-                                </li>
-                                
-                                <li><a href="{{route('client.pages.contact')}}">Contact</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-                    
-                    <div class="mainmenu-right">
-                        <div class="search-box-style1">
-                            <form class="search-form" method="post" action="http://st.ourhtmldemo.com/new/Dento/index.html">
-                                <input type="search" name="search" placeholder="Search..." required>
-                                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                            </form>        
-                        </div>
-                        <div class="toggler-button">
-                            <div class="nav-toggler hidden-bar-opener">
-                                <div class="inner">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                            </div>    
-                        </div>
-                    </div> 
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</section> 
-@endsection --}}
-
 @section('breadcrumb')
     <!--Start breadcrumb area-->     
 <section class="breadcrumb-area" style="background-image: url({{asset('asset/client/images/resources/breadcrumb-bg.jpg')}});">
@@ -122,15 +47,17 @@
                                     <div class="title">
                                         <h5>Times for</h5>
                                     </div>
+                                    {{-- --------------------------------------------------------- --}}
                                     <div class="input-box">
                                         <select class="selectmenu">
-                                            <option selected="selected">Dr. Daryl Cornelius</option>
+                                            <option>Dr. Daryl Cornelius</option>
                                             <option>Evelynne Mirando</option>
                                             <option>Dr. Robert B. Moreau</option>
                                             <option>Dr. Greg House</option>
-                                            <option>Dr. Sarah Johnson</option>
+                                            <option selected>Dr. Sarah Johnson</option>
                                         </select>
                                     </div>
+                                    {{-- --------------------------------------------------------- --}}
                                 </div>
                             </div>
                         </div>
@@ -142,9 +69,10 @@
                                     </div>
                                     <div class="input-box">
                                         <div class="available-time">
+                                            {{-- --------------------------------------------------------- --}}
                                             <ul>
                                                 <li>9.00am</li>
-                                                <li class="active">11.30am</li>
+                                                <li>11.30am</li>
                                                 <li>12.00pm</li>
                                                 <li>3.00pm</li>
                                                 <li>4.00pm</li>
@@ -153,7 +81,8 @@
                                                 <li>6.00pm</li>
                                                 <li>7.00pm</li>
                                                 <li>7.30pm</li>
-                                            </ul>    
+                                            </ul>
+                                            {{-- --------------------------------------------------------- --}}    
                                         </div>
                                     </div>
                                 </div>
@@ -163,16 +92,15 @@
                             <div class="col-xl-12 col-lg-12">
                                 <div class="single-box">
                                     <div class="title">
-                                        <h5>Personal Info</h5>
+                                        <h5>Service</h5>
                                     </div>
                                     <div class="input-box">
                                         <div class="row">
-                                            <div class="col-xl-6">
+                                            {{-- <div class="col-xl-6">
                                                 <input type="text" name="p_name" value="" placeholder="Patient Name*" required="">    
-                                            </div>
+                                            </div> --}}
                                             <div class="col-xl-6">
                                                 <select class="selectmenu">
-                                                    <option selected="selected">Service</option>
                                                     <option>Dental Implants</option>
                                                     <option>Cosmetic Dentistry</option>
                                                     <option>Laser Dentistry</option>
@@ -183,12 +111,12 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-xl-6">
+                                            {{-- <div class="col-xl-6">
                                                 <input type="text" name="phn_num" value="" placeholder="Ph Num*" required="">    
-                                            </div>
-                                            <div class="col-xl-6">
+                                            </div> --}}
+                                            {{-- <div class="col-xl-6">
                                                 <input type="text" name="age" value="" placeholder="Age">      
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         <div class="row">
                                             <div class="col-xl-12">
@@ -215,19 +143,23 @@
                 <div class="appointment-right">
                     <form name="appointment-right" action="#" method="post">
                         <div class="input-box">
+                            {{-- --------------------------------------------------------- --}}
                             <input type="text" name="date" placeholder="Date" id="datepicker">
                             <div class="icon-box">
                                 <i class="fa fa-calendar" aria-hidden="true"></i>
                             </div>
+                            {{-- --------------------------------------------------------- --}}
                         </div>
                         <div class="confirm-booking">
                             <h3>Confirm Your Booking</h3>
+                            {{-- --------------------------------------------------------- --}}
                             <ul>
                                 <li><span>Patient Name</span><b>:</b> George Turner</li>
                                 <li><span>Age</span><b>:</b> 36 Years</li>
                                 <li><span>Service</span><b>:</b> Root Canel</li>
                                 <li><span>Date & Time</span><b>:</b> Nov 22nd, 2018. 11.30am</li>
-                            </ul>    
+                            </ul>
+                            {{-- --------------------------------------------------------- --}}    
                         </div>
                         <div class="button-box">
                             <button class="btn-one" type="submit">Confirm</button>   

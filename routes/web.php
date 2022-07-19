@@ -11,6 +11,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\Login_ClientController;
 use App\Http\Controllers\Register_ClientController;
+use App\Http\Controllers\Admin\DoctorController;
+use App\Http\Controllers\Admin\DoctorTimeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -121,6 +123,34 @@ Route::middleware('admin', 'login')->group(function(){
             Route::post('update/{id}', [PostController::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update post
             /** Delete post */
             Route::get('delete/{id}', [PostController::class, 'delete'])->name('delete')->where('id','[0-9]+');
+        });
+
+        //Doctor
+        Route::prefix('doctor')->name('doctor.')->group(function(){
+            /** Show list of Doctor */
+            Route::get('index', [DoctorController::class, 'index'])->name('index');
+            /** Create Doctor */
+            Route::get('create', [DoctorController::class, 'create'])->name('create'); //Show form to create doctor
+            Route::post('store', [DoctorController::class, 'store'])->name('store'); //set action in form to create doctor
+            /** Edit Doctor */
+            Route::get('edit/{id}', [DoctorController::class, 'edit'])->name('edit')->where('id','[0-9]+'); //Show form to edit doctor
+            Route::post('update/{id}', [DoctorController::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update doctor
+            /** Delete Doctor */
+            Route::get('delete/{id}', [DoctorController::class, 'delete'])->name('delete')->where('id','[0-9]+');
+        });
+
+        //Doctor_Time
+        Route::prefix('doctor_time')->name('doctor_time.')->group(function(){
+            /** Show list of Doctor */
+            Route::get('index', [DoctorTimeController::class, 'index'])->name('index');
+            /** Create Doctor */
+            Route::get('create', [DoctorTimeController::class, 'create'])->name('create'); //Show form to create doctor
+            Route::post('store', [DoctorTimeController::class, 'store'])->name('store'); //set action in form to create doctor
+            /** Edit Doctor */
+            Route::get('edit/{id}', [DoctorTimeController::class, 'edit'])->name('edit')->where('id','[0-9]+'); //Show form to edit doctor
+            Route::post('update/{id}', [DoctorTimeController::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update doctor
+            /** Delete Doctor */
+            Route::get('delete/{id}', [DoctorTimeController::class, 'delete'])->name('delete')->where('id','[0-9]+');
         });
     });
 });

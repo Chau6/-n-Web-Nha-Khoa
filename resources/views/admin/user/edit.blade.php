@@ -10,7 +10,7 @@
     </ul>
 </div>
 @endif
-<form action="{{ route('admin.user.update', ['id'=>$user -> id]) }}" method="POST">  
+<form action="{{ route('admin.user.update', ['id'=>$user->id]) }}" method="POST">  
     @csrf
 <div class="card">
     <div class="card-header">
