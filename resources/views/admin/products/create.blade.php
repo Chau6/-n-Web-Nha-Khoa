@@ -32,7 +32,7 @@
                 <div class="form-group">
                     <label>Category ID</label>
                     <select class="form-control" name="category_id">
-                        <option value="0">---- ROOT ----</option>
+                        <option>---- ROOT ----</option>
                         <?php
                             $data=array();
                             $datas=array();

@@ -168,15 +168,29 @@ Route::prefix('client')->name('client.')->group(function(){
         Route::get('about', [HomeController::class, 'about'])->name('about');
         Route::get('blog', [HomeController::class, 'blog'])->name('blog');
         Route::get('contact', [HomeController::class, 'contact'])->name('contact');
-        Route::get('doctors', [HomeController::class, 'doctors'])->name('doctors')->middleware('login');
-        Route::get('product', [HomeController::class, 'product'])->name('product');
         Route::get('specialities', [HomeController::class, 'specialities'])->name('specialities');
         Route::get('faqs', [HomeController::class, 'faqs'])->name('faqs');
-        Route::get('appointment', [HomeController::class, 'appointment'])->name('appointment')->middleware('login');
         Route::get('rating', [HomeController::class, 'rating'])->name('rating');
-        Route::get('health_screening', [HomeController::class, 'health_screening'])->name('health_screening');
-        Route::get('/{slug}', [HomeController::class, 'product_pages'])->name('product_pages');
-        Route::get('/{slug}/{slug_infor}', [HomeController::class, 'product_infor'])->name('product_infor');
+        
+        // Update Information User
         Route::get('information_client', [HomeController::class, 'information_client'])->name('information_client');
+
+        // Doctor
+        Route::get('doctors', [HomeController::class, 'doctors'])->name('doctors')->middleware('login');
+        // Appointment 
+        Route::get('appointment', [HomeController::class, 'appointment'])->name('appointment')->middleware('login');
+
+        // Product
+        Route::get('product', [HomeController::class, 'product'])->name('product');
+        // Health Screening
+        Route::get('post', [HomeController::class, 'health_screening'])->name('health_screening');
+
+        // Path
+        Route::get('health_screening/{slug}', [HomeController::class, 'post_pages'])->name('post_pages');
+        Route::get('product/{slug}', [HomeController::class, 'product_pages'])->name('product_pages');
+
+        Route::get('health_screening/{slug}/{slug_infor}', [HomeController::class, 'post_infor'])->name('post_infor');
+        Route::get('product/{slug}/{slug_infor}', [HomeController::class, 'product_infor'])->name('product_infor');
+
     });
 });
