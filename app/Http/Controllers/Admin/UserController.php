@@ -20,7 +20,7 @@ class UserController extends Controller
         $data = $request->except('_token');
         $data['created_at'] = new \DateTime();
         DB::table('user')->insert($data);
-        return redirect()->route('admin.user.index');
+        return redirect()->route('admin.user.index')->with('success','Insert Successfully');
     }
     public function edit($id){
         $user = DB::table('user')->where('id', $id)->first();
@@ -40,7 +40,7 @@ class UserController extends Controller
     public function update(Request $request, $id){
         $data = $request->except('_token');
         DB::table('user')->where('id',$id)->update($data);
-        return redirect()->route('admin.user.index');
+        return redirect()->route('admin.user.index')->with('success','Edit Successfully');
     }
     public function delete($id){
         DB::table('user')->where('id',$id)->delete();

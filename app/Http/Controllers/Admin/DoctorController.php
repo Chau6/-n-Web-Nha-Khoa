@@ -22,7 +22,7 @@ class DoctorController extends Controller
         $data = $request->except('_token');
         $data['created_at'] = new \DateTime();
         DB::table('doctors')->insert($data);
-        return redirect()->route('admin.doctor.index');
+        return redirect()->route('admin.doctor.index')->with('success','Insert Successfully');
     }
     public function edit($id){
         $doctor = DB::table('doctors')->where('id', $id)->first();
@@ -31,7 +31,7 @@ class DoctorController extends Controller
     public function update(Request $request, $id){
         $data = $request->except('_token');
         DB::table('doctors')->where('id',$id)->update($data);
-        return redirect()->route('admin.doctor.index');
+        return redirect()->route('admin.doctor.index')->with('success','Edit Successfully');
     }
     public function delete($id){
         DB::table('doctors')->where('id',$id)->delete();

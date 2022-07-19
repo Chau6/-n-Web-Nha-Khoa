@@ -1,6 +1,14 @@
 @extends('client.master')
 
 @section('breadcrumb')
+@if (Session::has('success') )
+
+  <div class="alert alert-success alert-block">
+      <button type="button" class="close" data-dismiss="alert">x</button>
+          <strong>{{ Session::get('success') }}</strong>
+  </div>
+
+@endif
     <!--Start breadcrumb area-->     
 <section class="breadcrumb-area" style="background-image: url({{asset('asset/client/images/resources/breadcrumb-bg.jpg')}});">
     <div class="container">
@@ -122,15 +130,7 @@
                                             <div class="col-xl-12">
                                                 <textarea name="form_description..." placeholder="Description..."></textarea>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xl-12">
-                                                <div class="button-box">
-                                                    <button class="btn-one" type="submit">Select</button>   
-                                                </div>
-                                            </div>
-                                        </div>    
-                
+                                        </div>   
                                     </div>
                                 </div>
                             </div>

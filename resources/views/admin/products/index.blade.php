@@ -1,6 +1,14 @@
 @extends('admin.master') 
 
 @section('content')
+@if (Session::has('success') )
+
+  <div class="alert alert-success alert-block">
+      <button type="button" class="close" data-dismiss="alert">x</button>
+          <strong>{{ Session::get('success') }}</strong>
+  </div>
+
+@endif
 <form action="">
     <div class="card">
         <div class="card-header">

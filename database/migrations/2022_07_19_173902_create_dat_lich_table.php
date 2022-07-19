@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('dat_lich', function (Blueprint $table) {
             $table->id();
+            $table->string('service');
+            $table->string('description')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('user');
             $table->unsignedBigInteger('doctor_day_work_id');
