@@ -42,7 +42,7 @@
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
                     <label class="form-label" for="form3Example1">First name</label>
-                    <input type="text" name="first_name" id="form3Example1" class="form-control" {{old('first_name')}}/>
+                    <input type="text" name="first_name" id="form3Example1" class="form-control" value="{{old('first_name')}}"/>
                     @error('first_name')
                       <span style="color: red">{{$message}}</span>
                     @enderror

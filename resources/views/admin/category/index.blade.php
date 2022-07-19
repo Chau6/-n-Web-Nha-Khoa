@@ -4,7 +4,7 @@
 <form action="">
     <div class="card">
         <div class="card-header">
-          <h3 class="card-title">User</h3>
+          <h3 class="card-title">Category Index</h3>
           <div class="card-tools">
           </div>
         </div>
@@ -12,11 +12,6 @@
           <div class="row">
             <div class="col-12 table-responsive">
               <table class="table table-striped">
-                <thead>
-                  <tr>
-                      <td>Category Name</td>
-                  </tr>
-                </thead>
                 <tbody>
                     <tr>
                         <?php
@@ -33,7 +28,7 @@
                         @endforeach
                         <?php 
                             recursiveTable($datas);
-                        ?>
+                        ?>                
                     </tr>
                     {{-- </td> --}}
                     {{-- <td>{{$user->email}}</td>

@@ -13,46 +13,41 @@
             <div class="col-12 table-responsive">
               <table class="table table-striped">
                 <thead>
-                  <tr>
-                      <td>ID</td>
-                      <td>Name</td>
-                      <td>Category</td>
-                      <td>Status</td>
-                      <td>Created At</td>
-                      <td>Edit</td>
-                      <td>Delete</td>
-                  </tr>
-                  </thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Name</td>
+                    <td>Category</td>
+                    <td>Price</td>
+                    <td>Status</td>
+                    <td>Created At</td>
+                    <td>Edit</td>
+                    <td>Delete</td>
+                </tr>
+                </thead>
+                @foreach ($products as $product)
                 <tbody>
-                    <tr>
-                    <?php
-                            $data=array();
-                            $datas=array();
-                        ?>
-                        @foreach($products as $product)
-                            @if(!empty($product))
-                                <?php
-                                    $data['id'] = $product->id;
-                                    $data['images'] = $product->images;
-                                    $data['name'] = $product->name;
-                                    $data['price'] = $product->price;
-                                    $data['content'] = $product->content;
-                                    $data['category_id'] = $product->category_id;
-                                    $datas[] = $data;
-                                ?>
-                            @endif
-                        @endforeach
-                        <?php recursiveTablePostb($datas,0);?>
-                    </tr>
-                    {{-- </td> --}}
-                    {{-- <td>{{$user->email}}</td>
-                    <td>{{$user->phone}}</td>
-                    <td>{{date('d/m/Y | H:i:s', strtotime($user->created_at)) }}</td>
-                    <td><a href="{{ route('admin.user.edit', ['id'=>$user->id]) }}">Edit</td>
-                    <td><a onclick="return confirmDelete()" href="{{ route('admin.user.delete', ['id'=>$user->id]) }}">Delete</td> --}}
+                <tr>
+                    <td>{{$loop->iteration}}</td>
+                    <td>
+                        <div class="media">
+                            <a href="pull-left" href="">
+                                <img class="media-object" src="#" alt="Image">
+                            </a>
+                            <div class="media-body">
+                              <h4 class="media-heading">{{$product->name}}</h4>
+                              <p>{{ date('d/m/Y | H:i:s', strtotime($product->created_at)) }}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{$product->category_name}}</td>
+                    <td>{{$product->price}}</td>
+                    <td>{{$product->status}}</td>
+                    <td>{{ date('d/m/Y | H:i:s', strtotime($product->created_at)) }}</td>
+                    <td><a href="{{ route('admin.post.edit', ['id'=>$product->id]) }}">Edit</td>
+                      <td><a onclick="return confirmDelete()" href="{{ route('admin.post.delete', ['id'=>$product->id]) }}">Delete</td>
                 </tr>            
                 </tbody>
-
+                @endforeach
               </table>
             </div>
           </div>

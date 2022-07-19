@@ -21,7 +21,11 @@
         <div class="card-body">
             <div class="form-group">
                 <label for="email">Post Name</label>
-                <input type="text" class="form-control" name="name" value="{{ $post->name }}">
+                <input type="text" class="form-control" id="name" name="name" value="{{ $post->name }}">
+            </div>
+            <div class="form-group">
+                <label for="email">Slug</label>
+                <input type="text" class="form-control" id="slug" name="slug" value="{{$post->slug}}">
             </div>
 
             <div class="form-group">
@@ -41,19 +45,29 @@
                                 $datas[] = $data;
                             ?>
                         @endif  
-                        <?php recursiveOption($datas,$category->parent_name);?>
-                    @endforeach      
+                    @endforeach
+                    <?php recursiveOption($datas,$edit->category_id);?>      
                 </select>
+            </div>
+
+            <div class="form-group">
+                <div class="form-group shadow-textarea">
+                    <label for="intro">Intro</label>
+                    <textarea class="form-control z-depth-1" name="intro" id="intro" rows="3" placeholder="Write something here...">{{$post->intro}}</textarea>
+                  </div>
+                  <script>
+                        CKEDITOR.replace('intro');
+                  </script>
             </div>
 
             <div class="form-group">
                 <div class="form-group shadow-textarea">
                     <label for="content">Content</label>
                     <textarea class="form-control z-depth-1" name="content" id="content" rows="3" placeholder="Write something here...">{{$post->content}}</textarea>
-                  </div>
-                  <script>
+                </div>
+                <script>
                         CKEDITOR.replace('content');
-                  </script>
+                </script>
             </div>
 
             <div class="form-group">
@@ -74,4 +88,42 @@
         </div>
     </div>
 </form>
+@endsection
+@section('js')
+    {{-- Slug --}}
+<script type="text/javascript">
+    $('input#name').keyup(function(event){
+
+    var title, slug;
+    //  lấy text từ thẻ input 
+    title = $(this).val();
+
+    slug = title.toLowerCase();
+
+    slug = slug.replace(/á|à|ả|ã|ạ|ă|ắ|ằ|ẳ|ẵ|ặ|â|ầ|ấ|ẩ|ậ|ẫ/gi, 'a');
+    slug = slug.replace(/é|è|ẹ|ẻ|ẽ|ê|ế|ề|ể|ệ|ễ/gi, 'e');
+    slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
+    slug = slug.replace(/o|ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ợ|ỡ/gi, 'o');
+    slug = slug.replace(/u|ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
+    slug = slug.replace(/y|ý|ỷ|ỳ|ỵ|ỹ/gi, 'y');
+    slug = slug.replace(/đ/gi, 'd');
+
+    slug = slug.replace(/\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\-|\,|\.|\/|\?|\;|\:|\'|\"|_/gi, '');
+    //  Thay đổi khoảng cách thành '-' 
+    slug = slug.replace(/ /gi, "-");
+
+    //  Phòng trường hợp nhiều khoảng trắng 
+    slug = slug.replace(/\-\-\-\-\-/gi, '-');
+    slug = slug.replace(/\-\-\-\-/gi, '-');
+    slug = slug.replace(/\-\-\-/gi, '-');
+    slug = slug.replace(/\-\-/gi, '-');
+
+    //  Xóa kí tự gạch ngang đầu và cuối 
+    slug = '@' + slug + '@';
+    slug = slug.replace(/\@\-|\-\@|\@/gi, '');
+
+    // In giá trị;
+    $('input#slug').val(slug);
+    })
+</script>
 @endsection

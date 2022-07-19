@@ -17,7 +17,7 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check() && Auth::user()->level ==1){
+        if(Auth::check() && Auth::user()->level ==1 ){
             return $next($request);
             return redirect()->route('admin.index_pages');
         }

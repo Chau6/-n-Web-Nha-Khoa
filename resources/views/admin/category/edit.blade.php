@@ -43,7 +43,11 @@
 
                 <div class="form-group">
                     <label>Category Name</label>
-                    <input type="text" name="name" class="form-control" placeholder="Enter Category Name" value="{{$edit->name}}">
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Enter Category Name" value="{{$edit->name}}">
+                </div>
+                <div class="form-group">
+                    <label>Category Slug</label>
+                    <input type="text" id="slug" name="name" class="form-control" placeholder="Enter Category Name" value="{{$edit->slug}}">
                 </div>
             </div>
             <div class="card-footer">
@@ -59,4 +63,42 @@
         ?>
     </pre> --}}
 </section>
+@endsection
+@section('js')
+    {{-- Slug --}}
+<script type="text/javascript">
+    $('input#name').keyup(function(event){
+
+    var title, slug;
+    //  lấy text từ thẻ input 
+    title = $(this).val();
+
+    slug = title.toLowerCase();
+
+    slug = slug.replace(/á|à|ả|ã|ạ|ă|ắ|ằ|ẳ|ẵ|ặ|â|ầ|ấ|ẩ|ậ|ẫ/gi, 'a');
+    slug = slug.replace(/é|è|ẹ|ẻ|ẽ|ê|ế|ề|ể|ệ|ễ/gi, 'e');
+    slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
+    slug = slug.replace(/o|ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ợ|ỡ/gi, 'o');
+    slug = slug.replace(/u|ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
+    slug = slug.replace(/y|ý|ỷ|ỳ|ỵ|ỹ/gi, 'y');
+    slug = slug.replace(/đ/gi, 'd');
+
+    slug = slug.replace(/\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\-|\,|\.|\/|\?|\;|\:|\'|\"|_/gi, '');
+    //  Thay đổi khoảng cách thành '-' 
+    slug = slug.replace(/ /gi, "-");
+
+    //  Phòng trường hợp nhiều khoảng trắng 
+    slug = slug.replace(/\-\-\-\-\-/gi, '-');
+    slug = slug.replace(/\-\-\-\-/gi, '-');
+    slug = slug.replace(/\-\-\-/gi, '-');
+    slug = slug.replace(/\-\-/gi, '-');
+
+    //  Xóa kí tự gạch ngang đầu và cuối 
+    slug = '@' + slug + '@';
+    slug = slug.replace(/\@\-|\-\@|\@/gi, '');
+
+    // In giá trị;
+    $('input#slug').val(slug);
+    })
+</script>
 @endsection

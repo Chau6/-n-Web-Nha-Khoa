@@ -71,7 +71,7 @@
     $('input#name').keyup(function(event){
 
     var title, slug;
-    {{-- lấy text từ thẻ input --}}
+    //  lấy text từ thẻ input 
     title = $(this).val();
 
     slug = title.toLowerCase();
@@ -85,20 +85,20 @@
     slug = slug.replace(/đ/gi, 'd');
 
     slug = slug.replace(/\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\-|\,|\.|\/|\?|\;|\:|\'|\"|_/gi, '');
-    {{-- Thay đổi khoảng cách thành '-' --}}
+    //  Thay đổi khoảng cách thành '-' 
     slug = slug.replace(/ /gi, "-");
 
-    {{-- Phòng trường hợp nhiều khoảng trắng --}}
+    //  Phòng trường hợp nhiều khoảng trắng 
     slug = slug.replace(/\-\-\-\-\-/gi, '-');
     slug = slug.replace(/\-\-\-\-/gi, '-');
     slug = slug.replace(/\-\-\-/gi, '-');
     slug = slug.replace(/\-\-/gi, '-');
 
-    {{-- Xóa kí tự gạch ngang đầu và cuối --}}
+    //  Xóa kí tự gạch ngang đầu và cuối 
     slug = '@' + slug + '@';
     slug = slug.replace(/\@\-|\-\@|\@/gi, '');
 
-    In giá trị;
+    // In giá trị;
     $('input#slug').val(slug);
     })
 </script>

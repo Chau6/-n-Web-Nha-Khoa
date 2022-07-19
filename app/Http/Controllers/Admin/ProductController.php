@@ -6,13 +6,19 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Product\StoreProduct;
+use App\Http\Requests\Product\StoreUpdateProduct;
 use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
     public function index(){
-        $result = DB::table('products')->get();
-        return view('admin.products.index', ['products' => $result]);
+        $post_result = DB::table('category')
+            ->join('products', 'category.id', '=', 'products.category_id')
+            ->select('category.name as category_name','products.*')
+            ->orderBy('created_at', 'DESC')
+            ->get();
+        
+        return view('admin.products.index', ['products' => $post_result]);
     }
     public function delete($id){
         $result = DB::table('products')->where('id', $id)->delete();
@@ -38,14 +44,15 @@ class ProductController extends Controller
     }
     public function edit($id){
         $edit = DB::table('products')->where('id','=', $id)->first();
-        $data = DB::table('products')->get();
-        return view('admin.products.edit', ['id' => $id, 'products' => $data, 'edit' => $edit]);
+        $category = DB::table('category')->get();
+        
+        return view('admin.products.edit', ['id' => $id, 'categorys' => $category, 'edit' => $edit]);
     }
-    public function update(StoreProduct $request, $id){
+    public function update(StoreUpdateProduct $request, $id){
         $data = $request->except('_token'); //lấy data ngoại trừ
 
         DB::table('products')->where('id','=', $id)->update($data); //rỗng thì giữ nguyên
         
-        return redirect()->route('admin.products.index')->with('success','Edit Successfully') ; //trả về đường dẫn;
+        return redirect()->route('admin.product.index')->with('success','Edit Successfully') ; //trả về đường dẫn;
     }
 }

@@ -21,7 +21,11 @@
         <div class="card-body">
             <div class="form-group">
                 <label for="email">Post Name</label>
-                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
+            </div>
+            <div class="form-group">
+                <label for="email">Slug</label>
+                <input type="text" class="form-control" id="slug" name="slug">
             </div>
 
             <div class="form-group">
@@ -41,9 +45,19 @@
                                 $datas[] = $data;
                             ?>
                         @endif  
-                        <?php recursiveOption($datas,$category->parent_name);?>
-                    @endforeach      
+                    @endforeach    
+                    <?php recursiveOption($datas,0);?>  
                 </select>
+            </div>
+
+            <div class="form-group">
+                <div class="form-group shadow-textarea">
+                    <label for="intro">Intro</label>
+                    <textarea class="form-control z-depth-1" name="intro" id="intro" rows="3" placeholder="Write something here...">{{old('intro')}}</textarea>
+                  </div>
+                  <script>
+                        CKEDITOR.replace('intro');
+                  </script>
             </div>
 
             <div class="form-group">
@@ -74,5 +88,40 @@
 @endsection
 
 @section('js')
-    <script src="{{url('/')}}/js/"></script>
+    {{-- Slug --}}
+<script type="text/javascript">
+    $('input#name').keyup(function(event){
+
+    var title, slug;
+    //  lấy text từ thẻ input 
+    title = $(this).val();
+
+    slug = title.toLowerCase();
+
+    slug = slug.replace(/á|à|ả|ã|ạ|ă|ắ|ằ|ẳ|ẵ|ặ|â|ầ|ấ|ẩ|ậ|ẫ/gi, 'a');
+    slug = slug.replace(/é|è|ẹ|ẻ|ẽ|ê|ế|ề|ể|ệ|ễ/gi, 'e');
+    slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
+    slug = slug.replace(/o|ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ợ|ỡ/gi, 'o');
+    slug = slug.replace(/u|ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
+    slug = slug.replace(/y|ý|ỷ|ỳ|ỵ|ỹ/gi, 'y');
+    slug = slug.replace(/đ/gi, 'd');
+
+    slug = slug.replace(/\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\-|\,|\.|\/|\?|\;|\:|\'|\"|_/gi, '');
+    //  Thay đổi khoảng cách thành '-' 
+    slug = slug.replace(/ /gi, "-");
+
+    //  Phòng trường hợp nhiều khoảng trắng 
+    slug = slug.replace(/\-\-\-\-\-/gi, '-');
+    slug = slug.replace(/\-\-\-\-/gi, '-');
+    slug = slug.replace(/\-\-\-/gi, '-');
+    slug = slug.replace(/\-\-/gi, '-');
+
+    //  Xóa kí tự gạch ngang đầu và cuối 
+    slug = '@' + slug + '@';
+    slug = slug.replace(/\@\-|\-\@|\@/gi, '');
+
+    // In giá trị;
+    $('input#slug').val(slug);
+    })
+</script>
 @endsection

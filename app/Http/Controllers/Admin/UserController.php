@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
@@ -23,6 +24,17 @@ class UserController extends Controller
     }
     public function edit($id){
         $user = DB::table('user')->where('id', $id)->first();
+
+        $edit_myself = null;
+        if (Auth::user()->id == $id) {
+            $edit_myself = true;
+        } else {
+            $edit_myself = false;
+        }
+        if(Auth::user()->id != 1 && ($id == 1 || ($user->level == 1 && $edit_myself == false))){
+            return 'You Cant Edit';
+        };
+
         return view('admin.user.edit',['user'=>$user]);
     }
     public function update(Request $request, $id){
