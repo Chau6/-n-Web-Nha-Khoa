@@ -21,12 +21,13 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('asset/client/images/favicon/apple-touch-icon.png')}}">
     <link rel="icon" type="image/png" href="{{ asset('asset/client/images/favicon/favicon-32x32.png')}}" sizes="32x32">
     <link rel="icon" type="image/png" href="{{ asset('asset/client/images/favicon/favicon-16x16.png')}}" sizes="16x16">
-
+    <script src="{{asset('asset/page/plugins/jquery-validation/jquery.validates.js')}}"></script>
+    <script src="{{asset('asset/page/plugins/jquery-validation/additional-methods.min.js')}}"></script>
     <script src="https://kit.fontawesome.com/36154dd713.js" crossorigin="anonymous"></script>
     <!-- Fixing Internet Explorer-->
     <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <script src="js/html5shiv.js"></script>
     <![endif]-->
-    
+
 </head>

@@ -145,81 +145,147 @@
 
 <!--Start contact form area-->
 
-    <section class="contact-form-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                    <div class="contact-form">
-                        
-                        <div class="contact-title">
-                            <h2>Send Your Message Us</h2>
-                            <p>Dont be shy, Send your message or quiries through below form, our expert team will help you ASAP.</p>
-                        </div>
-                        <form id="contact-form" name="contact_form" class="default-form" action="{{route('client.pages.postcontact')}}" method="post">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="input-box">   
-                                        <input type="text" name="name" value="" placeholder="Your Name*" required="">
-                                    </div>
-                                    <div class="input-box"> 
-                                        <input type="email" name="email" value="" placeholder="Your Mail*" required="">
-                                    </div>
-                                    <div class="input-box"> 
-                                        <input type="text" name="phone" value="" placeholder="Phone">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="input-box">    
-                                        <textarea name="form_message" placeholder="Your Message.." required=""></textarea>
-                                    </div>
-                                    <div class="button-box">
-                                        <input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden" value="">
-                                        <button type="button" class="btn-one" type="submit" data-loading-text="Please wait..." data-toggle="modal" data-target="#modelId">Send Your Message</button>    
-                                    </div>     
-                                </div>
-                            </div>
-                        </form>
+<section class="content">
+    <form action="{{route('client.pages.postcontact')}}" id="checkform" method="POST">
+        <!-- Default box -->
+        @csrf
+        <div class="card">
+        <div class="card-body row">
+            <div class="col-5 text-center d-flex align-items-center justify-content-center">
+            <div class="">
+                <h2>Admin<strong>LTE</strong></h2>
+                <p class="lead mb-5">123 Testing Ave, Testtown, 9876 NA<br>
+                Phone: +1 234 56789012
+                </p>
+            </div>
+            </div>
+            <div class="col-7">
+                @if (Auth::check())
+                    <div class="form-group">
+                        <label for="inputName">Name</label>
+                        <input type="text" name="username" id="inputName" class="form-control" value="{{$customer->first_name}} {{$customer->last_name}}">
+                        @error('username')
+                            <small class="form-text invalid-feedback">{{$message}}</small>
+                        @enderror
                     </div>
+    
+                    <div class="form-group">
+                        <label for="inputEmail">E-Mail</label>
+                        <input type="email" name="email" id="inputEmail" class="form-control" value="{{$customer->email}}" aria-describedby="exampleInputEmail1-error" aria-invalid="true">
+                        <span id="exampleInputEmail1-error" class="error invalid-feedback">Please enter a email address</span></div>
+                        {{-- @error('email')
+                            <small class="form-text invalid-feedback">{{$message}}</small>
+                        @enderror --}}
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="inputSubject">Phone</label>
+                        <input type="phone" id="inputSubject" class="form-control" value="{{$customer->phone}}">
+                        @error('phone')
+                            <small class="form-text invalid-feedback">{{$message}}</small>
+                        @enderror
+                    </div>
+                @else
+                <div class="form-group">
+                    <label for="inputName">Name</label>
+                    <input type="text" name="username" id="inputName" class="form-control">
+                    @error('username')
+                        <small class="form-text invalid-feedback">{{$message}}</small>
+                    @enderror
                 </div>
-                
+
+                <div class="form-group">
+                    <label for="inputEmail">E-Mail</label>
+                    <input type="email" name="email" id="inputEmail" class="form-control">
+                    @error('email')
+                        <small class="form-text invalid-feedback">{{$message}}</small>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="inputSubject">Phone</label>
+                    <input type="text" name="phone" id="inputSubject" class="form-control">
+                    @error('phone')
+                        <small class="form-text invalid-feedback">{{$message}}</small>
+                    @enderror
+                </div>
+                @endif
+
+                <div class="form-group">
+                    <label for="inputMessage">Message</label>
+                    <textarea id="inputMessage" name="message" class="form-control" rows="4"></textarea>
+                    @error('message')
+                        <small class="form-text invalid-feedback">{{$message}}</small>
+                    @enderror
+                </div>
+                <div class="form-group">
+                <input class="btn btn-info btn-lg btn-block" type="submit" style="background: #06e4e472; border: #06e4e472 1px solid" value="Submit">
+                </div>
             </div>
         </div>
-    </section>
+        </div>
+    </form>
+</section>
 
 <!--End contact form area-->
 @endsection
 <!-- Button trigger modal -->
 
-
-<!-- Modal -->
-@if (Session::has('success'))
-    <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                    <div class="modal-header">
-                            <h5 class="modal-title">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                        </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        {{Session::get('success')}}
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-@endif
-
+@section('js')
 <script>
-    $('#exampleModal').on('show.bs.modal', event => {
-        var button = $(event.relatedTarget);
-        var modal = $(this);
-        // Use above variables to manipulate the DOM
-        
+    $(function () {
+      $.validator.setDefaults({
+        submitHandler: function () {
+          return true;
+        }
+      });
+      $('#checkform').validate({
+        rules: {
+          email: {
+            required: true,
+            email: true,
+          },
+          username:{
+            required:true,
+            maxlength: 255,
+          },
+          phone:{
+            number: true,
+            minlength: 8
+          },
+          message:{
+            required:true,
+          }
+        },
+        messages: {
+          email: {
+            required: "Please enter a email address",
+            email: "Please enter a valid email address"
+          },
+          phone:{
+            number: "Please enter number only",
+            minlength: "Phone needs at least 8 characters"
+          },
+          username: {
+            required: "Please enter a name",
+            maxlength: "Your name cannot exceed 255 characters"
+          },
+          message:{
+            required: "Please enter message",
+          }
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+          error.addClass('invalid-feedback');
+          element.closest('.form-group').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+          $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+          $(element).removeClass('is-invalid');
+        }
+      });
     });
 </script>
+@endsection
