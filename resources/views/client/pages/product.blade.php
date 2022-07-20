@@ -106,43 +106,46 @@
 @section('content')
     
 <!--Start services style1 area-->
-<section class="services-style1-area spec-page">
-    <div class="container">
-        <div class="sec-title max-width text-center">
-            <h3>PRODUCT</h3>
-            <h1>Dental Products</h1>
-            <p>Your teeth play an important part in your daily life. It not only helps you to chew and eat your food, but frames your face. Any missing tooth can have a major impact on your quality of life. </p>
+
+<form action="">
+    <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Product</h3>
+          <div class="card-tools">
+          </div>
         </div>
-        
-        <div class="row">
-            <!--Start single solution style1--> 
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-                <div class="single-solution-style1 wow fadeInUp" data-wow-delay="300ms">
-                    <div class="img-holder">
-                        <img src="{{asset('asset/client/images/services/1.jpg')}}" alt="Awesome Image">
-                        <div class="icon-holder">
-                            <div class="inner-content">
-                                <div class="box">
-                                    <span class="icon-teeth-2"></span>
-                                </div>
-                            </div>
-                        </div>   
-                    </div>
-                    <div class="text-holder">
-                        <h3><a href="" style="color: rgba(72, 67, 67, 0.867)">Dental Implants</a></h3>
-                        <p>Denouncing pleasure & praising pain was born and wewill give you a complete account of the system.</p>
-                        <div class="readmore">
-                            <a href="#"><span class="flaticon-next"></span></a>
-                            <div class="overlay-button">
-                                <a href="{{route('client.pages.product_pages')}}">Read More</a>    
-                            </div>
-                        </div>
-                    </div>
-                </div> 
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 table-responsive">
+              <table class="table table-striped">
+                <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Name</td>
+                    <td>Category</td>
+                    <td>Price</td>
+                    <td>Status</td>
+                    <td>Created At</td>
+                </tr>
+                </thead>
+                @foreach ($products as $product)
+                <tbody>
+                    <tr>
+                        <td>{{$loop->iteration}}</td>
+                        <td>{{$product->name}}</td>
+                        <td>{{$product->category_id}}</td>
+                        <td>{{$product->price}}</td>
+                        <td>{{$product->status}}</td>
+                        <td>{{$product->created_at}}</td>
+                    </tr>
+                </tbody>
+                @endforeach
+              </table>
             </div>
+          </div>
             
-        </div> 
+        </div>
     </div>
-</section>
-<!--End services style1 area-->
+  </form>
+
 @endsection
