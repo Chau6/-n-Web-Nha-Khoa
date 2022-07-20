@@ -11,15 +11,15 @@
             <ul>
                 <li>
                     <h5>Address</h5>
-                    <p>Romanian  9520 Faires Farm Road,<br> Carlsbad, NC 28213.</p>
+                    <p>D5 Nguyễn Gia Trí, Phường 25,Bình Thạnh, <br>  Thành phố Hồ Chí Minh, Việt Nam.</p>
                 </li>
                 <li>
                     <h5>Phone</h5>
-                    <p>Phone 1: +1 555-7890-123</p>
+                    <p>Phone 1: 1800 1779<br> Phone 2: (+ 89) 1800 1779.</p>
                 </li>
                 <li>
                     <h5>Email</h5>
-                    <p>supportyou@example.com</p>
+                    <p>khuunhattin123@gmail.com</p>
                 </li>
             </ul>
         </div>       
