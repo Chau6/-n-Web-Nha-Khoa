@@ -37,7 +37,7 @@
                                 ?>
                             @endif
                         @endforeach
-                        <?php recursiveOption($datas,$edit->parent_name);?>
+                        <?php recursiveOptionCate($datas,$edit->parent_name);?>
                     </select>
                 </div>
 

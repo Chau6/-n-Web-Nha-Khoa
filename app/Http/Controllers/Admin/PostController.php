@@ -36,7 +36,7 @@ class PostController extends Controller
         $data['created_at'] = new \DateTime;
 
         DB::table('post')->insert($data);
-        return redirect()->route('admin.post.index'); 
+        return redirect()->route('admin.post.index')->with('success','Insert Successfully'); 
     }
     public function edit($id){
         //run ok 
@@ -48,7 +48,7 @@ class PostController extends Controller
         $data = $request->except('_token');
 
         DB::table('post')->where('id', $id)->update($data);
-        return redirect()->route('admin.post.index');
+        return redirect()->route('admin.post.index')->with('success','Edit Successfully');
     }
 
     public function delete($id){

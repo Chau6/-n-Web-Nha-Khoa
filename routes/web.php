@@ -11,6 +11,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\Login_ClientController;
 use App\Http\Controllers\Register_ClientController;
+use App\Http\Controllers\Admin\DoctorController;
+use App\Http\Controllers\Admin\DoctorTimeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -122,6 +124,34 @@ Route::middleware('admin', 'login')->group(function(){
             /** Delete post */
             Route::get('delete/{id}', [PostController::class, 'delete'])->name('delete')->where('id','[0-9]+');
         });
+
+        //Doctor
+        Route::prefix('doctor')->name('doctor.')->group(function(){
+            /** Show list of Doctor */
+            Route::get('index', [DoctorController::class, 'index'])->name('index');
+            /** Create Doctor */
+            Route::get('create', [DoctorController::class, 'create'])->name('create'); //Show form to create doctor
+            Route::post('store', [DoctorController::class, 'store'])->name('store'); //set action in form to create doctor
+            /** Edit Doctor */
+            Route::get('edit/{id}', [DoctorController::class, 'edit'])->name('edit')->where('id','[0-9]+'); //Show form to edit doctor
+            Route::post('update/{id}', [DoctorController::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update doctor
+            /** Delete Doctor */
+            Route::get('delete/{id}', [DoctorController::class, 'delete'])->name('delete')->where('id','[0-9]+');
+        });
+
+        //Doctor_Time
+        Route::prefix('doctor_time')->name('doctor_time.')->group(function(){
+            /** Show list of Doctor */
+            Route::get('index', [DoctorTimeController::class, 'index'])->name('index');
+            /** Create Doctor */
+            Route::get('create', [DoctorTimeController::class, 'create'])->name('create'); //Show form to create doctor
+            Route::post('store', [DoctorTimeController::class, 'store'])->name('store'); //set action in form to create doctor
+            /** Edit Doctor */
+            Route::get('edit/{id}', [DoctorTimeController::class, 'edit'])->name('edit')->where('id','[0-9]+'); //Show form to edit doctor
+            Route::post('update/{id}', [DoctorTimeController::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update doctor
+            /** Delete Doctor */
+            Route::get('delete/{id}', [DoctorTimeController::class, 'delete'])->name('delete')->where('id','[0-9]+');
+        });
     });
 });
 
@@ -138,14 +168,29 @@ Route::prefix('client')->name('client.')->group(function(){
         Route::get('about', [HomeController::class, 'about'])->name('about');
         Route::get('blog', [HomeController::class, 'blog'])->name('blog');
         Route::get('contact', [HomeController::class, 'contact'])->name('contact');
-        Route::get('doctors', [HomeController::class, 'doctors'])->name('doctors')->middleware('login');
-        Route::get('product', [HomeController::class, 'product'])->name('product');
         Route::get('specialities', [HomeController::class, 'specialities'])->name('specialities');
         Route::get('faqs', [HomeController::class, 'faqs'])->name('faqs');
-        Route::get('appointment', [HomeController::class, 'appointment'])->name('appointment')->middleware('login');
         Route::get('rating', [HomeController::class, 'rating'])->name('rating');
-        Route::get('product_pages', [HomeController::class, 'product_pages'])->name('product_pages');
-        Route::get('information_client', [HomeController::class, 'information_client'])->name('information_client');
         
+        // Update Information User
+        Route::get('information_client', [HomeController::class, 'information_client'])->name('information_client');
+
+        // Doctor
+        Route::get('doctors', [HomeController::class, 'doctors'])->name('doctors')->middleware('login');
+        // Appointment 
+        Route::get('appointment', [HomeController::class, 'appointment'])->name('appointment')->middleware('login');
+
+        // Product
+        Route::get('product', [HomeController::class, 'product'])->name('product');
+        // Health Screening
+        Route::get('post', [HomeController::class, 'health_screening'])->name('health_screening');
+
+        // Path
+        Route::get('health_screening/{slug}', [HomeController::class, 'post_pages'])->name('post_pages');
+        Route::get('product/{slug}', [HomeController::class, 'product_pages'])->name('product_pages');
+
+        Route::get('health_screening/{slug}/{slug_infor}', [HomeController::class, 'post_infor'])->name('post_infor');
+        Route::get('product/{slug}/{slug_infor}', [HomeController::class, 'product_infor'])->name('product_infor');
+
     });
 });

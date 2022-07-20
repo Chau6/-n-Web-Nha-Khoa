@@ -14,7 +14,7 @@
                         <div class="navbar-collapse collapse clearfix">
                             <ul class="navigation clearfix">
                                 <li id="about_us"><a href="{{route('client.pages.about')}}">About Us</a></li>
-                                <li class="dropdown" id="health_screening"><a href="{{route('client.pages.specialities')}}">Health Screening</a>
+                                <li class="dropdown" id="health_screening"><a href="{{route('client.pages.health_screening')}}">Health Screening</a>
                                     <ul>
                                         <li><a href="{{ route('client.pages.advice') }}">Advice</a></li>
                                         <li><a href="">Care Services</a></li>

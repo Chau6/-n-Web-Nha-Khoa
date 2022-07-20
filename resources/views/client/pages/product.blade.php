@@ -1,80 +1,4 @@
 @extends('client.master') 
-  
-{{-- @section('main_menu')
-<section class="mainmenu-area stricky">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="inner-content clearfix">
-                    <nav class="main-menu style1 clearfix">
-                        <div class="navbar-header clearfix">   	
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <div class="navbar-collapse collapse clearfix">
-                            <ul class="navigation clearfix">
-                                <li><a href="{{route('client.pages.about')}}">About Us</a></li>
-                                <li class="dropdown"><a href="{{route('client.pages.specialities')}}">Health Screening</a>
-                                    <ul>
-                                        <li><a href="{{ route('client.pages.advice') }}">Advice</a></li>
-                                        <li><a href="">Care Services</a></li>
-                                        <li><a href="{{route('client.pages.product')}}">Support Products</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown"><a href="{{route('client.pages.product')}}">Products</a>
-                                    <ul>
-                                        <li><a href="{{ route('client.pages.advice') }}">Advice</a></li>
-                                        <li><a href="">Toothbrushes</a></li>
-                                        <li><a href="">Toothpaste</a></li>
-                                        <li><a href="">Dental floss</a></li>
-                                        <li><a href="">Face mask</a></li>
-                                        <li><a href="">Dental picks and sticks</a></li>
-                                        <li><a href="">Tongue scrapers</a></li>
-                                        <li><a href="">Oral medicine</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="{{route('client.pages.doctors')}}">Doctors</a></li>
-                                <li class="dropdown"><a href="{{route('client.pages.blog')}}">Blog</a>
-                                    <ul>
-                                        <li><a href="blog.html">Blog Default</a></li>
-                                        <li><a href="blog-large.html">Blog Large Image</a></li>
-                                        <li><a href="blog-single.html">Blog Single Post</a></li>
-                                    </ul>
-                                </li>
-                                
-                                <li><a href="{{route('client.pages.contact')}}">Contact</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-                    
-                    <div class="mainmenu-right">
-                        <div class="search-box-style1">
-                            <form class="search-form" method="post" action="http://st.ourhtmldemo.com/new/Dento/index.html">
-                                <input type="search" name="search" placeholder="Search..." required>
-                                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                            </form>        
-                        </div>
-                        <div class="toggler-button">
-                            <div class="nav-toggler hidden-bar-opener">
-                                <div class="inner">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                            </div>    
-                        </div>
-                    </div> 
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</section> 
-@endsection --}}
-
 
 @section('breadcrumb')
 <!--Start breadcrumb area-->     
@@ -114,36 +38,39 @@
           <div class="card-tools">
           </div>
         </div>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-12 table-responsive">
-              <table class="table table-striped">
-                <thead>
-                <tr>
-                    <td>ID</td>
-                    <td>Name</td>
-                    <td>Category</td>
-                    <td>Price</td>
-                    <td>Status</td>
-                    <td>Created At</td>
-                </tr>
-                </thead>
-                @foreach ($products as $product)
-                <tbody>
-                    <tr>
-                        <td>{{$loop->iteration}}</td>
-                        <td>{{$product->name}}</td>
-                        <td>{{$product->category_id}}</td>
-                        <td>{{$product->price}}</td>
-                        <td>{{$product->status}}</td>
-                        <td>{{$product->created_at}}</td>
-                    </tr>
-                </tbody>
-                @endforeach
-              </table>
-            </div>
-          </div>
+        
+        <div class="row">
             
+            @foreach ($products as $product)
+                @if ($product->parent_name == 1)
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                    <div class="single-solution-style1 wow fadeInUp" data-wow-delay="300ms">
+                        <div class="img-holder">
+                            <img src="" alt="Awesome Image">
+                            <div class="icon-holder">
+                                <div class="inner-content">
+                                    <div class="box">
+                                        <span class="icon-teeth-2"></span>
+                                    </div>
+                                </div>
+                            </div>   
+                        </div>
+                        <div class="text-holder">
+                            <h3><a href="" style="color: rgba(72, 67, 67, 0.867)">{{$product->name}}</a></h3>
+                            <p></p>
+                            <div class="readmore">
+                                <a href="#"><span class="flaticon-next"></span></a>
+                                <div class="overlay-button">
+                                    <a href="{{route('client.pages.product_pages', ['slug'=>$product->slug])}}">Read More</a>    
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                @endif
+            @endforeach
+            <!--Start single solution style1--> 
+                        
         </div>
     </div>
   </form>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -34,10 +35,66 @@ class HomeController extends Controller
         return view('client.pages.doctors');
     }
 
+    // Product 
     public function product(){
-        return view('client.pages.product');
+        $category = DB::table('category')->get();
+        return view('client.pages.product',['products' => $category]);
     }
 
+    // Post
+    public function health_screening(){
+        $category = DB::table('category')->get();
+        return view('client.pages.post',['posts' => $category]);
+    }
+    
+    // Path Product
+    public function product_pages($slug){
+        $product = DB::table('category')
+            ->join('products', 'category.id', '=', 'products.category_id')
+            ->select('category.name as category_name','products.*')
+            ->where('category.slug',$slug)
+            ->where('products.status', 1)
+            ->orderBy('created_at', 'DESC')
+            ->get();
+        $category = DB::table('category')->where('slug',$slug)->first();
+        return view('client.pages.product_pages', ['models'=>$product, 'category'=>$category]);
+    }
+    // Path Product Detail
+    public function product_infor($slug, $slug_infor){
+        $product = DB::table('category')
+            ->join('products', 'category.id', '=', 'products.category_id')
+            ->select('category.name as category_name','products.*')
+            ->where('category.slug',$slug)
+            ->where('products.status', 1)
+            ->orderBy('created_at', 'DESC')
+            ->get();
+            return view('client.pages.product_infor',['models'=>$product]);
+    }
+
+    // Path Post
+    public function post_pages($slug){
+        $post = DB::table('category')
+            ->join('post', 'category.id', '=', 'post.category_id')
+            ->select('category.name as category_name','post.*')
+            ->where('category.slug',$slug)
+            ->where('post.status', 1)
+            ->orderBy('created_at', 'DESC')
+            ->get();
+        $category = DB::table('category')->where('slug',$slug)->first();
+        return view('client.pages.post_pages', ['models'=>$post, 'category'=>$category]);
+    }   
+    // Path Post Detail
+    public function post_infor($slug, $slug_infor){
+        $post = DB::table('category')
+            ->join('post', 'category.id', '=', 'post.category_id')
+            ->select('category.name as category_name','post.*')
+            ->where('category.slug',$slug)
+            ->where('post.status', 1)
+            ->orderBy('created_at', 'DESC')
+            ->get();
+            return view('client.pages.post_infor',['posts'=>$post]);
+    }
+    
     public function contact(){
         return view('client.pages.contact');
     }
@@ -56,7 +113,5 @@ class HomeController extends Controller
     public function rating(){
         return view('client.pages.rating');
     }
-    public function product_pages(){
-        return view('client.pages.product_pages');
-    }
+    
 }
