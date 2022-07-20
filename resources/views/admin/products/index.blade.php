@@ -39,7 +39,7 @@
                     <td>
                         <div class="media">
                             <a href="pull-left" href="">
-                                <img class="media-object" src="#" alt="Image">
+                                <img class="media-object" src="{{ asset('images/'.$product->images)}}" width="50px" height="70px">
                             </a>
                             <div class="media-body">
                               <h4 class="media-heading">{{$product->name}}</h4>
