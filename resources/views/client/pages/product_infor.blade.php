@@ -34,6 +34,7 @@
                                 <!-- Parent comment-->
                                 <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..."></div>
                                 <div class="ms-3">
+                                    <div id="rateYo"></div>
                                     <div class="fw-bold">Commenter Name</div>
                                     If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.
                                     <!-- Child comment 1-->
@@ -112,4 +113,22 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('css')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+@endsection
+
+@section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+<script>
+//Make sure that the dom is ready
+$(function () {
+ 
+ $("#rateYo").rateYo({
+   rating: 3.6
+ });
+
+});
+</script>
 @endsection
