@@ -32,7 +32,7 @@ class UserController extends Controller
             $edit_myself = false;
         }
         if(Auth::user()->id != 1 && ($id == 1 || ($user->level == 1 && $edit_myself == false))){
-            return 'You Cant Edit';
+            return redirect()->route('admin.user.index')->with('error', 'You Cant Edit');
         };
 
         return view('admin.user.edit',['user'=>$user]);
@@ -43,7 +43,11 @@ class UserController extends Controller
         return redirect()->route('admin.user.index')->with('success','Edit Successfully');
     }
     public function delete($id){
+        $user = DB::table('user')->where('id', $id)->first();
+        if(($id == 1) || (Auth::user()->id != 1 && $user->level == 1)){
+            return redirect()->route('admin.user.index')->with('error', 'You Cant Delete');
+        }
         DB::table('user')->where('id',$id)->delete();
-        return redirect()->route('admin.user.index');
+        return redirect()->route('admin.user.index')->with('success', 'Delete Success');
     }
 }
