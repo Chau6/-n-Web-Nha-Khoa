@@ -3,24 +3,24 @@
 @section('content')
 <div class="container mt-5">
     <div class="row">
-        @foreach ($models as $model)
-            @if ($model->status == 1)
+        @foreach ($posts as $post)
+            @if ($post->status == 1)
             <div class="col-lg-8">
                 <!-- Post content-->
                 <article>
                     <!-- Post header-->
                     <header class="mb-4">
                         <!-- Post title-->
-                        <h1 class="fw-bolder mb-1">{{$model->name}}</h1>
+                        <h1 class="fw-bolder mb-1">{{$post->name}}</h1>
                         <!-- Post meta content-->
-                        <div class="text-muted fst-italic mb-2">Posted on {{date('d m,Y', strtotime($model->created_at))}} by Belleville Dental</div>
+                        <div class="text-muted fst-italic mb-2">Posted on {{date('d m,Y', strtotime($post->created_at))}} by Belleville Dental</div>
                         <!-- Post categories-->
                     </header>
                     <!-- Preview image figure-->
                     <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..."></figure>
                     <!-- Post content-->
                     <section class="mb-5">
-                        <p>{!!$model->content!!}</p>
+                        <p>{!!$post->content!!}</p>
                     </section>
                 </article>
                 <!-- Comments section-->
