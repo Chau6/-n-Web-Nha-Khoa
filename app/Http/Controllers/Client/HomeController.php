@@ -94,10 +94,6 @@ class HomeController extends Controller
             ->get();
             return view('client.pages.post_infor',['posts'=>$post]);
     }
-    
-    public function contact(){
-        return view('client.pages.contact');
-    }
 
     public function faqs(){
         return view('client.pages.faqs');
