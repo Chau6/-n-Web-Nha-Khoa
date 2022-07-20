@@ -93,7 +93,7 @@ return [
 
     'from' => [
         'address' => 'khuunhattin13@gmail.com',
-        'name' => 'Demo Login',
+        'name' => 'Belleville Dental',
     ],
 
     /*

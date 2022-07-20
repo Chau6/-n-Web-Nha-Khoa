@@ -45,7 +45,6 @@
                                     <select class="selectmenu area_select">
                                         <option value="1">Viet Nam</option>
                                         <option value="2">India</option>
-                                        <option value="3">Pakistan</option>
                                     </select>
                                     <div class="state-content">
                                         <div class="state" id="value1">
@@ -92,28 +91,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="state" id="value3">
-                                            <ul>
-                                                <li>
-                                                    <div class="text">
-                                                        <h5>Address</h5>
-                                                        <p>Romanian  9520 Faires Farm Road,<br> Carlsbad, NC 28213, San Francisco.</p>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="text">
-                                                        <h5>Phone</h5>
-                                                        <p>Phone 1: +1 555-7890-123<br> Phone 2: (+ 760) 987-65-43210.</p>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="text">
-                                                        <h5>Email</h5>
-                                                        <p>supportyou@example.com</p>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                        
                                     </div>   
                                 </div>
                             </div>
@@ -153,9 +131,9 @@
         <div class="card-body row">
             <div class="col-5 text-center d-flex align-items-center justify-content-center">
             <div class="">
-                <h2>Admin<strong>LTE</strong></h2>
-                <p class="lead mb-5">123 Testing Ave, Testtown, 9876 NA<br>
-                Phone: +1 234 56789012
+                <h2>Belleville<strong> Dental</strong></h2>
+                <p class="lead mb-5"><p>D5 Nguyễn Gia Trí, Phường 25,Bình Thạnh, <br>Thành phố Hồ Chí Minh, Việt Nam.</p><br>
+                Phone: +1 1800 1779
                 </p>
             </div>
             </div>
