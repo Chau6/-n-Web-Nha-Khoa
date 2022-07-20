@@ -2,12 +2,16 @@
 
 @section('content')
 @if (Session::has('success') )
-
   <div class="alert alert-success alert-block">
       <button type="button" class="close" data-dismiss="alert">x</button>
           <strong>{{ Session::get('success') }}</strong>
   </div>
-
+@endif
+@if (Session::has('error') )
+  <div class="alert alert-danger ">
+      <button type="button" class="close" data-dismiss="alert">x</button>
+          <strong>{{ Session::get('error') }}</strong>
+  </div>
 @endif
 <form action="">
     <div class="card">
@@ -39,7 +43,7 @@
                     <td>
                         <div class="media">
                             <a href="pull-left" href="">
-                                <img class="media-object" src="#" alt="Image">
+                                <img class="media-object" src="{{ asset('images/'.$product->images)}}" width="50px" height="70px">
                             </a>
                             <div class="media-body">
                               <h4 class="media-heading">{{$product->name}}</h4>

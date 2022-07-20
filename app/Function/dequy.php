@@ -86,32 +86,4 @@ function recursiveOptionDocTime ($data,$selected,$parent_name = 1) { //đệ quy
     }
 }
 
-function recursiveOptionPostb ($data,$selected,$category_id = 0,$str = "") { //đệ quy thể loại cha
-    foreach ($data as $key => $value) {
-        if ($value["category_id"] == $category_id) {
-            $selected_option = '';
-            if ($value["id"] == $selected) {
-                $selected_option = "selected";
-            }
-            echo '<option value="'.$value["id"].'" '.$selected_option.'>'.$str.$value["name"].'</option>';
-            unset($data[$key]);
-            recursiveOptionPostb ($data,$selected,$value["id"],$str."---| ");
-        }
-    }
-}
-
-function recursiveTablePostb ($data,$category_id = 0,$str = "") { //hiển thị danh sách thể loại
-    foreach ($data as $key => $value) {
-        if ($value["category_id"] == $category_id) {
-            echo '
-            <tr>
-                <td>'.$str.$value["name"].'</td>
-                <td><a onClick="return deleteConfirm()" href="http://127.0.0.1:8000/admin/product/delete/'.$value['id'].'">Xóa</a></td>
-                <td><a href="http://127.0.0.1:8000/admin/product/edit/'.$value['id'].'">Sửa</a></td>
-            </tr>';
-            unset($data[$key]);
-            recursiveTablePostb ($data,$value["id"],$str."---| ");
-        }
-    } 
-}
 ?>

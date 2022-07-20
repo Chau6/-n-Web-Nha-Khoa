@@ -1,14 +1,16 @@
 @extends('admin.master')
 
 @section('content')
-@if (Session::has('success'))
+@if (Session::has('success') )
   <div class="alert alert-success alert-block">
-      <strong>{{Session::get('success')}}</strong>
+      <button type="button" class="close" data-dismiss="alert">x</button>
+          <strong>{{ Session::get('success') }}</strong>
   </div>
 @endif
-@if (Session::has('error'))
-  <div class="alert alert-error">
-      <strong>{{Session::get('error')}}</strong>
+@if (Session::has('error') )
+  <div class="alert alert-danger ">
+      <button type="button" class="close" data-dismiss="alert">x</button>
+          <strong>{{ Session::get('error') }}</strong>
   </div>
 @endif
 <form action="">
@@ -75,7 +77,7 @@
 
                     <td><a href="{{ route('admin.doctor_time.edit', ['id'=>$doctor_time->id]) }}">Edit</td>
 
-                    <td><a onclick="return confirmDelete()" href="{{ route('admin.doctor_time.delete', ['id'=>$doctor_time->id]) }}">Delete</td>
+                    <td><a onclick="return deleteConfirm()" href="{{ route('admin.doctor_time.delete', ['id'=>$doctor_time->id]) }}">Delete</td>
                 </tr>            
                 </tbody>
                 @endforeach

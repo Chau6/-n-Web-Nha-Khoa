@@ -27,7 +27,7 @@ class PostController extends Controller
     }
 
     public function create(){
-        $result = DB::table('category')->orderBy('created_at', 'DESC')->get();
+        $result = DB::table('category')->orderBy('id')->get();
         return view('admin.post.create',['categorys'=>$result]);
     }
     public function store(PostRequest $request){

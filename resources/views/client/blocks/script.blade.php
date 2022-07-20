@@ -13,6 +13,10 @@
 <script src="{{ asset('asset/client/js/owl.js')}}"></script>
 <!-- validate -->
 <script src="{{ asset('asset/client/js/validation.js')}}"></script>
+<script src="{{ asset('asset/pages/plugins/jquery-validation/jquery.validate.js')}}"></script>
+<script src="{{ asset('asset/pages/plugins/jquery-validation/additional-methods.min.js')}}"></script>
+<script src="{{ asset('asset/pages/plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{ asset('asset/pages/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- mixit up -->
 <script src="{{ asset('asset/client/js/jquery.mixitup.min.js')}}"></script>
 <!-- isotope script-->
@@ -73,7 +77,7 @@
         });
 </script>
 
-{{-- Jquerry --}}
+{{-- Jquerry Validate Contact--}}
 
 <!-- thm custom script -->
 <script src="{{ asset('asset/client/js/custom.js')}}"></script>

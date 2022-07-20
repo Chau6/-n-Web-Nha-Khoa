@@ -10,6 +10,7 @@
     </script>
 <!-- Mirrored from st.ourhtmldemo.com/new/Dento/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 05 Jan 2021 02:04:57 GMT -->
     @include('client.blocks.head')
+    @yield('css')
 
 <body>
 <div class="boxed_wrapper">
@@ -64,6 +65,6 @@
 
 
 </body>
-
+    @yield('js')
 <!-- Mirrored from st.ourhtmldemo.com/new/Dento/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 05 Jan 2021 02:04:57 GMT -->
 </html>
