@@ -24,6 +24,7 @@
 @endsection
 
 @section('content')
+
     <!--Start Contact info map area-->
 <section class="contact-info-map-area">
     <div class="container">
@@ -143,45 +144,82 @@
 <!--End Contact info map area-->      
 
 <!--Start contact form area-->
-<section class="contact-form-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                <div class="contact-form">
-                    <div class="contact-title">
-                        <h2>Send Your Message Us</h2>
-                        <p>Dont be shy, Send your message or quiries through below form, our expert team will help you ASAP.</p>
-                    </div>
-                    <form id="contact-form" name="contact_form" class="default-form" action="http://st.ourhtmldemo.com/new/Dento/inc/sendmail.php" method="post">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="input-box">   
-                                    <input type="text" name="name" value="" placeholder="Your Name*" required="">
-                                </div>
-                                <div class="input-box"> 
-                                    <input type="email" name="form_email" value="" placeholder="Your Mail*" required="">
-                                </div>
-                                <div class="input-box"> 
-                                    <input type="text" name="form_phone" value="" placeholder="Phone">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="input-box">    
-                                    <textarea name="form_message" placeholder="Your Message.." required=""></textarea>
-                                </div>
-                                <div class="button-box">
-                                    <input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden" value="">
-                                    <button class="btn-one" type="submit" data-loading-text="Please wait...">Send Your Message</button>    
-                                </div>     
-                            </div>
+
+    <section class="contact-form-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="contact-form">
+                        
+                        <div class="contact-title">
+                            <h2>Send Your Message Us</h2>
+                            <p>Dont be shy, Send your message or quiries through below form, our expert team will help you ASAP.</p>
                         </div>
-                    </form>
+                        <form id="contact-form" name="contact_form" class="default-form" action="{{route('client.pages.postcontact')}}" method="post">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="input-box">   
+                                        <input type="text" name="name" value="" placeholder="Your Name*" required="">
+                                    </div>
+                                    <div class="input-box"> 
+                                        <input type="email" name="email" value="" placeholder="Your Mail*" required="">
+                                    </div>
+                                    <div class="input-box"> 
+                                        <input type="text" name="phone" value="" placeholder="Phone">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-box">    
+                                        <textarea name="form_message" placeholder="Your Message.." required=""></textarea>
+                                    </div>
+                                    <div class="button-box">
+                                        <input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden" value="">
+                                        <button type="button" class="btn-one" type="submit" data-loading-text="Please wait..." data-toggle="modal" data-target="#modelId">Send Your Message</button>    
+                                    </div>     
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+                
             </div>
-            
         </div>
-    </div>
-</section>
+    </section>
+
 <!--End contact form area-->
 @endsection
+<!-- Button trigger modal -->
 
+
+<!-- Modal -->
+@if (Session::has('success'))
+    <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                    <div class="modal-header">
+                            <h5 class="modal-title">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                        </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        {{Session::get('success')}}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+@endif
+
+<script>
+    $('#exampleModal').on('show.bs.modal', event => {
+        var button = $(event.relatedTarget);
+        var modal = $(this);
+        // Use above variables to manipulate the DOM
+        
+    });
+</script>

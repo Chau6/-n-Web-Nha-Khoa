@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\IndexPageController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Client\ContactController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\Login_ClientController;
@@ -167,8 +168,9 @@ Route::prefix('client')->name('client.')->group(function(){
         Route::get('index', [HomeController::class, 'index'])->name('index');
         Route::get('about', [HomeController::class, 'about'])->name('about');
         Route::get('blog', [HomeController::class, 'blog'])->name('blog');
+        
         // Contact 
-        Route::get('contact', [ContactController::class, 'getcontact'])->name('getcontact');
+        Route::get('contact', [ContactController::class, 'getcontact'])->name('contact');
         Route::post('contact', [ContactController::class, 'postcontact'])->name('postcontact');
 
         Route::get('specialities', [HomeController::class, 'specialities'])->name('specialities');
