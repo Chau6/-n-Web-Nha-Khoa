@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('price');
             $table->string('images');
             $table->tinyInteger('status')->default('0');
+            $table->integer('view')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('category');
             $table->timestamps();
