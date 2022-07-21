@@ -71,11 +71,12 @@
                     <label>Product Price</label>
                     <input type="money" name="price" class="form-control" placeholder="Enter Price" value="{{old('price')}}">
                 </div>
-        
-                <div class="form-group">
-                    <label>Product Image</label>
-                    <input type="file" name="images" value="{{old('price')}}">
-                </div>
+
+                <div  >
+                    <label>Product Images</label>
+                    <input type="file" name="filename[]" >
+                      <button  type="button"><i ></i>Add</button>
+                  </div>
         
                 <div class="form-group">
                     <div class="custom-control custom-switch">
@@ -138,5 +139,18 @@
     // In giá trị;
     $('input#slug').val(slug);
     })
+
+    $(document).ready(function() {
+
+$(".btn-success").click(function(){ 
+    var html = $(".clone").html();
+    $(".increment").after(html);
+});
+
+$("body").on("click",".btn-danger",function(){ 
+    $(this).parents(".control-group").remove();
+});
+
+});
 </script>
 @endsection

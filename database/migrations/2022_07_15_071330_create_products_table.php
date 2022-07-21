@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('intro');
             $table->string('content');
             $table->integer('price');
-            $table->string('images');
+            $table->string('filename');
             $table->tinyInteger('status')->default('0');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('category');

@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Product\StoreProduct;
 use App\Http\Requests\Product\StoreUpdateProduct;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Products;
+
 
 class ProductController extends Controller
 {
@@ -33,10 +35,27 @@ class ProductController extends Controller
         $data = $request->except('_token'); //loại trừ thằng _token ra; only chỉ hiển thị cái mình cho phép; get lấy hết
         $data['created_at'] = new \DateTime(); //insert datetime
 
-        $imagesName = time().'.'.$request->images->extension();
+        $this->validate($request, [
+            'filename' => 'required',
+            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+        if($request->hasfile('filename'))
+        {
+
+           foreach($request->file('filename') as $image)
+           {
+               $name=$image->getClientOriginalName();
+               $image->move(public_path().'/images/', $name);  
+               $data[] = $name;  
+           }
+        }
+
+        $form= new Products();
+        $form->filename=json_encode($data);
         
-        $request->images->move(public_path('images'), $imagesName);
-        $data['images'] = $imagesName;
+       
+       $form->save();
+
         
         DB::table('products')->insert($data); //câu lệnh insert 
 
