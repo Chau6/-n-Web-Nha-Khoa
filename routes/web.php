@@ -187,7 +187,11 @@ Route::prefix('client')->name('client.')->group(function(){
         // Appointment 
         Route::get('appointment', [HomeController::class, 'appointment'])->name('appointment')->middleware('login');
 
+        // Rating
         Route::post('rating', [HomeController::class, 'rating'])->name('rating');
+        // Comment
+        Route::post('rating', [HomeController::class, 'rating'])->name('rating');
+
 
         // Product
         Route::get('product', [HomeController::class, 'product'])->name('product');

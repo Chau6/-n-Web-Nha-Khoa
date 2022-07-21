@@ -65,14 +65,18 @@ class HomeController extends Controller
     public function product_infor($id, $slug, $slug_infor){
         $product = DB::table('category')
             ->join('products', 'category.id', '=', 'products.category_id')
-            ->select('category.name as category_name','products.*')
+            ->select('category.name as category_name','products.*', 'products.id as pr_id')
             ->where('category.slug',$slug)
             ->where('products.status', 1)
             ->orderBy('created_at', 'DESC')
             ->get();
+        
+        $data_product = DB::table('comment')->where('product_id', $id)->first();
+        // dd($data_product);
         $userRating = DB::table('rating')->selectRaw("count(case when product_id = $id then 1 end) as user_id")->first();
         $ratingAvg = DB::table('rating')->where('product_id', $id)->avg('rating');
-        return view('client.pages.product_infor',['models'=>$product, 'ratingAvg'=>$ratingAvg, 'userRating'=>$userRating]);
+        DB::table('products')->where('id',$id)->increment('view');
+        return view('client.pages.product_infor',['models'=>$product, 'ratingAvg'=>$ratingAvg, 'userRating'=>$userRating, 'product'=>$data_product]);
     }
 
     // Path Post
