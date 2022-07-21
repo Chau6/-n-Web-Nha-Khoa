@@ -27,7 +27,7 @@ use App\Http\Controllers\Admin\DoctorTimeController;
 */
 
 
-Route::get('/', [Login_ClientController::class, 'getLoginClient'])->name('getLoginClient');
+
 
 Route::get('logout', [LoginController::class, 'getLogout'])->name('getLogout');
 Route::get('logout_client', [Login_ClientController::class, 'getLogoutClient'])->name('getLogoutClient');
@@ -159,10 +159,12 @@ Route::middleware('admin', 'login')->group(function(){
 
 
 //====================Client=====================
+Route::get('/', [HomeController::class, 'index'])->name('index');
 
 Route::prefix('client')->name('client.')->group(function(){
     Route::prefix('pages')->name('pages.')->group(function(){
     //==========index
+       
         Route::get('advice', [HomeController::class, 'advice'])->name('advice');
         Route::get('danh_rang', [HomeController::class, 'danh_rang'])->name('danh_rang');
         Route::get('index', [HomeController::class, 'index'])->name('index');
@@ -185,6 +187,8 @@ Route::prefix('client')->name('client.')->group(function(){
         // Appointment 
         Route::get('appointment', [HomeController::class, 'appointment'])->name('appointment')->middleware('login');
 
+        Route::post('rating', [HomeController::class, 'rating'])->name('rating');
+
         // Product
         Route::get('product', [HomeController::class, 'product'])->name('product');
         // Health Screening
@@ -195,7 +199,8 @@ Route::prefix('client')->name('client.')->group(function(){
         Route::get('product/{slug}', [HomeController::class, 'product_pages'])->name('product_pages');
 
         Route::get('health_screening/{slug}/{slug_infor}', [HomeController::class, 'post_infor'])->name('post_infor');
-        Route::get('product/{slug}/{slug_infor}', [HomeController::class, 'product_infor'])->name('product_infor');
+        Route::get('product/{id}/{slug}/{slug_infor}', [HomeController::class, 'product_infor'])->name('product_infor');
 
+        
     });
 });
