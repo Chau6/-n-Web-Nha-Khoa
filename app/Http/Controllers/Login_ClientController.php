@@ -43,7 +43,7 @@ class Login_ClientController extends Controller
     public function getLogoutClient(Request $request){
         Auth::logout();
  
-        return redirect()->route('client.pages.index');
+        return redirect()->back();
     }
 
     public function send_mail_pass(){

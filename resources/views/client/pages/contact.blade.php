@@ -139,6 +139,7 @@
             </div>
             <div class="col-7">
                 @if (Auth::check())
+                    <!-- Name -->
                     <div class="form-group">
                         <label for="inputName">Name</label>
                         <input type="text" name="username" id="inputName" class="form-control" value="{{$customer->first_name}} {{$customer->last_name}}">
@@ -146,16 +147,16 @@
                             <small class="form-text invalid-feedback">{{$message}}</small>
                         @enderror
                     </div>
-    
+                    <!-- Email -->
                     <div class="form-group">
                         <label for="inputEmail">E-Mail</label>
                         <input type="email" name="email" id="inputEmail" class="form-control" value="{{$customer->email}}" aria-describedby="exampleInputEmail1-error" aria-invalid="true">
-                        <span id="exampleInputEmail1-error" class="error invalid-feedback">Please enter a email address</span></div>
+                        <span id="exampleInputEmail1-error" class="error invalid-feedback">Please enter a email address</span>
+                    </div>
                         {{-- @error('email')
                             <small class="form-text invalid-feedback">{{$message}}</small>
                         @enderror --}}
-                    </div>
-    
+                    <!-- Phone -->
                     <div class="form-group">
                         <label for="inputSubject">Phone</label>
                         <input type="phone" id="inputSubject" class="form-control" value="{{$customer->phone}}">
@@ -163,44 +164,45 @@
                             <small class="form-text invalid-feedback">{{$message}}</small>
                         @enderror
                     </div>
-                @else
-                <div class="form-group">
-                    <label for="inputName">Name</label>
-                    <input type="text" name="username" id="inputName" class="form-control">
-                    @error('username')
-                        <small class="form-text invalid-feedback">{{$message}}</small>
-                    @enderror
-                </div>
 
-                <div class="form-group">
-                    <label for="inputEmail">E-Mail</label>
-                    <input type="email" name="email" id="inputEmail" class="form-control">
-                    @error('email')
-                        <small class="form-text invalid-feedback">{{$message}}</small>
-                    @enderror
-                </div>
+                    @else
+                    <div class="form-group">
+                        <label for="inputName">Name</label>
+                        <input type="text" name="username" id="inputName" class="form-control">
+                        @error('username')
+                            <small class="form-text invalid-feedback">{{$message}}</small>
+                        @enderror
+                    </div>
 
-                <div class="form-group">
-                    <label for="inputSubject">Phone</label>
-                    <input type="text" name="phone" id="inputSubject" class="form-control">
-                    @error('phone')
-                        <small class="form-text invalid-feedback">{{$message}}</small>
-                    @enderror
-                </div>
-                @endif
+                    <div class="form-group">
+                        <label for="inputEmail">E-Mail</label>
+                        <input type="email" name="email" id="inputEmail" class="form-control">
+                        @error('email')
+                            <small class="form-text invalid-feedback">{{$message}}</small>
+                        @enderror
+                    </div>
 
-                <div class="form-group">
-                    <label for="inputMessage">Message</label>
-                    <textarea id="inputMessage" name="message" class="form-control" rows="4"></textarea>
-                    @error('message')
-                        <small class="form-text invalid-feedback">{{$message}}</small>
-                    @enderror
-                </div>
-                <div class="form-group">
-                <input class="btn btn-info btn-lg btn-block" type="submit" style="background: #06e4e472; border: #06e4e472 1px solid" value="Submit">
+                    <div class="form-group">
+                        <label for="inputSubject">Phone</label>
+                        <input type="text" name="phone" id="inputSubject" class="form-control">
+                        @error('phone')
+                            <small class="form-text invalid-feedback">{{$message}}</small>
+                        @enderror
+                    </div>
+                    @endif
+
+                    <div class="form-group">
+                        <label for="inputMessage">Message</label>
+                        <textarea id="inputMessage" name="message" class="form-control" rows="4"></textarea>
+                        @error('message')
+                            <small class="form-text invalid-feedback">{{$message}}</small>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                    <input class="btn btn-info btn-lg btn-block" type="submit" style="background: #06e4e472; border: #06e4e472 1px solid" value="Submit">
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
     </form>
 </section>

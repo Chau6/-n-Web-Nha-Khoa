@@ -29,8 +29,8 @@
 @endsection
 
 @section('content')
-<div class="container">
-    <div class="col-md-9">
+<section class="services-style1-area spec-page">
+    <div class="container">
         <div class="sec-title max-width text-center">
             <h3>Product</h3>
             <h1>Health Screening Page</h1>
@@ -55,12 +55,12 @@
                                     <li>{{$product->created_at}}</li>
                                 </ul>    
                             </div>
-                            <h3 class="blog-title"><a href="blog-single.html">{{$product->name}}</a></h3> 
+                            <h3 class="blog-title"><a href="{{route('client.pages.product_infor',['id'=>$product->id, 'slug'=>$category->slug, 'slug_infor'=>$product->slug])}}">{{$product->name}}</a></h3> 
                             <div class="text-box">
                                 <p>{!!$product->intro!!}</p>
                             </div>
                             <div class="readmore-button">
-                                <a class="btn-two" href="{{route('client.pages.product_infor',['slug'=>$category->slug, 'slug_infor'=>$product->slug])}}"><span class="flaticon-next"></span>Reading</a>
+                                <a class="btn-two" href="{{route('client.pages.product_infor',['id'=>$product->id,'slug'=>$category->slug, 'slug_infor'=>$product->slug])}}"><span class="flaticon-next"></span>Reading</a>
                             </div>  
                         </div>
                     </div>
@@ -68,5 +68,5 @@
             @endforeach
         </div>
     </div>
-</div>
+</section>
 @endsection
