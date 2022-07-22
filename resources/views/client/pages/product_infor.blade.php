@@ -3,24 +3,24 @@
 @section('content')
 <div class="container mt-5">
     <div class="row">
-        @foreach ($models as $model)
-            @if ($model->status == 1)
+        {{-- @foreach ($models as $model) --}}
+            @if ($models->status == 1)
             <div class="col-lg-8">
                 <!-- Post content-->
                 <article>
                     <!-- Post header-->
                     <header class="mb-4">
                         <!-- Post title-->
-                        <h1 class="fw-bolder mb-1">{{$model->name}}</h1>
+                        <h1 class="fw-bolder mb-1">{{$models->name}}</h1>
                         <!-- Post meta content-->
-                        <div class="text-muted fst-italic mb-2">Posted on {{date('d m,Y', strtotime($model->created_at))}} by Belleville Dental</div>
+                        <div class="text-muted fst-italic mb-2">Posted on {{date('d m,Y', strtotime($models->created_at))}} by Belleville Dental</div>
                         <!-- Post categories-->
                     </header>
                     <!-- Preview image figure-->
                     <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..."></figure>
                     <!-- Post content-->
                     <section class="mb-5">
-                        <p>{!!$model->content!!}</p>
+                        <p>{!!$models->content!!}</p>
                     </section>
                 </article>
                 <!-- Comments section-->
@@ -92,7 +92,7 @@
             </div>
             @endif
         
-        @endforeach
+        {{-- @endforeach --}}
         
         <!-- Side widgets-->
         <div class="col-lg-4">
@@ -165,10 +165,8 @@
                                 <td><input type="hidden" name="user_id" value="{{Auth::user()->id}}"></td>
                             </tr>
                             <tr>
-                                @foreach ($models as $item)
-                                
-                                <td><input type="hidden" name="product_id" value=" {{$item->id}}"></td>
-                                @endforeach
+                                <td><input type="hidden" name="product_id" value=" {{$models->id}}"></td>
+
                             </tr>
                         </table>
                         

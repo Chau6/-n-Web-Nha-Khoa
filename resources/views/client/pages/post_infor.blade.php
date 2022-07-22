@@ -3,28 +3,28 @@
 @section('content')
 <div class="container mt-5">
     <div class="row">
-        @foreach ($posts as $post)
-            @if ($post->status == 1)
+        {{-- @foreach ($posts as $post) --}}
+            @if ($posts->status == 1)
             <div class="col-lg-8">
                 <!-- Post content-->
                 <article>
                     <!-- Post header-->
                     <header class="mb-4">
                         <!-- Post title-->
-                        <h1 class="fw-bolder mb-1">{{$post->name}}</h1>
+                        <h1 class="fw-bolder mb-1">{{$posts->name}}</h1>
                         <!-- Post meta content-->
-                        <div class="text-muted fst-italic mb-2">Posted on {{date('d m,Y', strtotime($post->created_at))}} by Belleville Dental</div>
+                        <div class="text-muted fst-italic mb-2">Posted on {{date('d m,Y', strtotime($posts->created_at))}} by Belleville Dental</div>
                         <!-- Post categories-->
                     </header>
                     <!-- Preview image figure-->
                     <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..."></figure>
                     <!-- Post content-->
                     <section class="mb-5">
-                        <p>{!!$post->content!!}</p>
+                        <p>{!!$posts->content!!}</p>
                     </section>
                 </article>
                 <!-- Comments section-->
-                <section class="mb-5">
+                {{-- <section class="mb-5">
                     <div class="card bg-light">
                         <div class="card-body">
                             <!-- Comment form-->
@@ -64,11 +64,11 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> --}}
             </div>
             @endif
         
-        @endforeach
+        {{-- @endforeach --}}
         
         <!-- Side widgets-->
         <div class="col-lg-4">

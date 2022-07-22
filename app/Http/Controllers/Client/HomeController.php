@@ -58,6 +58,7 @@ class HomeController extends Controller
             ->where('products.status', 1)
             ->orderBy('created_at', 'DESC')
             ->get();
+        
         $category = DB::table('category')->where('slug',$slug)->first();
         return view('client.pages.product_pages', ['models'=>$product, 'category'=>$category]);
     }
@@ -69,8 +70,7 @@ class HomeController extends Controller
             ->where('category.slug',$slug)
             ->where('products.status', 1)
             ->orderBy('created_at', 'DESC')
-            ->get();
-        
+            ->first();
         $data_product = DB::table('comment')->where('product_id', $id)->first();
         // dd($data_product);
         $userRating = DB::table('rating')->selectRaw("count(case when product_id = $id then 1 end) as user_id")->first();
@@ -99,8 +99,10 @@ class HomeController extends Controller
             ->where('category.slug',$slug)
             ->where('post.status', 1)
             ->orderBy('created_at', 'DESC')
-            ->get();
-       
+            ->first();
+        $data_post = DB::table('comment')->where('product_id', $id)->first();
+        // dd($data_product);
+        
         return view('client.pages.post_infor',['posts'=>$post]);
     }
 

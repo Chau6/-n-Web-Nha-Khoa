@@ -1,1 +1,0 @@
--- Create Table Rating in DataBase

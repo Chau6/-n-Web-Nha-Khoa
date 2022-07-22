@@ -47,14 +47,16 @@
             <input type="text" class="form-control" name="phone" value="{{ $user->phone }}">
         </div>
 
+        @if (Auth::user()->level == 1 && Auth::user()->id == 1)
         <div class="form-group">
             <label>Level</label>
             <select class="form-control" name="level">
                 <option value="0" {{ $user->level == '0' ? 'selected':'' }}>Member</option>
                 <option value="1" {{ $user->level == '1' ? 'selected':'' }}>Admin</option>
             </select>
-            </div>
-
+        </div>  
+        @endif
+    
         <div class="card-footer">
             <button type="submit" class="btn btn-primary">Submit</button>
             <button type="reset" class="btn btn-default float-right">Reset</button>

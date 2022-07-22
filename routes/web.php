@@ -202,7 +202,7 @@ Route::prefix('client')->name('client.')->group(function(){
         Route::get('health_screening/{slug}', [HomeController::class, 'post_pages'])->name('post_pages');
         Route::get('product/{slug}', [HomeController::class, 'product_pages'])->name('product_pages');
 
-        Route::get('health_screening/{slug}/{slug_infor}', [HomeController::class, 'post_infor'])->name('post_infor');
+        Route::get('health_screening/{id}/{slug}/{slug_infor}', [HomeController::class, 'post_infor'])->name('post_infor');
         Route::get('product/{id}/{slug}/{slug_infor}', [HomeController::class, 'product_infor'])->name('product_infor');
 
         
