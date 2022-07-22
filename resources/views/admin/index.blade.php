@@ -129,7 +129,7 @@
               </div>
               <!-- /.col -->
             </div>
-            <!-- /.row -->
-          </div>
+          <!-- /.row -->
+        </div>
     </section>
 @endsection
