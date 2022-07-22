@@ -179,7 +179,7 @@
 
                         <div class="input-box">
                             {{-- --------------------------CALENDER------------------------------- --}}
-                            <input type="text" id="date_time" placeholder="Date" id="datepicker">
+                            <input type="text" placeholder="Date" id="datepicker">
                             <div class="icon-box">
                                 <i class="fa fa-calendar" aria-hidden="true"></i>
                             </div>
