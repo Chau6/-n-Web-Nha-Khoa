@@ -14,6 +14,7 @@ use App\Http\Controllers\Login_ClientController;
 use App\Http\Controllers\Register_ClientController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\DoctorTimeController;
+use App\Http\Controllers\Client\DatLichController;
 
 /*
 |--------------------------------------------------------------------------
@@ -183,7 +184,7 @@ Route::prefix('client')->name('client.')->group(function(){
         // Doctor
         Route::get('doctors', [HomeController::class, 'doctors'])->name('doctors')->middleware('login');
         // Appointment 
-        Route::get('appointment', [HomeController::class, 'appointment'])->name('appointment')->middleware('login');
+        Route::get('appointment', [DatLichController::class, 'appointment'])->name('appointment')->where('id','[0-9]+')->middleware('login');
 
         // Product
         Route::get('product', [HomeController::class, 'product'])->name('product');

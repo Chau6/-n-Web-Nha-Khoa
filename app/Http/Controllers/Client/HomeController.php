@@ -99,10 +99,6 @@ class HomeController extends Controller
         return view('client.pages.faqs');
     }
 
-    public function appointment(){
-        return view('client.pages.appointment');
-    }
-
     public function specialities(){
         return view('client.pages.specialities');
     }
