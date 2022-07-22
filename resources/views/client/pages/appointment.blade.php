@@ -48,21 +48,55 @@
         <div class="row">
             <div class="col-xl-8">
                 <div class="appointment-form-left">
-                    <form name="appointment-form" action="#" method="post">
+                    <form name="appointment-form" action="">
                         <div class="row">
                             <div class="col-xl-12 col-lg-12">
                                 <div class="single-box">
                                     <div class="title">
-                                        <h5>Times for</h5>
+                                        <h5>Patient Name</h5>
+                                    </div>
+                                    <div class="input-box">
+                                        <div class="col-xl-6">
+                                            <input type="text" name="" id="p_name" value="" placeholder="Patient Name*" required>    
+                                        </div>     
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="single-box">
+                                    <div class="title">
+                                        <h5>Age</h5>
+                                    </div>
+                                    <div class="input-box">
+                                        <div class="col-xl-6">
+                                            <input type="text" name="" id="age" value="" placeholder="Age">    
+                                        </div>     
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="single-box">
+                                    <div class="title">
+                                        <h5>Doctor</h5>
                                     </div>
                                     {{-- --------------------------------------------------------- --}}
                                     <div class="input-box">
-                                        <select class="selectmenu">
-                                            <option>Dr. Daryl Cornelius</option>
-                                            <option>Evelynne Mirando</option>
-                                            <option>Dr. Robert B. Moreau</option>
-                                            <option>Dr. Greg House</option>
-                                            <option selected>Dr. Sarah Johnson</option>
+                                        <select class="form-control" name="doctor_id" id="doctor_id">
+                                            <?php
+                                                $data=array();
+                                                $datas=array();
+                                            ?>
+                                            @foreach($doctors as $doctor)
+                                                @if(!empty($doctor))
+                                                    <?php
+                                                        $data['id'] = $doctor->id;
+                                                        $data['fullname'] = $doctor->fullname;
+                                                        $datas[] = $data;
+                                                    ?>
+                                                @endif
+                                            @endforeach
+                                            <?php recursiveOptionDocTime($datas,0);?>
                                         </select>
                                     </div>
                                     {{-- --------------------------------------------------------- --}}
@@ -141,23 +175,39 @@
             </div>
             <div class="col-xl-4 col-lg-6 col-md-9">
                 <div class="appointment-right">
-                    <form name="appointment-right" action="#" method="post">
+                    <form name="appointment-right" action="" method="post">
+
                         <div class="input-box">
-                            {{-- --------------------------------------------------------- --}}
-                            <input type="text" name="date" placeholder="Date" id="datepicker">
+                            {{-- --------------------------CALENDER------------------------------- --}}
+                            <input type="text" id="date_time" placeholder="Date" id="datepicker">
                             <div class="icon-box">
                                 <i class="fa fa-calendar" aria-hidden="true"></i>
                             </div>
                             {{-- --------------------------------------------------------- --}}
                         </div>
+
                         <div class="confirm-booking">
                             <h3>Confirm Your Booking</h3>
                             {{-- --------------------------------------------------------- --}}
+                            <table>
+                                <tr>
+                                    <td style="color:red"><b>Patient Name</b></td>
+                                    <td><input type="text" name="" id="p_name_02"></td>
+                                </tr>
+                                <tr>
+                                    <td style="color:red"><b>Age</b></td>
+                                    <td><input type="text" name="" id="age_02"></td>
+                                </tr>
+                                <tr>
+                                    <td style="color:red"><b>Date & Time</b></td>
+                                    <td><input type="text" name="" id="date_time_02"></td>
+                                </tr>
+                            </table>
                             <ul>
-                                <li><span>Patient Name</span><b>:</b> George Turner</li>
-                                <li><span>Age</span><b>:</b> 36 Years</li>
-                                <li><span>Service</span><b>:</b> Root Canel</li>
-                                <li><span>Date & Time</span><b>:</b> Nov 22nd, 2018. 11.30am</li>
+                                {{-- <li><span>Patient Name</span><b>:</b></li> --}}
+                                {{-- <li><span>Age</span><b>:</b> 36 Years</li> --}}
+                                {{-- <li><span>Service</span><b>:</b> Root Canel</li> --}}
+                                {{-- <li><span>Date & Time</span><b>:</b> Nov 22nd, 2018. 11.30am</li> --}}
                             </ul>
                             {{-- --------------------------------------------------------- --}}    
                         </div>
@@ -172,5 +222,119 @@
     </div>
 </div>
 <!--End Appointment area -->
+
+@endsection
+
+@section('js')
+    {{-- p_name --}}
+    <script type="text/javascript">
+        $('input#p_name').keyup(function(event){
+
+        var title, slug;
+        //  lấy text từ thẻ input 
+        title = $(this).val();
+
+        slug = title.toUpperCase();
+
+        slug = slug.replace(/á|à|ả|ã|ạ|ă|ắ|ằ|ẳ|ẵ|ặ|â|ầ|ấ|ẩ|ậ|ẫ/gi, 'A');
+        slug = slug.replace(/é|è|ẹ|ẻ|ẽ|ê|ế|ề|ể|ệ|ễ/gi, 'E');
+        slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'I');
+        slug = slug.replace(/o|ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ợ|ỡ/gi, 'O');
+        slug = slug.replace(/u|ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'U');
+        slug = slug.replace(/y|ý|ỷ|ỳ|ỵ|ỹ/gi, 'Y');
+        slug = slug.replace(/đ/gi, 'D');
+
+        slug = slug.replace(/\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\-|\,|\.|\/|\?|\;|\:|\'|\"|_/gi, '');
+        //  Thay đổi khoảng cách thành '-' 
+        slug = slug.replace(/ /gi, " ");
+
+        //  Phòng trường hợp nhiều khoảng trắng 
+        slug = slug.replace(/\-\-\-\-\-/gi, ' ');
+        slug = slug.replace(/\-\-\-\-/gi, ' ');
+        slug = slug.replace(/\-\-\-/gi, ' ');
+        slug = slug.replace(/\-\-/gi, ' ');
+
+        //  Xóa kí tự gạch ngang đầu và cuối 
+        slug = '@' + slug + '@';
+        slug = slug.replace(/\@\-|\-\@|\@/gi, '');
+
+        // In giá trị;
+        $('input#p_name_02').val(slug);
+        })
+    </script>
+
+    {{-- age --}}
+    <script type="text/javascript">
+        $('input#age').keyup(function(event){
+
+        var title, slug;
+        //  lấy text từ thẻ input 
+        title = $(this).val();
+
+        slug = title.toUpperCase();
+
+        slug = slug.replace(/á|à|ả|ã|ạ|ă|ắ|ằ|ẳ|ẵ|ặ|â|ầ|ấ|ẩ|ậ|ẫ/gi, 'A');
+        slug = slug.replace(/é|è|ẹ|ẻ|ẽ|ê|ế|ề|ể|ệ|ễ/gi, 'E');
+        slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'I');
+        slug = slug.replace(/o|ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ợ|ỡ/gi, 'O');
+        slug = slug.replace(/u|ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'U');
+        slug = slug.replace(/y|ý|ỷ|ỳ|ỵ|ỹ/gi, 'Y');
+        slug = slug.replace(/đ/gi, 'D');
+
+        slug = slug.replace(/\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\-|\,|\.|\/|\?|\;|\:|\'|\"|_/gi, '');
+        //  Thay đổi khoảng cách thành '-' 
+        slug = slug.replace(/ /gi, " ");
+
+        //  Phòng trường hợp nhiều khoảng trắng 
+        slug = slug.replace(/\-\-\-\-\-/gi, ' ');
+        slug = slug.replace(/\-\-\-\-/gi, ' ');
+        slug = slug.replace(/\-\-\-/gi, ' ');
+        slug = slug.replace(/\-\-/gi, ' ');
+
+        //  Xóa kí tự gạch ngang đầu và cuối 
+        slug = '@' + slug + '@';
+        slug = slug.replace(/\@\-|\-\@|\@/gi, '');
+
+        // In giá trị;
+        $('input#age_02').val(slug);
+        })
+    </script>
+
+    {{-- date_time --}}
+    <script type="text/javascript">
+        $('input#date_time').keyup(function(event){
+
+        var title, slug;
+        //  lấy text từ thẻ input 
+        title = $(this).val();
+
+        slug = title.toUpperCase();
+
+        slug = slug.replace(/á|à|ả|ã|ạ|ă|ắ|ằ|ẳ|ẵ|ặ|â|ầ|ấ|ẩ|ậ|ẫ/gi, 'A');
+        slug = slug.replace(/é|è|ẹ|ẻ|ẽ|ê|ế|ề|ể|ệ|ễ/gi, 'E');
+        slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'I');
+        slug = slug.replace(/o|ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ợ|ỡ/gi, 'O');
+        slug = slug.replace(/u|ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'U');
+        slug = slug.replace(/y|ý|ỷ|ỳ|ỵ|ỹ/gi, 'Y');
+        slug = slug.replace(/đ/gi, 'D');
+
+        slug = slug.replace(/\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\-|\,|\.|\?|\;|\:|\'|\"|_/gi, '');
+        //  Thay đổi khoảng cách thành '-' 
+        slug = slug.replace(/ /gi, " ");
+
+        //  Phòng trường hợp nhiều khoảng trắng 
+        slug = slug.replace(/\-\-\-\-\-/gi, ' ');
+        slug = slug.replace(/\-\-\-\-/gi, ' ');
+        slug = slug.replace(/\-\-\-/gi, ' ');
+        slug = slug.replace(/\-\-/gi, ' ');
+
+        //  Xóa kí tự gạch ngang đầu và cuối 
+        slug = '@' + slug + '@';
+        slug = slug.replace(/\@\-|\-\@|\@/gi, '');
+
+        // In giá trị;
+        $('input#date_time_02').val(slug);
+        })
+    </script>
 
 @endsection
