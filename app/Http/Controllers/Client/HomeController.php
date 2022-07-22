@@ -100,8 +100,8 @@ class HomeController extends Controller
             ->where('post.status', 1)
             ->orderBy('created_at', 'DESC')
             ->first();
-        $data_post = DB::table('comment')->where('product_id', $id)->first();
-        // dd($data_product);
+        
+        DB::table('post')->where('id',$id)->increment('view');
         
         return view('client.pages.post_infor',['posts'=>$post]);
     }

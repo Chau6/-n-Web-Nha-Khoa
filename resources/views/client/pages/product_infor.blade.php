@@ -104,7 +104,14 @@
                     <div style="padding: 10px; margin: auto">
                         <table>
                             <tr><td><div id="rateTotal"></div></td>
-                            <td><div>{{$ratingAvg}}/5 - ({{$userRating->user_id}} rated)</div></td></tr>
+                            <td>
+                                @if ($ratingAvg)
+                                <div> {{$ratingAvg}}/5 - ({{$userRating->user_id}} rated) </div>
+                                @else
+                                <div> 0.0/5 - (0 rated) </div>
+                                @endif 
+                                
+                            </td></tr>
                         </table>
                     </div>
                 </div>
@@ -175,7 +182,6 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save</button>
                 </div>
             </form>
         </div>

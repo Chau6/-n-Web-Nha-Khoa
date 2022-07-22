@@ -22,6 +22,11 @@
                     <label>Product Name</label>
                     <input type="text" name="name" class="form-control" placeholder="Enter Product Name" value="{{$edit->name}}">
                 </div>
+                
+                <div class="form-group">
+                    
+                    <input type="hidden" name="slug" id="slug" class="form-control" placeholder="Enter Product Name">
+                </div>
 
                 <div class="form-group">
                     <label>Category_id</label>

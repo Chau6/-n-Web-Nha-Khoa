@@ -24,8 +24,7 @@
                 <input type="text" class="form-control" id="name" name="name" value="{{ $post->name }}">
             </div>
             <div class="form-group">
-                <label for="email">Slug</label>
-                <input type="text" class="form-control" id="slug" name="slug" value="{{$post->slug}}">
+                <input type="hidden" class="form-control" id="slug" name="slug" value="{{$post->slug}}">
             </div>
 
             <div class="form-group">

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('content');
             $table->string('category_id')->nullable();
             $table->tinyInteger('status')->default('0');
-            $table->integer('view')->nullable();
+            $table->integer('view')->default('0');
             $table->timestamps();
         });
     }

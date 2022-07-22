@@ -25,8 +25,7 @@
                     <input type="text" name="name" id="name" class="form-control" placeholder="Enter Product Name" value="{{old('name')}}">
                 </div>
                 <div class="form-group">
-                    <label>Product Slug</label>
-                    <input type="text" name="slug" id="slug" class="form-control" placeholder="Enter Product Name">
+                    <input type="hidden" name="slug" id="slug" class="form-control" placeholder="Enter Product Name">
                 </div>
 
                 <div class="form-group">
