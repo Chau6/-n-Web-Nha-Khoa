@@ -41,7 +41,7 @@
                 <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                     <div class="single-blog-post">
                         <div class="img-holder">
-                            <img src="{{('http://127.0.0.1:8000/asset/images/blog/v1-1.jpg')}}" alt="Awesome Image">
+                            <img src="{{ asset('images/'.$product->images)}}" alt="Awesome Image">
                             <div class="categorie-button">
                                 <a class="btn-one" href="#">Healthy Teeth</a>    
                             </div>
@@ -49,7 +49,7 @@
                         <div class="text-holder">
                             <div class="meta-box">
                                 <div class="author-thumb">
-                                    <img src="http://127.0.0.1:8000/asset/images/blog/author-1.png" alt="Image">
+                                    <img src="{{ asset('images/'.$product->images)}}" alt="Image">
                                 </div>
                                 <ul class="meta-info">
                                     <li>{{$product->created_at}}</li>
