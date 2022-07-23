@@ -2,6 +2,7 @@
 <html>
 <head>
     @include('admin.blocks.head')
+    @yield('css')
 </head>
 <script type="text/javascript">
     function deleteConfirm () {

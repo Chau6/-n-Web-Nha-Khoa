@@ -64,6 +64,8 @@ class PostController extends Controller
     }
     public function update(PostUpdateRequest $request, $id){
         $data = $request->except('_token');
+        if(!isset($request->status))
+            $data['status'] = 0;
 
         DB::table('post')->where('id', $id)->update($data);
         return redirect()->route('admin.post.index')->with('success','Edit Successfully');

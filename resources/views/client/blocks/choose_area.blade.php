@@ -59,39 +59,6 @@
             </div>
             <!--End single choose box-->
         </div>
-        <div class="row">
-            <div class="col-xl-6">
-                <div class="choose-carousel owl-carousel owl-theme" style="background-image: url({{asset('asset/client/images/parallax-background/choose-carousel-bg.jpg')}});">
-                    <div class="single-choose-item text-center">
-                        <h6>Technologies</h6>
-                        <h3>Cad - Cam Dentistry</h3>
-                        <p>Cad - Cams are the latest dental innovations which give a micron level accuracy in the fit of the dental prosthesis. </p>
-                    </div>
-                    <div class="single-choose-item text-center">
-                        <h6>Technologies</h6>
-                        <h3>Cad - Cam Dentistry</h3>
-                        <p>Cad - Cams are the latest dental innovations which give a micron level accuracy in the fit of the dental prosthesis. </p>
-                    </div>
-                    <div class="single-choose-item text-center">
-                        <h6>Technologies</h6>
-                        <h3>Cad - Cam Dentistry</h3>
-                        <p>Cad - Cams are the latest dental innovations which give a micron level accuracy in the fit of the dental prosthesis. </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-6">
-                <div class="video-holder-box" style="background-image: url({{asset('asset/client/images/parallax-background/video-holder-bg.jpg')}});">
-                    <div class="icon-holder">
-                        <div class="icon">
-                            <div class="inner">
-                                <a class="html5lightbox" title="Dento Video Gallery" href="https://www.youtube.com/watch?v=p25gICT63ek">
-                                    <span class="flaticon-multimedia"></span>
-                                </a>
-                            </div>   
-                        </div>
-                    </div>    
-                </div>
-            </div>
-        </div>
+        
     </div>
 </section> 

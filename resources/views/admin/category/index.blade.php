@@ -13,51 +13,54 @@
           <strong>{{ Session::get('error') }}</strong>
   </div>
 @endif
-<form action="">
-    <div class="card">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Category Index</h3>
-          <div class="card-tools">
-          </div>
+          <h3 class="card-title">DataTable with default features</h3>
         </div>
+        <!-- /.card-header -->
         <div class="card-body">
-          <div class="row">
-            <div class="col-12 table-responsive">
-              <table class="table table-striped">
-                <tbody>
-                    <tr>
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                  <td>Name</td>
+                  <td>Edit</td>
+                  <td>Delete</td>
+              </tr>
+              </thead>
+              
+              <tbody>
+                <tr>
+                    <?php
+                    $data=array();
+                    $datas=array();
+                    ?>
+                    @foreach($categorys as $category)
                         <?php
-                        $data=array();
-                        $datas=array();
+                            $data['id'] = $category->id;
+                            $data['name'] = $category->name;
+                            $data['parent_name'] = $category->parent_name;
+                            $data['images'] = $category->images;
+                            $datas[] = $data;
                         ?>
-                        @foreach($categorys as $category)
-                            <?php
-                                $data['id'] = $category->id;
-                                $data['name'] = $category->name;
-                                $data['parent_name'] = $category->parent_name;
-                                $data['images'] = $category->images;
-                                $datas[] = $data;
-                            ?>
-                        @endforeach
-                        <?php 
-                            recursiveTableCate($datas);
-                        ?>                                                               
-                    </tr>
-                    {{-- </td> --}}
-                    {{-- <td>{{$user->email}}</td>
-                    <td>{{$user->phone}}</td>
-                    <td>{{ date('d/m/Y | H:i:s', strtotime($user->created_at)) }}</td>
-                    <td><a href="{{ route('admin.user.edit', ['id'=>$user->id]) }}">Edit</td>
-                    <td><a onclick="return confirmDelete()" href="{{ route('admin.user.delete', ['id'=>$user->id]) }}">Delete</td> --}}
-                </tr>            
-                </tbody>
-
-              </table>
-            </div>
-          </div>
-            
+                    @endforeach
+                    <?php 
+                        recursiveTableCate($datas);
+                    ?>                                                               
+                </tr>       
+              </tbody>
+              
+          </table>
         </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
     </div>
-  </form>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+</div>
 @endsection
 

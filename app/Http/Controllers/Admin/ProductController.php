@@ -36,9 +36,7 @@ class ProductController extends Controller
         $request->validate([
             'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-
         $imagesName = time().'.'.$request->images->extension();
-        
         $request->images->move(public_path('images'), $imagesName);
         $data['images'] = $imagesName;
         
@@ -54,6 +52,8 @@ class ProductController extends Controller
     }
     public function update(StoreUpdateProduct $request, $id){
         $data = $request->except('_token'); //lấy data ngoại trừ
+        if(!isset($request->status))
+            $data['status'] = 0;
 
         DB::table('products')->where('id','=', $id)->update($data); //rỗng thì giữ nguyên
         

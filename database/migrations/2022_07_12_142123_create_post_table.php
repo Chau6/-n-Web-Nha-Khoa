@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('post', function (Blueprint $table) {
-            $table->id();
+            $table->id()->unsigned();
             $table->string('name');
             $table->string('slug');
             $table->string('image_main')->nullable();
@@ -22,8 +22,9 @@ return new class extends Migration
             $table->string('content');
             $table->string('images');
             $table->string('extra_images');
-            $table->string('category_id')->nullable();
-            $table->tinyInteger('status')->default('0');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('category');
+            $table->boolean('status');
             $table->integer('view')->default('0');
             $table->timestamps();
         });

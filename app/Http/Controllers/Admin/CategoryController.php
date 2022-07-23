@@ -27,7 +27,7 @@ class CategoryController extends Controller
         $data = $request->except('_token'); //loại trừ thằng _token ra; only chỉ hiển thị cái mình cho phép; get lấy hết
         $data['created_at'] = new \DateTime(); //insert datetime
         $request->validate([
-            'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'images' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $imagesName = time().'.'.$request->images->extension();

@@ -40,14 +40,6 @@
                                 
                                 @endif
                                 
-                                <li class="dropdown"><a href="{{route('client.pages.blog')}}">Blog</a>
-                                    <ul>
-                                        <li><a href="blog.html">Blog Default</a></li>
-                                        <li><a href="blog-large.html">Blog Large Image</a></li>
-                                        <li><a href="blog-single.html">Blog Single Post</a></li>
-                                    </ul>
-                                </li>
-                                
                                 <li><a href="{{route('client.pages.contact')}}">Contact</a></li>
                             </ul>
                         </div>
