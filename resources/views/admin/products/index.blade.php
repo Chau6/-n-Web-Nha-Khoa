@@ -27,40 +27,42 @@
           <table id="example1" class="table table-bordered table-striped">
             <thead>
               <tr>
-                  <td>ID</td>
-                  <td>Name</td>
-                  <td>Category</td>
-                  <td>Price</td>
-                  <td>Status</td>
-                  <td>Created At</td>
-                  <td>Edit</td>
-                  <td>Delete</td>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Category</th>
+                  <th>Price</th>
+                  <th>Status</th>
+                  <th>Created At</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
               </tr>
               </thead>
-              @foreach ($products as $product)
+              
               <tbody>
+              @foreach ($products as $product)
               <tr>
-                  <td>{{$loop->iteration}}</td>
-                  <td>
-                      <div class="media">
-                          <a href="pull-left" href="">
-                              <img class="media-object" src="{{ asset('images/'.$product->images)}}" width="50px" height="70px">
-                          </a>
-                          <div class="media-body">
-                            <h4 class="media-heading">{{$product->name}}</h4>
-                            <p>{{ date('d/m/Y | H:i:s', strtotime($product->created_at)) }}</p>
-                          </div>
-                      </div>
-                  </td>
-                  <td>{{$product->category_name}}</td>
-                  <td>{{$product->price}}</td>
-                  <td>{{$product->status}}</td>
-                  <td>{{ date('d/m/Y | H:i:s', strtotime($product->created_at)) }}</td>
-                  <td><a href="{{ route('admin.product.edit', ['id'=>$product->id]) }}">Edit</td>
-                    <td><a onclick="return confirmDelete()" href="{{ route('admin.product.delete', ['id'=>$product->id]) }}">Delete</td>
-              </tr>            
+                <td>{{$loop->iteration}}</td>
+                <td>
+                    <div class="media">
+                        <a href="pull-left" href="">
+                            <img class="media-object" src="{{ asset('images/'.$product->images)}}" width="50px" height="70px">
+                        </a>
+                        <div class="media-body">
+                          <h4 class="media-heading">{{$product->name}}</h4>
+                          <p>{{ date('d/m/Y | H:i:s', strtotime($product->created_at)) }}</p>
+                        </div>
+                    </div>
+                </td>
+                <td>{{$product->category_name}}</td>
+                <td>{{$product->price}}</td>
+                <td>{{$product->status}}</td>
+                <td>{{ date('d/m/Y | H:i:s', strtotime($product->created_at)) }}</td>
+                <td><a href="{{ route('admin.product.edit', ['id'=>$product->id]) }}">Edit</td>
+                  <td><a onclick="return confirmDelete()" href="{{ route('admin.product.delete', ['id'=>$product->id]) }}">Delete</td>
+            </tr> 
+              @endforeach      
               </tbody>
-              @endforeach
+              
           </table>
         </div>
         <!-- /.card-body -->
@@ -93,4 +95,23 @@
   <script src="{{asset('asset/page/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
   <script src="{{asset('asset/page/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
   <script src="{{asset('asset/page/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      $("#example1").DataTable({
+        "responsive": true, "lengthChange": false, "autoWidth": false,
+        // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        "buttons": ["excel", "pdf", "colvis"]
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+  </script>
 @endsection

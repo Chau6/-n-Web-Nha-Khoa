@@ -13,114 +13,56 @@
           <strong>{{ Session::get('error') }}</strong>
   </div>
 @endif
-<form action="">
-    <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Post</h3>
-          <div class="card-tools">
-          </div>
-        </div>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-12 table-responsive">
-              <table class="table table-striped">
-                <thead>
-                <tr>
-                    <td>ID</td>
-                    <td>Name</td>
-                    <td>Category</td>
-                    <td>Status</td>
-                    <td>Created At</td>
-                    <td>Edit</td>
-                    <td>Delete</td>
-                </tr>
-                </thead>
-                @foreach ($post as $posts)
-                <tbody>
-                <tr>
-                    <td>{{$loop->iteration}}</td>
-                    <td>
-                        <div class="media">
-                            <a href="pull-left" href="">
-                                <img class="media-object" src="{{ asset('images/'.$posts->images)}}" width="50px" height="70px">
-                            </a>
-                            <a href="pull-left" href="">
-                              <img class="media-object" src="{{ asset('images/'.$posts->extra_images)}}" width="50px" height="70px">
-                          </a>
-                            <div class="media-body">
-                              <h4 class="media-heading">{{$posts->name}}</h4>
-                              <p>{{ date('d/m/Y | H:i:s', strtotime($posts->created_at)) }}</p>
-                            </div>
-                        </div>
-                    </td>
-                    <td>{{$posts->category_name}}</td>
-                    <td>{{$posts->status}}</td>
-                    <td>{{ date('d/m/Y | H:i:s', strtotime($posts->created_at)) }}</td>
-                    <td><a href="{{ route('admin.post.edit', ['id'=>$posts->id]) }}">Edit</td>
-                      <td><a onclick="return confirmDelete()" href="{{ route('admin.post.delete', ['id'=>$posts->id]) }}">Delete</td>
-                </tr>            
-                </tbody>
-                @endforeach
-              </table>
-            </div>
-          </div>
-            
-        </div>
-    </div>
-  </form>
+
   <!-- Datatable -->
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">DataTable with default features</h3>
+            <h3 class="card-title">List Heath Screening</h3>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
             <table id="example1" class="table table-bordered table-striped">
               <thead>
-              <tr>
-                <th>Rendering engine</th>
-                <th>Browser</th>
-                <th>Platform(s)</th>
-                <th>Engine version</th>
-                <th>CSS grade</th>
-              </tr>
-              </thead>
-              <tbody>
                 <tr>
-                  <td>Misc</td>
-                  <td>IE Mobile</td>
-                  <td>Windows Mobile 6</td>
-                  <td>-</td>
-                  <td>C</td>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th>Created At</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
+                </thead>
+                
+                <tbody>
+                @foreach ($post as $posts)
                 <tr>
-                  <td>Misc</td>
-                  <td>PSP browser</td>
-                  <td>PSP</td>
-                  <td>-</td>
-                  <td>C</td>
-                </tr>
-                <tr>
-                  <td>Other browsers</td>
-                  <td>All others</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>U</td>
-                </tr>
-              </tbody>
-              <tfoot>
-              <tr>
-                <th>Rendering engine</th>
-                <th>Browser</th>
-                <th>Platform(s)</th>
-                <th>Engine version</th>
-                <th>CSS grade</th>
-              </tr>
-              </tfoot>
-            </table>
+                  <td>{{$loop->iteration}}</td>
+                  <td>
+                      <div class="media">
+                          <a href="pull-left" href="">
+                              <img class="media-object" src="{{ asset('images/'.$posts->images)}}" width="50px" height="70px">
+                          </a>
+                          <a href="pull-left" href="">
+                            <img class="media-object" src="{{ asset('images/'.$posts->extra_images)}}" width="50px" height="70px">
+                        </a>
+                          <div class="media-body">
+                            <h4 class="media-heading">{{$posts->name}}</h4>
+                            <p>{{ date('d/m/Y | H:i:s', strtotime($posts->created_at)) }}</p>
+                          </div>
+                      </div>
+                  </td>
+                  <td>{{$posts->category_name}}</td>
+                  <td>{{$posts->status}}</td>
+                  <td>{{ date('d/m/Y | H:i:s', strtotime($posts->created_at)) }}</td>
+                  <td><a href="{{ route('admin.post.edit', ['id'=>$posts->id]) }}">Edit</td>
+                    <td><a onclick="return confirmDelete()" href="{{ route('admin.post.delete', ['id'=>$posts->id]) }}">Delete</td>
+                </tr>    
+                @endforeach        
+                </tbody>
           </div>
           <!-- /.card-body -->
         </div>
@@ -152,4 +94,23 @@
   <script src="{{asset('asset/page/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
   <script src="{{asset('asset/page/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
   <script src="{{asset('asset/page/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      $("#example1").DataTable({
+        "responsive": true, "lengthChange": false, "autoWidth": false,
+        // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        "buttons": ["excel", "pdf", "colvis"]
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+  </script>
 @endsection

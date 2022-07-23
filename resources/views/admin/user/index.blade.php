@@ -41,8 +41,8 @@
                       <th>Delete</th>
                     </tr>
                     </thead>
-                      @foreach ($users as $user)
                     <tbody>
+                      @foreach ($users as $user)
                       <tr>
                           <td>{{$loop->iteration}}</td>
                           <td>
@@ -79,9 +79,13 @@
                           <td><a href="{{ route('admin.user.edit', ['id'=>$user->id]) }}">Edit</td>
       
                           <td><a onclick="return confirmDelete()" href="{{ route('admin.user.delete', ['id'=>$user->id]) }}">Delete</td>
-                      </tr>            
-                      </tbody>
-                    @endforeach
+                      </tr>    
+                      @endforeach        
+                    </tbody>
+                    
+                    <tfoot>
+                      
+                    </tfoot>
                   </table>
                 </div>
                 <!-- /.card-body -->
@@ -116,4 +120,23 @@
   <script src="{{asset('asset/page/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
   <script src="{{asset('asset/page/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
   <script src="{{asset('asset/page/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      $("#example1").DataTable({
+        "responsive": true, "lengthChange": false, "autoWidth": false,
+        // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        "buttons": ["excel", "pdf", "colvis"]
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+  </script>
 @endsection
