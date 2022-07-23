@@ -73,7 +73,7 @@
         
                 <div class="form-group">
                     <label>Product Image</label>
-                    <input type="file" name="images" value="{{old('price')}}">
+                    <input type="file" name="images" >
                 </div>
         
                 <div class="form-group">

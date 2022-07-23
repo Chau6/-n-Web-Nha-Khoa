@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('image_main')->nullable();
             $table->string('intro');
             $table->string('content');
+            $table->string('images');
+            $table->string('extra_images');
             $table->string('category_id')->nullable();
             $table->tinyInteger('status')->default('0');
             $table->integer('view')->default('0');

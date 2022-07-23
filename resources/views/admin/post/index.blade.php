@@ -42,8 +42,11 @@
                     <td>
                         <div class="media">
                             <a href="pull-left" href="">
-                                {{-- <img class="media-object">src="{{ asset('images/'.$posts->images)}}" width="50px" height="70px" --}}
+                                <img class="media-object" src="{{ asset('images/'.$posts->images)}}" width="50px" height="70px">
                             </a>
+                            <a href="pull-left" href="">
+                              <img class="media-object" src="{{ asset('images/'.$posts->extra_images)}}" width="50px" height="70px">
+                          </a>
                             <div class="media-body">
                               <h4 class="media-heading">{{$posts->name}}</h4>
                               <p>{{ date('d/m/Y | H:i:s', strtotime($posts->created_at)) }}</p>

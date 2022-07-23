@@ -35,6 +35,24 @@ class PostController extends Controller
         // $data = dd($request->except('_token'));
         $data['created_at'] = new \DateTime;
 
+        $request->validate([
+            'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'extra_images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
+        ]);
+
+        $imagesName = time().'.'.$request->images->extension();
+        
+        $request->images->move(public_path('images'), $imagesName);
+        $data['images'] = $imagesName;
+
+        // ------------------------
+
+        $imagesName = time().'.'.$request->extra_images->extension();
+        
+        $request->extra_images->move(public_path('images'), $imagesName);
+        $data['extra_images'] = $imagesName;
+
         DB::table('post')->insert($data);
         return redirect()->route('admin.post.index')->with('success','Insert Successfully'); 
     }
