@@ -35,12 +35,13 @@
                                 $data['id'] = $category->id;
                                 $data['name'] = $category->name;
                                 $data['parent_name'] = $category->parent_name;
+                                $data['images'] = $category->images;
                                 $datas[] = $data;
                             ?>
                         @endforeach
                         <?php 
                             recursiveTableCate($datas);
-                        ?>                
+                        ?>                                                               
                     </tr>
                     {{-- </td> --}}
                     {{-- <td>{{$user->email}}</td>
