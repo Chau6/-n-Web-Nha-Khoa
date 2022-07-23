@@ -51,12 +51,6 @@
                     </div>
                     <ul class="facilities">
                         <li><a href="#">Individual Tooth X-Ray</a></li>
-                        <li><a href="#">Intensive Care Unit</a></li>
-                        <li><a href="#">Blood Bank</a></li>
-                        <li><a href="#">Critical Care Areas</a></li>
-                        <li><a href="#">Laboratories</a></li>
-                        <li><a href="#">Scale and Clean</a></li>
-                        <li><a href="#">Fissure Sealants</a></li>
                     </ul>
                 </div>
             </div>
