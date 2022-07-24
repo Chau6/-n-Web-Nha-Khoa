@@ -48,7 +48,8 @@
         <div class="row">
             <div class="col-xl-8">
                 <div class="appointment-form-left">
-                    <form action="{{ route('client.pages.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('client.pages.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="row">
                             <div class="col-xl-12 col-lg-12">
                                 <div class="single-box">
@@ -179,12 +180,6 @@
                     </form>   
                 </div>
             </div>
-            {{-- <div class="col-xl-4 col-lg-6 col-md-9">
-                <div class="appointment-right">
-                    <form name="appointment-right" action="" method="POST" enctype="multipart/form-data">
-                    </form>   
-                </div>
-            </div> --}}
         </div>
     </div>
 </div>
