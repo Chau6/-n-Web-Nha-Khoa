@@ -48,7 +48,7 @@
         <div class="row">
             <div class="col-xl-8">
                 <div class="appointment-form-left">
-                    <form name="appointment-form" action="">
+                    <form name="appointment-form" action="" method="POST" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-xl-12 col-lg-12">
                                 <div class="single-box">
@@ -59,6 +59,18 @@
                                         <div class="col-xl-6">
                                             <input type="text" name="" id="p_name" value="" placeholder="Patient Name*" required>    
                                         </div>     
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="single-box">
+                                    <div class="title">
+                                        <h5>Phone Number</h5>
+                                    </div>
+                                    <div class="input-box">
+                                        <div class="col-xl-6">
+                                            <input type="text" name="phn_num" value="" placeholder="Ph Num*" required="">    
+                                        </div>    
                                     </div>
                                 </div>
                             </div>
@@ -82,139 +94,98 @@
                                     </div>
                                     {{-- --------------------------------------------------------- --}}
                                     <div class="input-box">
-                                        <select class="form-control" name="doctor_id" id="doctor_id">
-                                            <?php
-                                                $data=array();
-                                                $datas=array();
-                                            ?>
-                                            @foreach($doctors as $doctor)
-                                                @if(!empty($doctor))
-                                                    <?php
-                                                        $data['id'] = $doctor->id;
-                                                        $data['fullname'] = $doctor->fullname;
-                                                        $datas[] = $data;
-                                                    ?>
-                                                @endif
-                                            @endforeach
-                                            <?php recursiveOptionDocTime($datas,0);?>
-                                        </select>
+                                        <div class="col-xl-6">
+                                            <select class="form-control" name="doctor_id" id="doctor_id">
+                                                <?php
+                                                    $data=array();
+                                                    $datas=array();
+                                                ?>
+                                                @foreach($doctors as $doctor)
+                                                    @if(!empty($doctor))
+                                                        <?php
+                                                            $data['id'] = $doctor->id;
+                                                            $data['fullname'] = $doctor->fullname;
+                                                            $datas[] = $data;
+                                                        ?>
+                                                    @endif
+                                                @endforeach
+                                                <?php recursiveOptionDocTime($datas,0);?>
+                                            </select>
+                                        </div>
                                     </div>
                                     {{-- --------------------------------------------------------- --}}
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="single-box">
+                                    <div class="title">
+                                        <h5>Date</h5>
+                                    </div>
+                                    <div class="input-box">
+                                        <div class="col-xl-6">
+                                            <input type="text" class="date-input" id="date-in" placeholder="Date"> 
+                                        </div>    
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-xl-12 col-lg-12">
                                 <div class="single-box">
                                     <div class="title">
                                         <h5>Available at</h5>
                                     </div>
                                     <div class="input-box">
-                                        <div class="available-time">
+                                        <div class="col-xl-6">
                                             {{-- --------------------------------------------------------- --}}
-                                            <ul>
-                                                <li>9.00am</li>
-                                                <li>11.30am</li>
-                                                <li>12.00pm</li>
-                                                <li>3.00pm</li>
-                                                <li>4.00pm</li>
-                                                <li>5.00pm</li>
-                                                <li>5.30pm</li>
-                                                <li>6.00pm</li>
-                                                <li>7.00pm</li>
-                                                <li>7.30pm</li>
-                                            </ul>
+                                            <select class="selectmenu">
+                                                <option>9.00am</option>
+                                                <option>11.30am</option>
+                                                <option>12.00pm</option>
+                                                <option>3.00pm</option>
+                                                <option>4.00pm</option>
+                                                <option>5.00pm</option>
+                                                <option>5.30pm</option>
+                                                <option>6.00pm</option>
+                                                <option>7.00pm</option>
+                                                <option>7.30pm</option>
+                                            </select>    
                                             {{-- --------------------------------------------------------- --}}    
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div> 
-                        <div class="row">
                             <div class="col-xl-12 col-lg-12">
                                 <div class="single-box">
                                     <div class="title">
                                         <h5>Service</h5>
                                     </div>
                                     <div class="input-box">
-                                        <div class="row">
-                                            {{-- <div class="col-xl-6">
-                                                <input type="text" name="p_name" value="" placeholder="Patient Name*" required="">    
-                                            </div> --}}
-                                            <div class="col-xl-6">
-                                                <select class="selectmenu">
-                                                    <option>Dental Implants</option>
-                                                    <option>Cosmetic Dentistry</option>
-                                                    <option>Laser Dentistry</option>
-                                                    <option>Orthodontics</option>
-                                                    <option>Endodontics</option>
-                                                    <option>Periodontics</option>
-                                                </select>    
-                                            </div>
+                                        <div class="col-xl-6">
+                                            <select class="selectmenu">
+                                                <option>Dental Implants</option>
+                                                <option>Cosmetic Dentistry</option>
+                                                <option>Laser Dentistry</option>
+                                                <option>Orthodontics</option>
+                                                <option>Endodontics</option>
+                                                <option>Periodontics</option>
+                                            </select>    
                                         </div>
-                                        <div class="row">
-                                            {{-- <div class="col-xl-6">
-                                                <input type="text" name="phn_num" value="" placeholder="Ph Num*" required="">    
-                                            </div> --}}
-                                            {{-- <div class="col-xl-6">
-                                                <input type="text" name="age" value="" placeholder="Age">      
-                                            </div> --}}
+                                        <div class="col-xl-12">
+                                            <textarea name="form_description..." placeholder="Description..."></textarea>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-xl-12">
-                                                <textarea name="form_description..." placeholder="Description..."></textarea>
-                                            </div>
-                                        </div>   
                                     </div>
                                 </div>
                             </div>
                         </div>
-                            
+                        
+                        <div class="button-box">
+                            <button class="btn-one" style="margin:0px 560px" type="submit">Confirm</button>     
+                        </div>   
                     </form>   
                 </div>
             </div>
             <div class="col-xl-4 col-lg-6 col-md-9">
                 <div class="appointment-right">
-                    <form name="appointment-right" action="" method="post">
-
-                        <div class="input-box">
-                            {{-- --------------------------CALENDER------------------------------- --}}
-                            <input type="text" class="date-input" id="date-in" placeholder="Date">
-                            <div class="icon-box">
-                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                            </div>
-                            {{-- --------------------------------------------------------- --}}
-                        </div>
-
-                        <div class="confirm-booking">
-                            <h3>Confirm Your Booking</h3>
-                            {{-- --------------------------------------------------------- --}}
-                            <table>
-                                <tr>
-                                    <td style="color:red"><b>Patient Name</b></td>
-                                    <td><input type="text" name="" id="p_name_02"></td>
-                                </tr>
-                                <tr>
-                                    <td style="color:red"><b>Age</b></td>
-                                    <td><input type="text" name="" id="age_02"></td>
-                                </tr>
-                                <tr>
-                                    <td style="color:red"><b>Date & Time</b></td>
-                                    <td><input type="text" name="" id="date_time_02"></td>
-                                </tr>
-                            </table>
-                            <ul>
-                                {{-- <li><span>Patient Name</span><b>:</b></li> --}}
-                                {{-- <li><span>Age</span><b>:</b> 36 Years</li> --}}
-                                {{-- <li><span>Service</span><b>:</b> Root Canel</li> --}}
-                                {{-- <li><span>Date & Time</span><b>:</b> Nov 22nd, 2018. 11.30am</li> --}}
-                            </ul>
-                            {{-- --------------------------------------------------------- --}}    
-                        </div>
-                        <div class="button-box">
-                            <button class="btn-one" type="submit">Confirm</button>   
-                            <button class="btn-one" type="submit">Cancel</button>   
-                        </div>    
+                    <form name="appointment-right" action="" method="POST" enctype="multipart/form-data">
                     </form>   
                 </div>
             </div>
