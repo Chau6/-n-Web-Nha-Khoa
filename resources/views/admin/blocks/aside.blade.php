@@ -172,6 +172,30 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{ route('admin.dat_lich.index')}}" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>
+                            Appointment 
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.dat_lich.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>List</p>
+                            </a>
+                        </li>
+                        {{-- <li class="nav-item">
+                            <a href="{{ route('admin.doctor_time.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create Doctor Time</p>
+                            </a>
+                        </li> --}}
+                    </ul>
+                </li>
+
+                <li class="nav-item">
                     <a href="{{route('getLogoutClient')}}" class="nav-link">
                         <i class=""></i>
                         <p style="color: aqua">
