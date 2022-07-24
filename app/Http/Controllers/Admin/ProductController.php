@@ -36,7 +36,7 @@ class ProductController extends Controller
         $data['created_at'] = new \DateTime(); //insert datetime
 
         $request->validate([
-            'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'photos'=>'required',
         ]);
 

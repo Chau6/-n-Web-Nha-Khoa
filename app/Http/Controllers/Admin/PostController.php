@@ -36,8 +36,8 @@ class PostController extends Controller
         $data['created_at'] = new \DateTime;
 
         $request->validate([
-            'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'extra_images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'extra_images' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
 
         ]);
 

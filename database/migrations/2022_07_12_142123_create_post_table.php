@@ -26,6 +26,8 @@ return new class extends Migration
             $table->tinyInteger('status')->default('0');
             $table->integer('view')->default('0');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 
