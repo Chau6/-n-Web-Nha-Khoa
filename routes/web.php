@@ -75,6 +75,10 @@ Route::get('testmail', [LoginController::class, 'testMail'])->name('testmail');
 Route::middleware('admin', 'login')->group(function(){
     Route::prefix('admin')->name('admin.')->group(function(){
         Route::get('index_pages', [IndexPageController::class, 'index'])->name('index_pages');
+
+        Route::get('contact', [IndexPageController::class, 'contact'])->name('contact');
+        Route::get('delete/{id}', [IndexPageController::class, 'delete'])->name('delete')->where('id', '[0-9]+');
+
         //User
         Route::prefix('user')->name('user.')->group(function(){
             Route::get('index', [UserController::class, 'index'])->name('index');

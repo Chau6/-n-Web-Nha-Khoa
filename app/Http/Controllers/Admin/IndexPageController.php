@@ -13,4 +13,14 @@ class IndexPageController extends Controller
         $count_admin = DB::table('user')->selectRaw("count(case when level = '1' then 1 end) as admin")->first();
         return view('admin.index',['total_user'=>$count_user, 'total_admin'=>$count_admin]);
     }
+
+    public function contact(){
+        $contact = DB::table('contact')->get();
+        return view('admin.contact',['contacts'=>$contact]);
+    }
+
+    public function delete($id){
+        DB::table('contact')->where('id',$id)->delete();
+        return redirect()->route('admin.contact')->with('success', 'Delete Success');
+    }
 }
