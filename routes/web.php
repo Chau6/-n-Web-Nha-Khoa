@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\DoctorTimeController;
 use App\Http\Controllers\Client\DatLichController;
 use App\Http\Controllers\Admin\Dat_LichController;
+use App\Http\Controllers\Client\EditProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -188,7 +189,9 @@ Route::prefix('client')->name('client.')->group(function(){
         Route::get('rating', [HomeController::class, 'rating'])->name('rating');
         
         // Update Information User
-        Route::get('information_client', [HomeController::class, 'information_client'])->name('information_client');
+        Route::get('information_client', [EditProfileController::class, 'information_client'])->name('information_client')->middleware('login');
+        Route::get('edit_profile/{id}', [EditProfileController::class, 'edit_profile'])->name('edit_profile')->middleware('login');
+        Route::post('edit_profile/{id}', [EditProfileController::class, 'post_edit_profile'])->name('post_edit_profile');
 
         // Doctor
         Route::get('doctors', [HomeController::class, 'doctors'])->name('doctors')->middleware('login');

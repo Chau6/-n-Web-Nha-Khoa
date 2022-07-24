@@ -21,9 +21,6 @@ class HomeController extends Controller
     public function index(){
         return view('client.pages.index');
     }
-    public function information_client(){
-        return view('client.pages.information_client');
-    }
     
     public function about(){
         return view('client.pages.about');
