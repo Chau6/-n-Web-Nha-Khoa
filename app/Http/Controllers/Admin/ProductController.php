@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Product\StoreProduct;
 use App\Http\Requests\Product\StoreUpdateProduct;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Product;
+use App\Models\ProductDetails;
 
 class ProductController extends Controller
 {
@@ -35,11 +37,47 @@ class ProductController extends Controller
         if(!isset($request->status))
         $data['status'] = 0;
         $request->validate([
-            'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'photos'=>'required',
         ]);
         $imagesName = time().'.'.$request->images->extension();
         $request->images->move(public_path('images'), $imagesName);
         $data['images'] = $imagesName;
+
+        if($request->hasFile('photos')) {
+			$allowedfileExtension=['jpg','png'];
+			$files = $request->file('photos');
+            // flag xem có thực hiện lưu DB không. Mặc định là có
+			$exe_flg = true;
+			// kiểm tra tất cả các files xem có đuôi mở rộng đúng không
+			foreach($files as $file) {
+				$extension = $file->getClientOriginalExtension();
+				$check=in_array($extension,$allowedfileExtension);
+
+				if(!$check) {
+                    // nếu có file nào không đúng đuôi mở rộng thì đổi flag thành false
+					$exe_flg = false;
+					break;
+				}
+			} 
+			// nếu không có file nào vi phạm validate thì tiến hành lưu DB
+			if($exe_flg) {
+                // lưu product
+				$products= Product::create($request->all());
+                // duyệt từng ảnh và thực hiện lưu
+				foreach ($request->photos as $photo) {
+					$filename = $photo->store('photos');
+					ProductDetails::create([
+						'product_id' => $products->id,
+						'filename' => $filename
+					]);
+				}
+				echo "Upload successfully";
+			} else {
+				echo "Falied to upload. Only accept jpg, png photos.";
+			}
+		}
+        $filename = $photo->storeAs('photos', $photo->getClientOriginalName());
         
         DB::table('products')->insert($data); //câu lệnh insert 
 

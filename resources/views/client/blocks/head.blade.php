@@ -6,6 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- For IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{{ asset('css/jquery-ui.min.css')}}" type="text/css">
     
     <!-- css custom -->
     <link rel="stylesheet" href="{{ asset('asset/client/css/rating.css')}}">

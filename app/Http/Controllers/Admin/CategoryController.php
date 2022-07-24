@@ -26,14 +26,6 @@ class CategoryController extends Controller
     public function store(StoreCategory $request){
         $data = $request->except('_token'); //loại trừ thằng _token ra; only chỉ hiển thị cái mình cho phép; get lấy hết
         $data['created_at'] = new \DateTime(); //insert datetime
-        $request->validate([
-            'images' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
-        $imagesName = time().'.'.$request->images->extension();
-        
-        $request->images->move(public_path('images'), $imagesName);
-        $data['images'] = $imagesName;
         
         DB::table('category')->insert($data); //câu lệnh insert 
 

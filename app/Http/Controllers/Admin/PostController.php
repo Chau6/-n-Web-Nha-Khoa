@@ -36,8 +36,8 @@ class PostController extends Controller
         $data['created_at'] = new \DateTime;
         $data['status'] = 0;
         $request->validate([
-            'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'extra_images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'extra_images' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
 
         ]);
         $imagesName = time().'.'.$request->images->extension();

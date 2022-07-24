@@ -15,12 +15,15 @@ return new class extends Migration
     {
         Schema::create('dat_lich', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('phone');
+            $table->tinyInteger('age');
+            $table->string('date');
+            $table->string('time');
+            $table->string('doctor_name');
             $table->string('service');
             $table->string('description')->nullable();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('user');
-            $table->unsignedBigInteger('doctor_day_work_id');
-            $table->foreign('doctor_day_work_id')->references('id')->on('doctor_day_work');
+            
             $table->timestamps();
         });
     }

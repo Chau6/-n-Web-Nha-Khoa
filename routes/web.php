@@ -15,6 +15,7 @@ use App\Http\Controllers\Register_ClientController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\DoctorTimeController;
 use App\Http\Controllers\Client\DatLichController;
+use App\Http\Controllers\Admin\Dat_LichController;
 
 /*
 |--------------------------------------------------------------------------
@@ -154,6 +155,12 @@ Route::middleware('admin', 'login')->group(function(){
             /** Delete Doctor */
             Route::get('delete/{id}', [DoctorTimeController::class, 'delete'])->name('delete')->where('id','[0-9]+');
         });
+
+        //Dat_lich
+        Route::prefix('dat_lich')->name('dat_lich.')->group(function(){
+            /** Show list of Doctor */
+            Route::get('index', [Dat_LichController::class, 'index'])->name('index');
+        });
     });
 });
 
@@ -187,6 +194,7 @@ Route::prefix('client')->name('client.')->group(function(){
         Route::get('doctors', [HomeController::class, 'doctors'])->name('doctors')->middleware('login');
         // Appointment 
         Route::get('appointment', [DatLichController::class, 'appointment'])->name('appointment')->where('id','[0-9]+')->middleware('login');
+        Route::post('store', [DatLichController::class, 'store'])->name('store');
 
         // Rating
         Route::post('rating', [HomeController::class, 'rating'])->name('rating');
