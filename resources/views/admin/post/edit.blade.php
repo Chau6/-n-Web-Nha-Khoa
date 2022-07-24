@@ -72,8 +72,8 @@
             <div class="form-group">
                 <div class="custom-control custom-switch">
                     <input type="checkbox" name="status" class="custom-control-input" id="customSwitch1" value="1" 
-                    @if ($post->status == 1)
-                        @checked(true)
+                    @if ($post->status)
+                        checked
                     @endif>
                     <label class="custom-control-label" for="customSwitch1">Status</label>
                 </div>

@@ -34,20 +34,16 @@ class PostController extends Controller
         $data = $request->except('_token');
         // $data = dd($request->except('_token'));
         $data['created_at'] = new \DateTime;
-
+        $data['status'] = 0;
         $request->validate([
             'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'extra_images' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
 
         ]);
-
         $imagesName = time().'.'.$request->images->extension();
-        
         $request->images->move(public_path('images'), $imagesName);
         $data['images'] = $imagesName;
-
         // ------------------------
-
         $imagesName = time().'.'.$request->extra_images->extension();
         
         $request->extra_images->move(public_path('images'), $imagesName);
@@ -64,6 +60,8 @@ class PostController extends Controller
     }
     public function update(PostUpdateRequest $request, $id){
         $data = $request->except('_token');
+        if(!isset($request->status))
+            $data['status'] = 0;
 
         DB::table('post')->where('id', $id)->update($data);
         return redirect()->route('admin.post.index')->with('success','Edit Successfully');

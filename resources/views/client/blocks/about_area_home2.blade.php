@@ -27,9 +27,7 @@
                                 <img src="{{asset('asset/client/images/resources/signature.png')}}" alt="Signature">
                             </div>
                         </div>
-                        <div class="read-more">
-                            <a class="btn-two" href="#"><span class="flaticon-next"></span>More About Us</a>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
