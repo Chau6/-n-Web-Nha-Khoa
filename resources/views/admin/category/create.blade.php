@@ -33,7 +33,6 @@
                                     $data['id'] = $category->id;
                                     $data['name'] = $category->name;
                                     $data['parent_name'] = $category->parent_name;
-                                    $data['images'] = $category->images;
                                     $datas[] = $data;
                                 ?>
                             @endif
@@ -52,10 +51,6 @@
                     <input type="text" name="slug" id="slug" class="form-control" placeholder="Enter Category Name" value="{{ old('slug') }}">
                 </div>
 
-                <div class="form-group">
-                    <label>Category Image</label>
-                    <input type="file" name="images" >
-                </div>
             </div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-info">Create</button>
