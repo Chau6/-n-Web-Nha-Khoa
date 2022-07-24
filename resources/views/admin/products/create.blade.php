@@ -73,7 +73,12 @@
         
                 <div class="form-group">
                     <label>Product Image</label>
-                    <input type="file" name="images" >
+                    <input type="file" name="images" class="form-control" >
+                </div>
+
+                <div class="form-group">
+                    <label>Product Image</label>
+					<input type="file" class="form-control" name="photos[]" multiple />
                 </div>
         
                 <div class="form-group">
