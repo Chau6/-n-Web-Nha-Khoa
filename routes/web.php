@@ -187,6 +187,7 @@ Route::prefix('client')->name('client.')->group(function(){
         Route::get('doctors', [HomeController::class, 'doctors'])->name('doctors')->middleware('login');
         // Appointment 
         Route::get('appointment', [DatLichController::class, 'appointment'])->name('appointment')->where('id','[0-9]+')->middleware('login');
+        Route::post('store', [DatLichController::class, 'store'])->name('store');
 
         // Rating
         Route::post('rating', [HomeController::class, 'rating'])->name('rating');

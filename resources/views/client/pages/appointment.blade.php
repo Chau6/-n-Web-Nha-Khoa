@@ -48,7 +48,7 @@
         <div class="row">
             <div class="col-xl-8">
                 <div class="appointment-form-left">
-                    <form name="appointment-form" action="" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('client.pages.store') }}" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-xl-12 col-lg-12">
                                 <div class="single-box">
@@ -57,7 +57,7 @@
                                     </div>
                                     <div class="input-box">
                                         <div class="col-xl-6">
-                                            <input type="text" name="" id="p_name" value="" placeholder="Patient Name*" required>    
+                                            <input type="text" name="name" id="p_name" value="" placeholder="Patient Name*" required>    
                                         </div>     
                                     </div>
                                 </div>
@@ -69,7 +69,7 @@
                                     </div>
                                     <div class="input-box">
                                         <div class="col-xl-6">
-                                            <input type="text" name="phn_num" value="" placeholder="Ph Num*" required="">    
+                                            <input type="text" name="phone" value="" placeholder="Ph Num*" required="">    
                                         </div>    
                                     </div>
                                 </div>
@@ -81,7 +81,7 @@
                                     </div>
                                     <div class="input-box">
                                         <div class="col-xl-6">
-                                            <input type="text" name="" id="age" value="" placeholder="Age">    
+                                            <input type="text" name="age" id="age" value="" placeholder="Age">    
                                         </div>     
                                     </div>
                                 </div>
@@ -92,10 +92,9 @@
                                     <div class="title">
                                         <h5>Doctor</h5>
                                     </div>
-                                    {{-- --------------------------------------------------------- --}}
                                     <div class="input-box">
                                         <div class="col-xl-6">
-                                            <select class="form-control" name="doctor_id" id="doctor_id">
+                                            <select class="form-control" name="doctor_name" id="doctor_id">
                                                 <?php
                                                     $data=array();
                                                     $datas=array();
@@ -113,7 +112,6 @@
                                             </select>
                                         </div>
                                     </div>
-                                    {{-- --------------------------------------------------------- --}}
                                 </div>
                             </div>
                             <div class="col-xl-12 col-lg-12">
@@ -123,7 +121,7 @@
                                     </div>
                                     <div class="input-box">
                                         <div class="col-xl-6">
-                                            <input type="text" class="date-input" id="date-in" placeholder="Date"> 
+                                            <input type="text" name="date" class="date-input" id="date-in" placeholder="Date"> 
                                         </div>    
                                     </div>
                                 </div>
@@ -135,8 +133,7 @@
                                     </div>
                                     <div class="input-box">
                                         <div class="col-xl-6">
-                                            {{-- --------------------------------------------------------- --}}
-                                            <select class="selectmenu">
+                                            <select class="selectmenu" name="time">
                                                 <option>9.00am</option>
                                                 <option>11.30am</option>
                                                 <option>12.00pm</option>
@@ -148,7 +145,6 @@
                                                 <option>7.00pm</option>
                                                 <option>7.30pm</option>
                                             </select>    
-                                            {{-- --------------------------------------------------------- --}}    
                                         </div>
                                     </div>
                                 </div>
@@ -160,7 +156,7 @@
                                     </div>
                                     <div class="input-box">
                                         <div class="col-xl-6">
-                                            <select class="selectmenu">
+                                            <select class="selectmenu" name="service" id="service">
                                                 <option>Dental Implants</option>
                                                 <option>Cosmetic Dentistry</option>
                                                 <option>Laser Dentistry</option>
@@ -170,7 +166,7 @@
                                             </select>    
                                         </div>
                                         <div class="col-xl-12">
-                                            <textarea name="form_description..." placeholder="Description..."></textarea>
+                                            <textarea name="description" placeholder="Description..."></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -183,129 +179,15 @@
                     </form>   
                 </div>
             </div>
-            <div class="col-xl-4 col-lg-6 col-md-9">
+            {{-- <div class="col-xl-4 col-lg-6 col-md-9">
                 <div class="appointment-right">
                     <form name="appointment-right" action="" method="POST" enctype="multipart/form-data">
                     </form>   
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
 <!--End Appointment area -->
-
-@endsection
-
-@section('js')
-    {{-- p_name --}}
-    <script type="text/javascript">
-        $('input#p_name').keyup(function(event){
-
-        var title, slug;
-        //  lấy text từ thẻ input 
-        title = $(this).val();
-
-        slug = title.toUpperCase();
-
-        slug = slug.replace(/á|à|ả|ã|ạ|ă|ắ|ằ|ẳ|ẵ|ặ|â|ầ|ấ|ẩ|ậ|ẫ/gi, 'A');
-        slug = slug.replace(/é|è|ẹ|ẻ|ẽ|ê|ế|ề|ể|ệ|ễ/gi, 'E');
-        slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'I');
-        slug = slug.replace(/o|ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ợ|ỡ/gi, 'O');
-        slug = slug.replace(/u|ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'U');
-        slug = slug.replace(/y|ý|ỷ|ỳ|ỵ|ỹ/gi, 'Y');
-        slug = slug.replace(/đ/gi, 'D');
-
-        slug = slug.replace(/\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\-|\,|\.|\/|\?|\;|\:|\'|\"|_/gi, '');
-        //  Thay đổi khoảng cách thành '-' 
-        slug = slug.replace(/ /gi, " ");
-
-        //  Phòng trường hợp nhiều khoảng trắng 
-        slug = slug.replace(/\-\-\-\-\-/gi, ' ');
-        slug = slug.replace(/\-\-\-\-/gi, ' ');
-        slug = slug.replace(/\-\-\-/gi, ' ');
-        slug = slug.replace(/\-\-/gi, ' ');
-
-        //  Xóa kí tự gạch ngang đầu và cuối 
-        slug = '@' + slug + '@';
-        slug = slug.replace(/\@\-|\-\@|\@/gi, '');
-
-        // In giá trị;
-        $('input#p_name_02').val(slug);
-        })
-    </script>
-
-    {{-- age --}}
-    <script type="text/javascript">
-        $('input#age').keyup(function(event){
-
-        var title, slug;
-        //  lấy text từ thẻ input 
-        title = $(this).val();
-
-        slug = title.toUpperCase();
-
-        slug = slug.replace(/á|à|ả|ã|ạ|ă|ắ|ằ|ẳ|ẵ|ặ|â|ầ|ấ|ẩ|ậ|ẫ/gi, 'A');
-        slug = slug.replace(/é|è|ẹ|ẻ|ẽ|ê|ế|ề|ể|ệ|ễ/gi, 'E');
-        slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'I');
-        slug = slug.replace(/o|ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ợ|ỡ/gi, 'O');
-        slug = slug.replace(/u|ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'U');
-        slug = slug.replace(/y|ý|ỷ|ỳ|ỵ|ỹ/gi, 'Y');
-        slug = slug.replace(/đ/gi, 'D');
-
-        slug = slug.replace(/\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\-|\,|\.|\/|\?|\;|\:|\'|\"|_/gi, '');
-        //  Thay đổi khoảng cách thành '-' 
-        slug = slug.replace(/ /gi, " ");
-
-        //  Phòng trường hợp nhiều khoảng trắng 
-        slug = slug.replace(/\-\-\-\-\-/gi, ' ');
-        slug = slug.replace(/\-\-\-\-/gi, ' ');
-        slug = slug.replace(/\-\-\-/gi, ' ');
-        slug = slug.replace(/\-\-/gi, ' ');
-
-        //  Xóa kí tự gạch ngang đầu và cuối 
-        slug = '@' + slug + '@';
-        slug = slug.replace(/\@\-|\-\@|\@/gi, '');
-
-        // In giá trị;
-        $('input#age_02').val(slug);
-        })
-    </script>
-
-    {{-- date_time --}}
-    <script type="text/javascript">
-        $('input#date_time').keyup(function(event){
-
-        var title, slug;
-        //  lấy text từ thẻ input 
-        title = $(this).val();
-
-        slug = title.toUpperCase();
-
-        slug = slug.replace(/á|à|ả|ã|ạ|ă|ắ|ằ|ẳ|ẵ|ặ|â|ầ|ấ|ẩ|ậ|ẫ/gi, 'A');
-        slug = slug.replace(/é|è|ẹ|ẻ|ẽ|ê|ế|ề|ể|ệ|ễ/gi, 'E');
-        slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'I');
-        slug = slug.replace(/o|ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ợ|ỡ/gi, 'O');
-        slug = slug.replace(/u|ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'U');
-        slug = slug.replace(/y|ý|ỷ|ỳ|ỵ|ỹ/gi, 'Y');
-        slug = slug.replace(/đ/gi, 'D');
-
-        slug = slug.replace(/\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\-|\,|\.|\?|\;|\:|\'|\"|_/gi, '');
-        //  Thay đổi khoảng cách thành '-' 
-        slug = slug.replace(/ /gi, " ");
-
-        //  Phòng trường hợp nhiều khoảng trắng 
-        slug = slug.replace(/\-\-\-\-\-/gi, ' ');
-        slug = slug.replace(/\-\-\-\-/gi, ' ');
-        slug = slug.replace(/\-\-\-/gi, ' ');
-        slug = slug.replace(/\-\-/gi, ' ');
-
-        //  Xóa kí tự gạch ngang đầu và cuối 
-        slug = '@' + slug + '@';
-        slug = slug.replace(/\@\-|\-\@|\@/gi, '');
-
-        // In giá trị;
-        $('input#date_time_02').val(slug);
-        })
-    </script>
 
 @endsection

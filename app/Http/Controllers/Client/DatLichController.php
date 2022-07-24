@@ -13,15 +13,13 @@ class DatLichController extends Controller
         $doctor = DB::table('doctors')->orderBy('id')->get();
         return view('client.pages.appointment', ['doctors' => $doctor], );
     }
-    // public function store(Request $request){
-    //     $data = $request->except('_token');
-    //     $data['created_at'] = new \DateTime();
-    //     DB::table('doctor_day_work')->insert($data);
-    //     return redirect()->route('admin.doctor_time.index')->with('success','Insert Successfully');
-    // }
+    public function store(Request $request){
+        $data = $request->except('_token');
+        $data['created_at'] = new \DateTime();
 
-    // public function delete($id){
-    //     DB::table('doctor_day_work')->where('id',$id)->delete();
-    //     return redirect()->route('admin.doctor_time.index');
-    // }
+        DB::table('dat_lich')->insert($data);
+
+        return redirect()->route('client.pages.appointment')->with('success','Insert Successfully');
+    }
+
 }
