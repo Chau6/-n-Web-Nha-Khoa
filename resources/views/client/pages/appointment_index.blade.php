@@ -89,8 +89,8 @@
                         <td>{{$item->date . '-' . $item->time}}</td>
                         <td>{{$item->service}}</td>
                         <td>{{$item->description}}</td>
-                        <td>Edit</td>
-                        <td>Delete</td>
+                        <td><a href="{{ route('client.pages.appointment_edit', ['id'=>$item->id]) }}">Edit</td>
+                        <td><a onclick="return confirmDelete()" href="{{ route('client.pages.delete', ['id'=>$item->id]) }}">Delete</td>
                     </tr>
                     @endforeach
                     </tbody>

@@ -16,6 +16,10 @@ class DatLichController extends Controller
         
         return view('client.pages.appointment_index', ['datas' => $data, 'user' => $user_result]);
     }
+    public function delete($id){
+        DB::table('dat_lich')->where('id',$id)->delete();
+        return redirect()->route('client.pages.appointment_index');
+    }
     public function appointment_create(){
         $doctor = DB::table('doctors')->orderBy('id')->get();
         return view('client.pages.appointment_create', ['doctors' => $doctor], );

@@ -76,7 +76,7 @@
 
                     <td><a href="{{ route('admin.doctor_time.edit', ['id'=>$doctor_time->id]) }}">Edit</td>
 
-                    <td><a onclick="return deleteConfirm()" href="{{ route('admin.doctor_time.delete', ['id'=>$doctor_time->id]) }}">Delete</td>
+                    <td><a onclick="return confirmDelete()" href="{{ route('admin.doctor_time.delete', ['id'=>$doctor_time->id]) }}">Delete</td>
                 </tr>     
                 @endforeach      
                 </tbody>
