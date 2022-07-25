@@ -60,19 +60,33 @@
                           <td>{{ $user->last_name }}</td>
                           <td>{{ $user->first_name }} {{$user->last_name}}</td>
                           <td>
-                              @switch($user->gender)
-                                  @case(1)
-                                      Male
-                                      @break
-                                  @case(2)
-                                      Female
-                                      @break
-                                  @default                       
-                              @endswitch
-                          
+                            <?php
+                                if($user->gender){
+                                    switch ($user->gender) {
+                                      case '1':
+                                          echo "Male";
+                                        break;
+                                      case '2':
+                                          echo "Female";
+                                        break;
+                                      default:
+                                        break;
+                                    }
+                                }else{
+                                    echo "<p align= 'center'>-</p>";
+                                }
+                            ?>
                           </td>
                           <td>{{$user->email}}</td>
-                          <td>{{$user->phone}}</td> 
+                          <td>
+                            <?php
+                              if($user->phone){
+                                  echo "$user->phone";
+                              }else{
+                                  echo "<p align= 'center'>-</p>";
+                              }
+                            ?>
+                        </td> 
                   
                           <td>{{ date('d/m/Y | H:i:s', strtotime($user->created_at)) }}</td>
       

@@ -31,11 +31,11 @@
                     <th>Age</th>
                     <th>Date</th>
                     <th>Time At</th>
-                    <th>Doctor ID</th>
+                    <th>Doctor Name</th>
                     <th>Service</th>
                     <th>Description</th>
-                    {{-- <th>Edit</th>
-                    <th>Delete</th> --}}
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
                 </thead>
                 @foreach ($dat_lich as $item)
@@ -46,12 +46,11 @@
                     <td>{{$item->age}}</td>
                     <td>{{ $item->date }}</td>
                     <td>{{$item->time}}</td>
-                    <td>{{$item->doctor_name}}</td>
+                    <td><?php $data = DB::table('doctors')->where('id', $item->doctor_name)->first()?>{{$data->fullname}}</td>
                     <td>{{$item->service}}</td>
                     <td>{{$item->description}}</td>
-                    {{-- <td><a href="{{ route('admin.dat_lich.edit', ['id'=>$doctor->id]) }}">Edit</td>
-
-                    <td><a onclick="return confirmDelete()" href="{{ route('admin.dat_lich.delete', ['id'=>$doctor->id]) }}">Delete</td> --}}
+                    {{-- <td><a href="{{ route('admin.dat_lich.edit', ['id'=>$item->id]) }}">Edit</td>
+                    <td><a onclick="return confirmDelete()" href="{{ route('admin.dat_lich.delete', ['id'=>$item->id]) }}">Delete</td> --}}
                 </tr>            
                 </tbody>
                 @endforeach

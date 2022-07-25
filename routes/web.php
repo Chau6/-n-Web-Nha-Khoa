@@ -77,6 +77,10 @@ Route::get('testmail', [LoginController::class, 'testMail'])->name('testmail');
 Route::middleware('admin', 'login')->group(function(){
     Route::prefix('admin')->name('admin.')->group(function(){
         Route::get('index_pages', [IndexPageController::class, 'index'])->name('index_pages');
+
+        Route::get('contact', [IndexPageController::class, 'contact'])->name('contact');
+        Route::get('delete/{id}', [IndexPageController::class, 'delete'])->name('delete')->where('id', '[0-9]+');
+
         //User
         Route::prefix('user')->name('user.')->group(function(){
             Route::get('index', [UserController::class, 'index'])->name('index');
@@ -206,9 +210,13 @@ Route::prefix('client')->name('client.')->group(function(){
 
         // Doctor
         Route::get('doctors', [HomeController::class, 'doctors'])->name('doctors')->middleware('login');
-        // Appointment 
-        Route::get('appointment', [DatLichController::class, 'appointment'])->name('appointment')->where('id','[0-9]+')->middleware('login');
+        // Appointment
+        Route::get('appointment_index', [DatLichController::class, 'appointment_index'])->name('appointment_index'); 
+        Route::get('delete/{id}', [DatLichController::class, 'delete'])->name('delete')->where('id','[0-9]+');
+        Route::get('appointment_create', [DatLichController::class, 'appointment_create'])->name('appointment_create')->where('id','[0-9]+')->middleware('login');
         Route::post('store', [DatLichController::class, 'store'])->name('store');
+        Route::get('appointment_edit/{id}', [DatLichController::class, 'appointment_edit'])->name('appointment_edit')->where('id','[0-9]+'); 
+        Route::post('update/{id}', [DatLichController::class, 'update'])->name('update')->where('id','[0-9]+'); 
 
         // Rating
         Route::post('rating', [HomeController::class, 'rating'])->name('rating');

@@ -27,8 +27,8 @@
         <div class="form-group">
         <label>Gender</label>
         <select class="form-control" name="gender">
-            <option value="2" {{ old('gender') == '2' ? 'selected':'' }}>Female</option>
-            <option value="1" {{ old('gender') == '1' ? 'selected':'' }}>Male</option>
+            <option value="2" {{ $doctor->gender == '2' ? 'selected':'' }}>Female</option>
+            <option value="1" {{ $doctor->gender == '1' ? 'selected':'' }}>Male</option>
         </select>
         </div>
 
