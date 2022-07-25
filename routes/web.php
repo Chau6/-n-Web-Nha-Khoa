@@ -17,6 +17,8 @@ use App\Http\Controllers\Admin\DoctorTimeController;
 use App\Http\Controllers\Client\DatLichController;
 use App\Http\Controllers\Admin\Dat_LichController;
 use App\Http\Controllers\Client\EditProfileController;
+use App\Http\Controllers\Admin\GalleryController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -115,6 +117,14 @@ Route::middleware('admin', 'login')->group(function(){
             /** Delete product */
             Route::get('delete/{id}', [ProductController::class, 'delete'])->name('delete')->where('id','[0-9]+');
          });
+         //Gallery
+         Route::prefix('gallery')->name('gallery.')->group(function(){
+                Route::get('add_gallery/{product_id}', [GalleryController::class, 'add_gallery'])->name('add_gallery')->where('product_id','[0-9]+');
+                Route::post('select_gallery', [GalleryController::class, 'select_gallery'])->name('select_gallery');
+                Route::post('insert_gallery/{pro_id}', [GalleryController::class, 'insert_gallery'])->name('insert_gallery');
+         });
+
+
         // Post
         Route::prefix('post')->name('post.')->group(function(){
             /** Show list of post */
@@ -155,6 +165,7 @@ Route::middleware('admin', 'login')->group(function(){
             Route::post('update/{id}', [DoctorTimeController::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update doctor
             /** Delete Doctor */
             Route::get('delete/{id}', [DoctorTimeController::class, 'delete'])->name('delete')->where('id','[0-9]+');
+            
         });
 
         //Dat_lich

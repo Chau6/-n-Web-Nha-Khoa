@@ -77,11 +77,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Product Image</label>
-					<input type="file" class="form-control" name="photos[]" multiple />
-                </div>
-        
-                <div class="form-group">
                     <div class="custom-control custom-switch">
                         <input type="checkbox" name="status" class="custom-control-input" id="customSwitch1" value="1">
                         <label class="custom-control-label" for="customSwitch1">Status</label>

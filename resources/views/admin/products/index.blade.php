@@ -29,6 +29,7 @@
               <tr>
                   <th>ID</th>
                   <th>Name</th>
+                  <th>Gallery</th>
                   <th>Category</th>
                   <th>Price</th>
                   <th>Status</th>
@@ -53,6 +54,7 @@
                         </div>
                     </div>
                 </td>
+                <td><a href="{{ route('admin.gallery.add_gallery',[$product->id]) }}">Add Gallery</a></td>
                 <td>{{$product->category_name}}</td>
                 <td>{{$product->price}}</td>
                 <td>{{$product->status}}</td>

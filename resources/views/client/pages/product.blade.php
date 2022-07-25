@@ -43,7 +43,7 @@
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
                     <div class="single-solution-style1 wow fadeInUp" data-wow-delay="300ms">
                         <div class="img-holder">
-                            <img src="{{ asset('images/'.$product->images)}}" alt="Awesome Image" style="width:400px;height:90px;">
+                            <img src="###" alt="Awesome Image" style="width:400px;height:90px;">
                             <div class="icon-holder">
                                 <div class="inner-content">
                                     <div class="box">
