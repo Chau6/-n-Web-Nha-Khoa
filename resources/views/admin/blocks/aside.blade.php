@@ -186,12 +186,6 @@
                                 <p>List</p>
                             </a>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a href="{{ route('admin.doctor_time.create')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Create Doctor Time</p>
-                            </a>
-                        </li> --}}
                     </ul>
                 </li>
 

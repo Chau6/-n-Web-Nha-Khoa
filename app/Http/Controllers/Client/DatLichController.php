@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Doctor\StoreDatLich;
+use App\Http\Requests\Doctor\StoreUpdateDatLich;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,7 +25,7 @@ class DatLichController extends Controller
         $doctor = DB::table('doctors')->orderBy('id')->get();
         return view('client.pages.appointment_create', ['doctors' => $doctor], );
     }
-    public function store(Request $request){
+    public function store(StoreDatLich $request){
         $data = $request->except('_token');
         $data['created_at'] = new \DateTime();
         $data['user_id'] = Auth::user()->id;
@@ -38,7 +39,7 @@ class DatLichController extends Controller
         $doctor = DB::table('doctors')->orderBy('id')->get();
         return view('client.pages.appointment_edit', ['id' => $id, 'doctors' => $doctor, 'edit' => $edit]);
     }
-    public function update(Request $request, $id){
+    public function update(StoreUpdateDatLich $request, $id){
         $data = $request->except('_token'); //lấy data ngoại trừ
 
         DB::table('dat_lich')->where('id','=', $id)->update($data); //rỗng thì giữ nguyên

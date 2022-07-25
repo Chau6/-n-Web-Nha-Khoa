@@ -11,7 +11,7 @@
 </div>
 @endif
 <form action="{{ route('admin.doctor.update', ['id'=> $doctor->id]) }}" method="POST">  
-    @csrf
+@csrf
 <div class="card">
     <div class="card-header">
       <h3 class="card-title">Edit Doctor</h3>

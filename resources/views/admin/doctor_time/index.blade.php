@@ -32,8 +32,8 @@
                         <th>Delete</th>
                     </tr>
                 </thead>
-                @foreach ($doctor_day_work as $doctor_time)
                 <tbody>
+                @foreach ($doctor_day_work as $doctor_time)
                 <tr>
                     <td><?php $data = DB::table('doctors')->where('id', $doctor_time->doctor_id)->first()?>{{$data->fullname}}</td>
                     <td>

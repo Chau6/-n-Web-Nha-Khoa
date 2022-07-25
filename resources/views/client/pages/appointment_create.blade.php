@@ -1,14 +1,6 @@
 @extends('client.master')
 
 @section('breadcrumb')
-@if (Session::has('success') )
-
-  <div class="alert alert-success alert-block">
-      <button type="button" class="close" data-dismiss="alert">x</button>
-          <strong>{{ Session::get('success') }}</strong>
-  </div>
-
-@endif
     <!--Start breadcrumb area-->     
 <section class="breadcrumb-area" style="background-image: url({{asset('asset/client/images/resources/breadcrumb-bg.jpg')}});">
     <div class="container">
@@ -45,6 +37,27 @@
                 </div>
             </div>
         </div>
+        @if (Session::has('success') )
+        <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+                <strong>{{ Session::get('success') }}</strong>
+        </div>
+        @endif
+        @if (Session::has('error') )
+        <div class="alert alert-danger ">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+                <strong>{{ Session::get('error') }}</strong>
+        </div>
+        @endif
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
         <div class="row">
             <div class="col-xl-8">
                 <div class="appointment-form-left">
@@ -58,7 +71,7 @@
                                     </div>
                                     <div class="input-box">
                                         <div class="col-xl-6">
-                                            <input type="text" name="name" id="p_name" value="" placeholder="Patient Name*" required pattern="[A-Za-z]{1,}" title="Please enter your name">{{old('name')}}    
+                                            <input type="text" name="name" id="p_name" value="{{old('name')}}" placeholder="Patient Name*">    
                                         </div>     
                                     </div>
                                 </div>
@@ -70,7 +83,7 @@
                                     </div>
                                     <div class="input-box">
                                         <div class="col-xl-6">
-                                            <input type="text" name="phone" value="" placeholder="Ph Num*" required pattern="[0-9]{10}" title="Please enter your phone number, must be 10 number">{{old('phone')}}    
+                                            <input type="text" name="phone" id="phone" value="{{old('phone')}}" placeholder="Ph Num*">   
                                         </div>    
                                     </div>
                                 </div>
@@ -82,7 +95,7 @@
                                     </div>
                                     <div class="input-box">
                                         <div class="col-xl-6">
-                                            <input type="text" name="age" id="age" value="" placeholder="Age" required pattern="[0-9]{1,2}" title="Please enter your age">{{old('age')}} 
+                                            <input type="text" name="age" id="age" value="{{old('age')}}" placeholder="Age*"> 
                                         </div>     
                                     </div>
                                 </div>
@@ -122,7 +135,7 @@
                                     </div>
                                     <div class="input-box">
                                         <div class="col-xl-6">
-                                            <input type="text" name="date" class="date-input" id="date-in" placeholder="Date">{{old('date')}} 
+                                            <input type="text" value="{{old('date')}}" name="date" class="date-input" id="date-in" placeholder="Date"> 
                                         </div>    
                                     </div>
                                 </div>

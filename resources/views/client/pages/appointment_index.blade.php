@@ -30,7 +30,8 @@
           <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
             <ol class="breadcrumb mb-0">
               <li class="breadcrumb-item"><a href="{{route('client.pages.index')}}">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+              <li class="breadcrumb-item"><a href="{{route('client.pages.information_client')}}">User Profile</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Appointment Details</li>
             </ol>
           </nav>
         </div>
@@ -45,19 +46,15 @@
                 class="rounded-circle img-fluid" style="width: 150px;">
               <h5 class="my-3">{{$user->first_name}} {{$user->last_name}}</h5>
               <?php
-                    if ($user->level == 1 && $user->id == 1) {
-                    echo "<p><span class='badge badge-warning' style='color:rgb(76, 98, 117)'>SuperAdmin</span></p>";
-                    }elseif($user->level == 1) {  
-                    echo "<p><span class='badge badge-danger'>Admin</span></p>";
-                    } else{
-                    echo "<p><span class='badge badge-info'>Member</span></p>";
-                    }
-                ?>
+                if ($user->level == 1 && $user->id == 1) {
+                echo "<p><span class='badge badge-warning' style='color:rgb(76, 98, 117)'>SuperAdmin</span></p>";
+                }elseif($user->level == 1) {  
+                echo "<p><span class='badge badge-danger'>Admin</span></p>";
+                } else{
+                echo "<p><span class='badge badge-info'>Member</span></p>";
+                }
+              ?>
               
-              <div class="d-flex justify-content-center mb-2">
-                <button type="button" class="btn btn-primary"><a href="{{route('client.pages.edit_profile', ['id'=>Auth::user()->id])}}" style="color:#eee">Edit</a></button>
-                
-              </div>
             </div>
           </div>
 

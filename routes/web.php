@@ -176,6 +176,9 @@ Route::middleware('admin', 'login')->group(function(){
         Route::prefix('dat_lich')->name('dat_lich.')->group(function(){
             /** Show list of Doctor */
             Route::get('index', [Dat_LichController::class, 'index'])->name('index');
+            Route::get('delete/{id}', [Dat_LichController::class, 'delete'])->name('delete')->where('id','[0-9]+');
+            Route::get('edit/{id}', [Dat_LichController::class, 'edit'])->name('edit')->where('id','[0-9]+'); //Show form to edit doctor
+            Route::post('update/{id}', [Dat_LichController::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update doctor
         });
     });
 });

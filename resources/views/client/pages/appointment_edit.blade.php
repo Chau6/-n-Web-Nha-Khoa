@@ -25,7 +25,7 @@
                                 </div>
                                 <div class="input-box">
                                     <div class="col-xl-6">
-                                        <input type="text" name="name" id="p_name" value="{{$edit->name}}" placeholder="Patient Name*" required pattern="[A-Za-z]{1,}" title="Please enter your name"> 
+                                        <input type="text" name="name" id="p_name" value="{{$edit->name}}" placeholder="Patient Name*"> 
                                     </div>     
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="input-box">
                                     <div class="col-xl-6">
-                                        <input type="text" name="phone" value="{{$edit->phone}}" placeholder="Ph Num*" required pattern="[0-9]{10}" title="Please enter your phone number, must be 10 number">   
+                                        <input type="text" name="phone" value="{{$edit->phone}}" placeholder="Ph Num*">   
                                     </div>    
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="input-box">
                                     <div class="col-xl-6">
-                                        <input type="text" name="age" id="age" value="{{$edit->age}}" placeholder="Age" required pattern="[0-9]{1,2}" title="Please enter your age">
+                                        <input type="text" name="age" id="age" value="{{$edit->age}}" placeholder="Age">
                                     </div>     
                                 </div>
                             </div>
