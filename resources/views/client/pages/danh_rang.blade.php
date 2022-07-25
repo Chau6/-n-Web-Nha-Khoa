@@ -48,7 +48,7 @@
                                     <ul>
                                         <li><a href="{{route('client.pages.faqs')}}">FAQ’s</a></li>
                                         <li><a href="timetable.html">Timetable</a></li>
-                                        <li><a href="{{route('client.pages.appointment')}}">Apppointment</a></li>
+                                        <li><a href="{{route('client.pages.appointment_create')}}">Apppointment</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="{{route('client.pages.contact')}}">Contact</a></li>

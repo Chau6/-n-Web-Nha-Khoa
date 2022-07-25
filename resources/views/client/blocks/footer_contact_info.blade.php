@@ -21,7 +21,7 @@
                     <div class="text-holder">
                         <h3>Appointment</h3>
                         <p>Make your appointment through online now.</p>
-                        <a class="btn-two" href="{{route('client.pages.appointment')}}">Book for Appointment</a>
+                        <a class="btn-two" href="{{route('client.pages.appointment_create')}}">Book for Appointment</a>
                     </div>
                 </div>
             </div>

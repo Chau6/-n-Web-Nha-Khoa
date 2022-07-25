@@ -22,10 +22,4 @@
 <script type="text/javascript" src="{{asset('asset/page/plugins/ckeditor/ckeditor.js')}}"></script>
 <script type="text/javascript" src="{{asset('asset/page/plugins/ckfinder/ckfinder.js')}}"></script>
 <script type="text/javascript">
-function confirmDelete () {
-    if (window.confirm('Ban Chac Chua??????????')) {
-        return true;
-    }
-    return false;
-}
 </script>

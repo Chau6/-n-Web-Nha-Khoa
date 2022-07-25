@@ -25,7 +25,7 @@
             <table id="example1" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Doctor Id</th>
+                        <th>Doctor Name</th>
                         <th>Work Time</th>
                         <th>Created At</th>
                         <th>Edit</th>
@@ -35,7 +35,7 @@
                 @foreach ($doctor_day_work as $doctor_time)
                 <tbody>
                 <tr>
-                    <td>{{ $doctor_time->doctor_id }}</td>
+                    <td><?php $data = DB::table('doctors')->where('id', $doctor_time->doctor_id)->first()?>{{$data->fullname}}</td>
                     <td>
                         @switch($doctor_time->time)
                             @case("9:00am")
@@ -76,9 +76,9 @@
 
                     <td><a href="{{ route('admin.doctor_time.edit', ['id'=>$doctor_time->id]) }}">Edit</td>
 
-                    <td><a onclick="return deleteConfirm()" href="{{ route('admin.doctor_time.delete', ['id'=>$doctor_time->id]) }}">Delete</td>
+                    <td><a onclick="return confirmDelete()" href="{{ route('admin.doctor_time.delete', ['id'=>$doctor_time->id]) }}">Delete</td>
                 </tr>     
-                @endforeach       
+                @endforeach      
                 </tbody>
             </table>      
           </div>
@@ -89,7 +89,11 @@
       <!-- /.col -->
     </div>
     <!-- /.row -->
-  </div>
+  </div> 
+  {{-- <pre><?php
+    print_r($doctor);
+    ?>
+  </pre>  --}}
 @endsection
 
 @section('css')
