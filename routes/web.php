@@ -223,6 +223,7 @@ Route::prefix('client')->name('client.')->group(function(){
 
         // Rating
         Route::post('rating', [HomeController::class, 'rating'])->name('rating');
+        Route::post('rating_post', [HomeController::class, 'rating_post'])->name('rating_post');
         // Comment
         Route::post('rating', [HomeController::class, 'rating'])->name('rating');
 

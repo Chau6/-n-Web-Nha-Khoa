@@ -24,18 +24,21 @@ class UserEditRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name' => 'required|max:255',
-            'last_name' => 'required|max:255',
-            'email' => 'required',
-            'phone' => 'required',
+            "first_name"=>"required",
+            "last_name"=>"required",
+            "email"=>"required|unique:user,email,".$this->id,
+            "phone"=>"max:15|unique:user,phone,".$this->id,
         ];
     }
-    public function messages() {
+    public function messages()
+    {
         return [
-            'first_name.required' => "Please enter your first name",
-            'last_name.required' => "Please enter your last name",
-            'email.required' => "Please enter your email",
-            'phone.required' => "Please enter your phone number",
+            "first_name.required"=>"Please Enter First Name",
+            "last_name.required"=>"Please Enter Last Name",
+            "email.required"=>"Please Enter Email",
+            "email.unique"=>"Email Have Exist",
+            "phone.max"=>"Phone Number Must Not Exceed 15",
+            "phone.unique"=>"Phone Have Exist"
         ];
     }
 }

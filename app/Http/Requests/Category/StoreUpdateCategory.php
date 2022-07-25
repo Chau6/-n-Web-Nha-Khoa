@@ -30,8 +30,8 @@ class StoreUpdateCategory extends FormRequest
 
     public function messages() {
         return [
-            'name.required' => "Please enter you category",
-            'name.unique' => "Category's name is already taken",
+            'name.required' => "PLease Enter Category",
+            'name.unique' => "Category Have Exist",
         ];
     }
 }

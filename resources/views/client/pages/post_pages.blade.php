@@ -64,6 +64,8 @@
                                     <a class="btn-two" href="{{route('client.pages.post_infor',['id'=>$post->id,'slug'=>$category->slug, 'slug_infor'=>$post->slug])}}"><span class="flaticon-next"></span>Reading</a>
                                 </div>  
                             </div>
+                        </div>
+                    </div>
                 @endforeach
             </div>
         {{-- </div> --}}

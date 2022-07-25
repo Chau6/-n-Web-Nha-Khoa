@@ -65,6 +65,7 @@ class HomeController extends Controller
             ->join('products', 'category.id', '=', 'products.category_id')
             ->select('category.name as category_name','products.*', 'products.id as pr_id')
             ->where('category.slug',$slug)
+            ->where('products.slug', $slug_infor)
             ->where('products.status', 1)
             ->orderBy('created_at', 'DESC')
             ->first();
@@ -91,16 +92,19 @@ class HomeController extends Controller
     // Path Post Detail
     public function post_infor($id, $slug, $slug_infor){
         $post = DB::table('category')
-            ->join('post', 'category.id', '=', 'post.category_id')
-            ->select('category.name as category_name','post.*')
-            ->where('category.slug',$slug)
-            ->where('post.status', 1)
-            ->orderBy('created_at', 'DESC')
-            ->first();
-        
+        ->join('post', 'category.id', '=', 'post.category_id')
+        ->select('category.name as category_name','post.*', 'post.id as post_id')
+        ->where('category.slug',$slug)
+        ->where('post.slug', $slug_infor)
+        ->where('post.status', 1)
+        ->orderBy('created_at', 'DESC')
+        ->first();
+        // $data_post = DB::table('comment')->where('post_id', $id)->first();
+        // dd($data_product);
+        $userRating = DB::table('rating_post')->selectRaw("count(case when post_id = $id then 1 end) as user_id")->first();
+        $ratingAvg = DB::table('rating_post')->where('post_id', $id)->avg('rating');
         DB::table('post')->where('id',$id)->increment('view');
-        
-        return view('client.pages.post_infor',['posts'=>$post]);
+        return view('client.pages.post_infor',['models'=>$post, 'ratingAvg'=>$ratingAvg, 'userRating'=>$userRating]);
     }
 
     public function faqs(){
@@ -110,6 +114,8 @@ class HomeController extends Controller
     public function specialities(){
         return view('client.pages.specialities');
     }
+
+    // Rating
     public function rating(Request $request){
         // dd($request->all());
         $data = $request->except('_token');
@@ -119,6 +125,19 @@ class HomeController extends Controller
             DB::table('rating')->where($request->only('product_id','user_id'))->update($request->only('rating'));
         }else{
             DB::table('rating')->insert($data);
+        }
+        return redirect()->back();
+    }
+
+    public function rating_post(Request $request){
+        // dd($request->all());
+        $data = $request->except('_token');
+        $data['created_at'] = new \DateTime;
+        $check_unique =DB::table('rating_post')->where($request->only('post_id','user_id'))->first();
+        if($check_unique){
+            DB::table('rating_post')->where($request->only('post_id','user_id'))->update($request->only('rating'));
+        }else{
+            DB::table('rating_post')->insert($data);
         }
         return redirect()->back();
     }

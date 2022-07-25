@@ -61,10 +61,10 @@
                             </div>
                             <div class="readmore-button">
                                 <a class="btn-two" href="{{route('client.pages.product_infor',['id'=>$product->id,'slug'=>$category->slug, 'slug_infor'=>$product->slug])}}"><span class="flaticon-next"></span>Reading</a>
-                            </div>  
-
-                            
+                            </div>     
                         </div>
+                    </div>
+                </div>
             @endforeach
         </div>
     </div>
