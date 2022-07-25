@@ -39,7 +39,7 @@
                     </div>
                     <div class="header-style1-button float-right">
                         @if (Auth::check())
-                        <a href="{{route('client.pages.appointment')}}"><span class="icon-date"></span>Make Appointment</a>
+                        <a href="{{route('client.pages.appointment_create')}}"><span class="icon-date"></span>Make Appointment</a>
                         @else
                         <a href="" data-toggle="modal" data-target="#modelId"><span class="icon-date"></span>Make Appointment</a>
                         @endif

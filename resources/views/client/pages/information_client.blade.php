@@ -60,7 +60,7 @@
                   <p class="mb-0" ><a href="" align="center">Contact</a></p>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center p-3" >
-                    <p class="mb-0" ><a href="" align="center">Your Appointment</a></p>
+                    <p class="mb-0" ><a href="{{ route('client.pages.appointment_index') }}" align="center">Your Appointment</a></p>
                   </li>
                 
               </ul>

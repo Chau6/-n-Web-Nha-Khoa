@@ -195,9 +195,13 @@ Route::prefix('client')->name('client.')->group(function(){
 
         // Doctor
         Route::get('doctors', [HomeController::class, 'doctors'])->name('doctors')->middleware('login');
-        // Appointment 
-        Route::get('appointment', [DatLichController::class, 'appointment'])->name('appointment')->where('id','[0-9]+')->middleware('login');
+        // Appointment
+        Route::get('appointment_index', [DatLichController::class, 'appointment_index'])->name('appointment_index'); 
+        Route::get('delete/{id}', [DatLichController::class, 'delete'])->name('delete')->where('id','[0-9]+');
+        Route::get('appointment_create', [DatLichController::class, 'appointment_create'])->name('appointment_create')->where('id','[0-9]+')->middleware('login');
         Route::post('store', [DatLichController::class, 'store'])->name('store');
+        Route::get('appointment_edit/{id}', [DatLichController::class, 'appointment_edit'])->name('appointment_edit')->where('id','[0-9]+'); 
+        Route::post('update/{id}', [DatLichController::class, 'update'])->name('update')->where('id','[0-9]+'); 
 
         // Rating
         Route::post('rating', [HomeController::class, 'rating'])->name('rating');
