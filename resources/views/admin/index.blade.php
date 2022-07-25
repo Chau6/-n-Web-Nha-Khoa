@@ -9,14 +9,14 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>150</h3>
+                        <h3 id="total_view"></h3>
         
-                        <p>New Orders</p>
+                        <p>Viewer</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-bag"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    
                     </div>
                 </div>
 
@@ -32,7 +32,7 @@
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    
                     </div>
                 </div>
 
@@ -49,7 +49,7 @@
                     <div class="icon">
                         <i class="ion ion-person-add"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    
                     </div>
                 </div>
                 
@@ -65,8 +65,7 @@
                     <div class="icon">
                         <i class="ion ion-pie-graph"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -75,52 +74,32 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h3 class="card-title">DataTable with default features</h3>
+                    <h3 class="card-title">Show Rating Product</h3>
                   </div>
                   <!-- /.card-header -->
                   <div class="card-body">
                     <table id="example1" class="table table-bordered table-striped">
                       <thead>
                       <tr>
-                        <th>Rendering engine</th>
-                        <th>Browser</th>
-                        <th>Platform(s)</th>
-                        <th>Engine version</th>
-                        <th>CSS grade</th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        {{-- <th>Category</th> --}}
+                        <th>Rating</th>
+                        <th>View</th>
                       </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Misc</td>
-                          <td>IE Mobile</td>
-                          <td>Windows Mobile 6</td>
-                          <td>-</td>
-                          <td>C</td>
-                        </tr>
-                        <tr>
-                          <td>Misc</td>
-                          <td>PSP browser</td>
-                          <td>PSP</td>
-                          <td>-</td>
-                          <td>C</td>
-                        </tr>
-                        <tr>
-                          <td>Other browsers</td>
-                          <td>All others</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>U</td>
-                        </tr>
+                        @foreach ($show_product_rate as $product_rate)
+                          <tr>
+                            <td>{{$loop->iteration}}</td>
+                            <td>{{$product_rate->name}}</td>
+                            {{-- <td>{{$category->category_name}}</td> --}}
+                            <td>{{$product_rate->rating}}</td>
+                            <td>{{$product_rate->view}}</td>
+                          </tr>
+                        @endforeach
                       </tbody>
-                      <tfoot>
-                      <tr>
-                        <th>Rendering engine</th>
-                        <th>Browser</th>
-                        <th>Platform(s)</th>
-                        <th>Engine version</th>
-                        <th>CSS grade</th>
-                      </tr>
-                      </tfoot>
+
                     </table>
                   </div>
                   <!-- /.card-body -->
@@ -154,4 +133,33 @@
   <script src="{{asset('asset/page/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
   <script src="{{asset('asset/page/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
   <script src="{{asset('asset/page/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      let sumproduct = (parseInt({{$count_view_product}}));
+      let sumpost = (parseInt({{$count_view_post}}));
+      let totalview = sumproduct + sumpost;
+      $('#total_view').html(totalview);
+
+    });
+  </script>
+
+  <script type="text/javascript">
+    $(function () {
+      $("#example1").DataTable({
+        "responsive": true, "lengthChange": false, "autoWidth": false,
+        // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        "buttons": ["colvis"]
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+  </script>
 @endsection

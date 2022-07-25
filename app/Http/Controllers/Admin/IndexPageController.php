@@ -11,7 +11,16 @@ class IndexPageController extends Controller
     public function index(){
         $count_user = DB::table('user')->selectRaw("count(case when level = '0' then 1 end) as user")->first();
         $count_admin = DB::table('user')->selectRaw("count(case when level = '1' then 1 end) as admin")->first();
-        return view('admin.index',['total_user'=>$count_user, 'total_admin'=>$count_admin]);
+        $count_view_product = DB::table('products')->get()->sum('view');
+        $count_view_post = DB::table('post')->get()->sum('view');
+
+        $show_product_rate = DB::table('products')
+        ->join('rating','products.id', '=', 'product_id')
+        ->select('products.name as product_name', 'products.*', 'rating.*')
+        ->where('products.status', 1)
+        ->get();
+
+        return view('admin.index',['total_user'=>$count_user, 'total_admin'=>$count_admin, 'count_view_product'=>$count_view_product, 'count_view_post'=>$count_view_post, 'show_product_rate'=>$show_product_rate]);
     }
 
     public function contact(){

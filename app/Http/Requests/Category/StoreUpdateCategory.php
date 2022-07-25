@@ -30,8 +30,8 @@ class StoreUpdateCategory extends FormRequest
 
     public function messages() {
         return [
-            'name.required' => "Vui lòng nhập tên thể loại cha",
-            'name.unique' => "Tên thể loại cha đã tồn tại rồi",
+            'name.required' => "PLease Enter Category",
+            'name.unique' => "Category Have Exist",
         ];
     }
 }

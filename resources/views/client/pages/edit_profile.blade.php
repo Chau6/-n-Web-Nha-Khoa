@@ -149,25 +149,27 @@
           },
           phone:{
             number: true,
-            minlength: 8
+            minlength: 8,
+            maxlength: 15,
           }
         },
         messages: {
           email: {
             required: "Please enter a email address",
-            email: "Please enter a valid email address"
+            email: "Please enter a valid email address",
           },
           phone:{
             number: "Please enter number only",
-            minlength: "Phone needs at least 8 characters"
+            minlength: "Phone needs at least 8 characters",
+            maxlength: "Phone must not exceed 15",
           },
           first_name:{
             required: "Please enter first name",
-            maxlength: "First name must not exceed 15",
+            maxlength: "First name must not exceed 20",
           },
           last_name:{
             required: "Please enter first name",
-            maxlength: "Last name must not exceed 15",
+            maxlength: "Last name must not exceed 20",
           },
         },
         errorElement: 'span',

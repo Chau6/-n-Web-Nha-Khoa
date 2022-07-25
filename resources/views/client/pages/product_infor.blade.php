@@ -4,7 +4,7 @@
 <div class="container mt-5">
     <div class="row">
         {{-- @foreach ($models as $model) --}}
-            @if ($models->status == 1)
+        @if ($models->status == 1)
             <div class="col-lg-8">
                 <!-- Post content-->
                 <article>
@@ -90,7 +90,7 @@
     </div>
 </section> --}}
             </div>
-            @endif
+        @endif
         
         {{-- @endforeach --}}
         
@@ -110,7 +110,6 @@
                                 @else
                                 <div> 0.0/5 - (0 rated) </div>
                                 @endif 
-                                
                             </td></tr>
                         </table>
                     </div>
