@@ -69,6 +69,7 @@
                 </div>
             </div>
         </div>
+        {{-- Product --}}
         <div class="container-fluid">
             <div class="row">
               <div class="col-12">
@@ -110,6 +111,48 @@
             </div>
           <!-- /.row -->
         </div>
+        {{-- Post --}}
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Show Rating Post</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <table id="example3" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      {{-- <th>Category</th> --}}
+                      <th>Rating</th>
+                      <th>View</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      @foreach ($show_post_rate as $post_rate)
+                        <tr>
+                          <td>{{$loop->iteration}}</td>
+                          <td>{{$post_rate->name}}</td>
+                          {{-- <td>{{$category->category_name}}</td> --}}
+                          <td>{{$post_rate->rating}}</td>
+                          <td>{{$post_rate->view}}</td>
+                        </tr>
+                      @endforeach
+                    </tbody>
+
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+          </div>
+        <!-- /.row -->
+      </div>
     </section>
 @endsection
 
@@ -152,6 +195,21 @@
         "buttons": ["colvis"]
       }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
       $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+
+      $("#example3").DataTable({
+        "responsive": true, "lengthChange": false, "autoWidth": false,
+        // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        "buttons": ["colvis"]
+      }).buttons().container().appendTo('#example3_wrapper .col-md-6:eq(0)');
+      $('#example4').DataTable({
         "paging": true,
         "lengthChange": false,
         "searching": false,
