@@ -68,6 +68,7 @@
                     </div>
                 @endforeach
             </div>
+            {!! $models->links() !!}
         {{-- </div> --}}
     </div>
 </section>

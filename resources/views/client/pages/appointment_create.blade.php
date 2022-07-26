@@ -163,28 +163,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-12 col-lg-12">
-                                <div class="single-box">
-                                    <div class="title">
-                                        <h5>Service</h5>
-                                    </div>
-                                    <div class="input-box">
-                                        <div class="col-xl-6">
-                                            <select class="selectmenu" name="service" id="service">
-                                                <option>Dental Implants</option>
-                                                <option>Cosmetic Dentistry</option>
-                                                <option>Laser Dentistry</option>
-                                                <option>Orthodontics</option>
-                                                <option>Endodontics</option>
-                                                <option>Periodontics</option>
-                                            </select>    
-                                        </div>
-                                        <div class="col-xl-12">
-                                            <textarea name="description" placeholder="Description...">{{old('description')}}</textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                         
                         <div class="button-box">

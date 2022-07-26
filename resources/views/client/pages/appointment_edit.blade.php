@@ -117,28 +117,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-12 col-lg-12">
-                            <div class="single-box">
-                                <div class="title">
-                                    <h5>Service</h5>
-                                </div>
-                                <div class="input-box">
-                                    <div class="col-xl-6">
-                                        <select class="selectmenu" name="service" id="service">
-                                            <option {{ $edit->service == 'Dental Implants' ? 'selected':'' }}>Dental Implants</option>
-                                            <option {{ $edit->service == 'Cosmetic Dentistry' ? 'selected':'' }}>Cosmetic Dentistry</option>
-                                            <option {{ $edit->service == 'Laser Dentistry' ? 'selected':'' }}>Laser Dentistry</option>
-                                            <option {{ $edit->service == 'Orthodontics' ? 'selected':'' }}>Orthodontics</option>
-                                            <option {{ $edit->service == 'Endodontics' ? 'selected':'' }}>Endodontics</option>
-                                            <option {{ $edit->service == 'Periodontics' ? 'selected':'' }}>Periodontics</option>
-                                        </select>    
-                                    </div>
-                                    <div class="col-xl-12">
-                                        <textarea name="description" placeholder="Description...">{{$edit->description}}</textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                     
                     <div class="button-box">

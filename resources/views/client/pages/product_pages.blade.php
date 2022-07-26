@@ -67,6 +67,9 @@
                 </div>
             @endforeach
         </div>
+        
+        {!! $models->links()!!}
+        
     </div>
 </section>
 @endsection

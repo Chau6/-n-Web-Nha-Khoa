@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('date');
             $table->string('time');
             $table->string('doctor_name');
-            $table->string('service');
             $table->string('description')->nullable();
             
             $table->timestamps();
