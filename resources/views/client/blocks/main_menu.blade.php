@@ -23,14 +23,13 @@
                                 </li>
                                 <li class="dropdown"><a href="{{route('client.pages.product')}}">Products</a>
                                     <ul>
-                                        <li><a href="{{ route('client.pages.advice') }}">Advice</a></li>
                                         <li><a href="">Toothbrushes</a></li>
                                         <li><a href="">Toothpaste</a></li>
-                                        <li><a href="">Dental floss</a></li>
-                                        <li><a href="">Face mask</a></li>
-                                        <li><a href="">Dental picks and sticks</a></li>
-                                        <li><a href="">Tongue scrapers</a></li>
-                                        <li><a href="">Oral medicine</a></li>
+                                        <li><a href="">Dental Floss</a></li>
+                                        <li><a href="">Face Mask</a></li>
+                                        <li><a href="">Dental Picks And Sticks</a></li>
+                                        <li><a href="">Tongue Scrapers</a></li>
+                                        <li><a href="">Oral Medicine</a></li>
                                     </ul>
                                 </li>
                                 @if (Auth::check())
@@ -45,23 +44,25 @@
                         </div>
                     </nav>
                     
-                    <div class="mainmenu-right">
-                        <div class="search-box-style1">
-                            <form class="search-form" method="post" action="http://st.ourhtmldemo.com/new/Dento/index.html">
-                                <input type="search" name="search" placeholder="Search..." required>
-                                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                            </form>        
-                        </div>
-                        <div class="toggler-button">
-                            <div class="nav-toggler hidden-bar-opener">
-                                <div class="inner">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                            </div>    
-                        </div>
-                    </div> 
+                        <div class="mainmenu-right">
+                            {{-- <div class="search-box-style1">
+                                <form class="search-form" method="post" action="http://st.ourhtmldemo.com/new/Dento/index.html">
+                                    <input type="search" name="search" placeholder="Search..." required>
+                                    <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                </form>        
+                            </div> --}}
+                            
+                            
+                            <div class="toggler-button">
+                                <div class="nav-toggler hidden-bar-opener">
+                                    <div class="inner">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </div>    
+                            </div>
+                        </div> 
                     
                 </div>
             </div>

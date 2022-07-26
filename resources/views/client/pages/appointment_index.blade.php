@@ -70,7 +70,7 @@
                             <th>Age</th>
                             <th>Doctor Name</th>
                             <th>Date and Time</th>
-                            <th>Service</th>
+                            {{-- <th>Service</th> --}}
                             <th>Description</th>
                             <th>Edit</th>
                             <th>Delete</th>
@@ -84,7 +84,7 @@
                         <td>{{$item->age}}</td>
                         <td><?php $data = DB::table('doctors')->where('id', $item->doctor_name)->first()?>{{$data->fullname}}</td>
                         <td>{{$item->date . '-' . $item->time}}</td>
-                        <td>{{$item->service}}</td>
+                        {{-- <td>{{$item->service}}</td> --}}
                         <td>{{$item->description}}</td>
                         <td><a href="{{ route('client.pages.appointment_edit', ['id'=>$item->id]) }}">Edit</td>
                         <td><a onclick="return confirmDelete()" href="{{ route('client.pages.delete', ['id'=>$item->id]) }}">Delete</td>

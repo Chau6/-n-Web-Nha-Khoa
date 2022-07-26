@@ -23,25 +23,14 @@
                 </li>
             </ul>
         </div>       
-        <div class="newsletter-form-box">
-            <h3>Newsletter Subscribe</h3>
-            <span>Get healthy tips & latest updates in inbox.</span>
-            <form action="#">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <input type="email" name="email" placeholder="Email Address..."> 
-                        <button type="submit"><span class="flaticon-arrow"></span></button>    
-                    </div>
-                </div>
-            </form>
-        </div>
+        
         <div class="offer-box text-center">
             <div class="big-title">50% <span>Offer</span></div>
             <h3>5 Years Warranty</h3>
-            <a class="btn-one" href="#">Pricing Plans</a>    
+              
         </div>
         <div class="copy-right-text">
-            <p>© Dento 2018, All Rights Reserved.</p>
+            <p>© Belleville Dental</p>
         </div> 
     </div>
 </section>

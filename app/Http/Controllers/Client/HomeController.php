@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Rating;
+
 use Illuminate\Http\Request;
 use App\Models\Gallery;
 
@@ -55,7 +56,7 @@ class HomeController extends Controller
             ->where('category.slug',$slug)
             ->where('products.status', 1)
             ->orderBy('created_at', 'DESC')
-            ->get();
+            ->paginate(9);
         
         $category = DB::table('category')->where('slug',$slug)->first();
         return view('client.pages.product_pages', ['models'=>$product, 'category'=>$category]);
@@ -87,7 +88,7 @@ class HomeController extends Controller
             ->where('category.slug',$slug)
             ->where('post.status', 1)
             ->orderBy('created_at', 'DESC')
-            ->get();
+            ->paginate(9);
         $category = DB::table('category')->where('slug',$slug)->first();
         return view('client.pages.post_pages', ['models'=>$post, 'category'=>$category]);
     }   
