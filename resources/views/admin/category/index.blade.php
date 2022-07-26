@@ -79,7 +79,6 @@
               <tr>
                   <th>ID</th>
                   <th>Name</th>
-                  <th>Total Post</th>
                   <th>Parent Name</th>
                   <th>Created At</th>
                   <th>Edit</th>
@@ -91,19 +90,18 @@
                 @foreach ($categorys as $category)
                 <tr>
                   <td>{{$category->id}}</td>
-                  <td>{{$category->category_name}}</td>
-                  <td>{{$category->product_id}}
-                    <?php  
-                    if($category->product_id) {
-                      echo "$total_post";
-                    }else{
-                      echo "Health Screening";
-                    }
-                  ?>
-                  </td>
+                  {{-- Name --}}
+
+                  <td><?php if($category->id == 2) {echo "Health Screening";} else {
+                    echo "{$category->name}";
+                  }?></td>
+
+                  {{-- Parent Name --}}
                   <td>
                     <?php  
-                      if($category->parent_name == 1) {
+                      if($category->parent_name == 0) {
+                        echo "-";
+                      }else if($category->parent_name == 1){
                         echo "Product";
                       }else{
                         echo "Health Screening";
