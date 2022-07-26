@@ -61,7 +61,7 @@
         <div class="row">
             <div class="col-xl-8">
                 <div class="appointment-form-left">
-                    <form action="{{ route('client.pages.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('client.pages.store') }}" id="checkform" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-xl-12 col-lg-12">
@@ -71,10 +71,12 @@
                                     </div>
                                     <div class="input-box">
                                         <div class="col-xl-6">
-                                            <input type="text" name="name" id="p_name" value="{{old('name')}}" placeholder="Patient Name*">    
-                                            @error('name')
-                                                <small class="form-text invalid-feedback">{{$message}}</small>
-                                            @enderror
+                                            <div class="form-group">
+                                                <input type="text" name="name" id="p_name" value="{{old('name')}}" placeholder="Patient Name*">    
+                                                @error('name')
+                                                    <small class="form-text invalid-feedback">{{$message}}</small>
+                                                @enderror
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -86,10 +88,12 @@
                                     </div>
                                     <div class="input-box">
                                         <div class="col-xl-6">
-                                            <input type="text" name="phone" id="phone" value="{{old('phone')}}" placeholder="Ph Num*">   
-                                            @error('phone')
-                                                <small class="form-text invalid-feedback">{{$message}}</small>
-                                            @enderror
+                                            <div class="form-group">
+                                                <input type="text" name="phone" id="phone" value="{{old('phone')}}" placeholder="Ph Num*">   
+                                                @error('phone')
+                                                    <small class="form-text invalid-feedback">{{$message}}</small>
+                                                @enderror
+                                            </div>  
                                         </div>    
                                     </div>
                                 </div>
@@ -101,10 +105,12 @@
                                     </div>
                                     <div class="input-box">
                                         <div class="col-xl-6">
-                                            <input type="text" name="age" id="age" value="{{old('age')}}" placeholder="Age*"> 
-                                            @error('age')
-                                                <small class="form-text invalid-feedback">{{$message}}</small>
-                                            @enderror
+                                            <div class="form-group">
+                                                <input type="text" name="age" id="age" value="{{old('age')}}" placeholder="Age*"> 
+                                                @error('age')
+                                                    <small class="form-text invalid-feedback">{{$message}}</small>
+                                                @enderror
+                                            </div>
                                         </div>     
                                     </div>
                                 </div>
@@ -144,10 +150,12 @@
                                     </div>
                                     <div class="input-box">
                                         <div class="col-xl-6">
-                                            <input type="text" value="{{old('date')}}" name="date" class="date-input" id="date-in" placeholder="Date"> 
-                                            @error('date')
-                                                <small class="form-text invalid-feedback">{{$message}}</small>
-                                            @enderror
+                                            <div class="form-group">
+                                                <input type="text" value="{{old('date')}}" name="date" class="date-input" id="date-in" placeholder="Date"> 
+                                                @error('date')
+                                                    <small class="form-text invalid-feedback">{{$message}}</small>
+                                                @enderror
+                                            </div>
                                         </div>    
                                     </div>
                                 </div>
@@ -225,20 +233,18 @@
       });
       $('#checkform').validate({
         rules: {
-          email: {
-            required: true,
-            email: true,
-          },
           name:{
             required:true,
             maxlength: 255,
           },
           phone:{
+            required:true,
             number: true,
             minlength: 8,
             maxlength: 15
           },
           age:{
+            required:true,
             number: true,
             minlength: 1,
             maxlength: 2
@@ -248,10 +254,6 @@
           }
         },
         messages: {
-          email: {
-            required: "Please enter a email address",
-            email: "Please enter a valid email address"
-          },
           phone:{
             number: "Please enter number only",
             minlength: "Phone needs at least 8 characters",
