@@ -31,7 +31,7 @@
                 <th>Date</th>
                 <th>Time At</th>
                 <th>Doctor Name</th>
-                <th>Service</th>
+                {{-- <th>Service</th> --}}
                 <th>Description</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -46,7 +46,7 @@
                 <td>{{ $item->date }}</td>
                 <td>{{$item->time}}</td>
                 <td><?php $data = DB::table('doctors')->where('id', $item->doctor_name)->first()?>{{$data->fullname}}</td>
-                <td>{{$item->service}}</td>
+                {{-- <td>{{$item->service}}</td> --}}
                 <td>{{$item->description}}</td>
                 <td><a href="{{ route('admin.dat_lich.edit', ['id'=>$item->id]) }}">Edit</td>
                 <td><a onclick="return confirmDelete()" href="{{ route('admin.dat_lich.delete', ['id'=>$item->id]) }}">Delete</td>

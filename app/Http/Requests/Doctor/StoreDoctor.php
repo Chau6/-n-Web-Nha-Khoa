@@ -26,7 +26,7 @@ class StoreDoctor extends FormRequest
         return [
             'fullname' => 'required',
             'email' => 'required|unique:doctors',
-            'phone' => 'required|unique:doctors'
+            'phone' => 'required|min:9|max:15|unique:doctors'
         ];
     }
 

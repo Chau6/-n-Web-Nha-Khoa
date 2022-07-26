@@ -37,7 +37,7 @@
                 </div>
             </div>
         </div>
-        @if (Session::has('success') )
+        {{-- @if (Session::has('success') )
         <div class="alert alert-success alert-block">
             <button type="button" class="close" data-dismiss="alert">x</button>
                 <strong>{{ Session::get('success') }}</strong>
@@ -57,11 +57,11 @@
                 @endforeach
             </ul>
         </div>
-        @endif
+        @endif --}}
         <div class="row">
             <div class="col-xl-8">
                 <div class="appointment-form-left">
-                    <form action="{{ route('client.pages.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('client.pages.store') }}" id="checkform" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-xl-12 col-lg-12">
@@ -71,8 +71,13 @@
                                     </div>
                                     <div class="input-box">
                                         <div class="col-xl-6">
-                                            <input type="text" name="name" id="p_name" value="{{old('name')}}" placeholder="Patient Name*">    
-                                        </div>     
+                                            <div class="form-group">
+                                                <input type="text" name="name" id="p_name" value="{{old('name')}}" placeholder="Patient Name*">    
+                                                @error('name')
+                                                    <small class="form-text invalid-feedback">{{$message}}</small>
+                                                @enderror
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +88,12 @@
                                     </div>
                                     <div class="input-box">
                                         <div class="col-xl-6">
-                                            <input type="text" name="phone" id="phone" value="{{old('phone')}}" placeholder="Ph Num*">   
+                                            <div class="form-group">
+                                                <input type="text" name="phone" id="phone" value="{{old('phone')}}" placeholder="Ph Num*">   
+                                                @error('phone')
+                                                    <small class="form-text invalid-feedback">{{$message}}</small>
+                                                @enderror
+                                            </div>  
                                         </div>    
                                     </div>
                                 </div>
@@ -95,7 +105,12 @@
                                     </div>
                                     <div class="input-box">
                                         <div class="col-xl-6">
-                                            <input type="text" name="age" id="age" value="{{old('age')}}" placeholder="Age*"> 
+                                            <div class="form-group">
+                                                <input type="text" name="age" id="age" value="{{old('age')}}" placeholder="Age*"> 
+                                                @error('age')
+                                                    <small class="form-text invalid-feedback">{{$message}}</small>
+                                                @enderror
+                                            </div>
                                         </div>     
                                     </div>
                                 </div>
@@ -135,7 +150,12 @@
                                     </div>
                                     <div class="input-box">
                                         <div class="col-xl-6">
-                                            <input type="text" value="{{old('date')}}" name="date" class="date-input" id="date-in" placeholder="Date"> 
+                                            <div class="form-group">
+                                                <input type="text" value="{{old('date')}}" name="date" class="date-input" id="date-in" placeholder="Date"> 
+                                                @error('date')
+                                                    <small class="form-text invalid-feedback">{{$message}}</small>
+                                                @enderror
+                                            </div>
                                         </div>    
                                     </div>
                                 </div>
@@ -160,10 +180,34 @@
                                                 <option>7.30pm</option>
                                             </select>    
                                         </div>
+                                        <div class="col-xl-12">
+                                            <textarea name="description" placeholder="Description...">{{old('description')}}</textarea>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            
+                            {{-- <div class="col-xl-12 col-lg-12">
+                                <div class="single-box">
+                                    <div class="title">
+                                        <h5>Service</h5>
+                                    </div>
+                                    <div class="input-box">
+                                        <div class="col-xl-6">
+                                            <select class="selectmenu" name="service" id="service">
+                                                <option>Dental Implants</option>
+                                                <option>Cosmetic Dentistry</option>
+                                                <option>Laser Dentistry</option>
+                                                <option>Orthodontics</option>
+                                                <option>Endodontics</option>
+                                                <option>Periodontics</option>
+                                            </select>    
+                                        </div>
+                                        <div class="col-xl-12">
+                                            <textarea name="description" placeholder="Description...">{{old('description')}}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> --}}
                         </div>
                         
                         <div class="button-box">
@@ -177,4 +221,77 @@
 </div>
 <!--End Appointment area -->
 
+@endsection
+
+@section('js')
+<script>
+    $(function () {
+      $.validator.setDefaults({
+        submitHandler: function () {
+          return true;
+        }
+      });
+      $('#checkform').validate({
+        rules: {
+          name:{
+            required:true,
+            maxlength: 255,
+          },
+          phone:{
+            required:true,
+            number: true,
+            minlength: 8,
+            maxlength: 15
+          },
+          age:{
+            required:true,
+            number: true,
+            minlength: 1,
+            maxlength: 2
+          },
+          date:{
+            required:true
+          }
+        },
+        messages: {
+          phone:{
+            number: "Please enter number only",
+            minlength: "Phone needs at least 8 characters",
+            maxlength: "Phone max is 15 characters"
+          },
+          age:{
+            number: "Please enter number only",
+            minlength: "Age needs at least 1 characters",
+            maxlength: "Age max is 2 characters"
+          },
+          name: {
+            required: "Please enter your name",
+            maxlength: "Your name cannot exceed 255 characters"
+          },
+          date: {
+            required: "Please enter date",
+          },
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+          error.addClass('invalid-feedback');
+          element.closest('.form-group').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+          $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+          $(element).removeClass('is-invalid');
+        }
+      });
+    });
+</script>
+<script>
+    $('input[name="phone"]').keyup(function(e)
+    {
+    if (/\D/g.test(this.value))
+    {
+      this.value = this.value.replace(/\D/g, '');
+    }
+  });
 @endsection

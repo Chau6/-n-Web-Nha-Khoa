@@ -27,7 +27,7 @@ class UserEditRequest extends FormRequest
             "first_name"=>"required",
             "last_name"=>"required",
             "email"=>"required|unique:user,email,".$this->id,
-            "phone"=>"max:15|unique:user,phone,".$this->id,
+            "phone"=>"min:9|max:15|unique:user,phone,".$this->id,
         ];
     }
     public function messages()

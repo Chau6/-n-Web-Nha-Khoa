@@ -69,7 +69,7 @@
                     <option value="7:30pm" {{ $edit->time == '7:30pm' ? 'selected':'' }}>7:30pm</option>
                 </select> 
             </div>
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="service">Service</label>
                 <select class="selectmenu form-control" name="service" id="service">
                     <option {{ $edit->service == 'Dental Implants' ? 'selected':'' }}>Dental Implants</option>
@@ -79,7 +79,7 @@
                     <option {{ $edit->service == 'Endodontics' ? 'selected':'' }}>Endodontics</option>
                     <option {{ $edit->service == 'Periodontics' ? 'selected':'' }}>Periodontics</option>
                 </select> 
-            </div>
+            </div> --}}
             <div class="form-group">
                 <label for="service">Description</label>
                 <textarea class="form-control" name="description" placeholder="Description...">{{$edit->description}}</textarea>
