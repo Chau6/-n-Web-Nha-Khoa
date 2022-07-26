@@ -16,9 +16,13 @@
                                 <li id="about_us"><a href="{{route('client.pages.about')}}">About Us</a></li>
                                 <li class="dropdown" id="health_screening"><a href="{{route('client.pages.health_screening')}}">Health Screening</a>
                                     <ul>
-                                        <li><a href="{{ route('client.pages.advice') }}">Advice</a></li>
-                                        <li><a href="">Care Services</a></li>
-                                        <li><a href="{{route('client.pages.product')}}">Support Products</a></li>
+                                        <li><a href="{{ route('client.pages.advice') }}">Toothache</a></li>
+                                        <li><a href="">Stained Teeth</a></li>
+                                        <li><a href="">Cavities</a></li>
+                                        <li><a href="">Cracked Tooth</a></li>
+                                        <li><a href="">Sensitive to Cold</a></li>
+                                        <li><a href="">Crooked Teeth</a></li>
+                                        <li><a href="">Gum Problems</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown"><a href="{{route('client.pages.product')}}">Products</a>
