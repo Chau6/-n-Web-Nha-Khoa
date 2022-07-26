@@ -25,7 +25,7 @@ class DatLichController extends Controller
         $doctor = DB::table('doctors')->orderBy('id')->get();
         return view('client.pages.appointment_create', ['doctors' => $doctor], );
     }
-    public function store(StoreDatLich $request){
+    public function store(Request $request){
         $data = $request->except('_token');
         $data['created_at'] = new \DateTime();
         $data['user_id'] = Auth::user()->id;

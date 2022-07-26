@@ -114,10 +114,13 @@
                                             <option value="7:30pm" {{ $edit->time == '7:30pm' ? 'selected':'' }}>7:30pm</option>
                                         </select>    
                                     </div>
+                                    <div class="col-xl-12">
+                                        <textarea name="description" placeholder="Description...">{{$edit->description}}</textarea>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-12 col-lg-12">
+                        {{-- <div class="col-xl-12 col-lg-12">
                             <div class="single-box">
                                 <div class="title">
                                     <h5>Service</h5>
@@ -138,7 +141,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     
                     <div class="button-box">
