@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Rating;
 use Illuminate\Http\Request;
+use App\Models\Gallery;
 
 class HomeController extends Controller
 {
@@ -70,11 +71,12 @@ class HomeController extends Controller
             ->orderBy('created_at', 'DESC')
             ->first();
         $data_product = DB::table('comment')->where('product_id', $id)->first();
+        $gallery = Gallery::where('product_id',$id)->get();
         // dd($data_product);
         $userRating = DB::table('rating')->selectRaw("count(case when product_id = $id then 1 end) as user_id")->first();
         $ratingAvg = DB::table('rating')->where('product_id', $id)->avg('rating');
         DB::table('products')->where('id',$id)->increment('view');
-        return view('client.pages.product_infor',['models'=>$product, 'ratingAvg'=>$ratingAvg, 'userRating'=>$userRating, 'product'=>$data_product]);
+        return view('client.pages.product_infor',['models'=>$product, 'gallery'=>$gallery ,'ratingAvg'=>$ratingAvg, 'userRating'=>$userRating, 'product'=>$data_product]);
     }
 
     // Path Post
