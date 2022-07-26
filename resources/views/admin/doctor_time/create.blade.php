@@ -42,7 +42,7 @@
             <div class="form-group">
                 <label for="time">Time Work</label>
                 <select name="time" id="time">
-                    <option value="9:00am" selected="selected">9:00am</option>
+                    <option value="9:00am">9:00am</option>
                     <option value="11:30am">11:30am</option>
                     <option value="12:00pm">12:00pm</option>
                     <option value="3:00pm">3:00pm</option>

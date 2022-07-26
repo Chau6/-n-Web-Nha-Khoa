@@ -14,7 +14,7 @@
     @csrf
     <div class="card">
         <div class="card-header">
-        <h3 class="card-title">Edit Post</h3>
+            <h3 class="card-title">Edit Post</h3>
         <div class="card-tools">
         </div>
         </div>
@@ -24,8 +24,7 @@
                 <input type="text" class="form-control" id="name" name="name" value="{{ $post->name }}">
             </div>
             <div class="form-group">
-                <label for="email">Slug</label>
-                <input type="text" class="form-control" id="slug" name="slug" value="{{$post->slug}}">
+                <input type="hidden" class="form-control" id="slug" name="slug" value="{{$post->slug}}">
             </div>
 
             <div class="form-group">
@@ -73,8 +72,8 @@
             <div class="form-group">
                 <div class="custom-control custom-switch">
                     <input type="checkbox" name="status" class="custom-control-input" id="customSwitch1" value="1" 
-                    @if ($post->status == 1)
-                        @checked(true)
+                    @if ($post->status)
+                        checked
                     @endif>
                     <label class="custom-control-label" for="customSwitch1">Status</label>
                 </div>

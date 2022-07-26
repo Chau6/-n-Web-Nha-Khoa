@@ -13,7 +13,7 @@ class StoreDatLich extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,18 @@ class StoreDatLich extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|max:255',
+            'phone' => 'required|min:9|max:15',
+            'age' => 'required|min:1|max:2',
+            'date' => 'required',
+        ];
+    }
+    public function messages() {
+        return [
+            'name.required' => "Please enter your name",
+            'phone.required' => "Please enter your phone number",
+            'age.required' => "Please enter your age",
+            'date.required' => "Please enter date",
         ];
     }
 }

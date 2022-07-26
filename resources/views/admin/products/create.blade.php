@@ -25,8 +25,7 @@
                     <input type="text" name="name" id="name" class="form-control" placeholder="Enter Product Name" value="{{old('name')}}">
                 </div>
                 <div class="form-group">
-                    <label>Product Slug</label>
-                    <input type="text" name="slug" id="slug" class="form-control" placeholder="Enter Product Name">
+                    <input type="hidden" name="slug" id="slug" class="form-control" placeholder="Enter Product Name">
                 </div>
 
                 <div class="form-group">
@@ -74,9 +73,9 @@
         
                 <div class="form-group">
                     <label>Product Image</label>
-                    <input type="file" name="images" value="{{old('price')}}">
+                    <input type="file" name="images" class="form-control" >
                 </div>
-        
+
                 <div class="form-group">
                     <div class="custom-control custom-switch">
                         <input type="checkbox" name="status" class="custom-control-input" id="customSwitch1" value="1">

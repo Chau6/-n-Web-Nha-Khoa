@@ -22,6 +22,10 @@
                     <label>Product Name</label>
                     <input type="text" name="name" class="form-control" placeholder="Enter Product Name" value="{{$edit->name}}">
                 </div>
+                
+                <div class="form-group">
+                    <input type="hidden" name="slug" id="slug" class="form-control" placeholder="Enter Product Name" value="{{$edit->slug}}">
+                </div>
 
                 <div class="form-group">
                     <label>Category_id</label>
@@ -61,8 +65,8 @@
                 <div class="form-group">
                     <div class="custom-control custom-switch">
                         <input type="checkbox" name="status" class="custom-control-input" id="customSwitch1" value="1" 
-                        @if ($edit->status == 1)
-                            @checked(true)
+                        @if ($edit->status)
+                            checked
                         @endif>
                         <label class="custom-control-label" for="customSwitch1">Status</label>
                     </div>

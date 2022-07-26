@@ -18,7 +18,7 @@ class DoctorController extends Controller
     public function create(){
         return view('admin.doctor.create');
     }
-    public function store(Request $request){
+    public function store(StoreDoctor $request){
         $data = $request->except('_token');
         $data['created_at'] = new \DateTime();
         DB::table('doctors')->insert($data);
@@ -28,7 +28,7 @@ class DoctorController extends Controller
         $doctor = DB::table('doctors')->where('id', $id)->first();
         return view('admin.doctor.edit',['doctor'=>$doctor]);
     }
-    public function update(Request $request, $id){
+    public function update(StoreUpdateDoctor $request, $id){
         $data = $request->except('_token');
         DB::table('doctors')->where('id',$id)->update($data);
         return redirect()->route('admin.doctor.index')->with('success','Edit Successfully');

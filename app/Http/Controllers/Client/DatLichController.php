@@ -1,28 +1,49 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Doctor\StoreDatLich;
+use App\Http\Requests\Doctor\StoreUpdateDatLich;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class DatLichController extends Controller
 {
-    public function create(){
+    public function appointment_index(){
+        $user_result = DB::table('user')->where('id',Auth::user()->id)->first();
+        $data = DB::table('dat_lich')->where('user_id',Auth::user()->id)->get();
+        
+        return view('client.pages.appointment_index', ['datas' => $data, 'user' => $user_result]);
+    }
+    public function delete($id){
+        DB::table('dat_lich')->where('id',$id)->delete();
+        return redirect()->route('client.pages.appointment_index');
+    }
+    public function appointment_create(){
         $doctor = DB::table('doctors')->orderBy('id')->get();
-        $doctor_day_work = DB::table('doctor_day_work')->orderBy('id')->get();
-        return view('admin.doctor_time.create', ['doctors' => $doctor], ['doctor_day_work' => $doctor_day_work]);
+        return view('client.pages.appointment_create', ['doctors' => $doctor], );
     }
     public function store(Request $request){
         $data = $request->except('_token');
         $data['created_at'] = new \DateTime();
-        DB::table('doctor_day_work')->insert($data);
-        return redirect()->route('admin.doctor_time.index')->with('success','Insert Successfully');
-    }
+        $data['user_id'] = Auth::user()->id;
 
-    public function delete($id){
-        DB::table('doctor_day_work')->where('id',$id)->delete();
-        return redirect()->route('admin.doctor_time.index');
+        DB::table('dat_lich')->insert($data);
+
+        return redirect()->route('client.pages.appointment_index')->with('success','Insert Successfully');
+    }
+    public function appointment_edit($id){
+        $edit = DB::table('dat_lich')->where('id','=', $id)->first();
+        $doctor = DB::table('doctors')->orderBy('id')->get();
+        return view('client.pages.appointment_edit', ['id' => $id, 'doctors' => $doctor, 'edit' => $edit]);
+    }
+    public function update(Request $request, $id){
+        $data = $request->except('_token'); //lấy data ngoại trừ
+
+        DB::table('dat_lich')->where('id','=', $id)->update($data); //rỗng thì giữ nguyên
+        
+        return redirect()->route('client.pages.appointment_index')->with('success','Edit Successfully') ; //trả về đường dẫn;
     }
 }

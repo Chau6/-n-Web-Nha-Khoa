@@ -2,9 +2,10 @@
 <html>
 <head>
     @include('admin.blocks.head')
+    @yield('css')
 </head>
 <script type="text/javascript">
-    function deleteConfirm () {
+    function confirmDelete () {
         if(window.confirm('Are you sure you want to delete') == true) {
             return true;
         }

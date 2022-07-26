@@ -29,14 +29,19 @@
 @endsection
 
 @section('content')
-<div class="container">
-    <div class="col-md-9">
+<section class="services-style1-area spec-page">
+    <div class="container">
+        <div class="sec-title max-width text-center">
+            <h3>Product</h3>
+            <h1>Health Screening Page</h1>
+            <p>Your teeth play an important part in your daily life. It not only helps you to chew and eat your food, but frames your face. Any missing tooth can have a major impact on your quality of life. </p>
+        </div>
         <div class="row">
             @foreach ($models as $product)
                 <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                     <div class="single-blog-post">
                         <div class="img-holder">
-                            <img src="{{('http://127.0.0.1:8000/asset/images/blog/v1-1.jpg')}}" alt="Awesome Image">
+                            <img src="{{ asset('images/'.$product->images)}}" alt="Awesome Image">
                             <div class="categorie-button">
                                 <a class="btn-one" href="#">Healthy Teeth</a>    
                             </div>
@@ -44,24 +49,24 @@
                         <div class="text-holder">
                             <div class="meta-box">
                                 <div class="author-thumb">
-                                    <img src="http://127.0.0.1:8000/asset/images/blog/author-1.png" alt="Image">
+                                    <img src="{{ asset('images/'.$product->images)}}" alt="Image">
                                 </div>
                                 <ul class="meta-info">
                                     <li>{{$product->created_at}}</li>
                                 </ul>    
                             </div>
-                            <h3 class="blog-title"><a href="blog-single.html">{{$product->name}}</a></h3> 
+                            <h3 class="blog-title"><a href="{{route('client.pages.product_infor',['id'=>$product->id, 'slug'=>$category->slug, 'slug_infor'=>$product->slug])}}">{{$product->name}}</a></h3> 
                             <div class="text-box">
                                 <p>{!!$product->intro!!}</p>
                             </div>
                             <div class="readmore-button">
-                                <a class="btn-two" href="{{route('client.pages.product_infor',['slug'=>$category->slug, 'slug_infor'=>$product->slug])}}"><span class="flaticon-next"></span>Reading</a>
-                            </div>  
+                                <a class="btn-two" href="{{route('client.pages.product_infor',['id'=>$product->id,'slug'=>$category->slug, 'slug_infor'=>$product->slug])}}"><span class="flaticon-next"></span>Reading</a>
+                            </div>     
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
     </div>
-</div>
+</section>
 @endsection

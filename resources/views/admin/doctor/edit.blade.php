@@ -11,7 +11,7 @@
 </div>
 @endif
 <form action="{{ route('admin.doctor.update', ['id'=> $doctor->id]) }}" method="POST">  
-    @csrf
+@csrf
 <div class="card">
     <div class="card-header">
       <h3 class="card-title">Edit Doctor</h3>
@@ -27,8 +27,8 @@
         <div class="form-group">
         <label>Gender</label>
         <select class="form-control" name="gender">
-            <option value="2" {{ old('gender') == '2' ? 'selected':'' }}>Female</option>
-            <option value="1" {{ old('gender') == '1' ? 'selected':'' }}>Male</option>
+            <option value="2" {{ $doctor->gender == '2' ? 'selected':'' }}>Female</option>
+            <option value="1" {{ $doctor->gender == '1' ? 'selected':'' }}>Male</option>
         </select>
         </div>
 

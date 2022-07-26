@@ -10,7 +10,7 @@
     </ul>
 </div>
 @endif
-<form action="{{ route('admin.post.store') }}" method="POST">  
+<form action="{{ route('admin.post.store') }}" method="POST" enctype="multipart/form-data">  
     @csrf
     <div class="card">
         <div class="card-header">
@@ -24,8 +24,7 @@
                 <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
             </div>
             <div class="form-group">
-                <label for="email">Slug</label>
-                <input type="text" class="form-control" id="slug" name="slug">
+                <input type="hidden" class="form-control" id="slug" name="slug">
             </div>
 
             <div class="form-group">
@@ -75,6 +74,16 @@
                     <input type="checkbox" name="status" class="custom-control-input" id="customSwitch1" value="1">
                     <label class="custom-control-label" for="customSwitch1">Status</label>
                 </div>
+            </div>
+
+            <div class="form-group">
+                <label>Post Image</label>
+                <input type="file" name="images" >
+            </div>
+
+            <div class="form-group">
+                <label>Extra Image</label>
+                <input type="file" name="extra_images" >
             </div>
 
             <div class="card-footer">

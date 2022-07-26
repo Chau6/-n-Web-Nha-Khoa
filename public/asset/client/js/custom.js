@@ -31,15 +31,15 @@
 
 //====Main menu===
 function mainmenu() {
-	//Submenu Dropdown Toggle
-	if($('.main-menu li.dropdown ul').length){
-		$('.main-menu li.dropdown').append('<div class="dropdown-btn"></div>');
-		
-		//Dropdown Button
-		$('.main-menu li.dropdown .dropdown-btn').on('click', function() {
-			$(this).prev('ul').slideToggle(500);
-		});
-	}
+    //Submenu Dropdown Toggle
+    if ($('.main-menu li.dropdown ul').length) {
+        $('.main-menu li.dropdown').append('<div class="dropdown-btn"></div>');
+
+        //Dropdown Button
+        $('.main-menu li.dropdown .dropdown-btn').on('click', function() {
+            $(this).prev('ul').slideToggle(500);
+        });
+    }
 }
 
 
@@ -52,8 +52,8 @@ function languageSwitcher() {
             animSpeed: 500,
             testMode: true,
             onChange: function(evt) {
-                    alert("The selected language is: " + evt.selectedItem);
-                }
+                alert("The selected language is: " + evt.selectedItem);
+            }
 
         });
     };
@@ -79,7 +79,7 @@ function stickyHeader() {
 
 //Update Header Style and Scroll to Top
 function headerStyle() {
-    if($('.main-header').length){
+    if ($('.main-header').length) {
         var windowpos = $(window).scrollTop();
         var siteHeader = $('.main-header');
         var sticky_header = $('.fixed-header .sticky-header');
@@ -101,14 +101,14 @@ function headerStyle() {
 
 //===Search box ===
 function searchbox() {
-	//Search Box Toggle
-	if($('.seach-toggle').length){
-		//Dropdown Button
-		$('.seach-toggle').on('click', function() {
-			$(this).toggleClass('active');
-			$(this).next('.search-box').toggleClass('now-visible');
-		});
-	}
+    //Search Box Toggle
+    if ($('.seach-toggle').length) {
+        //Dropdown Button
+        $('.seach-toggle').on('click', function() {
+            $(this).toggleClass('active');
+            $(this).next('.search-box').toggleClass('now-visible');
+        });
+    }
 }
 
 //  scoll to Top
@@ -127,30 +127,30 @@ function scrollToTop() {
 
 // ===Prealoder===
 function prealoader() {
-    if($('.preloader').length){
+    if ($('.preloader').length) {
         $('.preloader').delay(2000).fadeOut(500);
     }
 }
 
 //  Fact counter
-function CounterNumberChanger () {
-	var timer = $('.timer');
-	if(timer.length) {
-		timer.appear(function () {
-			timer.countTo();
-		})
-	}
+function CounterNumberChanger() {
+    var timer = $('.timer');
+    if (timer.length) {
+        timer.appear(function() {
+            timer.countTo();
+        })
+    }
 }
 
-function singleProductTab () {
-    if($('.tabs-box').length){
+function singleProductTab() {
+    if ($('.tabs-box').length) {
         $('.tabs-box .tab-buttons .tab-btn').on('click', function(e) {
             e.preventDefault();
             var target = $($(this).attr('data-tab'));
 
-            if ($(target).is(':visible')){
+            if ($(target).is(':visible')) {
                 return false;
-            }else{
+            } else {
                 target.parents('.tabs-box').find('.tab-buttons').find('.tab-btn').removeClass('active-btn');
                 $(this).addClass('active-btn');
                 target.parents('.tabs-box').find('.tabs-content').find('.tab').fadeOut(0);
@@ -164,15 +164,15 @@ function singleProductTab () {
 
 
 
-function doctorTab () {
-    if($('.tabs-box').length){
+function doctorTab() {
+    if ($('.tabs-box').length) {
         $('.tabs-box .tab-buttons .tab-btn').on('click', function(e) {
             e.preventDefault();
             var target = $($(this).attr('data-tab'));
 
-            if ($(target).is(':visible')){
+            if ($(target).is(':visible')) {
                 return false;
-            }else{
+            } else {
                 target.parents('.tabs-box').find('.tab-buttons').find('.tab-btn').removeClass('active-btn');
                 $(this).addClass('active-btn');
                 target.parents('.tabs-box').find('.tabs-content').find('.tab').fadeOut(0);
@@ -209,23 +209,23 @@ function priceFilter() {
 
 //Accordion Box
 function accordion() {
-    if($('.accordion-box').length){
+    if ($('.accordion-box').length) {
         $(".accordion-box").on('click', '.accord-btn', function() {
 
-            if($(this).hasClass('active')!==true){
-            $('.accordion .accord-btn').removeClass('active');
+            if ($(this).hasClass('active') !== true) {
+                $('.accordion .accord-btn').removeClass('active');
 
             }
 
-            if ($(this).next('.accord-content').is(':visible')){
+            if ($(this).next('.accord-content').is(':visible')) {
                 $(this).removeClass('active');
                 $(this).next('.accord-content').slideUp(500);
-            }else{
+            } else {
                 $(this).addClass('active');
                 $('.accordion .accord-content').slideUp(500);
-                $(this).next('.accord-content').slideDown(500);	
+                $(this).next('.accord-content').slideDown(500);
             }
-        });	
+        });
     }
 }
 
@@ -238,20 +238,19 @@ function accordion() {
 
 
 //Accordions
-if($('.accordion-holder').length){
+if ($('.accordion-holder').length) {
     $('.accordion-holder .acc-btn').on('click', function() {
-    if($(this).hasClass('active')!==true){
+        if ($(this).hasClass('active') !== true) {
             $('.accordion-holder .acc-btn').removeClass('active');
         }
 
-    if ($(this).next('.acc-content').is(':visible')){
+        if ($(this).next('.acc-content').is(':visible')) {
             $(this).removeClass('active');
             $(this).next('.acc-content').slideUp(500);
-        }
-    else{
+        } else {
             $(this).addClass('active');
             $('.accordion-holder .acc-content').slideUp(500);
-            $(this).next('.acc-content').slideDown(500);	
+            $(this).next('.acc-content').slideDown(500);
         }
     });
 }
@@ -259,21 +258,21 @@ if($('.accordion-holder').length){
 
 
 //Progress Bar / Levels
-if($('.progress-levels .progress-box .bar-fill').length){
+if ($('.progress-levels .progress-box .bar-fill').length) {
     $(".progress-box .bar-fill").each(function() {
-        $('.progress-box .bar-fill').appear(function(){
+        $('.progress-box .bar-fill').appear(function() {
             var progressWidth = $(this).attr('data-percent');
-            $(this).css('height',progressWidth+'%');
+            $(this).css('height', progressWidth + '%');
         });
 
-    },{accY: 0});
+    }, { accY: 0 });
 }
 
 
 
 //Fact Counter + Text Count
-if($('.count-box').length){
-    $('.count-box').appear(function(){
+if ($('.count-box').length) {
+    $('.count-box').appear(function() {
 
         var $t = $(this),
             n = $t.find(".count-text").attr("data-stop"),
@@ -297,13 +296,13 @@ if($('.count-box').length){
             });
         }
 
-    },{accY: 0});
+    }, { accY: 0 });
 }
 
 
 
 
-	
+
 
 
 // Cart Touch Spin
@@ -317,28 +316,19 @@ function cartTouchSpin() {
 
 
 
-// Date picker
-function datepicker () {
-    if ($('#datepicker').length) {
-        $('#datepicker').datepicker();
-    };
-}
-
-
-
 // Time picker
-function timepicker () {
+function timepicker() {
     $('input[name="time"]').ptTimeSelect();
 }
 
 
 
 //=== Tool tip ===
-function tooltip () {
-	if ($('.tool_tip').length) {
-			$('.tool_tip').tooltip();
-		};
-	$
+function tooltip() {
+    if ($('.tool_tip').length) {
+        $('.tool_tip').tooltip();
+    };
+    $
 }
 
 
@@ -377,34 +367,34 @@ function projectMasonaryLayout() {
             var count = $('.gallery-content').find(filterElement).length;
             $(this).children('span').append('<span class="count"><b>' + count + '</b></span>');
         });
-    };  
+    };
 }
 
 
 
 //=== CountDownTimer===
-function countDownTimer () {
-	if ($('.time-countdown').length) {
-		$('.time-countdown').each(function () {
-			var Self = $(this);
-			var countDate = Self.data('countdown-time'); // getting date
+function countDownTimer() {
+    if ($('.time-countdown').length) {
+        $('.time-countdown').each(function() {
+            var Self = $(this);
+            var countDate = Self.data('countdown-time'); // getting date
 
-			Self.countdown(countDate, function(event) {
-	     		$(this).html('<h2>'+ event.strftime('%D : %H : %M : %S') +'</h2>');
-	   		});
-		});
-	};
-    
-	if ($('.time-countdown-two').length) {
-		$('.time-countdown-two').each(function () {
-			var Self = $(this);
-			var countDate = Self.data('countdown-time'); // getting date
+            Self.countdown(countDate, function(event) {
+                $(this).html('<h2>' + event.strftime('%D : %H : %M : %S') + '</h2>');
+            });
+        });
+    };
 
-			Self.countdown(countDate, function(event) {
-	     		$(this).html('<li> <div class="box"> <span class="days">'+ event.strftime('%D') +'</span> <span class="timeRef">days</span> </div> </li> <li> <div class="box"> <span class="hours">'+ event.strftime('%H') +'</span> <span class="timeRef clr-1">hrs</span> </div> </li> <li> <div class="box"> <span class="minutes">'+ event.strftime('%M') +'</span> <span class="timeRef clr-2">mins</span> </div> </li> <li> <div class="box"> <span class="seconds">'+ event.strftime('%S') +'</span> <span class="timeRef clr-3">secs</span> </div> </li>');
-	   		});
-		});
-	};
+    if ($('.time-countdown-two').length) {
+        $('.time-countdown-two').each(function() {
+            var Self = $(this);
+            var countDate = Self.data('countdown-time'); // getting date
+
+            Self.countdown(countDate, function(event) {
+                $(this).html('<li> <div class="box"> <span class="days">' + event.strftime('%D') + '</span> <span class="timeRef">days</span> </div> </li> <li> <div class="box"> <span class="hours">' + event.strftime('%H') + '</span> <span class="timeRef clr-1">hrs</span> </div> </li> <li> <div class="box"> <span class="minutes">' + event.strftime('%M') + '</span> <span class="timeRef clr-2">mins</span> </div> </li> <li> <div class="box"> <span class="seconds">' + event.strftime('%S') + '</span> <span class="timeRef clr-3">secs</span> </div> </li>');
+            });
+        });
+    };
 }
 
 
@@ -444,13 +434,13 @@ function selectDropdown() {
 
 
 //=== Services Carousel ===
-function servicesCarousel () {
+function servicesCarousel() {
     if ($('.services-carousel').length) {
         $('.services-carousel').owlCarousel({
             dots: true,
-            loop:true,
-            margin:30,
-            nav:false,
+            loop: true,
+            margin: 30,
+            nav: false,
             navText: [
                 '<i class="fa fa-angle-left"></i>',
                 '<i class="fa fa-angle-right"></i>'
@@ -458,34 +448,34 @@ function servicesCarousel () {
             autoplayHoverPause: false,
             autoplay: 6000,
             smartSpeed: 1000,
-            responsive:{
-                0:{
-                    items:1
+            responsive: {
+                0: {
+                    items: 1
                 },
-                600:{
-                    items:1
+                600: {
+                    items: 1
                 },
-                800:{
-                    items:2
+                800: {
+                    items: 2
                 },
-                1024:{
-                    items:2
+                1024: {
+                    items: 2
                 },
-                1100:{
-                    items:2
+                1100: {
+                    items: 2
                 },
-                1200:{
-                    items:3
+                1200: {
+                    items: 3
                 }
             }
-        });    		
+        });
     }
 }
 
 
 
 //=== Testimonial Carousel ===
-function testimonialCarousel () {
+function testimonialCarousel() {
     if ($('.testimonial-carousel').length) {
         $('.testimonial-carousel').owlCarousel({
             dots: true,
@@ -499,33 +489,33 @@ function testimonialCarousel () {
             autoplayHoverPause: false,
             autoplay: 6000,
             smartSpeed: 1000,
-            responsive:{
-                0:{
-                    items:1
+            responsive: {
+                0: {
+                    items: 1
                 },
-                600:{
-                    items:1
+                600: {
+                    items: 1
                 },
-                800:{
-                    items:1
+                800: {
+                    items: 1
                 },
-                1024:{
-                    items:1
+                1024: {
+                    items: 1
                 },
-                1100:{
-                    items:2
+                1100: {
+                    items: 2
                 },
-                1200:{
-                    items:2
+                1200: {
+                    items: 2
                 }
             }
-        });    		
+        });
     }
 }
 
 
 //=== Testimonial Carousel 2 ===
-function testimonialCarousel2 () {
+function testimonialCarousel2() {
     if ($('.testimonial-carousel2').length) {
         $('.testimonial-carousel2').owlCarousel({
             dots: true,
@@ -539,34 +529,34 @@ function testimonialCarousel2 () {
             autoplayHoverPause: false,
             autoplay: 6000,
             smartSpeed: 1000,
-            responsive:{
-                0:{
-                    items:1
+            responsive: {
+                0: {
+                    items: 1
                 },
-                600:{
-                    items:1
+                600: {
+                    items: 1
                 },
-                800:{
-                    items:1
+                800: {
+                    items: 1
                 },
-                1024:{
-                    items:1
+                1024: {
+                    items: 1
                 },
-                1100:{
-                    items:1
+                1100: {
+                    items: 1
                 },
-                1200:{
-                    items:1
+                1200: {
+                    items: 1
                 }
             }
-        });    		
+        });
     }
 }
 
 
 
 //=== Tab Content Carousel ===
-function tabContentCarousel () {
+function tabContentCarousel() {
     if ($('.tab-content-carousel').length) {
         $('.tab-content-carousel').owlCarousel({
             dots: true,
@@ -580,40 +570,40 @@ function tabContentCarousel () {
             autoplayHoverPause: false,
             autoplay: 6000,
             smartSpeed: 1000,
-            responsive:{
-                0:{
-                    items:1
+            responsive: {
+                0: {
+                    items: 1
                 },
-                600:{
-                    items:1
+                600: {
+                    items: 1
                 },
-                800:{
-                    items:1
+                800: {
+                    items: 1
                 },
-                1024:{
-                    items:1
+                1024: {
+                    items: 1
                 },
-                1100:{
-                    items:1
+                1100: {
+                    items: 1
                 },
-                1200:{
-                    items:1
+                1200: {
+                    items: 1
                 }
             }
-        });    		
+        });
     }
 }
 
 
 
 //=== Team Carousel ===
-function teamCarousel () {
+function teamCarousel() {
     if ($('.team-carousel').length) {
         $('.team-carousel').owlCarousel({
             dots: true,
-            loop:true,
-            margin:30,
-            nav:false,
+            loop: true,
+            margin: 30,
+            nav: false,
             navText: [
                 '<i class="fa fa-angle-left"></i>',
                 '<i class="fa fa-angle-right"></i>'
@@ -621,40 +611,40 @@ function teamCarousel () {
             autoplayHoverPause: false,
             autoplay: 6000,
             smartSpeed: 1000,
-            responsive:{
-                0:{
-                    items:1
+            responsive: {
+                0: {
+                    items: 1
                 },
-                600:{
-                    items:1
+                600: {
+                    items: 1
                 },
-                800:{
-                    items:2
+                800: {
+                    items: 2
                 },
-                1024:{
-                    items:2
+                1024: {
+                    items: 2
                 },
-                1100:{
-                    items:2
+                1100: {
+                    items: 2
                 },
-                1200:{
-                    items:3
+                1200: {
+                    items: 3
                 }
             }
-        });    		
+        });
     }
 }
 
 
 
 //=== Choose Carousel ===
-function chooseCarousel () {
+function chooseCarousel() {
     if ($('.choose-carousel').length) {
         $('.choose-carousel').owlCarousel({
             dots: true,
-            loop:true,
-            margin:30,
-            nav:false,
+            loop: true,
+            margin: 30,
+            nav: false,
             navText: [
                 '<i class="fa fa-angle-left"></i>',
                 '<i class="fa fa-angle-right"></i>'
@@ -662,34 +652,34 @@ function chooseCarousel () {
             autoplayHoverPause: false,
             autoplay: 6000,
             smartSpeed: 1000,
-            responsive:{
-                0:{
-                    items:1
+            responsive: {
+                0: {
+                    items: 1
                 },
-                600:{
-                    items:1
+                600: {
+                    items: 1
                 },
-                800:{
-                    items:1
+                800: {
+                    items: 1
                 },
-                1024:{
-                    items:1
+                1024: {
+                    items: 1
                 },
-                1100:{
-                    items:1
+                1100: {
+                    items: 1
                 },
-                1200:{
-                    items:1
+                1200: {
+                    items: 1
                 }
             }
-        });    		
+        });
     }
 }
 
 
 
 //=== Choose Carousel 2 ===
-function chooseCarousel2 () {
+function chooseCarousel2() {
     if ($('.choose-carousel2').length) {
         $('.choose-carousel2').owlCarousel({
             dots: false,
@@ -703,34 +693,34 @@ function chooseCarousel2 () {
             autoplayHoverPause: false,
             autoplay: 6000,
             smartSpeed: 1000,
-            responsive:{
-                0:{
-                    items:1
+            responsive: {
+                0: {
+                    items: 1
                 },
-                600:{
-                    items:2
+                600: {
+                    items: 2
                 },
-                800:{
-                    items:2
+                800: {
+                    items: 2
                 },
-                1024:{
-                    items:3
+                1024: {
+                    items: 3
                 },
-                1100:{
-                    items:3
+                1100: {
+                    items: 3
                 },
-                1200:{
-                    items:4
+                1200: {
+                    items: 4
                 }
             }
-        });    		
+        });
     }
 }
 
 
 
 //=== Specialities Carousel ===
-function specialitiesCarousel () {
+function specialitiesCarousel() {
     if ($('.specialities-carousel').length) {
         $('.specialities-carousel').owlCarousel({
             dots: false,
@@ -744,27 +734,27 @@ function specialitiesCarousel () {
             autoplayHoverPause: false,
             autoplay: 6000,
             smartSpeed: 1000,
-            responsive:{
-                0:{
-                    items:1
+            responsive: {
+                0: {
+                    items: 1
                 },
-                600:{
-                    items:1
+                600: {
+                    items: 1
                 },
-                800:{
-                    items:1
+                800: {
+                    items: 1
                 },
-                1024:{
-                    items:1
+                1024: {
+                    items: 1
                 },
-                1100:{
-                    items:1
+                1100: {
+                    items: 1
                 },
-                1200:{
-                    items:1
+                1200: {
+                    items: 1
                 }
             }
-        });    		
+        });
     }
 }
 
@@ -775,19 +765,19 @@ function specialitiesCarousel () {
 
 
 
- 
 
 
 
 
-if($('.works-tab-box').length){
+
+if ($('.works-tab-box').length) {
     $('.works-tab-box .tab-buttons .p-tab-btn').on('click', function(e) {
         e.preventDefault();
         var target = $($(this).attr('data-tab'));
 
-        if ($(target).hasClass('actve-tab')){
+        if ($(target).hasClass('actve-tab')) {
             return false;
-        }else{
+        } else {
             $('.works-tab-box .tab-buttons .p-tab-btn').removeClass('active-btn');
             $(this).addClass('active-btn');
             $('.works-tab-box .tab-content-box .single-tab-content').removeClass('active-tab');
@@ -798,20 +788,20 @@ if($('.works-tab-box').length){
 
 
 //Single Vertical Carousel
-if($('.single-vertical-carousel').length){
+if ($('.single-vertical-carousel').length) {
     $('.single-vertical-carousel').slick({
-    dots: true,
-    autoplay: true,
-    loop:true,
-    autoplaySpeed: 5000,
-    infinite: true,
-    responsive: true,
-    slidesToShow: 1,
-    vertical:true,
-    slidesToScroll: 1,
-    prevArrow:"<div class='prev-btn'><span class='fa fa-angle-up'></span></div>",
-    nextArrow:"<div class='next-btn'><span class='fa fa-angle-down'></span></div>"
-  });
+        dots: true,
+        autoplay: true,
+        loop: true,
+        autoplaySpeed: 5000,
+        infinite: true,
+        responsive: true,
+        slidesToShow: 1,
+        vertical: true,
+        slidesToScroll: 1,
+        prevArrow: "<div class='prev-btn'><span class='fa fa-angle-up'></span></div>",
+        nextArrow: "<div class='next-btn'><span class='fa fa-angle-down'></span></div>"
+    });
 }
 
 
@@ -826,24 +816,24 @@ if ($('.hidden-bar').length) {
     $('.hidden-bar-wrapper').mCustomScrollbar();
 
     //Show Sidebar
-    hiddenBarOpener.on('click', function () {
+    hiddenBarOpener.on('click', function() {
         hiddenBar.toggleClass('visible-sidebar');
         navToggler.toggleClass('open');
     });
 
     //Hide Sidebar
-    hiddenBarCloser.on('click', function () {
+    hiddenBarCloser.on('click', function() {
         hiddenBar.toggleClass('visible-sidebar');
         navToggler.toggleClass('open');
     });
 }
-    
-    
+
+
 
 
 
 if ($('.single-team-slider .bxslider').length) {
-	$('.single-team-slider .bxslider').bxSlider({
+    $('.single-team-slider .bxslider').bxSlider({
         nextSelector: '.single-team-slider #slider-next',
         prevSelector: '.single-team-slider #slider-prev',
         nextText: '<i class="fa fa-angle-right"></i>',
@@ -857,28 +847,26 @@ if ($('.single-team-slider .bxslider').length) {
 
 
 //LightBox / Fancybox
-if($('.lightbox-image').length) {
+if ($('.lightbox-image').length) {
     $('.lightbox-image').fancybox({
-        openEffect  : 'fade',
-        closeEffect : 'fade',
-        helpers : {
-            media : {}
+        openEffect: 'fade',
+        closeEffect: 'fade',
+        helpers: {
+            media: {}
         }
     });
 }
 
 
 // Elements Animation
-if($('.wow').length){
-    var wow = new WOW(
-      {
-        boxClass:     'wow',      // animated element css class (default is wow)
+if ($('.wow').length) {
+    var wow = new WOW({
+        boxClass: 'wow', // animated element css class (default is wow)
         animateClass: 'animated', // animation css class (default is animated)
-        offset:       0,          // distance to the element when triggering the animation (default is 0)
-        mobile:       false,       // trigger animations on mobile devices (default is true)
-        live:         true       // act on asynchronously loaded content (default is true)
-      }
-    );
+        offset: 0, // distance to the element when triggering the animation (default is 0)
+        mobile: false, // trigger animations on mobile devices (default is true)
+        live: true // act on asynchronously loaded content (default is true)
+    });
     wow.init();
 }
 
@@ -886,52 +874,52 @@ if($('.wow').length){
 
 
 //Contact Form Validation
-if($("#contact-form").length){
+if ($("#contact-form").length) {
     $("#contact-form").validate({
         submitHandler: function(form) {
-          var form_btn = $(form).find('button[type="submit"]');
-          var form_result_div = '#form-result';
-          $(form_result_div).remove();
-          form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
-          var form_btn_old_msg = form_btn.html();
-          form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
-          $(form).ajaxSubmit({
-            dataType:  'json',
-            success: function(data) {
-              if( data.status = 'true' ) {
-                $(form).find('.form-control').val('');
-              }
-              form_btn.prop('disabled', false).html(form_btn_old_msg);
-              $(form_result_div).html(data.message).fadeIn('slow');
-              setTimeout(function(){ $(form_result_div).fadeOut('slow') }, 6000);
-            }
-          });
+            var form_btn = $(form).find('button[type="submit"]');
+            var form_result_div = '#form-result';
+            $(form_result_div).remove();
+            form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
+            var form_btn_old_msg = form_btn.html();
+            form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
+            $(form).ajaxSubmit({
+                dataType: 'json',
+                success: function(data) {
+                    if (data.status = 'true') {
+                        $(form).find('.form-control').val('');
+                    }
+                    form_btn.prop('disabled', false).html(form_btn_old_msg);
+                    $(form_result_div).html(data.message).fadeIn('slow');
+                    setTimeout(function() { $(form_result_div).fadeOut('slow') }, 6000);
+                }
+            });
         }
     });
 }
 
 
 // Add Comment Form Validation
-if($("#add-comment-form").length){
+if ($("#add-comment-form").length) {
     $("#add-comment-form").validate({
         submitHandler: function(form) {
-          var form_btn = $(form).find('button[type="submit"]');
-          var form_result_div = '#form-result';
-          $(form_result_div).remove();
-          form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
-          var form_btn_old_msg = form_btn.html();
-          form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
-          $(form).ajaxSubmit({
-            dataType:  'json',
-            success: function(data) {
-              if( data.status = 'true' ) {
-                $(form).find('.form-control').val('');
-              }
-              form_btn.prop('disabled', false).html(form_btn_old_msg);
-              $(form_result_div).html(data.message).fadeIn('slow');
-              setTimeout(function(){ $(form_result_div).fadeOut('slow') }, 6000);
-            }
-          });
+            var form_btn = $(form).find('button[type="submit"]');
+            var form_result_div = '#form-result';
+            $(form_result_div).remove();
+            form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
+            var form_btn_old_msg = form_btn.html();
+            form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
+            $(form).ajaxSubmit({
+                dataType: 'json',
+                success: function(data) {
+                    if (data.status = 'true') {
+                        $(form).find('.form-control').val('');
+                    }
+                    form_btn.prop('disabled', false).html(form_btn_old_msg);
+                    $(form_result_div).html(data.message).fadeIn('slow');
+                    setTimeout(function() { $(form_result_div).fadeOut('slow') }, 6000);
+                }
+            });
         }
     });
 }
@@ -939,26 +927,26 @@ if($("#add-comment-form").length){
 
 
 // Appoinment Form Validation
-if($("#appoinment-form").length){
+if ($("#appoinment-form").length) {
     $("#appoinment-form").validate({
         submitHandler: function(form) {
-          var form_btn = $(form).find('button[type="submit"]');
-          var form_result_div = '#form-result';
-          $(form_result_div).remove();
-          form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
-          var form_btn_old_msg = form_btn.html();
-          form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
-          $(form).ajaxSubmit({
-            dataType:  'json',
-            success: function(data) {
-              if( data.status = 'true' ) {
-                $(form).find('.form-control').val('');
-              }
-              form_btn.prop('disabled', false).html(form_btn_old_msg);
-              $(form_result_div).html(data.message).fadeIn('slow');
-              setTimeout(function(){ $(form_result_div).fadeOut('slow') }, 6000);
-            }
-          });
+            var form_btn = $(form).find('button[type="submit"]');
+            var form_result_div = '#form-result';
+            $(form_result_div).remove();
+            form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
+            var form_btn_old_msg = form_btn.html();
+            form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
+            $(form).ajaxSubmit({
+                dataType: 'json',
+                success: function(data) {
+                    if (data.status = 'true') {
+                        $(form).find('.form-control').val('');
+                    }
+                    form_btn.prop('disabled', false).html(form_btn_old_msg);
+                    $(form_result_div).html(data.message).fadeIn('slow');
+                    setTimeout(function() { $(form_result_div).fadeOut('slow') }, 6000);
+                }
+            });
         }
     });
 }
@@ -970,54 +958,53 @@ if($("#appoinment-form").length){
 
 
 // Dom Ready Function
-jQuery(document).on('ready', function () {
-	(function ($) {
+jQuery(document).on('ready', function() {
+    (function($) {
         // add your functions
-        mainmenu ();
-        languageSwitcher ();
-        searchbox ();
-        scrollToTop ();
-        CounterNumberChanger ();
-        singleProductTab ();
-        doctorTab ();
-        priceFilter ();
-        accordion ();
-        cartTouchSpin ();
-        selectDropdown ();
-        datepicker ();
-        timepicker ();
-        tooltip ();
-        countDownTimer ();
-        projectMasonaryLayout ();
-        countryInfo ();
+        mainmenu();
+        languageSwitcher();
+        searchbox();
+        scrollToTop();
+        CounterNumberChanger();
+        singleProductTab();
+        doctorTab();
+        priceFilter();
+        accordion();
+        cartTouchSpin();
+        selectDropdown();
+        timepicker();
+        tooltip();
+        countDownTimer();
+        projectMasonaryLayout();
+        countryInfo();
 
 
-        servicesCarousel ();
-        testimonialCarousel ();
-        testimonialCarousel2 ();
-        tabContentCarousel ();
-        teamCarousel ();
-        chooseCarousel ();
-        chooseCarousel2 ();
-        specialitiesCarousel ();
-       
+        servicesCarousel();
+        testimonialCarousel();
+        testimonialCarousel2();
+        tabContentCarousel();
+        teamCarousel();
+        chooseCarousel();
+        chooseCarousel2();
+        specialitiesCarousel();
 
-  
-        
-        
-   
- 
-	})(jQuery);
+
+
+
+
+
+
+    })(jQuery);
 });
 
 
 
-jQuery(window).on('scroll', function(){
-	(function ($) {
-	stickyHeader ();
-    headerStyle ()  
-    
-	})(jQuery);
+jQuery(window).on('scroll', function() {
+    (function($) {
+        stickyHeader();
+        headerStyle()
+
+    })(jQuery);
 });
 
 
@@ -1025,8 +1012,7 @@ jQuery(window).on('scroll', function(){
 // Instance Of Fuction while Window Load event
 jQuery(window).on('load', function() {
     (function($) {
-        prealoader ();
-        
+        prealoader();
+
     })(jQuery);
 });
-

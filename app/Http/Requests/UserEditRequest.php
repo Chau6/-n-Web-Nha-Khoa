@@ -13,7 +13,7 @@ class UserEditRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,21 @@ class UserEditRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "first_name"=>"required",
+            "last_name"=>"required",
+            "email"=>"required|unique:user,email,".$this->id,
+            "phone"=>"min:9|max:15|unique:user,phone,".$this->id,
+        ];
+    }
+    public function messages()
+    {
+        return [
+            "first_name.required"=>"Please Enter First Name",
+            "last_name.required"=>"Please Enter Last Name",
+            "email.required"=>"Please Enter Email",
+            "email.unique"=>"Email Have Exist",
+            "phone.max"=>"Phone Number Must Not Exceed 15",
+            "phone.unique"=>"Phone Have Exist"
         ];
     }
 }

@@ -28,15 +28,12 @@
 @endsection
 
 @section('content')
-    
-<!--Start services style1 area-->
-
-<form action="">
-    <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Product</h3>
-          <div class="card-tools">
-          </div>
+<section class="services-style1-area spec-page">
+    <div class="container">
+        <div class="sec-title max-width text-center">
+            <h3>Product</h3>
+            <h1>Dental Products</h1>
+            <p>Your teeth play an important part in your daily life. It not only helps you to chew and eat your food, but frames your face. Any missing tooth can have a major impact on your quality of life. </p>
         </div>
         
         <div class="row">
@@ -46,7 +43,7 @@
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
                     <div class="single-solution-style1 wow fadeInUp" data-wow-delay="300ms">
                         <div class="img-holder">
-                            <img src="" alt="Awesome Image">
+                            <img src="###" alt="Awesome Image" style="width:400px;height:90px;">
                             <div class="icon-holder">
                                 <div class="inner-content">
                                     <div class="box">
@@ -70,9 +67,10 @@
                 @endif
             @endforeach
             <!--Start single solution style1--> 
-                        
-        </div>
+            
+            
+        </div> 
     </div>
-  </form>
+</section>
 
-@endsection
+  @endsection

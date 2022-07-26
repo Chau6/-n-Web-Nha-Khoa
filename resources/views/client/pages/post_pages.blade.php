@@ -29,39 +29,46 @@
 @endsection
 
 @section('content')
-<div class="container">
-    <div class="col-md-9">
-        <div class="row">
-            @foreach ($models as $post)
-                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
-                    <div class="single-blog-post">
-                        <div class="img-holder">
-                            <img src="{{('http://127.0.0.1:8000/asset/images/blog/v1-1.jpg')}}" alt="Awesome Image">
-                            <div class="categorie-button">
-                                <a class="btn-one" href="#">Healthy Teeth</a>    
-                            </div>
-                        </div>
-                        <div class="text-holder">
-                            <div class="meta-box">
-                                <div class="author-thumb">
-                                    <img src="http://127.0.0.1:8000/asset/images/blog/author-1.png" alt="Image">
+<section class="services-style1-area spec-page">
+    <div class="container">
+        {{-- <div class="col-md-9"> --}}
+            <div class="sec-title max-width text-center">
+                <h3>Post</h3>
+                <h1>Health Screening Page</h1>
+                <p>Your teeth play an important part in your daily life. It not only helps you to chew and eat your food, but frames your face. Any missing tooth can have a major impact on your quality of life. </p>
+            </div>
+            <div class="row">
+                @foreach ($models as $post)
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                        <div class="single-blog-post">
+                            <div class="img-holder">
+                                <img src="{{('http://127.0.0.1:8000/asset/images/blog/v1-1.jpg')}}" alt="Awesome Image">
+                                <div class="categorie-button">
+                                    <a class="btn-one" href="#">Healthy Teeth</a>    
                                 </div>
-                                <ul class="meta-info">
-                                    <li>{{$post->created_at}}</li>
-                                </ul>    
                             </div>
-                            <h3 class="blog-title"><a href="blog-single.html">{{$post->name}}</a></h3> 
-                            <div class="text-box">
-                                <p>{!!$post->intro!!}</p>
+                            <div class="text-holder">
+                                <div class="meta-box">
+                                    <div class="author-thumb">
+                                        <img src="http://127.0.0.1:8000/asset/images/blog/author-1.png" alt="Image">
+                                    </div>
+                                    <ul class="meta-info">
+                                        <li>{{$post->created_at}}</li>
+                                    </ul>    
+                                </div>
+                                <h3 class="blog-title"><a href="{{route('client.pages.post_infor',['id'=>$post->id,'slug'=>$category->slug, 'slug_infor'=>$post->slug])}}">{{$post->name}}</a></h3> 
+                                <div class="text-box">
+                                    <p>{!!$post->intro!!}</p>
+                                </div>
+                                <div class="readmore-button">
+                                    <a class="btn-two" href="{{route('client.pages.post_infor',['id'=>$post->id,'slug'=>$category->slug, 'slug_infor'=>$post->slug])}}"><span class="flaticon-next"></span>Reading</a>
+                                </div>  
                             </div>
-                            <div class="readmore-button">
-                                <a class="btn-two" href="{{route('client.pages.post_infor',['slug'=>$category->slug, 'slug_infor'=>$post->slug])}}"><span class="flaticon-next"></span>Reading</a>
-                            </div>  
                         </div>
                     </div>
-                </div>
-            @endforeach
-        </div>
+                @endforeach
+            </div>
+        {{-- </div> --}}
     </div>
-</div>
+</section>
 @endsection

@@ -117,6 +117,6 @@
 <!--End Choose area-->  
 
 <!--Start team area-->
-    @include('client.blocks.team_are')
+    {{-- @include('client.blocks.team_are') --}}
 <!--End team area-->
 @endsection

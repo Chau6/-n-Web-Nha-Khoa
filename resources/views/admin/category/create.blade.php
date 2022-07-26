@@ -50,6 +50,7 @@
                     <label>Category Slug</label>
                     <input type="text" name="slug" id="slug" class="form-control" placeholder="Enter Category Name" value="{{ old('slug') }}">
                 </div>
+
             </div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-info">Create</button>

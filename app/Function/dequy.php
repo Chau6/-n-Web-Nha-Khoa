@@ -23,7 +23,7 @@ function recursiveTableCate ($data,$parent_name = 0,$str = "") { //hiển thị 
             echo '
             <tr>
                 <td>'.$str.$value["name"].'</td>
-                <td><a onClick="return deleteConfirm()" href="http://127.0.0.1:8000/admin/category/delete/'.$value['id'].'">Xóa</a></td>
+                <td><a onClick="return confirmDelete()" href="http://127.0.0.1:8000/admin/category/delete/'.$value['id'].'">Xóa</a></td>
                 <td><a href="http://127.0.0.1:8000/admin/category/edit/'.$value['id'].'">Sửa</a></td>
             </tr>';
             unset($data[$key]);
