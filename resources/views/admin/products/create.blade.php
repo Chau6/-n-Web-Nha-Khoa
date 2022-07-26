@@ -102,6 +102,15 @@
 </section>
 @endsection
 @section('js')
+<script>
+    $('input[name="price"]').keyup(function(e)
+    {
+    if (/\D/g.test(this.value))
+    {
+      this.value = this.value.replace(/\D/g, '');
+    }
+  });
+</script>
     {{-- Slug --}}
 <script type="text/javascript">
     $('input#name').keyup(function(event){

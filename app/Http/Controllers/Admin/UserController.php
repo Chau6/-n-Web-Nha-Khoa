@@ -21,6 +21,7 @@ class UserController extends Controller
     public function store(Request $request){
         $data = $request->except('_token');
         $data['created_at'] = new \DateTime();
+
         DB::table('user')->insert($data);
         return redirect()->route('admin.user.index')->with('success','Insert Successfully');
     }
@@ -41,7 +42,21 @@ class UserController extends Controller
     }
     
     public function update(EditProfileRequest $request, $id){
-        $data = $request->except('_token');
+        $data = $request->except('_token', 'avatar');
+        if(!empty($request->avatar)){
+            $data_old = DB::table('user')->where('id',$id)->first();
+            $url_old = public_path('images/' .$data_old->avatar);
+            dd($url_old);
+            // if(file_exists($url_old)){
+            //     unlink($url_old);
+            // } 
+            $file_name = time().'-'.'avatar'.'.'.$request->avatar->extension();
+            $request->avatar->move(public_path('images'), $file_name);
+            $data['avatar']=$file_name;
+        }
+        // dd($request->all());     
+        
+        // dd($data);
         DB::table('user')->where('id',$id)->update($data);
         return redirect()->route('admin.user.index')->with('success','Edit Successfully');
     }

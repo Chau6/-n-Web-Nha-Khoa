@@ -10,7 +10,7 @@
     </ul>
 </div>
 @endif --}}
-<form action="{{ route('admin.user.update', ['id'=>$user->id]) }}" method="POST" id="checkform">  
+<form action="{{ route('admin.user.update', ['id'=>$user->id]) }}" method="POST" id="checkform" enctype="multipart/form-data">  
     @csrf
 <div class="card">
     <div class="card-header">
@@ -33,6 +33,19 @@
             @error('last_name')
                 <small class="form-text invalid-feedback">{{$message}}</small>
             @enderror
+        </div>
+
+        <div class="form-group">
+          <label>Old Avatar</label>
+          <img src="{{asset('images/'.$user->avatar)}}" width="120px">
+          
+        </div>
+        <div class="form-group">
+          <label>New Avatar</label>
+          <input type="file" class="form-control" name="avatar">
+          @error('avatar')
+              <small class="form-text invalid-feedback">{{$message}}</small>
+          @enderror
         </div>
 
         <div class="form-group">
@@ -90,6 +103,15 @@
 <script src="{{ asset('asset/pages/plugins/jquery-validation/additional-methods.min.js')}}"></script>
 <script src="{{ asset('asset/pages/plugins/jquery/jquery.min.js')}}"></script>
 <script src="{{ asset('asset/pages/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script>
+  $('input[name="phone"]').keyup(function(e)
+  {
+  if (/\D/g.test(this.value))
+  {
+    this.value = this.value.replace(/\D/g, '');
+  }
+  });
+</script>
 <script>
     $(function () {
       $.validator.setDefaults({

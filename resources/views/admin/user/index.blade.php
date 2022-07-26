@@ -30,6 +30,7 @@
                     <tr>
                       <th>Id</th>
                       <th>Level</th>   
+                      <th>Avatar</th>
                       <th>First Name</th>
                       <th>Last Name</th>
                       <th>Full Name</th>
@@ -56,6 +57,12 @@
                               }
                             ?>
                           </td>
+                          <td>
+                            @php
+                                $avatar = $user->avatar == NULL ? 'no-avatar.png' : $user->avatar;
+                                $image = asset('images/'. $avatar);
+                            @endphp
+                            <img src="{{ $image }}" width="50px" height="70px"></td>
                           <td>{{ $user->first_name }}</td>
                           <td>{{ $user->last_name }}</td>
                           <td>{{ $user->first_name }} {{$user->last_name}}</td>
