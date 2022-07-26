@@ -79,6 +79,7 @@
               <tr>
                   <th>ID</th>
                   <th>Name</th>
+                  <th>Total Post</th>
                   <th>Parent Name</th>
                   <th>Created At</th>
                   <th>Edit</th>
@@ -90,8 +91,25 @@
                 @foreach ($categorys as $category)
                 <tr>
                   <td>{{$category->id}}</td>
-                  <td>{{$category->name}}</td>
-                  <td>{{$category->parent_name}}</td>
+                  <td>{{$category->category_name}}</td>
+                  <td>{{$category->product_id}}
+                    <?php  
+                    if($category->product_id) {
+                      echo "$total_post";
+                    }else{
+                      echo "Health Screening";
+                    }
+                  ?>
+                  </td>
+                  <td>
+                    <?php  
+                      if($category->parent_name == 1) {
+                        echo "Product";
+                      }else{
+                        echo "Health Screening";
+                      }
+                    ?>
+                  </td>
                   <td>{{ date('d/m/Y | H:i:s', strtotime($category->created_at)) }}</td>
                   <td><a href="{{ route('admin.category.edit', ['id'=>$category->id]) }}">Edit</td>
                   <td><a onclick="return confirmDelete()" href="{{ route('admin.category.delete', ['id'=>$category->id]) }}">Delete</td>

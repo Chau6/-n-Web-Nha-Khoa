@@ -12,8 +12,14 @@ use Illuminate\Support\Facades\Auth;
 class CategoryController extends Controller
 {
     public function index(){
-        $result = DB::table('category')->orderBy('parent_name', 'desc')->get();
-        return view('admin.category.index', ['categorys' => $result]);
+        $result = DB::table('category')
+        ->join('products', 'category.id', '=', 'products.category_id')
+        ->select('category.name as category_name', 'products.id as product_id', 'category.*')
+        ->orderBy('parent_name', 'desc')
+        ->get();
+        $total_product = DB::table('products')->count('name');
+        $total_post = DB::table('post')->count('name');
+        return view('admin.category.index', ['categorys' => $result, 'total_product'=>$total_product, 'total_post'=>$total_post]);
     }
     public function delete($id){
         $result = DB::table('category')->where('id', $id)->delete();
