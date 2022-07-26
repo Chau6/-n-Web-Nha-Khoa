@@ -68,7 +68,7 @@
                     </div>
                 @endforeach
             </div>
-            {!! $models->links() !!}
+            {!! $models->links('layout.pagination') !!}
         {{-- </div> --}}
     </div>
 </section>
