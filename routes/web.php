@@ -77,7 +77,6 @@ Route::get('testmail', [LoginController::class, 'testMail'])->name('testmail');
 Route::middleware('admin', 'login')->group(function(){
     Route::prefix('admin')->name('admin.')->group(function(){
         Route::get('index_pages', [IndexPageController::class, 'index'])->name('index_pages');
-
         Route::get('contact', [IndexPageController::class, 'contact'])->name('contact');
         Route::get('delete/{id}', [IndexPageController::class, 'delete'])->name('delete')->where('id', '[0-9]+');
 
@@ -120,13 +119,13 @@ Route::middleware('admin', 'login')->group(function(){
             Route::post('update/{id}', [ProductController::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update category
             /** Delete product */
             Route::get('delete/{id}', [ProductController::class, 'delete'])->name('delete')->where('id','[0-9]+');
-         });
+        });
          //Gallery
-         Route::prefix('gallery')->name('gallery.')->group(function(){
+        Route::prefix('gallery')->name('gallery.')->group(function(){
                 Route::get('add_gallery/{product_id}', [GalleryController::class, 'add_gallery'])->name('add_gallery')->where('product_id','[0-9]+');
                 Route::post('select_gallery', [GalleryController::class, 'select_gallery'])->name('select_gallery');
                 Route::post('insert_gallery/{pro_id}', [GalleryController::class, 'insert_gallery'])->name('insert_gallery');
-         });
+        });
 
 
         // Post
@@ -184,6 +183,45 @@ Route::middleware('admin', 'login')->group(function(){
 });
 
 
+    //Doctor
+    Route::prefix('doctor')->name('doctor.')->group(function(){
+        Route::get('index_pages', [DoctorController::class, 'index_pages'])->name('index_pages');
+        /** Show list of Doctor */
+        Route::get('index', [DoctorController::class, 'index'])->name('index');
+        /** Create Doctor */
+        Route::get('create', [DoctorController::class, 'create'])->name('create'); //Show form to create doctor
+        Route::post('store', [DoctorController::class, 'store'])->name('store'); //set action in form to create doctor
+        /** Edit Doctor */
+        Route::get('edit/{id}', [DoctorController::class, 'edit'])->name('edit')->where('id','[0-9]+'); //Show form to edit doctor
+        Route::post('update/{id}', [DoctorController::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update doctor
+        /** Delete Doctor */
+        Route::get('delete/{id}', [DoctorController::class, 'delete'])->name('delete')->where('id','[0-9]+');
+    });
+
+    //Doctor_Time
+    Route::prefix('doctor_time')->name('doctor_time.')->group(function(){
+        /** Show list of Doctor */
+        Route::get('index', [DoctorTimeController::class, 'index'])->name('index');
+        /** Create Doctor */
+        Route::get('create', [DoctorTimeController::class, 'create'])->name('create'); //Show form to create doctor
+        Route::post('store', [DoctorTimeController::class, 'store'])->name('store'); //set action in form to create doctor
+        /** Edit Doctor */
+        Route::get('edit/{id}', [DoctorTimeController::class, 'edit'])->name('edit')->where('id','[0-9]+'); //Show form to edit doctor
+        Route::post('update/{id}', [DoctorTimeController::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update doctor
+        /** Delete Doctor */
+        Route::get('delete/{id}', [DoctorTimeController::class, 'delete'])->name('delete')->where('id','[0-9]+');
+        
+    });
+
+    //Dat_lich
+    Route::prefix('dat_lich')->name('dat_lich.')->group(function(){
+        /** Show list of Doctor */
+        Route::get('index', [Dat_LichController::class, 'index'])->name('index');
+        Route::get('delete/{id}', [Dat_LichController::class, 'delete'])->name('delete')->where('id','[0-9]+');
+        Route::get('edit/{id}', [Dat_LichController::class, 'edit'])->name('edit')->where('id','[0-9]+'); //Show form to edit doctor
+        Route::post('update/{id}', [Dat_LichController::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update doctor
+    });
+    
 
 //====================Client=====================
 Route::get('/', [HomeController::class, 'index'])->name('index');

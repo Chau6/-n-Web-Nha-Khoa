@@ -52,8 +52,10 @@
                                 echo "<span class='badge badge-warning' style='color:rgb(76, 98, 117)'>SuperAdmin</span>";
                               }elseif($user->level == 1) {  
                                 echo "<span class='badge badge-danger'>Admin</span>";
-                              } else{
-                                echo "<span class='badge badge-info'>Member</span>";
+                              }elseif($user->level == 2) {
+                                echo "<span class='badge badge-info'>Doctor</span>";
+                              }else{
+                                echo "<span class='badge badge-primary'>Member</span>";
                               }
                             ?>
                           </td>
