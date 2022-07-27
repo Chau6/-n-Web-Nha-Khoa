@@ -17,10 +17,10 @@ class DoctorCheck
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check() && Auth::user()->level == 2){
-            return redirect()->back();
+        if(Auth::check() && Auth::user()->level == 2 || Auth::check() && Auth::user()->level == 1){
+            return $next($request);
+            return redirect()->route('admin.index_pages');
         }
-        return $next($request);
-        return redirect()->route('admin.index_pages');
+        return redirect()->back();
     }
 }
