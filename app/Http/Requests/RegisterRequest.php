@@ -24,9 +24,9 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            "email" => "required|unique:user",
-            "last_name" => "required",
-            "first_name" => "required",
+            "email" => "required|unique:user,email",
+            "last_name" => "required|max:20",
+            "first_name" => "required|max:20",
             "password" => "required|min:6",
         ];
     }
@@ -37,7 +37,9 @@ class RegisterRequest extends FormRequest
             "email.required" => "Enter Email",
             "email.unique" => "Email already exist",
             "last_name.required" => "Enter Last Name",
+            "last_name.max" => "Last Name Must Not Exceed 15 Characters",
             "first_name.required" => "Enter First Name",
+            "first_name.max" => "First Name Must Not Exceed 15 Characters",
             "password.required" => "Enter Password",
             "password.min" => "Password at last 6 character",
         ];

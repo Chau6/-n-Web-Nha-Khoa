@@ -31,7 +31,11 @@
                         <h3>Health Screening</h3>
                     </div>
                     <ul class="specialities">
-                        <li><a href="#">Dental Implants</a></li>
+                        <li><a href="{{url('http://127.0.0.1:8000/client/pages/health_screening/toothache')}}">Toothache</a></li>
+                        <li><a href="{{url('http://127.0.0.1:8000/client/pages/health_screening/stained-teeth')}}">Stained Teeth</a></li>
+                        <li><a href="{{url('http://127.0.0.1:8000/client/pages/health_screening/cavities')}}">Cavities</a></li>
+                        <li><a href="{{url('http://127.0.0.1:8000/client/pages/health_screening/cracked-tooth')}}">Cracked Tooth</a></li>
+                        <li><a href="{{url('http://127.0.0.1:8000/client/pages/health_screening/sensitive-to-cold')}}">Sensitive to Cold</a></li>
                         
                     </ul>
                 </div>
@@ -45,7 +49,13 @@
                         <h3>Product</h3>
                     </div>
                     <ul class="facilities">
-                        <li><a href="#">Individual Tooth X-Ray</a></li>
+                        <li><li><a href="{{url('http://127.0.0.1:8000/client/pages/product/toothbrushes')}}">Toothbrushes</a></li>
+                        <li><a href="{{url('http://127.0.0.1:8000/client/pages/product/toothpaste')}}">Toothpaste</a></li>
+                        <li><a href="{{url('http://127.0.0.1:8000/client/pages/product/dental-floss')}}">Dental Floss</a></li>
+                        <li><a href="{{url('http://127.0.0.1:8000/client/pages/product/face-mask')}}">Face Mask</a></li>
+                        {{-- <li><a href="{{url('http://127.0.0.1:8000/client/pages/product/dental-picks-and-sticks')}}">Dental Picks And Sticks</a></li>
+                        <li><a href="{{url('http://127.0.0.1:8000/client/pages/product/tongue-scrapers')}}">Tongue Scrapers</a></li>
+                        <li><a href="{{url('http://127.0.0.1:8000/client/pages/product/oral-medicine')}}">Oral Medicine</a></li></li> --}}
                     </ul>
                 </div>
             </div>

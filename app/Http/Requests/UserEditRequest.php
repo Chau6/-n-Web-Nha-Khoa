@@ -24,10 +24,11 @@ class UserEditRequest extends FormRequest
     public function rules()
     {
         return [
-            "first_name"=>"required",
-            "last_name"=>"required",
+            "first_name"=>"required|max:20",
+            "last_name"=>"required|max:20",
+            "avatar"=>"required|image|mimes:jpeg,png,jpg,gif,svg",
             "email"=>"required|unique:user,email,".$this->id,
-            "phone"=>"min:9|max:15|unique:user,phone,".$this->id,
+            "phone"=>"max:15",
         ];
     }
     public function messages()
@@ -35,10 +36,12 @@ class UserEditRequest extends FormRequest
         return [
             "first_name.required"=>"Please Enter First Name",
             "last_name.required"=>"Please Enter Last Name",
+            "avatar.required"=>"Please Enter Avatar",
+            "avatar.image"=>"Image Only",
+            "avatar.mimes"=>"Only jpeg png jpg gif svg",
             "email.required"=>"Please Enter Email",
             "email.unique"=>"Email Have Exist",
             "phone.max"=>"Phone Number Must Not Exceed 15",
-            "phone.unique"=>"Phone Have Exist"
         ];
     }
 }

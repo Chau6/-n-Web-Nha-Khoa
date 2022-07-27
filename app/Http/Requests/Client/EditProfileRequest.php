@@ -27,7 +27,7 @@ class EditProfileRequest extends FormRequest
             "first_name"=>"required",
             "last_name"=>"required",
             "email"=>"required|unique:user,email,".$this->id,
-            "phone"=>"min:9|max:15|unique:user,phone,".$this->id
+            "phone"=>"max:15",
         ];
     }
     public function messages()
@@ -38,7 +38,7 @@ class EditProfileRequest extends FormRequest
             "email.required"=>"Please Enter Email",
             "email.unique"=>"Email Have Exists",
             "phone.max"=>"Phone Number Must Not Exceed 15",
-            "phone.unique"=>"Phone Have Exist"
+        
         ];
     }
 }

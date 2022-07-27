@@ -56,7 +56,7 @@
                 </td>
                 <td><a href="{{ route('admin.gallery.add_gallery',[$product->id]) }}">Add Gallery</a></td>
                 <td>{{$product->category_name}}</td>
-                <td>{{$product->price}}</td>
+                <td>{{$product->price}}.00$</td>
                 <td>{{$product->status}}</td>
                 <td>{{ date('d/m/Y | H:i:s', strtotime($product->created_at)) }}</td>
                 <td><a href="{{ route('admin.product.edit', ['id'=>$product->id]) }}">Edit</td>

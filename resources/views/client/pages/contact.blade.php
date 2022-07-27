@@ -159,7 +159,7 @@
                     <!-- Phone -->
                     <div class="form-group">
                         <label for="inputSubject">Phone</label>
-                        <input type="phone" id="inputSubject" class="form-control" value="{{$customer->phone}}">
+                        <input type="phone" name="phone" id="inputSubject" class="form-control" value="{{$customer->phone}}">
                         @error('phone')
                             <small class="form-text invalid-feedback">{{$message}}</small>
                         @enderror
@@ -231,7 +231,7 @@
           },
           phone:{
             number: true,
-            minlength: 8
+            minlength: 8,
           },
           message:{
             required:true,
@@ -240,15 +240,15 @@
         messages: {
           email: {
             required: "Please enter a email address",
-            email: "Please enter a valid email address"
+            email: "Please enter a valid email address",
           },
           phone:{
             number: "Please enter number only",
-            minlength: "Phone needs at least 8 characters"
+            minlength: "Phone needs at least 8 characters",
           },
           username: {
             required: "Please enter a name",
-            maxlength: "Your name cannot exceed 255 characters"
+            maxlength: "Your name cannot exceed 255 characters",
           },
           message:{
             required: "Please enter message",
