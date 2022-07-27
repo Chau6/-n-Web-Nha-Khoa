@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{ route('client.pages.post_edit_profile', ['id'=>$user->id]) }}" method="POST" id="checkform">  
+<form action="{{ route('client.pages.post_edit_profile', ['id'=>$user->id]) }}" method="POST" id="checkform" enctype="multipart/form-data">  
     @csrf
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <div class="container" style="padding-top: 30px">
@@ -18,7 +18,11 @@
                     <div class="col-12 col-sm-auto mb-3">
                     <div class="mx-auto" style="width: 140px;">
                         <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
-                        <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span>
+                        @php
+                        $avatar = $user->avatar == NULL ? 'no-avatar.png' : $user->avatar;
+                        $image = asset('images/'. $avatar);
+                        @endphp
+                          <img src="{{$image}}" width="140px" height="140px">
                         </div>
                     </div>
                     </div>
@@ -26,12 +30,11 @@
                     <div class="text-center text-sm-left mb-2 mb-sm-0">
                         <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{$user->first_name}} {{$user->last_name}}</h4>
                         
-                
-                        <div class="mt-2">
-                        <button class="btn btn-primary" type="button">
-                            <i class="fa fa-fw fa-camera"></i>
-                            <span>Change Photo</span>
-                        </button>
+                        <div class="upload">
+                          <button type = "button" class = "btn-warning">
+                            <i class = "fa fa-upload"></i> Upload File
+                            <input type="file" id="image" name="avatar">
+                          </button>
                         </div>
                     </div>
                     <div class="text-center text-sm-right">
@@ -93,7 +96,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                     <label>Phone</label>
-                                    <input class="form-control" type="text"  name="phone" placeholder="Enter Phone" value="{{$user->phone}}">
+                                    <input class="form-control" type="text" id="phone" name="phone" placeholder="Enter Phone" value="{{$user->phone}}">
                                     @error('phone')
                                         <small class="form-text invalid-feedback">{{$message}}</small>
                                     @enderror
@@ -127,6 +130,15 @@
 @endsection
 @section('js')
 <script>
+  $('input[name="phone"]').keyup(function(e)
+  {
+  if (/\D/g.test(this.value))
+  {
+    this.value = this.value.replace(/\D/g, '');
+  }
+});
+</script>
+<script>
     $(function () {
       $.validator.setDefaults({
         submitHandler: function () {
@@ -151,7 +163,7 @@
             number: true,
             minlength: 8,
             maxlength: 15,
-          }
+          },
         },
         messages: {
           email: {
@@ -186,4 +198,33 @@
       });
     });
 </script>
+@endsection
+@section('css')
+<style>
+.btn-warning{
+  position: relative;
+  padding: 11px 16px;
+  font-size: 15px;
+  line-height: 1.5;
+  border-radius: 3px;
+  color: #fff;
+  background-color: #02d854;
+  border: 0;
+  transition: 0.2s;
+  overflow: hidden; \\ L
+}
+
+.btn-warning input[type = "file"]{
+  cursor: pointer;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  transform: scale(3);
+  opacity: 0;
+}
+
+.btn-warning:hover{
+  background-color: #74c995;
+}
+</style>
 @endsection

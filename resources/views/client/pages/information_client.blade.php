@@ -1,19 +1,25 @@
 @extends('client.master')
 
 @section('content')
-@if (Session::has('success') )
-  <div class="alert alert-success alert-block">
+
+<section style="background-color: #eee;">
+  @if (Session::has('success') )
+  <div class="container">
+    <div class="alert alert-success alert-block">
       <button type="button" class="close" data-dismiss="alert">x</button>
           <strong>{{ Session::get('success') }}</strong>
+    </div>
   </div>
-@endif
-@if (Session::has('error') )
-  <div class="alert alert-danger ">
-      <button type="button" class="close" data-dismiss="alert">x</button>
-          <strong>{{ Session::get('error') }}</strong>
-  </div>
-@endif
-<section style="background-color: #eee;">
+    
+  @endif
+  @if (Session::has('error') )
+    <div class="container">
+      <div class="alert alert-danger ">
+        <button type="button" class="close" data-dismiss="alert">x</button>
+            <strong>{{ Session::get('error') }}</strong>
+    </div>  
+    </div>
+  @endif
     <div class="container py-5">
         {{-- Top --}}
       <div class="row">
@@ -32,7 +38,11 @@
         {{-- Infor --}}
           <div class="card mb-4">
             <div class="card-body text-center">
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+              @php
+                  $avatar = $user->avatar == NULL ? 'no-avatar.png' : $user->avatar;
+                  $image = asset('images/'. $avatar);
+              @endphp
+              <img src="{{ $image }}" alt="avatar"
                 class="rounded-circle img-fluid" style="width: 150px;">
               <h5 class="my-3">{{$user->first_name}} {{$user->last_name}}</h5>
               <?php
