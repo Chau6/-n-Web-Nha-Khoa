@@ -24,7 +24,7 @@ class StoreUpdateDoctor extends FormRequest
     public function rules()
     {
         return [
-            'fullname' => 'required,fullname,',
+            'fullname' => 'required',
             'email' => 'required|unique:doctors'.$this->id,
             'phone' => 'required|min:9|max:15|unique:doctors'.$this->id
         ];
