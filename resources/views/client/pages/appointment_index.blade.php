@@ -73,7 +73,6 @@
                             {{-- <th>Service</th> --}}
                             <th>Description</th>
                             <th>Edit</th>
-                            <th>Delete</th>
                         </tr>
                     </thead>
                     @foreach ($datas as $item)
@@ -87,7 +86,6 @@
                         {{-- <td>{{$item->service}}</td> --}}
                         <td>{{$item->description}}</td>
                         <td><a href="{{ route('client.pages.appointment_edit', ['id'=>$item->id]) }}">Edit</td>
-                        <td><a onclick="return confirmDelete()" href="{{ route('client.pages.delete', ['id'=>$item->id]) }}">Delete</td>
                     </tr>
                     @endforeach
                     </tbody>
