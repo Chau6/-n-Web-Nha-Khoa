@@ -30,11 +30,11 @@ class DoctorController extends Controller
     }
     public function update(StoreUpdateDoctor $request, $id){
         $data = $request->except('_token');
-        DB::table('doctors')->where('id',$id)->update($data);
+        DB::table('doctors')->where('id', $id)->update($data);
         return redirect()->route('admin.doctor.index')->with('success','Edit Successfully');
     }
     public function delete($id){
-        DB::table('doctors')->where('id',$id)->delete();
+        DB::table('doctors')->where('id', $id)->delete();
         return redirect()->route('admin.doctor.index');
     }
 }
