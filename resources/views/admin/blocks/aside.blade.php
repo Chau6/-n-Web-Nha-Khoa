@@ -237,7 +237,7 @@
                     </ul>
                 </li>
 
-                {{-- <li class="nav-item">
+                <li class="nav-item">
                     <a href="{{ route('admin.doctor_time.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
@@ -259,7 +259,7 @@
                             </a>
                         </li>
                     </ul>
-                </li> --}}
+                </li>
 
                 <li class="nav-item">
                     <a href="{{ route('admin.dat_lich.index')}}" class="nav-link">
