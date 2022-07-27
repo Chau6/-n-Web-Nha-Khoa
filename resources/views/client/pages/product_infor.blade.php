@@ -18,6 +18,15 @@
                     </header>
                     <!-- Preview image figure-->
                     <figure class="mb-4"><img class="img-fluid rounded" src="{{ asset('images/'.$models->images)}}" alt="..." style="width:900px;height:400px;"></figure>
+                    <div id="similar-product" class="carousel silde" data-ride="carousel">
+                        <div class="carousel-inner">
+                                @foreach($gallery as $key => $gal)
+                                    <a data-thumb="{{ asset('images/'.$gal->gallery_image)}}" data-src="{{ asset('images/'.$gal->gallery_image)}}">
+                                        <img style="width:120px;height:120px;" alt="..." src="{{ asset('images/'.$gal->gallery_image)}}">
+                                    </a>
+                                @endforeach
+                        </div>   
+                    </div>
                     <!-- Post content-->
                     <section class="mb-5">
                         <p>{!!$models->content!!}</p>

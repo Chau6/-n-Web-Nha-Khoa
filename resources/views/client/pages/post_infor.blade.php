@@ -17,7 +17,7 @@
                         <!-- Post categories-->
                     </header>
                     <!-- Preview image figure-->
-                    <figure class="mb-4"><img class="img-fluid rounded" src="{{ asset('images/'.$models->images)}}" alt="..." style="width:900px;height:400px;"></figure>
+                    <figure class="mb-4"><img class="img-fluid rounded" src="{{ asset('images/'.$models->extra_images)}}" alt="..." style="width:900px;height:400px;"></figure>
                     <!-- Post content-->
                     <section class="mb-5">
                         <p>{!!$models->content!!}</p>

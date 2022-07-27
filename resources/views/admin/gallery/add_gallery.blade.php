@@ -59,8 +59,8 @@
                 var error = '';
                 var files = $('#file')[0].files;
 
-                if(files.length > 20){
-                    error+='<p>You just can choose 20 images</p>';
+                if(files.length > 4){
+                    error+='<p>You just can choose 4 images</p>';
                 }else if(files.length==''){
                     error+='<p>Please choose a image</p>';
                 }else if(files.size >2000000){

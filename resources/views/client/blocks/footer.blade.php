@@ -28,7 +28,7 @@
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
                 <div class="single-footer-widget martop6 marbtm50">
                     <div class="title">
-                        <h3>Specialities</h3>
+                        <h3>Health Screening</h3>
                     </div>
                     <ul class="specialities">
                         <li><a href="#">Dental Implants</a></li>
@@ -42,7 +42,7 @@
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
                 <div class="single-footer-widget martop6 pdbtm50">
                     <div class="title">
-                        <h3>Facilities</h3>
+                        <h3>Product</h3>
                     </div>
                     <ul class="facilities">
                         <li><a href="#">Individual Tooth X-Ray</a></li>
