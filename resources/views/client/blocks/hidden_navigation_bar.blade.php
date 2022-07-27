@@ -11,7 +11,7 @@
             <ul>
                 <li>
                     <h5>Address</h5>
-                    <p>D5 Nguyễn Gia Trí, Phường 25,Bình Thạnh, <br>  Thành phố Hồ Chí Minh, Việt Nam.</p>
+                    <p>D5 Nguyen Gia Tri, Ward 25, Binh Thanh, <br> Ho Chi Minh, VietNam.</p>
                 </li>
                 <li>
                     <h5>Phone</h5>

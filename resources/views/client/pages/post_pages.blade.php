@@ -53,7 +53,7 @@
                                         <img src="{{ asset('images/'.$post->images)}}" alt="Image">
                                     </div>
                                     <ul class="meta-info">
-                                        <li>{{$post->created_at}}</li>
+                                        <li>{{date('d-m-Y', strtotime($post->created_at))}}</li>
                                     </ul>    
                                 </div>
                                 <h3 class="blog-title"><a href="{{route('client.pages.post_infor',['id'=>$post->id,'slug'=>$category->slug, 'slug_infor'=>$post->slug])}}">{{$post->name}}</a></h3> 

@@ -188,8 +188,8 @@ Route::middleware('admin', 'login')->group(function(){
 //====================Client=====================
 Route::get('/', [HomeController::class, 'index'])->name('index');
 
-Route::prefix('client')->name('client.')->group(function(){
-    Route::prefix('pages')->name('pages.')->group(function(){
+Route::name('client.')->group(function(){
+    Route::name('pages.')->group(function(){
     //==========index
        
         Route::get('advice', [HomeController::class, 'advice'])->name('advice');

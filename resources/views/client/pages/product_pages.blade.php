@@ -52,7 +52,7 @@
                                     <img src="{{ asset('images/'.$product->images)}}" alt="Image">
                                 </div>
                                 <ul class="meta-info">
-                                    <li>{{$product->created_at}}</li>
+                                    <li>{{date('d-m-Y', strtotime($product->created_at))}}</li>
                                 </ul>    
                             </div>
                             <h3 class="blog-title"><a href="{{route('client.pages.product_infor',['id'=>$product->id, 'slug'=>$category->slug, 'slug_infor'=>$product->slug])}}">{{$product->name}}</a></h3> 
