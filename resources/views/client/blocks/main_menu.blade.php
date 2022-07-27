@@ -29,9 +29,9 @@
                                         <li><a href="{{url('http://127.0.0.1:8000/client/pages/product/toothpaste')}}">Toothpaste</a></li>
                                         <li><a href="{{url('http://127.0.0.1:8000/client/pages/product/dental-floss')}}">Dental Floss</a></li>
                                         <li><a href="{{url('http://127.0.0.1:8000/client/pages/product/face-mask')}}">Face Mask</a></li>
-                                        <li><a href="{{url('http://127.0.0.1:8000/client/pages/product/dental-picks-and-sticks')}}">Dental Picks And Sticks</a></li>
+                                        {{-- <li><a href="{{url('http://127.0.0.1:8000/client/pages/product/dental-picks-and-sticks')}}">Dental Picks And Sticks</a></li>
                                         <li><a href="{{url('http://127.0.0.1:8000/client/pages/product/tongue-scrapers')}}">Tongue Scrapers</a></li>
-                                        <li><a href="{{url('http://127.0.0.1:8000/client/pages/product/oral-medicine')}}">Oral Medicine</a></li>
+                                        <li><a href="{{url('http://127.0.0.1:8000/client/pages/product/oral-medicine')}}">Oral Medicine</a></li> --}}
                                     </ul>
                                 </li>
                                 @if (Auth::check())
