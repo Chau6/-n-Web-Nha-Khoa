@@ -30,8 +30,10 @@ class Login_ClientController extends Controller
         
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            if (Auth::user()->level == 1 || Auth::user()->level == 2){
+            if (Auth::user()->level == 1 ){
                 return redirect()->route('admin.index_pages');
+            }elseif(Auth::user()->level == 2){
+                return redirect()->route('doctor.index');
             }else{
                 return redirect()->route('client.pages.index');
             }

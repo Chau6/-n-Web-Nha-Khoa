@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class Admin
+class DoctorCheck
 {
     /**
      * Handle an incoming request.
@@ -17,10 +17,10 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check() && Auth::user()->level == 1){
-            return $next($request);
-            return redirect()->route('admin.index_pages');
+        if(Auth::check() && Auth::user()->level == 2){
+            return redirect()->back();
         }
-        return redirect()->route('index');
+        return $next($request);
+        return redirect()->route('admin.index_pages');
     }
 }
