@@ -182,7 +182,7 @@ Route::middleware('admin', 'login')->group(function(){
     });
 });
 
-
+Route::middleware('doctor')->group(function(){
     //Doctor
     Route::prefix('doctor')->name('doctor.')->group(function(){
         Route::get('index_pages', [DoctorController::class, 'index_pages'])->name('index_pages');
@@ -197,6 +197,7 @@ Route::middleware('admin', 'login')->group(function(){
         /** Delete Doctor */
         Route::get('delete/{id}', [DoctorController::class, 'delete'])->name('delete')->where('id','[0-9]+');
     });
+});
 
     //Doctor_Time
     Route::prefix('doctor_time')->name('doctor_time.')->group(function(){
