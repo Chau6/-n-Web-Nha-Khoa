@@ -10,7 +10,7 @@
     </ul>
 </div>
 @endif
-<form action="{{ route('admin.dat_lich.update', ['id' => $edit->id]) }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('dat_lich.update', ['id' => $edit->id]) }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="card">
         <div class="card-header">
@@ -83,6 +83,19 @@
             <div class="form-group">
                 <label for="service">Description</label>
                 <textarea class="form-control" name="description" placeholder="Description...">{{$edit->description}}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select class="selectmenu form-control" name="status" id="status">
+                    <option {{ $edit->status == 'Make an appointment' ? 'selected':'' }}>Make an appointment</option>
+                    <option {{ $edit->status == 'Complete the appointment' ? 'selected':'' }}>Complete the appointment</option>
+                    <option {{ $edit->status == 'Late appointment' ? 'selected':'' }}>Late appointment</option>
+                    <option {{ $edit->status == 'Canceling an appointment' ? 'selected':'' }}>Canceling an appointment</option>
+                </select> 
+            </div>
+            <div class="form-group">
+                <label for="medical_history">Medical History</label>
+                <textarea class="form-control" name="medical_history" placeholder="Medical History...">{{$edit->medical_history}}</textarea>
             </div>
 
             <div class="card-footer">

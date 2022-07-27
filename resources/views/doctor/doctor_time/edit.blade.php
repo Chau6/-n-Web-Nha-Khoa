@@ -10,7 +10,7 @@
     </ul>
 </div>
 @endif
-<form action="{{ route('admin.doctor_time.update', ['id'=> $doctor_day_work->id]) }}" method="POST">  
+<form action="{{ route('doctor_time.update', ['id'=> $doctor_day_work->id]) }}" method="POST">  
     @csrf
 <div class="card">
     <div class="card-header">

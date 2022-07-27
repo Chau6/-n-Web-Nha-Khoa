@@ -1,6 +1,17 @@
 @extends('admin.master')
 
 @section('content')
+<style>
+  a.one:link{
+    color: red;
+  }
+  a.one:visited {
+    color: blue;
+  }
+  a.one:hover {
+    font-size:200%;
+  }
+</style>
 @if (Session::has('success') )
   <div class="alert alert-success alert-block">
       <button type="button" class="close" data-dismiss="alert">x</button>
@@ -31,25 +42,37 @@
                 <th>Date</th>
                 <th>Time At</th>
                 <th>Doctor Name</th>
-                {{-- <th>Service</th> --}}
                 <th>Description</th>
+                <th>Status</th>
+                <th>Medical History</th>
                 <th>Edit</th>
-                <th>Delete</th>
             </tr>
             </thead>
             <tbody>
             @foreach ($dat_lich as $item)
             <tr>
-                <td>{{ $item->name }}</td>
-                <td>{{$item->phone}}</td>
+                <td>{{$item->name}}</td>
+                <td><a href="" class="one">{{$item->phone}}</a></td>
                 <td>{{$item->age}}</td>
                 <td>{{ $item->date }}</td>
                 <td>{{$item->time}}</td>
                 <td><?php $data = DB::table('doctors')->where('id', $item->doctor_name)->first()?>{{$data->fullname}}</td>
-                {{-- <td>{{$item->service}}</td> --}}
                 <td>{{$item->description}}</td>
-                <td><a href="{{ route('admin.dat_lich.edit', ['id'=>$item->id]) }}">Edit</td>
-                <td><a onclick="return confirmDelete()" href="{{ route('admin.dat_lich.delete', ['id'=>$item->id]) }}">Delete</td>
+                <td>
+                  <?php 
+                    if($item->status == "Make an appointment"){
+                      echo "<span class='btn btn-primary'>Make an appointment</span>";
+                    }else if($item->status == "Complete the appointment"){
+                      echo "<span class='btn btn-success'>Complete the appointment</span>";
+                    }else if($item->status == "Late appointment"){
+                      echo "<span class='btn btn-warning'>Late appointment</span>";
+                    }else if($item->status == "Canceling an appointment"){
+                      echo "<span class='btn btn-danger'>Canceling an appointment</span>";
+                    }
+                  ?>
+                </td>
+                <td>{{$item->medical_history}}</td>
+                <td><a href="{{ route('dat_lich.edit', ['id' => $item->id]) }}">Edit</a></td>
             </tr>
             @endforeach            
             </tbody>

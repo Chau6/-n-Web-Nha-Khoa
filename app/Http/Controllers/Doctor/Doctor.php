@@ -11,19 +11,22 @@ use Illuminate\Http\Request;
 
 class Doctor extends Controller
 {
+    public function index_pages(){
+        return view('doctor.index_pages');
+    }
     public function index(){
         $data = DB::table('doctors')->orderBy('created_at')->get();
         return view('doctor.index', ['doctors' => $data]);
     }
-    public function create(){
-        return view('doctor.create');
-    }
-    public function store(StoreDoctor $request){
-        $data = $request->except('_token');
-        $data['created_at'] = new \DateTime();
-        DB::table('doctors')->insert($data);
-        return redirect()->route('doctor.index')->with('success','Insert Successfully');
-    }
+    // public function create(){
+    //     return view('doctor.create');
+    // }
+    // public function store(StoreDoctor $request){
+    //     $data = $request->except('_token');
+    //     $data['created_at'] = new \DateTime();
+    //     DB::table('doctors')->insert($data);
+    //     return redirect()->route('doctor.index')->with('success','Insert Successfully');
+    // }
     public function edit($id){
         $doctor = DB::table('doctors')->where('id', $id)->first();
         return view('doctor.edit',['doctor'=>$doctor]);
@@ -33,8 +36,8 @@ class Doctor extends Controller
         DB::table('doctors')->where('id', $id)->update($data);
         return redirect()->route('doctor.index')->with('success','Edit Successfully');
     }
-    public function delete($id){
-        DB::table('doctors')->where('id', $id)->delete();
-        return redirect()->route('doctor.index');
-    }
+    // public function delete($id){
+    //     DB::table('doctors')->where('id', $id)->delete();
+    //     return redirect()->route('doctor.index');
+    // }
 }

@@ -29,7 +29,7 @@
                         <th>Work Time</th>
                         <th>Created At</th>
                         <th>Edit</th>
-                        <th>Delete</th>
+                        {{-- <th>Delete</th> --}}
                     </tr>
                 </thead>
                 <tbody>
@@ -74,9 +74,9 @@
 
                     <td>{{ date('d/m/Y | H:i:s', strtotime($doctor_time->created_at)) }}</td>
 
-                    <td><a href="{{ route('admin.doctor_time.edit', ['id'=>$doctor_time->id]) }}">Edit</td>
+                    <td><a href="{{ route('doctor_time.edit', ['id'=>$doctor_time->id]) }}">Edit</td>
 
-                    <td><a onclick="return confirmDelete()" href="{{ route('admin.doctor_time.delete', ['id'=>$doctor_time->id]) }}">Delete</td>
+                    {{-- <td><a onclick="return confirmDelete()" href="{{ route('admin.doctor_time.delete', ['id'=>$doctor_time->id]) }}">Delete</td> --}}
                 </tr>     
                 @endforeach      
                 </tbody>

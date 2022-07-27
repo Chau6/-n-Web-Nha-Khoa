@@ -25,7 +25,8 @@ return new class extends Migration
             $table->string('doctor_name');
             $table->string('service')->nullable();
             $table->string('description')->nullable();
-            
+            $table->string('status')->nullable();
+            $table->string('medical_history')->nullable();
             $table->timestamps();
         });
     }

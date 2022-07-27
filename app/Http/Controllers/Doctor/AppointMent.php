@@ -21,10 +21,10 @@ class AppointMent extends Controller
     public function update(StoreUpdateDatLich $request, $id){
         $data = $request->except('_token');
         DB::table('dat_lich')->where('id',$id)->update($data);
-        return redirect()->route('doctor.appointment.index')->with('success','Edit Successfully');
+        return redirect()->route('dat_lich.index')->with('success','Edit Successfully');
     }
-    public function delete($id){
-        DB::table('dat_lich')->where('id',$id)->delete();
-        return redirect()->route('doctor.appointment.index');
-    }
+    // public function delete($id){
+    //     DB::table('dat_lich')->where('id',$id)->delete();
+    //     return redirect()->route('doctor.appointment.index');
+    // }
 }

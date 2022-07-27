@@ -15,11 +15,11 @@
     @csrf
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Edit Doctor</h3>
+            <h3 class="card-title">Edit</h3>
         </div>
         <div class="card-body">
             <div class="form-group">
-                <label for="fullname">Full Name111</label>
+                <label for="fullname">Full Name</label>
                 <input type="text" class="form-control" name="fullname" value="{{ $doctor->fullname }}">
             </div>
 

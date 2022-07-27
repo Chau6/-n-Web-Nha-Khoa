@@ -25,13 +25,13 @@
             <table id="example1" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                    <th>Full Name111111</th>
+                    <th>Full Name</th>
                     <th>Gender</th>
                     <th>Email</th>
                     <th>Phone</th>
                     <th>Created At</th>
                     <th>Edit</th>
-                    <th>Delete</th>
+                    {{-- <th>Delete</th> --}}
                 </tr>
                 </thead>
                 <tbody>
@@ -56,7 +56,7 @@
 
                     <td><a href="{{ route('doctor.edit', ['id'=>$doctor->id]) }}">Edit</td>
 
-                    <td><a onclick="return confirmDelete()" href="{{ route('doctor.delete', ['id'=>$doctor->id]) }}">Delete</td>
+                    {{-- <td><a onclick="return confirmDelete()" href="{{ route('doctor.delete', ['id'=>$doctor->id]) }}">Delete</td> --}}
                 </tr>    
                 @endforeach        
                 </tbody>
