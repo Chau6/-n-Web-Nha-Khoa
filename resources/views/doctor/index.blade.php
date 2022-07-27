@@ -25,7 +25,7 @@
             <table id="example1" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                    <th>Full Name</th>
+                    <th>Full Name111111</th>
                     <th>Gender</th>
                     <th>Email</th>
                     <th>Phone</th>
@@ -54,9 +54,9 @@
             
                     <td>{{ date('d/m/Y | H:i:s', strtotime($doctor->created_at)) }}</td>
 
-                    <td><a href="{{ route('admin.doctor.edit', ['id'=>$doctor->id]) }}">Edit</td>
+                    <td><a href="{{ route('doctor.edit', ['id'=>$doctor->id]) }}">Edit</td>
 
-                    <td><a onclick="return confirmDelete()" href="{{ route('admin.doctor.delete', ['id'=>$doctor->id]) }}">Delete</td>
+                    <td><a onclick="return confirmDelete()" href="{{ route('doctor.delete', ['id'=>$doctor->id]) }}">Delete</td>
                 </tr>    
                 @endforeach        
                 </tbody>

@@ -10,11 +10,11 @@
     </ul>
 </div>
 @endif
-<form action="{{ route('admin.doctor.store') }}" method="POST">  
+<form action="{{ route('doctor.store') }}" method="POST">  
     @csrf
     <div class="card">
         <div class="card-header">
-        <h3 class="card-title">Create Doctor</h3>
+        <h3 class="card-title">Create Doctor111</h3>
         <div class="card-tools">
         </div>
         </div>
