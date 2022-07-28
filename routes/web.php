@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Doctor\AppointMent;
 use App\Http\Controllers\Doctor\Doctor;
 use App\Http\Controllers\Doctor\DoctorTime;
+use App\Http\Controllers\AjaxController;
 
 /*
 |--------------------------------------------------------------------------
@@ -231,7 +232,6 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::name('client.')->group(function(){
     Route::name('pages.')->group(function(){
     //==========index
-       
         Route::get('advice', [HomeController::class, 'advice'])->name('advice');
         Route::get('danh_rang', [HomeController::class, 'danh_rang'])->name('danh_rang');
         Route::get('index', [HomeController::class, 'index'])->name('index');
@@ -260,19 +260,18 @@ Route::name('client.')->group(function(){
         Route::post('store', [DatLichController::class, 'store'])->name('store');
         Route::get('appointment_edit/{id}', [DatLichController::class, 'appointment_edit'])->name('appointment_edit')->where('id','[0-9]+'); 
         Route::post('update/{id}', [DatLichController::class, 'update'])->name('update')->where('id','[0-9]+'); 
-
+        // Ajax
+        Route::get('ajax', [AjaxController::class, 'ajax'])->name('ajax');
+        Route::get('get_data_ajax/{id}', [AjaxController::class, 'get_data_ajax'])->name('get_data_ajax')->where('id', '[0-9]+');
         // Rating
         Route::post('rating', [HomeController::class, 'rating'])->name('rating');
         Route::post('rating_post', [HomeController::class, 'rating_post'])->name('rating_post');
         // Comment
         Route::post('rating', [HomeController::class, 'rating'])->name('rating');
-
-
         // Product
         Route::get('product', [HomeController::class, 'product'])->name('product');
         // Health Screening
         Route::get('post', [HomeController::class, 'health_screening'])->name('health_screening');
-
         // Path
         Route::get('health_screening/{slug}', [HomeController::class, 'post_pages'])->name('post_pages');
         Route::get('product/{slug}', [HomeController::class, 'product_pages'])->name('product_pages');

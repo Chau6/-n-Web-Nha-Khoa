@@ -63,6 +63,7 @@
                 <div class="appointment-form-left">
                     <form action="{{ route('client.pages.store') }}" id="checkform" method="POST" enctype="multipart/form-data">
                         @csrf
+                        {{ csrf_field() }}
                         <div class="row">
                             <div class="col-xl-12 col-lg-12">
                                 <div class="single-box">
@@ -123,22 +124,15 @@
                                     </div>
                                     <div class="input-box">
                                         <div class="col-xl-6">
-                                            <select class="form-control" name="doctor_name" id="doctor_id">
-                                                <?php
-                                                    $data=array();
-                                                    $datas=array();
-                                                ?>
+                                            <select class="form-control" name="doctor_name" id="doctor_name">
+                                                <option value="">---</option>
                                                 @foreach($doctors as $doctor)
-                                                    @if(!empty($doctor))
-                                                        <?php
-                                                            $data['id'] = $doctor->id;
-                                                            $data['fullname'] = $doctor->fullname;
-                                                            $datas[] = $data;
-                                                        ?>
-                                                    @endif
+                                                    <option value="{{ $doctor->id }}">{{ $doctor->fullname }}</option>
                                                 @endforeach
-                                                <?php recursiveOptionDocTime($datas,0);?>
                                             </select>
+                                            @error('doctor_name')
+                                                <small class="form-text invalid-feedback">{{$message}}</small>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -167,18 +161,11 @@
                                     </div>
                                     <div class="input-box">
                                         <div class="col-xl-6">
-                                            <select class="selectmenu" name="time">
-                                                <option>9.00am</option>
-                                                <option>11.30am</option>
-                                                <option>12.00pm</option>
-                                                <option>3.00pm</option>
-                                                <option>4.00pm</option>
-                                                <option>5.00pm</option>
-                                                <option>5.30pm</option>
-                                                <option>6.00pm</option>
-                                                <option>7.00pm</option>
-                                                <option>7.30pm</option>
-                                            </select>    
+                                            <select class="selectmenu" name="time" id="time">
+                                            </select> 
+                                            @error('time')
+                                                <small class="form-text invalid-feedback">{{$message}}</small>
+                                            @enderror   
                                         </div>
                                         <div class="col-xl-12">
                                             <textarea name="description" placeholder="Description...">{{old('description')}}</textarea>
@@ -212,7 +199,7 @@
                         
                         <div class="button-box">
                             <button class="btn-one" style="margin:0px 560px" type="submit">Confirm</button>     
-                        </div>   
+                        </div> 
                     </form>   
                 </div>
             </div>
@@ -223,7 +210,21 @@
 <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        alert('hello');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $('#doctor_name').change(function() {
+            $.ajax({
+                type: "GET",
+                url: '{{ route("client.pages.get_data_ajax", ["id" => $doctor->id]) }}',
+                dataType: "html",
+                success: function (response) {
+                    $('#time').html(response)
+                }
+            });
+        })
     })
 </script>
 
@@ -240,6 +241,14 @@
       $('#checkform').validate({
         rules: {
           name:{
+            required:true,
+            maxlength: 255,
+          },
+          doctor_name:{
+            required:true,
+            maxlength: 255,
+          },
+          time:{
             required:true,
             maxlength: 255,
           },
@@ -267,6 +276,7 @@
           },
           age:{
             number: "Please enter number only",
+            required: "Please enter your age",
             minlength: "Age needs at least 1 characters",
             maxlength: "Age max is 2 characters"
           },
@@ -276,6 +286,12 @@
           },
           date: {
             required: "Please enter date",
+          },
+          doctor_name: {
+            required: "Please enter doctor name",
+          },
+          time: {
+            required: "Please enter time",
           },
         },
         errorElement: 'span',
@@ -293,11 +309,10 @@
     });
 </script>
 <script>
-    $('input[name="phone"]').keyup(function(e)
-    {
-    if (/\D/g.test(this.value))
-    {
-      this.value = this.value.replace(/\D/g, '');
-    }
-  });
+    $('input[name="phone"]').keyup(function(e){
+        if (/\D/g.test(this.value)){
+            this.value = this.value.replace(/\D/g, '');
+        }
+    });
+</script>
 @endsection

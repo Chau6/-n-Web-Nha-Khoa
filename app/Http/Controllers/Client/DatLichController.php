@@ -29,6 +29,8 @@ class DatLichController extends Controller
         $data = $request->except('_token');
         $data['created_at'] = new \DateTime();
         $data['user_id'] = Auth::user()->id;
+        $data['status'] = "Make an appointment";
+        $data['medical_history'] = "null";
 
         DB::table('dat_lich')->insert($data);
 

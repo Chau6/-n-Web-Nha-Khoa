@@ -22,7 +22,7 @@ return new class extends Migration
             $table->tinyInteger('age');
             $table->string('date');
             $table->string('time');
-            $table->string('doctor_name');
+            $table->integer('doctor_name');
             $table->string('service')->nullable();
             $table->string('description')->nullable();
             $table->string('status')->nullable();
