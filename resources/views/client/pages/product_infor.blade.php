@@ -34,6 +34,41 @@
                 </article>
                 <!-- Comments section-->
                 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+                <div class="comment-area mt-4">
+                    <div class="card card-body">
+                        <h6 class="card-title">Leave a comment</h6>
+                        <form action="{{route('client.pages.comment')}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="product_slug" value="{{$models->slug}}">
+                            <textarea name="comment" class="form-control" rows="3" required></textarea>
+                            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                        </form>
+                    </div>
+                        
+                    {{-- @foreach($models->comment as $comment)
+                    
+                    <div class="card card-body shadow-sm mt-3">
+                        <div class="detail-area">
+                            <h6 class="user-name mb-1">
+                                @if($comment->user)
+                                {{$comment->user->name}}
+
+                                @endif
+                                <small class="ms-3 text-primary">Commented on: {{$comment->created_at->format('d-m-Y')}}</small>
+                            </h6>
+                            <p class="user-comment mb-1">
+                                {!! $comment->comment !!}
+                            </p>
+                        </div>
+                    </div>
+                    {{-- @empty --}}
+                        <h6>No comment yet.</h6>
+                    {{-- @endempty --}}
+                    {{-- @endforeach --}} 
+                    <p></p>
+                    
+                </div>
 {{-- <section class="content-item" id="comments">
     <div class="container">   
     	<div class="">

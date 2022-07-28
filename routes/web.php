@@ -21,6 +21,8 @@ use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Doctor\AppointMent;
 use App\Http\Controllers\Doctor\Doctor;
 use App\Http\Controllers\Doctor\DoctorTime;
+use App\Http\Controllers\CommentController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -266,6 +268,7 @@ Route::name('client.')->group(function(){
         Route::post('rating_post', [HomeController::class, 'rating_post'])->name('rating_post');
         // Comment
         Route::post('rating', [HomeController::class, 'rating'])->name('rating');
+        Route::post('comment', [CommentController::class, 'store'])->name('comment');
 
 
         // Product
