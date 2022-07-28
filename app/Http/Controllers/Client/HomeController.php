@@ -9,6 +9,7 @@ use App\Models\Rating;
 
 use Illuminate\Http\Request;
 use App\Models\Gallery;
+use Symfony\Polyfill\Intl\Idn\Resources\unidata\Regex;
 
 class HomeController extends Controller
 {
@@ -38,14 +39,16 @@ class HomeController extends Controller
 
     // Product 
     public function product(){
+        $product = DB::table('products')->paginate(9);
         $category = DB::table('category')->get();
-        return view('client.pages.product',['products' => $category]);
+        return view('client.pages.product',['category' => $category, 'products'=>$product]);
     }
 
     // Post
     public function health_screening(){
-        $category = DB::table('category')->get();
-        return view('client.pages.post',['posts' => $category]);
+        $post = DB::table('post')->paginate(9);
+        $category = DB::table('category')->where('slug')->first();
+        return view('client.pages.post',['category' => $category, 'posts'=>$post]);
     }
     
     // Path Product

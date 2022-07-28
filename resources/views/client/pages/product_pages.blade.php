@@ -43,7 +43,36 @@
                         <div class="img-holder">
                             <img src="{{ asset('images/'.$product->images)}}" alt="Awesome Image">
                             <div class="categorie-button">
-                                <a class="btn-one" href="#">Healthy Teeth</a>    
+                                <a class="btn-one" href="#">
+                                <?php 
+                                    switch ($product->category_id) {
+                                        case '3':
+                                            echo "Toothbrushes";
+                                            break;
+                                        case '4':
+                                            echo "Toothpaste";
+                                            break;
+                                        case '5':
+                                            echo "Dental Floss";
+                                            break;
+                                        case '6':
+                                            echo "Face Mask";
+                                            break;
+                                        case '7':
+                                            echo "Dental Picks And Sticks";
+                                            break;
+                                        case '8':
+                                            echo "Tongue Scrapers";
+                                            break;
+                                        case '9':
+                                            echo "Oral Medicine";
+                                            break;
+                                        default:
+                                            # code...
+                                            break;
+                                    }   
+                                ?>
+                                </a>    
                             </div>
                         </div>
                         <div class="text-holder">
