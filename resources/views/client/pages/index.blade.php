@@ -13,10 +13,6 @@
         @include('client.blocks.services_style')
     <!--End services style1 area-->
 
-    <!--Start works area-->
-        @include('client.blocks.works_area')
-    <!--End works area-->
-
     <!--Start latest blog area-->
         @include('client.blocks.latest_blog_area')
     <!--End latest blog area--> 

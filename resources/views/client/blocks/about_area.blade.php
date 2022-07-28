@@ -22,7 +22,7 @@
             </div>
             <div class="col-xl-6">
                 <div class="about-text-holder">
-                    <p>Dento was started in the year 1995 as a small private dental clinic in Binghamton, NY, USA. Looking for affordable dental care?</p>
+                    <p>Belleville Dental was started in the year 2022 as a small private dental clinic in D5 Ho Chi Minh, Viet Nam Looking for affordable dental care?</p>
                     <p>To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, pain  resultant pleasure praising teachings of the great explorer...</p>
                     <div class="author-box fix">
                         <div class="img-box">
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div class="read-more">
-                        <a class="btn-two" href="#"><span class="flaticon-next"></span>More About Us</a>
+                        <a class="btn-two" href="{{route('client.pages.about')}}"><span class="flaticon-next"></span>More About Us</a>
                     </div>
                 </div>
             </div>

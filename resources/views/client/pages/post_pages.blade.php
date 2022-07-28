@@ -44,7 +44,29 @@
                             <div class="img-holder">
                                 <img src="{{ asset('images/'.$post->images)}}" alt="Awesome Image">
                                 <div class="categorie-button">
-                                    <a class="btn-one" href="#">Healthy Teeth</a>    
+                                    <a class="btn-one" href="#">
+                                        <?php 
+                                    switch ($post->category_id) {
+                                        case '10':
+                                            echo "Toothache";
+                                            break;
+                                        case '11':
+                                            echo "Stained Teeth";
+                                            break;
+                                        case '12':
+                                            echo "Cavities";
+                                            break;
+                                        case '13':
+                                            echo "Cracked Tooth";
+                                            break;
+                                        case '14':
+                                            echo "Sensitive to Cold";
+                                            break;
+                                        default:
+                                            # code...
+                                            break;
+                                    }   
+                                ?></a>    
                                 </div>
                             </div>
                             <div class="text-holder">

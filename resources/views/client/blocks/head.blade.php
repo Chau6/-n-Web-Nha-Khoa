@@ -8,7 +8,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Css Styles -->
     <link rel="stylesheet" href="{{ asset('css/jquery-ui.min.css')}}" type="text/css">
-    
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+    <link rel="stylesheet" href="{{asset('asset/page/dist/css/adminlte.min.css')}}">
+    <link rel="stylesheet" href="{{ asset("asset/page/plugins/fontawesome-free/css/all.min.css") }}">
+    <link rel="stylesheet" href="{{ asset("asset/page/plugins/select2/css/select2.min.css") }}">
     <!-- css custom -->
     <link rel="stylesheet" href="{{ asset('asset/client/css/rating.css')}}">
 	<!-- master stylesheet -->
