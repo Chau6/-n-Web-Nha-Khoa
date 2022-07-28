@@ -35,41 +35,150 @@
             <h1>Dental Products</h1>
             <p>Your teeth play an important part in your daily life. It not only helps you to chew and eat your food, but frames your face. Any missing tooth can have a major impact on your quality of life. </p>
         </div>
-        
-        <div class="row">
-            
-            @foreach ($products as $product)
-                @if ($product->parent_name == 1)
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-                    <div class="single-solution-style1 wow fadeInUp" data-wow-delay="300ms">
-                        <div class="img-holder">
-                            <div class="icon-holder">
-                                <div class="inner-content">
-                                    <div class="box">
-                                        <span class="icon-teeth-2"></span>
-                                    </div>
-                                </div>
-                            </div>   
+
+        <p style="display:block; padding: 5px; margin: 20px 10px; right: 0; text-align:right"><input type="text" name="search" size="30px" style="padding: 5px; position: relative; left:-10px; color:black; border-radius: 15px" id="search"><label for="search">Search</label></p>
+        <p class="noidung"></p>
+        <div class="row" >      
+            {{-- @foreach ($products as $product)
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                <div class="single-blog-post">
+                    <div class="img-holder">
+                        <img src="{{ asset('images/'.$product->images)}}" alt="Awesome Image">
+                        <div class="categorie-button">
+                            <a class="btn-one" @switch($product->category_id)
+                                @case(3)
+                                href="{{route('client.pages.product_pages', ['slug'=>'toothbrushes'])}}"
+                                    @break
+                                @case(4)
+                                href="{{route('client.pages.product_pages', ['slug'=>'toothpaste'])}}"
+                                    @break
+                                @case(5)
+                                href="{{route('client.pages.product_pages', ['slug'=>'dental-floss'])}}"
+                                    @break
+                                @case(6)
+                                href="{{route('client.pages.product_pages', ['slug'=>'face-mask'])}}"
+                                    @break
+                                @case(7)
+                                href="{{route('client.pages.product_pages', ['slug'=>'dental-picks-and-sticks'])}}"
+                                    @break
+                                @case(8)
+                                href="{{route('client.pages.product_pages', ['slug'=>'tongue-scrapers'])}}"
+                                    @break
+                                @case(9)
+                                href="{{route('client.pages.product_pages', ['slug'=>'oral-medicine'])}}"
+                                    @break
+                                @default
+                                    
+                            @endswitch >
+                                <?php 
+                                    switch ($product->category_id) {
+                                        case '3':
+                                            echo "Toothbrushes";
+                                            break;
+                                        case '4':
+                                            echo "Toothpaste";
+                                            break;
+                                        case '5':
+                                            echo "Dental Floss";
+                                            break;
+                                        case '6':
+                                            echo "Face Mask";
+                                            break;
+                                        case '7':
+                                            echo "Dental Picks And Sticks";
+                                            break;
+                                        case '8':
+                                            echo "Tongue Scrapers";
+                                            break;
+                                        case '9':
+                                            echo "Oral Medicine";
+                                            break;
+                                        default:
+                                            # code...
+                                            break;
+                                    }   
+                                ?>
+                            </a>    
                         </div>
-                        <div class="text-holder">
-                            <h3><a href="" style="color: rgba(72, 67, 67, 0.867)">{{$product->name}}</a></h3>
-                            <p></p>
-                            <div class="readmore">
-                                <a href="#"><span class="flaticon-next"></span></a>
-                                <div class="overlay-button">
-                                    <a href="{{route('client.pages.product_pages', ['slug'=>$product->slug])}}">Read More</a>    
-                                </div>
+                    </div>
+                    <div class="text-holder">
+                        <div class="meta-box">
+                            <div class="author-thumb">
+                                <img src="{{ asset('images/'.$product->images)}}" alt="Image">
                             </div>
+                            <ul class="meta-info">
+                                <li>{{date('d-m-Y', strtotime($product->created_at))}}</li>
+                            </ul>    
                         </div>
-                    </div> 
+                        <h3 class="blog-title"><a href="">{{$product->name}}</a></h3> 
+                        <div class="text-box">
+                            <p>{!!$product->price!!}.00$</p>
+                        </div>
+                        <div class="readmore-button">
+                            <a class="btn-two" @switch($product->category_id)
+                                @case(3)
+                                href="{{route('client.pages.product_infor',['id'=>$product->id,'slug'=>'toothbrushes', 'slug_infor'=>$product->slug])}}"
+                                    @break
+                                @case(4)
+                                href="{{route('client.pages.product_infor',['id'=>$product->id,'slug'=>'toothpaste', 'slug_infor'=>$product->slug])}}"
+                                    @break
+                                @case(5)
+                                href="{{route('client.pages.product_infor',['id'=>$product->id,'slug'=>'dental-floss', 'slug_infor'=>$product->slug])}}"
+                                    @break
+                                @case(6)
+                                href="{{route('client.pages.product_infor',['id'=>$product->id,'slug'=>'face-mask', 'slug_infor'=>$product->slug])}}"
+                                    @break
+                                @case(7)
+                                href="{{route('client.pages.product_infor',['id'=>$product->id,'slug'=>'dental-picks-and-sticks', 'slug_infor'=>$product->slug])}}"
+                                    @break
+                                @case(8)
+                                href="{{route('client.pages.product_infor',['id'=>$product->id,'slug'=>'tongue-scrapers', 'slug_infor'=>$product->slug])}}"
+                                    @break
+                                @case(9)
+                                href="{{route('client.pages.product_infor',['id'=>$product->id,'slug'=>'oral-medicine', 'slug_infor'=>$product->slug])}}"
+                                    @break
+                                @default
+                                    
+                            @endswitch><span class="flaticon-next"></span>Reading</a>
+                        </div>  
+                    </div>
                 </div>
-                @endif
-            @endforeach
-            <!--Start single solution style1--> 
-            
-            
-        </div> 
+            </div>
+            @endforeach --}}
+            <!--Start single solution style1-->   
+        </div>
+         
+        {!! $products->links('layout.pagination') !!}
     </div>
 </section>
 
-  @endsection
+@endsection
+@section('css')
+<style>
+
+</style>
+@endsection
+@section('js')
+<script src="{{ asset('asset/page/plugins/jquery/jquery.min.js') }}"></script>
+<script>
+    $(document).ready(function(){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $("#search").keyup(function (e){
+            var search = $(this).val();
+            $.ajax({
+                type: "POST",
+                url: "{{route('client.pages.PostSearchProduct')}}",
+                data: {searchProduct: search},
+                dataType: "html",
+                success: function (response) {
+                    $(".noidung").html(response)
+                }
+            });
+        })
+    })
+</script>
+@endsection

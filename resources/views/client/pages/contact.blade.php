@@ -55,7 +55,7 @@
                                 <div class="state-select-box2">
                                     <select class="selectmenu area_select">
                                         <option value="1">Viet Nam</option>
-                                        <option value="2">India</option>
+                                        <option value="2">USA</option>
                                     </select>
                                     <div class="state-content">
                                         <div class="state" id="value1">
@@ -63,7 +63,7 @@
                                                 <li>
                                                     <div class="text">
                                                         <h5>Address</h5>
-                                                        <p>D5 Nguyễn Gia Trí, Phường 25,Bình Thạnh, <br>  Thành phố Hồ Chí Minh, Việt Nam.</p>
+                                                        <p>D5 Nguyen Gia Tri, Ward 25, Binh Thanh, <br> Ho Chi Minh, Viet Nam.</p>
                                                     </div>
                                                 </li>
                                                 <li>
@@ -75,7 +75,7 @@
                                                 <li>
                                                     <div class="text">
                                                         <h5>Email</h5>
-                                                        <p>supportyou@example.com</p>
+                                                        <p>khuunhattin13@gmail.com</p>
                                                     </div>
                                                 </li>
                                             </ul>
@@ -143,7 +143,7 @@
             <div class="col-5 text-center d-flex align-items-center justify-content-center">
             <div class="">
                 <h2>Belleville<strong> Dental</strong></h2>
-                <p class="lead mb-5"><p>D5 Nguyễn Gia Trí, Phường 25,Bình Thạnh, <br>Thành phố Hồ Chí Minh, Việt Nam.</p><br>
+                <p class="lead mb-5"><p>D5 Nguyen Gia Tri, Ward 25, Binh Thanh, <br> Ho Ch Minh, Viet Nam.</p><br>
                 Phone: +1 1800 1779
                 </p>
             </div>
@@ -223,6 +223,12 @@
 <!-- Button trigger modal -->
 
 @section('js')
+<!-- validate -->
+<script src="{{ asset('asset/client/js/validation.js')}}"></script>
+<script src="{{ asset('asset/pages/plugins/jquery-validation/jquery.validate.js')}}"></script>
+<script src="{{ asset('asset/pages/plugins/jquery-validation/additional-methods.min.js')}}"></script>
+<script src="{{ asset('asset/pages/plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{ asset('asset/pages/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <script>
     $(function () {
       $.validator.setDefaults({

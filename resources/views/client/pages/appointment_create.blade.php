@@ -220,10 +220,22 @@
     </div>
 </div>
 <!--End Appointment area -->
+<script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        alert('hello');
+    })
+</script>
 
 @endsection
 
 @section('js')
+<!-- validate -->
+<script src="{{ asset('asset/client/js/validation.js')}}"></script>
+<script src="{{ asset('asset/pages/plugins/jquery-validation/jquery.validate.js')}}"></script>
+<script src="{{ asset('asset/pages/plugins/jquery-validation/additional-methods.min.js')}}"></script>
+<script src="{{ asset('asset/pages/plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{ asset('asset/pages/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <script>
     $(function () {
       $.validator.setDefaults({

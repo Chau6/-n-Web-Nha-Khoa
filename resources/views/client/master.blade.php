@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+    </head>
     <script>
         function confirmDelete() {
             if(window.confirm("Do you want to delete this")==true){

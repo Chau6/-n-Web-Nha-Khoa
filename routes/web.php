@@ -21,7 +21,11 @@ use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Doctor\AppointMent;
 use App\Http\Controllers\Doctor\Doctor;
 use App\Http\Controllers\Doctor\DoctorTime;
+
 use App\Http\Controllers\CommentController;
+
+
+use App\Http\Controllers\SearchAjaxController;
 
 
 /*
@@ -279,6 +283,8 @@ Route::name('client.')->group(function(){
         // Path
         Route::get('health_screening/{slug}', [HomeController::class, 'post_pages'])->name('post_pages');
         Route::get('product/{slug}', [HomeController::class, 'product_pages'])->name('product_pages');
+
+        Route::post('search-product-ajax', [SearchAjaxController::class, 'PostSearchProduct'])->name('PostSearchProduct');
 
         Route::get('health_screening/{id}/{slug}/{slug_infor}', [HomeController::class, 'post_infor'])->name('post_infor');
         Route::get('product/{id}/{slug}/{slug_infor}', [HomeController::class, 'product_infor'])->name('product_infor');

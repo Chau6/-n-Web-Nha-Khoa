@@ -248,6 +248,12 @@
 @endsection
 
 @section('js')
+<!-- validate -->
+<script src="{{ asset('asset/client/js/validation.js')}}"></script>
+<script src="{{ asset('asset/pages/plugins/jquery-validation/jquery.validate.js')}}"></script>
+<script src="{{ asset('asset/pages/plugins/jquery-validation/additional-methods.min.js')}}"></script>
+<script src="{{ asset('asset/pages/plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{ asset('asset/pages/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 <script>
 //Make sure that the dom is ready
