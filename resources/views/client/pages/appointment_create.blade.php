@@ -220,6 +220,12 @@
     </div>
 </div>
 <!--End Appointment area -->
+<script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        alert('hello');
+    })
+</script>
 
 @endsection
 
