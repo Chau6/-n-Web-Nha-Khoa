@@ -22,7 +22,10 @@ class HomeController extends Controller
     }
 
     public function index(){
-        return view('client.pages.index');
+        $product = DB::table('products')->orderBy('created_at')->paginate(3);
+        $post = DB::table('post')->paginate(3);
+        $category = DB::table('category')->first();
+        return view('client.pages.index',['category' => $category, 'posts'=>$post,'products'=>$product]);
     }
     
     public function about(){

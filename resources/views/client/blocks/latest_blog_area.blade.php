@@ -7,94 +7,94 @@
         </div>
         <div class="row">
             <!--Start single blog post-->
+            @foreach ($posts as $post)
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="single-blog-post">
                     <div class="img-holder">
-                        <img src="{{ asset('asset/client/images/blog/lat-blog-1.jpg') }}" alt="Awesome Image">
+                        <img src="{{ asset('images/'.$post->images)}}" alt="Awesome Image">
                         <div class="categorie-button">
-                            <a class="btn-one" href="#">Healthy Teeth</a>    
+                            <a class="btn-one" @switch($post->category_id)
+                                @case(10)
+                                href="{{route('client.pages.post_pages', ['slug'=>'toothache'])}}"
+                                    @break
+                                @case(11)
+                                href="{{route('client.pages.post_pages', ['slug'=>'stained-teeth'])}}"
+                                    @break
+                                @case(12)
+                                href="{{route('client.pages.post_pages', ['slug'=>'cavities'])}}"
+                                    @break
+                                @case(13)
+                                href="{{route('client.pages.post_pages', ['slug'=>'cracked-tooth'])}}"
+                                    @break
+                                @case(14)
+                                    href="{{route('client.pages.post_pages', ['slug'=>'sensitive-to-cold'])}}"
+                                    @break
+                                @default
+                                    
+                            @endswitch >
+                                <?php 
+                                switch ($post->category_id) {
+                                    case '10':
+                                        echo "Toothache";
+                                        break;
+                                    case '11':
+                                        echo "Stained Teeth";
+                                        break;
+                                    case '12':
+                                        echo "Cavities";
+                                        break;
+                                    case '13':
+                                        echo "Cracked Tooth";
+                                        break;
+                                    case '14':
+                                        echo "Sensitive to Cold";
+                                        break;
+                                    default:
+                                        # code...
+                                        break;
+                                }   
+                                ?>
+                            </a>    
                         </div>
                     </div>
                     <div class="text-holder">
                         <div class="meta-box">
                             <div class="author-thumb">
-                                <img src="{{ asset('asset/client/images/blog/author-1.png') }}" alt="Image">
+                                <img src="{{ asset('images/'.$post->images)}}" alt="Image">
                             </div>
                             <ul class="meta-info">
-                                <li><a href="#">By Megan Clarks</a></li>
-                                <li><a href="#">Nov 14, 2018</a></li>
+                                <li>{{date('d-m-Y', strtotime($post->created_at))}}</li>
                             </ul>    
                         </div>
-                        <h3 class="blog-title"><a href="blog-single.html">A guide for dentists and patients</a></h3> 
+                        <h3 class="blog-title"><a href="">{{$post->name}}</a></h3> 
                         <div class="text-box">
-                            <p>No one rejects, dislikes our avoids pleasures itself, because it is all pleasure, but because those who do not know.</p>
+                            <p>{!!$post->intro!!}</p>
                         </div>
                         <div class="readmore-button">
-                            <a class="btn-two" href="#"><span class="flaticon-next"></span>Continue REading</a>
+                            <a class="btn-two" @switch($post->category_id)
+                                @case(10)
+                                href="{{route('client.pages.post_infor',['id'=>$post->id,'slug'=>'toothache', 'slug_infor'=>$post->slug])}}"
+                                    @break
+                                @case(11)
+                                href="{{route('client.pages.post_infor',['id'=>$post->id,'slug'=>'stained-teeth', 'slug_infor'=>$post->slug])}}"
+                                    @break
+                                @case(12)
+                                href="{{route('client.pages.post_infor',['id'=>$post->id,'slug'=>'cavities', 'slug_infor'=>$post->slug])}}"
+                                    @break
+                                @case(13)
+                                href="{{route('client.pages.post_infor',['id'=>$post->id,'slug'=>'cracked-tooth', 'slug_infor'=>$post->slug])}}"
+                                    @break
+                                @case(14)
+                                    href="{{route('client.pages.post_infor',['id'=>$post->id,'slug'=>'sensitive-to-cold', 'slug_infor'=>$post->slug])}}"
+                                    @break
+                                @default
+                                    
+                            @endswitch><span class="flaticon-next"></span>Reading</a>
                         </div>  
                     </div>
                 </div>
             </div>
-            <!--End single blog post-->
-            <!--Start single blog post-->
-            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
-                <div class="single-blog-post">
-                    <div class="img-holder">
-                        <img src="{{ asset('asset/client/images/blog/lat-blog-2.jpg') }}" alt="Awesome Image">
-                        <div class="categorie-button">
-                            <a class="btn-one" href="#">Technology</a>    
-                        </div>
-                    </div>
-                    <div class="text-holder">
-                        <div class="meta-box">
-                            <div class="author-thumb">
-                                <img src="{{ asset('asset/client/images/blog/author-2.png') }}" alt="Image">
-                            </div>
-                            <ul class="meta-info">
-                                <li><a href="#">By Megan Clarks</a></li>
-                                <li><a href="#">Nov 14, 2018</a></li>
-                            </ul>    
-                        </div>
-                        <h3 class="blog-title"><a href="blog-single.html">Should i go for a smile design?</a></h3> 
-                        <div class="text-box">
-                            <p>Nor again is there anyone who love pursues or desires to obtain pain of itself, bepain, but occasionally circumstances.</p>
-                        </div>
-                        <div class="readmore-button">
-                            <a class="btn-two" href="#"><span class="flaticon-next"></span>Continue REading</a>
-                        </div>  
-                    </div>
-                </div>
-            </div>
-            <!--End single blog post-->
-            <!--Start single blog post-->
-            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
-                <div class="single-blog-post">
-                    <div class="img-holder">
-                        <img src="{{ asset('asset/client/images/blog/lat-blog-3.jpg') }}" alt="Awesome Image">
-                        <div class="categorie-button">
-                            <a class="btn-one" href="#">Dental Care</a>    
-                        </div>
-                    </div>
-                    <div class="text-holder">
-                        <div class="meta-box">
-                            <div class="author-thumb">
-                                <img src="{{ asset('asset/client/images/blog/author-3.png') }}" alt="Image">
-                            </div>
-                            <ul class="meta-info">
-                                <li><a href="#">By Megan Clarks</a></li>
-                                <li><a href="#">Nov 14, 2018</a></li>
-                            </ul>    
-                        </div>
-                        <h3 class="blog-title"><a href="blog-single.html">What you need to know teeth?</a></h3> 
-                        <div class="text-box">
-                            <p>It not only helps you to chew and eat your food frames your faceany missing tooth can major impact your quality of life.</p>
-                        </div>
-                        <div class="readmore-button">
-                            <a class="btn-two" href="#"><span class="flaticon-next"></span>Continue REading</a>
-                        </div>  
-                    </div>
-                </div>
-            </div>
+            @endforeach
             <!--End single blog post-->
         </div>
     </div>

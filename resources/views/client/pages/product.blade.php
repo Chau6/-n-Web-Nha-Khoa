@@ -35,9 +35,11 @@
             <h1>Dental Products</h1>
             <p>Your teeth play an important part in your daily life. It not only helps you to chew and eat your food, but frames your face. Any missing tooth can have a major impact on your quality of life. </p>
         </div>
-        
-        <div class="row">   
-            @foreach ($products as $product)
+
+        <p style="display:block; padding: 5px; margin: 20px 10px; right: 0; text-align:right"><input type="text" name="search" size="30px" style="padding: 5px; position: relative; left:-10px; color:black; border-radius: 15px" id="search"><label for="search">Search</label></p>
+        <p class="noidung"></p>
+        <div class="row" >      
+            {{-- @foreach ($products as $product)
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="single-blog-post">
                     <div class="img-holder">
@@ -110,7 +112,7 @@
                         </div>
                         <h3 class="blog-title"><a href="">{{$product->name}}</a></h3> 
                         <div class="text-box">
-                            <p>{!!$product->intro!!}</p>
+                            <p>{!!$product->price!!}.00$</p>
                         </div>
                         <div class="readmore-button">
                             <a class="btn-two" @switch($product->category_id)
@@ -124,7 +126,7 @@
                                 href="{{route('client.pages.product_infor',['id'=>$product->id,'slug'=>'dental-floss', 'slug_infor'=>$product->slug])}}"
                                     @break
                                 @case(6)
-                                href="{{route('client.pages.product_infor',['id'=>'','slug'=>'face-mask', 'slug_infor'=>$product->slug])}}"
+                                href="{{route('client.pages.product_infor',['id'=>$product->id,'slug'=>'face-mask', 'slug_infor'=>$product->slug])}}"
                                     @break
                                 @case(7)
                                 href="{{route('client.pages.product_infor',['id'=>$product->id,'slug'=>'dental-picks-and-sticks', 'slug_infor'=>$product->slug])}}"
@@ -142,7 +144,7 @@
                     </div>
                 </div>
             </div>
-            @endforeach
+            @endforeach --}}
             <!--Start single solution style1-->   
         </div>
          
@@ -157,5 +159,26 @@
 </style>
 @endsection
 @section('js')
-
+<script src="{{ asset('asset/page/plugins/jquery/jquery.min.js') }}"></script>
+<script>
+    $(document).ready(function(){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $("#search").keyup(function (e){
+            var search = $(this).val();
+            $.ajax({
+                type: "POST",
+                url: "{{route('client.pages.PostSearchProduct')}}",
+                data: {searchProduct: search},
+                dataType: "html",
+                success: function (response) {
+                    $(".noidung").html(response)
+                }
+            });
+        })
+    })
+</script>
 @endsection

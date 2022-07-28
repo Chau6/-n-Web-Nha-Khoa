@@ -30,8 +30,8 @@
                                         <span class="icon-gps"></span>    
                                     </div>
                                     <div class="text">
-                                        <p>D5 Nguyễn Gia Trí, p.25</p> 
-                                        <span>Bình Thạnh, Hồ Chí Minh</span>   
+                                        <p>D5 Nguyen Gia Tri, p.25</p> 
+                                        <span>Binh Thanh, Ho Chi Minh</span>   
                                     </div>
                                 </div>
                             </li>
