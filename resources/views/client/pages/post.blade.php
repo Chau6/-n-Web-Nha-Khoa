@@ -41,36 +41,97 @@
         <div class="row">
             
             @foreach ($posts as $post)
-                @if ($post->parent_name == 2)
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-                    <div class="single-solution-style1 wow fadeInUp" data-wow-delay="300ms">
-                        <div class="img-holder">
-                            <div class="icon-holder">
-                                <div class="inner-content">
-                                    <div class="box">
-                                        <span class="icon-teeth-2"></span>
-                                    </div>
-                                </div>
-                            </div>   
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                <div class="single-blog-post">
+                    <div class="img-holder">
+                        <img src="{{ asset('images/'.$post->images)}}" alt="Awesome Image">
+                        <div class="categorie-button">
+                            <a class="btn-one" @switch($post->category_id)
+                                @case(10)
+                                href="{{route('client.pages.post_pages', ['slug'=>'toothache'])}}"
+                                    @break
+                                @case(11)
+                                href="{{route('client.pages.post_pages', ['slug'=>'stained-teeth'])}}"
+                                    @break
+                                @case(12)
+                                href="{{route('client.pages.post_pages', ['slug'=>'cavities'])}}"
+                                    @break
+                                @case(13)
+                                href="{{route('client.pages.post_pages', ['slug'=>'cracked-tooth'])}}"
+                                    @break
+                                @case(14)
+                                    href="{{route('client.pages.post_pages', ['slug'=>'sensitive-to-cold'])}}"
+                                    @break
+                                @default
+                                    
+                            @endswitch >
+                                <?php 
+                                switch ($post->category_id) {
+                                    case '10':
+                                        echo "Toothache";
+                                        break;
+                                    case '11':
+                                        echo "Stained Teeth";
+                                        break;
+                                    case '12':
+                                        echo "Cavities";
+                                        break;
+                                    case '13':
+                                        echo "Cracked Tooth";
+                                        break;
+                                    case '14':
+                                        echo "Sensitive to Cold";
+                                        break;
+                                    default:
+                                        # code...
+                                        break;
+                                }   
+                                ?>
+                            </a>    
                         </div>
-                        <div class="text-holder">
-                            <h3><a href="" style="color: rgba(72, 67, 67, 0.867)">{{$post->name}}</a></h3>
-                            <p></p>
-                            <div class="readmore">
-                                <a href="#"><span class="flaticon-next"></span></a>
-                                <div class="overlay-button">
-                                    <a href="{{route('client.pages.post_pages', ['slug'=>$post->slug])}}">Read More</a>    
-                                </div>
+                    </div>
+                    <div class="text-holder">
+                        <div class="meta-box">
+                            <div class="author-thumb">
+                                <img src="{{ asset('images/'.$post->images)}}" alt="Image">
                             </div>
+                            <ul class="meta-info">
+                                <li>{{date('d-m-Y', strtotime($post->created_at))}}</li>
+                            </ul>    
                         </div>
-                    </div> 
+                        <h3 class="blog-title"><a href="">{{$post->name}}</a></h3> 
+                        <div class="text-box">
+                            <p>{!!$post->intro!!}</p>
+                        </div>
+                        <div class="readmore-button">
+                            <a class="btn-two" @switch($post->category_id)
+                                @case(10)
+                                href="{{route('client.pages.post_infor',['id'=>$post->id,'slug'=>'toothache', 'slug_infor'=>$post->slug])}}"
+                                    @break
+                                @case(11)
+                                href="{{route('client.pages.post_infor',['id'=>$post->id,'slug'=>'stained-teeth', 'slug_infor'=>$post->slug])}}"
+                                    @break
+                                @case(12)
+                                href="{{route('client.pages.post_infor',['id'=>$post->id,'slug'=>'cavities', 'slug_infor'=>$post->slug])}}"
+                                    @break
+                                @case(13)
+                                href="{{route('client.pages.post_infor',['id'=>$post->id,'slug'=>'cracked-tooth', 'slug_infor'=>$post->slug])}}"
+                                    @break
+                                @case(14)
+                                    href="{{route('client.pages.post_infor',['id'=>$post->id,'slug'=>'sensitive-to-cold', 'slug_infor'=>$post->slug])}}"
+                                    @break
+                                @default
+                                    
+                            @endswitch><span class="flaticon-next"></span>Reading</a>
+                        </div>  
+                    </div>
                 </div>
-                @endif
+            </div>
             @endforeach
             <!--Start single solution style1--> 
             
-            
-        </div> 
+        </div>
+        {!! $posts->links('layout.pagination') !!} 
     </div>
 </section>
 <!--End services style1 area-->
