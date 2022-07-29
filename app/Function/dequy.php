@@ -33,7 +33,7 @@ function recursiveTableCate ($data,$parent_name = 0,$str = "") { //hiển thị 
     } 
 }
 
-function recursiveOptionPost ($data,$selected,$parent_name = 0,$str = "") { //đệ quy thể loại cha
+function recursiveOptionPost ($data,$selected,$parent_name = 2,$str = "") { //đệ quy thể loại cha
     foreach ($data as $key => $value) {
         if ($value["parent_name"] == $parent_name) {
             $selected_option = '';
@@ -47,7 +47,7 @@ function recursiveOptionPost ($data,$selected,$parent_name = 0,$str = "") { //đ
     }
 }
 
-function recursiveOptionPro ($data,$selected,$parent_name = 0,$str = "") { //đệ quy thể loại cha
+function recursiveOptionPro ($data,$selected,$parent_name = 1,$str = "") { //đệ quy thể loại cha
     foreach ($data as $key => $value) {
         if ($value["parent_name"] == $parent_name) {
             $selected_option = '';
