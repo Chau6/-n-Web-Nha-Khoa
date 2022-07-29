@@ -78,7 +78,7 @@
 
                 <div class="form-group">
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" name="status" class="custom-control-input" id="customSwitch1" value="1">
+                        <input type="checkbox" name="status" class="custom-control-input" id="customSwitch1" value="1" checked="checked">
                         <label class="custom-control-label" for="customSwitch1">Status</label>
                     </div>
                 </div>

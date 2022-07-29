@@ -34,7 +34,6 @@ class PostController extends Controller
         $data = $request->except('_token');
         // $data = dd($request->except('_token'));
         $data['created_at'] = new \DateTime;
-        $data['status'] = 0;
         $request->validate([
             'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'extra_images' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
