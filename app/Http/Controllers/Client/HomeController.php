@@ -35,9 +35,13 @@ class HomeController extends Controller
     public function blog(){
         return view('client.pages.blog');
     }
-
+    // Doctor
     public function doctors(){
-        return view('client.pages.doctors');
+        $doctor = DB::table('doctors')->paginate(9);
+        if($search=request()->search){
+            $doctor = DB::table('doctors')->where('fullname','LIKE','%'.$search.'%')->orwhere('phone','LIKE','%'.$search.'%')->paginate(9);
+        }
+        return view('client.pages.doctors',['doctors'=>$doctor]);
     }
 
     // Product 

@@ -25,18 +25,27 @@
             <table id="example1" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                    <th>Full Name</th>
-                    <th>Gender</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Created At</th>
-                    <th>Edit</th>
+                  <th>Image</th>
+                  <th>Full Name</th>
+                  <th>Gender</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Qualification</th>
+                  <th>Created At</th>
+                  <th>Edit</th>
                     {{-- <th>Delete</th> --}}
                 </tr>
                 </thead>
                 <tbody>
                 @foreach ($doctors as $doctor)
                 <tr>
+                    <td>
+                      @php
+                          $img = $doctor->images == NULL ? 'no-avatar.png' : $doctor->images;
+                          $image = asset('images/'. $img);
+                      @endphp
+                      <img src="{{ $image }}" width="50px" height="70px">
+                    </td>
                     <td>{{ $doctor->fullname }}</td>
                     <td>
                         @switch($doctor->gender)
@@ -51,6 +60,7 @@
                     </td>
                     <td>{{$doctor->email}}</td>
                     <td>{{$doctor->phone}}</td>
+                    <td>{{$doctor->qualification}}</td>
             
                     <td>{{ date('d/m/Y | H:i:s', strtotime($doctor->created_at)) }}</td>
 

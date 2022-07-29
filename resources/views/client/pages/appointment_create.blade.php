@@ -206,6 +206,7 @@
         </div>
     </div>
 </div>
+
 <!--End Appointment area -->
 <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
 <script type="text/javascript">
@@ -215,15 +216,29 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+        // $('#doctor_name').change(function() {
+        //     var abc = $("#doctor_name option:selected").val();
+        //     $.ajax({
+        //         type: "GET",
+        //         url: '{{ route("client.pages.get_data_ajax", ["id" => $doctor->id]) }}',
+        //         dataType: "html",
+        //         success: function (response) {
+        //             $('#time').html(response)
+        //             alert (abc)
+        //         }
+        //     });
+        // });
         $('#doctor_name').change(function() {
+            var abc = $("#doctor_name option:selected").val();
             $.ajax({
                 type: "GET",
-                url: '{{ route("client.pages.get_data_ajax", ["id" => $doctor->id]) }}',
+                url: '{{ route("client.pages.get_data_ajax", ["id" => rand(1,2)]) }}',
                 dataType: "html",
                 success: function (response) {
                     $('#time').html(response)
                 }
-            });
+            })
+            // alert(abc);
         });
     });
 </script>

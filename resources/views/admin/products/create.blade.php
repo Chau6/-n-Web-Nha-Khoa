@@ -63,7 +63,7 @@
                     <textarea name="content" id="content" class="form-control" placeholder="Enter Product Content" >{{old('content')}}</textarea>
                     <script>
                         CKEDITOR.replace('content');
-                  </script>
+                    </script>
                 </div>
 
                 <div class="form-group">

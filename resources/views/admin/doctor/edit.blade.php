@@ -41,6 +41,14 @@
                 <input type="text" class="form-control" name="phone" value="{{ $doctor->phone }}">
             </div>
 
+            <div class="form-group">
+                <label for="qualification">Qualification</label>
+                <input type="text" class="form-control" name="qualification" value="{{ $doctor->qualification }}">
+                <script>
+                    CKEDITOR.replace('qualification');
+                </script>
+            </div>
+
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <button type="reset" class="btn btn-default float-right">Reset</button>

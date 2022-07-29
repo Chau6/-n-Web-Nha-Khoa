@@ -41,6 +41,19 @@
                 <input type="text" class="form-control" name="phone" value="{{old('phone')}}">
             </div>
 
+            <div class="form-group">
+                <label for="qualification">Qualification</label>
+                <input type="text" class="form-control" name="qualification" value="{{old('qualification')}}">
+                <script>
+                    CKEDITOR.replace('qualification');
+                </script>
+            </div>
+
+            <div class="form-group">
+                <label>Doctor Image</label>
+                <input type="file" name="images" class="form-control" >
+            </div>
+
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <button type="reset" class="btn btn-default float-right">Reset</button>
