@@ -224,8 +224,8 @@
                     $('#time').html(response)
                 }
             });
-        })
-    })
+        });
+    });
 </script>
 
 @endsection
