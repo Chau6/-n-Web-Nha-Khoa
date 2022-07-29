@@ -27,6 +27,7 @@
                                 @endforeach
                         </div>   
                     </div>
+                    <div>{!!'Price: '. $models->price . '$'!!}</div>
                     <!-- Post content-->
                     <section class="mb-5">
                         <p>{!!$models->content!!}</p>
