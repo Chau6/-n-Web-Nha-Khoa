@@ -38,6 +38,19 @@
             <p>Your teeth play an important part in your daily life. It not only helps you to chew and eat your food, but frames your face. Any missing tooth can have a major impact on your quality of life. </p>
         </div>
         
+        {{-- <form action="{{route('client.pages.PostSearchProduct')}}" method="POST">
+            @csrf
+            <p style="display:block; padding: 5px; margin: 20px 10px; right: 0; text-align:right"><input type="text" name="searchProduct" size="30px" style="padding: 5px; position: relative; left:-10px; color:black; border-radius: 15px" id="search"><button id="search" for="search">Search</button></p>
+        </form> --}}
+        <form method="get" action="" class="form-inline" role="form" style="padding: 20px; margin-left: 76.5%">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search" name="search" class="search" id="search">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa-brands fa-searchengin"></i>
+                </button>
+            </div>
+        </form>
+
         <div class="row">
             
             @foreach ($posts as $post)

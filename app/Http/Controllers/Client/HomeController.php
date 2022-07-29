@@ -42,7 +42,11 @@ class HomeController extends Controller
 
     // Product 
     public function product(){
+        // $product = DB::table('products')->paginate(9);
         $product = DB::table('products')->paginate(9);
+        if($search=request()->search){
+            $product = DB::table('products')->where('name','LIKE','%'.$search.'%')->orwhere('price','LIKE','%'.$search.'%')->paginate(3);
+        }
         $category = DB::table('category')->get();
         return view('client.pages.product',['category' => $category, 'products'=>$product]);
     }
@@ -50,6 +54,9 @@ class HomeController extends Controller
     // Post
     public function health_screening(){
         $post = DB::table('post')->paginate(9);
+        if($search=request()->search){
+            $post = DB::table('post')->where('name','LIKE','%'.$search.'%')->paginate(3);
+        }
         $category = DB::table('category')->where('slug')->first();
         return view('client.pages.post',['category' => $category, 'posts'=>$post]);
     }
