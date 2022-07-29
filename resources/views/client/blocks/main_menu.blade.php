@@ -37,7 +37,7 @@
                                 @if (Auth::check())
                                 <li><a href="{{route('client.pages.doctors')}}">Doctors</a></li>
                                 @else
-                                <li><a href="{{route('client.pages.doctors')}}">Doctors</a></li>
+                                <li><a href="{{route('client.pages.doctors')}}" cclass="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">Doctors</a></li>
                                 
                                 @endif
                                 
