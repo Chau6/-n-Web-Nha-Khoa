@@ -45,7 +45,7 @@ class HomeController extends Controller
         // $product = DB::table('products')->paginate(9);
         $product = DB::table('products')->paginate(9);
         if($search=request()->search){
-            $product = DB::table('products')->where('name','LIKE','%'.$search.'%')->orwhere('price','LIKE','%'.$search.'%')->paginate(3);
+            $product = DB::table('products')->where('name','LIKE','%'.$search.'%')->orwhere('price','LIKE','%'.$search.'%')->paginate(9);
         }
         $category = DB::table('category')->get();
         return view('client.pages.product',['category' => $category, 'products'=>$product]);
@@ -55,7 +55,7 @@ class HomeController extends Controller
     public function health_screening(){
         $post = DB::table('post')->paginate(9);
         if($search=request()->search){
-            $post = DB::table('post')->where('name','LIKE','%'.$search.'%')->paginate(3);
+            $post = DB::table('post')->where('name','LIKE','%'.$search.'%')->paginate(9);
         }
         $category = DB::table('category')->where('slug')->first();
         return view('client.pages.post',['category' => $category, 'posts'=>$post]);
