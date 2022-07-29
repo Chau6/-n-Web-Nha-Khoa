@@ -30,7 +30,6 @@
                   <th>Gender</th>
                   <th>Email</th>
                   <th>Phone</th>
-                  <th>Qualification</th>
                   <th>Created At</th>
                   <th>Edit</th>
                     {{-- <th>Delete</th> --}}
@@ -60,7 +59,6 @@
                     </td>
                     <td>{{$doctor->email}}</td>
                     <td>{{$doctor->phone}}</td>
-                    <td>{{$doctor->qualification}}</td>
             
                     <td>{{ date('d/m/Y | H:i:s', strtotime($doctor->created_at)) }}</td>
 
