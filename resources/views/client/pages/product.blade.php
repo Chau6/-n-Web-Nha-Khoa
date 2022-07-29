@@ -39,7 +39,7 @@
         <p style="display:block; padding: 5px; margin: 20px 10px; right: 0; text-align:right"><input type="text" name="search" size="30px" style="padding: 5px; position: relative; left:-10px; color:black; border-radius: 15px" id="search"><label for="search">Search</label></p>
         <p class="noidung"></p>
         <div class="row" >      
-            {{-- @foreach ($products as $product)
+            @foreach ($products as $product)
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="single-blog-post">
                     <div class="img-holder">
@@ -101,7 +101,7 @@
                             </a>    
                         </div>
                     </div>
-                    <div class="text-holder">
+                    <div class="text-holder" style="height:400px">
                         <div class="meta-box">
                             <div class="author-thumb">
                                 <img src="{{ asset('images/'.$product->images)}}" alt="Image">
@@ -144,7 +144,7 @@
                     </div>
                 </div>
             </div>
-            @endforeach --}}
+            @endforeach
             <!--Start single solution style1-->   
         </div>
          

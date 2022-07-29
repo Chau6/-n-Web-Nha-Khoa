@@ -90,7 +90,7 @@
                             </a>    
                         </div>
                     </div>
-                    <div class="text-holder">
+                    <div class="text-holder" style="height:400px">
                         <div class="meta-box">
                             <div class="author-thumb">
                                 <img src="{{ asset('images/'.$post->images)}}" alt="Image">

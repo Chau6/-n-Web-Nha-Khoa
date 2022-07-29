@@ -14,7 +14,7 @@
                         <div class="navbar-collapse collapse clearfix">
                             <ul class="navigation clearfix">
                                 <li id="about_us"><a href="{{route('client.pages.about')}}">About Us</a></li>
-                                <li class="dropdown" id="health_screening"><a href="#">Health Screening</a>
+                                <li class="dropdown" id="health_screening"><a href="{{route('client.pages.health_screening')}}">Health Screening</a>
                                     <ul>
                                         <li><a href="{{url('http://127.0.0.1:8000/health_screening/toothache')}}">Toothache</a></li>
                                         <li><a href="{{url('http://127.0.0.1:8000/health_screening/stained-teeth')}}">Stained Teeth</a></li>
@@ -23,7 +23,7 @@
                                         <li><a href="{{url('http://127.0.0.1:8000/health_screening/sensitive-to-cold')}}">Sensitive to Cold</a></li>
                                     </ul>
                                 </li>
-                                <li class="dropdown"><a href="#">Products</a>
+                                <li class="dropdown"><a href="{{route('client.pages.product')}}">Products</a>
                                     <ul>
                                         <li><a href="{{url('http://127.0.0.1:8000/product/toothbrushes')}}">Toothbrushes</a></li>
                                         <li><a href="{{url('http://127.0.0.1:8000/product/toothpaste')}}">Toothpaste</a></li>
