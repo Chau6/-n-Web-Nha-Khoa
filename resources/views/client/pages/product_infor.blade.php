@@ -46,26 +46,29 @@
                         </form>
                     </div>
                         
-                    {{-- @foreach($models->comment as $comment)
+                    @foreach($comment as $comment)
                     
-                    <div class="card card-body shadow-sm mt-3">
-                        <div class="detail-area">
-                            <h6 class="user-name mb-1">
-                                @if($comment->user)
-                                {{$comment->user->name}}
-
-                                @endif
-                                <small class="ms-3 text-primary">Commented on: {{$comment->created_at->format('d-m-Y')}}</small>
-                            </h6>
-                            <p class="user-comment mb-1">
-                                {!! $comment->comment !!}
-                            </p>
+                        <div class="card card-body shadow-sm mt-3">
+                            <div class="detail-area">
+                                <h6 class="user-name mb-1">
+                                    <?php $user = DB::table('user')->where('id', $comment->user_id)->first(); ?>
+                                    @switch($comment->user_id)
+                                        @case($user->id)
+                                            {{$user->first_name . ' ' . $user->last_name}}
+                                            @break
+                                        @default                       
+                                    @endswitch 
+                                    <small class="ms-3 text-primary">Commented on: {{$comment->created_at}}</small>
+                                </h6>
+                                <p class="user-comment mb-1">
+                                    {!! $comment->comment !!}
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    {{-- @empty --}}
-                        <h6>No comment yet.</h6>
-                    {{-- @endempty --}}
-                    {{-- @endforeach --}} 
+                        {{-- @empty
+                            <h6>No comment yet.</h6>
+                        @endempty --}}
+                    @endforeach 
                     <p></p>
                     
                 </div>

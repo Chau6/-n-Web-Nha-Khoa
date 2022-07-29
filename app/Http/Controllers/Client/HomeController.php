@@ -79,11 +79,12 @@ class HomeController extends Controller
             ->first();
         $data_product = DB::table('comment')->where('product_id', $id)->first();
         $gallery = Gallery::where('product_id',$id)->get();
+        $comment = DB::table('comment')->get();
         // dd($data_product);
         $userRating = DB::table('rating')->selectRaw("count(case when product_id = $id then 1 end) as user_id")->first();
         $ratingAvg = DB::table('rating')->where('product_id', $id)->avg('rating');
         DB::table('products')->where('id',$id)->increment('view');
-        return view('client.pages.product_infor',['models'=>$product, 'gallery'=>$gallery ,'ratingAvg'=>$ratingAvg, 'userRating'=>$userRating, 'product'=>$data_product]);
+        return view('client.pages.product_infor',['models'=>$product, 'comment'=>$comment, 'gallery'=>$gallery ,'ratingAvg'=>$ratingAvg, 'userRating'=>$userRating, 'product'=>$data_product]);
     }
 
     // Path Post
