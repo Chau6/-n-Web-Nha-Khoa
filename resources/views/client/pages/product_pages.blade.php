@@ -86,7 +86,7 @@
                             </div>
                             <h3 class="blog-title"><a href="{{route('client.pages.product_infor',['id'=>$product->id, 'slug'=>$category->slug, 'slug_infor'=>$product->slug])}}">{{$product->name}}</a></h3> 
                             <div class="text-box">
-                                <p>{!!$product->intro!!}</p>
+                                <p>{!!'Price: '. $product->price . '$'!!}</p>
                             </div>
                             <div class="readmore-button">
                                 <a class="btn-two" href="{{route('client.pages.product_infor',['id'=>$product->id,'slug'=>$category->slug, 'slug_infor'=>$product->slug])}}"><span class="flaticon-next"></span>Reading</a>
