@@ -268,7 +268,8 @@ Route::name('client.')->group(function(){
         Route::post('update/{id}', [DatLichController::class, 'update'])->name('update')->where('id','[0-9]+'); 
         // Ajax
         Route::get('ajax', [AjaxController::class, 'ajax'])->name('ajax');
-        Route::get('get_data_ajax/{id}', [AjaxController::class, 'get_data_ajax'])->name('get_data_ajax')->where('id', '[0-9]+');
+        Route::post('get_data_ajax', [AjaxController::class, 'get_data_ajax'])->name('get_data_ajax');
+       
         // Rating
         Route::post('rating', [HomeController::class, 'rating'])->name('rating');
         Route::post('rating_post', [HomeController::class, 'rating_post'])->name('rating_post');

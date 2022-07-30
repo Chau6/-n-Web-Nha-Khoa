@@ -124,7 +124,7 @@
                                     </div>
                                     <div class="input-box">
                                         <div class="col-xl-6">
-                                            <select class="form-control" name="doctor_name" id="doctor_name">
+                                            <select class="form-control" name="doctor_name" id="doctor_name" data-dependent="time">
                                                 <option value="">---</option>
                                                 @foreach($doctors as $doctor)
                                                     <option value="{{ $doctor->id }}">{{ $doctor->fullname }}</option>
@@ -161,13 +161,16 @@
                                     </div>
                                     <div class="input-box">
                                         <div class="col-xl-6">
-                                            <select class="selectmenu" name="time" id="time">
+                                            {{-- <select class="selectmenu" name="time" id="abc"> --}}
+                                            
                                             </select> 
+                                            <select class="form-control" name="time" id="abc"></select>
+                                            {{-- <span id="abc"></span> --}}
                                             @error('time')
                                                 <small class="form-text invalid-feedback">{{$message}}</small>
                                             @enderror   
                                         </div>
-                                        <div class="col-xl-12">
+                                        <div class="col-xl-12" style="padding-top: 30px">
                                             <textarea name="description" placeholder="Description...">{{old('description')}}</textarea>
                                         </div>
                                     </div>
@@ -216,29 +219,17 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        // $('#doctor_name').change(function() {
-        //     var abc = $("#doctor_name option:selected").val();
-        //     $.ajax({
-        //         type: "GET",
-        //         url: '{{ route("client.pages.get_data_ajax", ["id" => $doctor->id]) }}',
-        //         dataType: "html",
-        //         success: function (response) {
-        //             $('#time').html(response)
-        //             alert (abc)
-        //         }
-        //     });
-        // });
         $('#doctor_name').change(function() {
-            var abc = $("#doctor_name option:selected").val();
+            var abc = $(this).val();
+            // alert (abc);
             $.ajax({
-                type: "GET",
-                url: '{{ route("client.pages.get_data_ajax", ["id" => rand(1,2)]) }}',
-                dataType: "html",
+                type: "POST",
+                url: '{{ route('client.pages.get_data_ajax') }}',
+                data: {id_doctor:abc},
                 success: function (response) {
-                    $('#time').html(response)
+                    $('#abc').html(response)
                 }
-            })
-            // alert(abc);
+            });
         });
     });
 </script>
