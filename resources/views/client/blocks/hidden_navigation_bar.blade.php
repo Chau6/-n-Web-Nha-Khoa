@@ -4,7 +4,7 @@
     </div>
     <div class="hidden-bar-wrapper">
         <div class="logo">
-            <a href="index-2.html"><img src="{{ asset('asset/client/images/resources/logo-3.png') }}" alt=""/></a>
+            <a href="index-2.html"><img src="{{ asset('asset/client/images/resources/logo10.png') }}" alt=""/></a>
         </div>
         <div class="contact-info-box">
             <h3>Contact Info</h3>

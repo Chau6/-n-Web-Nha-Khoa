@@ -67,6 +67,7 @@ class Login_ClientController extends Controller
     }
 
     public function PostResetPass(ResetPasswordRequest $request, $id){
+        // $password = $request->except('password_confirm');
         $password = bcrypt($request->password);
         DB::table('user')->where('id',$id)->update(['password'=>$password]);
         return redirect()->route('getLoginClient')->with('success', 'Change password successfully');

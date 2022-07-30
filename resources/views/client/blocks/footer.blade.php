@@ -8,7 +8,7 @@
                     <div class="about-us">
                         <div class="footer-logo fix">
                             <a href="index-2.html">
-                                <img src="{{ asset('asset/client/images/resources/logo-2.png') }}" alt="Awesome Logo">
+                                <img src="{{ asset('asset/client/images/resources/logo_02.jpg') }}" alt="Awesome Logo">
                             </a>
                         </div>  
                         <div class="text-box fix">

@@ -8,4 +8,7 @@
     <p>We strive to provide the highest quality service and care deeply about how our work affects customers like you.</p>
     <p>We would love it if you could send us an email and tell us what we can do to make it better.</p>
     <p>Thank you for taking the time out of your day. We really appreciate it!</p>
+    <br><hr><br>
+    <p>If You Have Any Question, Please Contact Email <i style="color: blue">khuunhattin123@gmail.com</i> Or Phone <i style="color: blue">1800 1779</i></p>
+    
 </div>

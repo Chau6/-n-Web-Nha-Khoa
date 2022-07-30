@@ -24,14 +24,19 @@ class ResetPasswordRequest extends FormRequest
     public function rules()
     {
         return [
-            "password"=>"required|min:6",
+            "password"=>"required|min:6|max:20",
+            "password_confirm"=>"required|min:6|max:20",
         ];
     }
     public function messages()
     {
         return [
             "password.required"=>"Enter Password",
-            "password.min"=>"Password at last 6 character"
+            "password.min"=>"Password at last 6 character",
+            "password.max"=>"Password cannot exceed 20 characters",
+            "password_confirm.required"=>"Enter Confirm Password",
+            "password_confirm.min"=>"Confrim Password at last 6 character",
+            "password_confirm.max"=>"Confirm Password cannot exceed 20 characters",
         ];
     }
 }
