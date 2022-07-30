@@ -22,14 +22,14 @@ class AjaxController extends Controller
         $xhtml = '';
         foreach ($result as $item) {
             foreach ($datas as $data){
-                if($data['doctor_name'] == $item['doctor_id']){ //nếu jane = jane
-                    if(isset($data['time'])){ //time = 9 lần 1 time = 11 lần 2
-                        continue;
+                if($data['doctor_name'] == $id_doctor){ //nếu jane = jane
+                    if($data['time'] == $item['time']){ //nếu time = time
+                        break;
                     }else{
                         $xhtml .= '<option value="' . $item->time . '">' . $item->time .'</option>';
                     };
                 };
-            }
+            };
         };
         return $xhtml;
     }
