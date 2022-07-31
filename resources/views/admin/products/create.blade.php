@@ -25,7 +25,7 @@
                     <input type="text" name="name" id="name" class="form-control" placeholder="Enter Product Name" value="{{old('name')}}">
                 </div>
                 <div class="form-group">
-                    <input type="hidden" name="slug" id="slug" class="form-control" placeholder="Enter Product Name">
+                    <input type="" name="slug" id="slug" class="form-control" placeholder="Enter Product Name" value="{{old('slug')}}">
                 </div>
 
                 <div class="form-group">
@@ -55,7 +55,7 @@
                     <textarea name="intro" id="intro" class="form-control" placeholder="Enter Product Content">{{old('intro')}}</textarea>
                     <script>
                         CKEDITOR.replace('intro');
-                  </script>
+                    </script>
                 </div>
 
                 <div class="form-group">

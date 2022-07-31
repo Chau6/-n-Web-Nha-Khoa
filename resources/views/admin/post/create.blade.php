@@ -24,7 +24,7 @@
                 <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
             </div>
             <div class="form-group">
-                <input type="hidden" class="form-control" id="slug" name="slug">
+                <input type="hidden" class="form-control" id="slug" name="slug" value="{{old('slug')}}">
             </div>
 
             <div class="form-group">

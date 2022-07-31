@@ -68,9 +68,7 @@
           <div class="card mb-4 mb-lg-0">
             <div class="card-body p-0">
               <ul class="list-group list-group-flush rounded-3">
-                <li class="list-group-item d-flex justify-content-between align-items-center p-3" >
-                  <p class="mb-0" ><a href="" align="center">Contact</a></p>
-                </li>
+                
                 <li class="list-group-item d-flex justify-content-between align-items-center p-3" >
                     <p class="mb-0" ><a href="{{ route('client.pages.appointment_index') }}" align="center">Your Appointment</a></p>
                   </li>

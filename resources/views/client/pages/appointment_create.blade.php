@@ -150,6 +150,7 @@
                                                     <small class="form-text invalid-feedback">{{$message}}</small>
                                                 @enderror
                                             </div>
+                                            <span id="test"></span>
                                         </div>    
                                     </div>
                                 </div>
@@ -211,10 +212,10 @@
 </div>
 <pre>
     <?php 
-        $data = DB::table('dat_lich')->where('user_id',1)->where('date','29 July, 2022')->get();
-        $result = DB::table('doctor_day_work')->where('doctor_id',1)->get();
-        print_r($result);
-        print_r($data);
+        // $data = DB::table('dat_lich')->where('user_id',1)->where('date','29 July, 2022')->get();
+        // $result = DB::table('doctor_day_work')->where('doctor_id',1)->get();
+        // print_r($result);
+        // print_r($data);
     ?>
 </pre>
 
@@ -230,12 +231,16 @@
         $('#date_in').keyup(function() {
             var value = $(this).val();
             // alert (value);
-            $.ajax({
-                type: "POST",
-                url: '{{ route('client.pages.get_data_ajax') }}',
-                data: {value_date:value},
-            });
-        })
+            // $.ajax({
+            //     type: "POST",
+            //     url: '{{ route('client.pages.get_data_ajax') }}',
+            //     data: {value_date:value},
+            //     error:function (response){
+            //         $('#test').html(response)
+            //     }
+            // });
+        });
+        
         $('#doctor_name').change(function() {
             var abc = $(this).val();
             // alert (abc);

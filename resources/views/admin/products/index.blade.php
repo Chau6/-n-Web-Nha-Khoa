@@ -41,6 +41,7 @@
               
               <tbody>
               @foreach ($products as $product)
+              @if ($product->status == 1)
               <tr>
                 <td>{{$loop->iteration}}</td>
                 <td>
@@ -61,7 +62,9 @@
                 <td>{{ date('d/m/Y | H:i:s', strtotime($product->created_at)) }}</td>
                 <td><a href="{{ route('admin.product.edit', ['id'=>$product->id]) }}">Edit</td>
                   <td><a onclick="return confirmDelete()" href="{{ route('admin.product.delete', ['id'=>$product->id]) }}">Delete</td>
-            </tr> 
+              </tr>
+              @endif
+               
               @endforeach      
               </tbody>
               

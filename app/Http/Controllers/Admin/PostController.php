@@ -34,11 +34,7 @@ class PostController extends Controller
         $data = $request->except('_token');
         // $data = dd($request->except('_token'));
         $data['created_at'] = new \DateTime;
-        $request->validate([
-            'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            'extra_images' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
 
-        ]);
         $imagesName = time().'.'.$request->images->extension();
         $request->images->move(public_path('images'), $imagesName);
         $data['images'] = $imagesName;
