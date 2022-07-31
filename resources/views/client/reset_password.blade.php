@@ -27,23 +27,30 @@
           @endif
           <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
   
-            <form id="checkform" style="width: 23rem;" action="{{route('PostResetPass',['customer'=>$customer->id])}}" method="POST">
+            <form id="checkform" style="width: 23rem;" action="{{route('PostResetPass',['customer'=>$customer->id])}}" method="POST" id="checkform">
               @csrf
   
               <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;"></h3>
   
               <div class="form-outline mb-4">
-                <label class="form-label" for="form2Example28">Password</label>
-                <input type="password" name="password" id="psw" class="form-control form-control-lg" />
-                  @error('password')
-                      <span style="color: red">{{$message}}</span>
-                  @enderror
+                <div class="form-group">
+                  <label class="form-label" for="form2Example28">Password</label>
+                  <input type="password" name="password" id="psw" class="form-control form-control-lg" />
+                    @error('password')
+                        <span style="color: red">{{$message}}</span>
+                    @enderror
+                </div>
               </div>
               
               <div class="form-outline mb-4">
-                <label class="form-label" for="form2Example28">Confirm Password</label>
-                <input type="password" name="" id="cpsw" class="form-control form-control-lg" />
-                <span id="showError"></span>
+                <div class="form-group">
+                  <label class="form-label" for="form2Example28">Confirm Password</label>
+                  <input type="password" name="password_confirm" id="cpsw" class="form-control form-control-lg" />
+                  @error('password_confirm')
+                        <span style="color: red">{{$message}}</span>
+                  @enderror
+                    {{-- <span id="showError"></span> --}}
+                </div>
               </div>
   
               <div class="pt-1 mb-4">
@@ -68,7 +75,52 @@
 <script src="{{asset('asset/page/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
 <script src="{{asset('asset/page/plugins/jquery-validation/additional-methods.min.js')}}"></script>
 <script src="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js')}}"></script>
-
+<script>
+  $(function () {
+    $.validator.setDefaults({
+      submitHandler: function () {
+        return true;
+      }
+    });
+    $('#checkform').validate({
+      rules: {
+        password: {
+          required: true,
+          minlength: 6,
+          maxlength: 20,
+        },
+        password_confirm: {
+          required: true,
+          minlength: 6,
+          maxlength: 20,
+        }
+      },
+      messages: {
+        password: {
+          required: "Please Enter Password",
+          minlength: "Password needs at least 8 characters",
+          maxlength: "Password cannot exceed 20 characters",
+        }
+        password_confirm: {
+          required: "Please Enter Confirm Password",
+          minlength: "Password needs at least 8 characters",
+          maxlength: "Password cannot exceed 20 characters",
+        }
+      },
+      errorElement: 'span',
+      errorPlacement: function (error, element) {
+        error.addClass('invalid-feedback');
+        element.closest('.form-group').append(error);
+      },
+      highlight: function (element, errorClass, validClass) {
+        $(element).addClass('is-invalid');
+      },
+      unhighlight: function (element, errorClass, validClass) {
+        $(element).removeClass('is-invalid');
+      }
+    });
+  });
+</script>
 <script type="text/javascript">
   $(document).ready(function () {
     $("#checkform").submit(function(){

@@ -1,6 +1,7 @@
 @extends('admin.master')
 
 @section('content')
+<section class="services-style1-area sec-pd1">  
 @if ($errors->any())
 <div class="alert alert-danger">
     <ul>
@@ -10,36 +11,47 @@
     </ul>
 </div>
 @endif
-<form action="{{ route('admin.doctor.store') }}" method="POST">  
+<form action="{{ route('admin.doctor.store') }}" method="POST" enctype="multipart/form-data">  
     @csrf
     <div class="card">
         <div class="card-header">
-        <h3 class="card-title">Create Doctor</h3>
-        <div class="card-tools">
-        </div>
+            <h3 class="card-title">Create</h3>
         </div>
         <div class="card-body">
             <div class="form-group">
                 <label for="fullname">Full Name</label>
-                <input type="text" class="form-control" name="fullname" value="{{ old('fullname') }}">
+                <input type="text" class="form-control" name="fullname" value="{{old('fullname')}}">
             </div>
 
             <div class="form-group">
             <label>Gender</label>
             <select class="form-control" name="gender">
-                <option value="2" {{ old('gender') == '2' ? 'selected':'' }}>Female</option>
-                <option value="1" {{ old('gender') == '1' ? 'selected':'' }}>Male</option>
+                <option value="2">Female</option>
+                <option value="1">Male</option>
             </select>
             </div>
 
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                <input type="email" class="form-control" name="email" value="{{old('email')}}">
             </div>
 
             <div class="form-group">
                 <label for="phone">Phone</label>
-                <input type="text" class="form-control" name="phone" value="{{ old('phone') }}">
+                <input type="text" class="form-control" name="phone" value="{{old('phone')}}">
+            </div>
+
+            <div class="form-group">
+                <label for="qualification">Qualification</label>
+                <textarea name="qualification" cols="30" rows="10">{{old('qualification')}}</textarea>
+                <script>
+                    CKEDITOR.replace('qualification');
+                </script>
+            </div>
+
+            <div class="form-group">
+                <label>Doctor Image</label>
+                <input type="file" name="images" class="form-control" >
             </div>
 
             <div class="card-footer">
@@ -50,4 +62,5 @@
         </div>
     </div>
 </form>
+</section>
 @endsection

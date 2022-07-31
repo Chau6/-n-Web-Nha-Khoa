@@ -19,6 +19,96 @@
         </div>
 
         <!-- Sidebar Menu -->
+        @if (Auth::user()->level == 2)
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item">
+                    <a href="{{route('doctor.index_pages')}}" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>Home</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('doctor.index')}}" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>
+                            Doctor
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('doctor.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>List</p>
+                            </a>
+                        </li>
+                        {{-- <li class="nav-item">
+                            <a href="{{ route('doctor.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create Doctor</p>
+                            </a>
+                        </li> --}}
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('doctor_time.index')}}" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>
+                            Doctor Work Time 
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('doctor_time.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>List</p>
+                            </a>
+                        </li>
+                        {{-- <li class="nav-item">
+                            <a href="{{ route('doctor_time.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create Doctor Time</p>
+                            </a>
+                        </li> --}}
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('booking.index')}}" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>
+                            Appointment 
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('booking.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>List</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="{{route('getLogoutClient')}}" class="nav-link">
+                        <i class=""></i>
+                        <p style="color: aqua">
+                            LOGOUT
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+
+        @else
+
+
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
@@ -147,7 +237,7 @@
                     </ul>
                 </li>
 
-                {{-- <li class="nav-item">
+                <li class="nav-item">
                     <a href="{{ route('admin.doctor_time.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
@@ -169,10 +259,10 @@
                             </a>
                         </li>
                     </ul>
-                </li> --}}
+                </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('admin.dat_lich.index')}}" class="nav-link">
+                    <a href="{{ route('admin.booking.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                             Appointment 
@@ -181,7 +271,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('admin.dat_lich.index')}}" class="nav-link">
+                            <a href="{{ route('admin.booking.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>List</p>
                             </a>
@@ -200,6 +290,8 @@
                 
             </ul>
         </nav>
+        @endif
+        
         <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->

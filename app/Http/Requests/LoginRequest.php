@@ -25,7 +25,7 @@ class LoginRequest extends FormRequest
     {
         return [
             "email" => "required|exists:user",
-            "password" => "required|min:6"
+            "password" => "required|min:6",
         ];
     }
 
@@ -35,7 +35,7 @@ class LoginRequest extends FormRequest
             "email.required" => "Enter Email",
             "email.exists" => "Email Not Exists",
             "password.required" => "Enter Password",
-            "password.min" => "Password at last 6 character" 
+            "password.min" => "Password at last 6 character",
         ];
     }
 }

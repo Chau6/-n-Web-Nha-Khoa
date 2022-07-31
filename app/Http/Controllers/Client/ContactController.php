@@ -23,12 +23,16 @@ class ContactController extends Controller
     public function postcontact(ContactRequest $request){
         $data_contact = $request->except('_token');
         $data_contact['created_at'] = new \DateTime;
-        
-        Mail::send('email.mail_contact', $data_contact, function($email) use($request){
-            $email->subject('Belleville | Feedback');
-            $email->to($request->email);
-        });
-        DB::table('contact')->insert($data_contact);
-        return redirect()->route('client.pages.contact')->with('success', 'Check Your Mail');
+        $checkemail = DB::table('contact')->where('email', $request->email)->first();
+        if(isset($checkemail)){
+            return redirect()->route('client.pages.contact')->with('error', 'You Cant Spam. If you have any questions, please contact the email khuunhattin123@gmail.com or phone 1800 1779');
+        }else{
+            Mail::send('email.mail_contact', $data_contact, function($email) use($request){
+                $email->subject('Belleville | Feedback');
+                $email->to($request->email);
+            });
+            DB::table('contact')->insert($data_contact);
+            return redirect()->route('client.pages.contact')->with('success', 'Check Your Mail');
+        } 
     }
 }

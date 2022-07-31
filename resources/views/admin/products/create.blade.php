@@ -25,7 +25,7 @@
                     <input type="text" name="name" id="name" class="form-control" placeholder="Enter Product Name" value="{{old('name')}}">
                 </div>
                 <div class="form-group">
-                    <input type="hidden" name="slug" id="slug" class="form-control" placeholder="Enter Product Name">
+                    <input type="" name="slug" id="slug" class="form-control" placeholder="Enter Product Name" value="{{old('slug')}}">
                 </div>
 
                 <div class="form-group">
@@ -55,7 +55,7 @@
                     <textarea name="intro" id="intro" class="form-control" placeholder="Enter Product Content">{{old('intro')}}</textarea>
                     <script>
                         CKEDITOR.replace('intro');
-                  </script>
+                    </script>
                 </div>
 
                 <div class="form-group">
@@ -63,7 +63,7 @@
                     <textarea name="content" id="content" class="form-control" placeholder="Enter Product Content" >{{old('content')}}</textarea>
                     <script>
                         CKEDITOR.replace('content');
-                  </script>
+                    </script>
                 </div>
 
                 <div class="form-group">
@@ -78,7 +78,7 @@
 
                 <div class="form-group">
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" name="status" class="custom-control-input" id="customSwitch1" value="1">
+                        <input type="checkbox" name="status" class="custom-control-input" id="customSwitch1" value="1" checked="checked">
                         <label class="custom-control-label" for="customSwitch1">Status</label>
                     </div>
                 </div>

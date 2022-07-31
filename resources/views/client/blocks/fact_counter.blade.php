@@ -10,7 +10,7 @@
                                 <span class="icon-tooth-3"></span>    
                             </div>
                             <h1>
-                                <span class="timer" data-from="1" data-to="4257" data-speed="5000" data-refresh-interval="50">4257</span>
+                                <span class="timer" data-from="1" data-to="4257" data-speed="5000" data-refresh-interval="50">30</span>
                             </h1>
                             <div class="title">
                                 <h3>Projects Completed</h3>
@@ -46,7 +46,7 @@
                                 <span class="icon-hospital"></span>    
                             </div>
                             <h1>
-                                <span class="timer" data-from="1" data-to="6" data-speed="5000" data-refresh-interval="50">6</span>
+                                <span class="timer" data-from="1" data-to="6" data-speed="5000" data-refresh-interval="50">3</span>
                             </h1>
                             <div class="title">
                                 <h3>Branches In City</h3>

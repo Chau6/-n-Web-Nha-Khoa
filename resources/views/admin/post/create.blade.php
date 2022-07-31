@@ -24,7 +24,7 @@
                 <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
             </div>
             <div class="form-group">
-                <input type="hidden" class="form-control" id="slug" name="slug">
+                <input type="hidden" class="form-control" id="slug" name="slug" value="{{old('slug')}}">
             </div>
 
             <div class="form-group">
@@ -71,7 +71,7 @@
 
             <div class="form-group">
                 <div class="custom-control custom-switch">
-                    <input type="checkbox" name="status" class="custom-control-input" id="customSwitch1" value="1">
+                    <input type="checkbox" name="status" class="custom-control-input" id="customSwitch1" value="1" checked="checked">
                     <label class="custom-control-label" for="customSwitch1">Status</label>
                 </div>
             </div>

@@ -21,6 +21,12 @@ class DoctorController extends Controller
     public function store(StoreDoctor $request){
         $data = $request->except('_token');
         $data['created_at'] = new \DateTime();
+        $request->validate([
+            'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+        ]);
+        $imagesName = time().'.'.$request->images->extension();
+        $request->images->move(public_path('images'), $imagesName);
+        $data['images'] = $imagesName;
         DB::table('doctors')->insert($data);
         return redirect()->route('admin.doctor.index')->with('success','Insert Successfully');
     }

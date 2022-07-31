@@ -1,79 +1,5 @@
 @extends('client.master')
 
-{{-- @section('main_menu')
-<section class="mainmenu-area stricky">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="inner-content clearfix">
-                    <nav class="main-menu style1 clearfix">
-                        <div class="navbar-header clearfix">   	
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <div class="navbar-collapse collapse clearfix">
-                            <ul class="navigation clearfix">
-                                <li><a href="{{route('client.pages.about')}}">About Us</a></li>
-                                <li class="dropdown"><a href="{{route('client.pages.specialities')}}">Health Screening</a>
-                                    <ul>
-                                        <li><a href="{{ route('client.pages.advice') }}">Advice</a></li>
-                                        <li><a href="">Care Services</a></li>
-                                        <li><a href="{{route('client.pages.product')}}">Support Products</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown"><a href="{{route('client.pages.specialities')}}">Products</a>
-                                    <ul>
-                                        <li><a href="{{ route('client.pages.advice') }}">Advice</a></li>
-                                        <li><a href="">Toothbrushes</a></li>
-                                        <li><a href="">Toothpaste</a></li>
-                                        <li><a href="">Dental floss</a></li>
-                                        <li><a href="">Face mask</a></li>
-                                        <li><a href="">Dental picks and sticks</a></li>
-                                        <li><a href="">Tongue scrapers</a></li>
-                                        <li><a href="">Oral medicine</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown current"><a href="{{route('client.pages.doctors')}}">Doctors</a></li>
-                                <li class="dropdown"><a href="{{route('client.pages.blog')}}">Blog</a>
-                                    <ul>
-                                        <li><a href="blog.html">Blog Default</a></li>
-                                        <li><a href="blog-large.html">Blog Large Image</a></li>
-                                        <li><a href="blog-single.html">Blog Single Post</a></li>
-                                    </ul>
-                                </li>
-                                
-                                <li><a href="{{route('client.pages.contact')}}">Contact</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-                    
-                    <div class="mainmenu-right">
-                        <div class="search-box-style1">
-                            <form class="search-form" method="post" action="http://st.ourhtmldemo.com/new/Dento/index.html">
-                                <input type="search" name="search" placeholder="Search..." required>
-                                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                            </form>        
-                        </div>
-                        <div class="toggler-button">
-                            <div class="nav-toggler hidden-bar-opener">
-                                <div class="inner">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                            </div>    
-                        </div>
-                    </div> 
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</section> 
-@endsection --}}
 
 
 @section('breadcrumb')
@@ -105,8 +31,17 @@
     <!--Start Doctor area-->
 <section class="doctor-area">
     <div class="container">
+        <form method="get" action="" class="form-inline" role="form"  style="padding: 20px; margin-left: 76.5%">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search" name="search" class="search" id="search">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa-brands fa-searchengin"></i>
+                </button>
+            </div>
+        </form>
+
         <div class="row">
-            <div class="col-xl-4 col-lg-8">
+            {{-- <div class="col-xl-4 col-lg-8">
                 <div class="doctor-sidebar">
                     <!--Start Single Sidebar-->
                     <div class="single-sidebar">
@@ -225,7 +160,8 @@
                     </div>
                     <!--End Single Sidebar-->
                 </div>    
-            </div>
+            </div> --}}
+            @foreach ($doctors as $doctor)
             <div class="col-xl-8">
                 <div class="doctor-content">
                     <!--Start Single doctor item-->
@@ -233,159 +169,35 @@
                         <div class="row">
                             <div class="col-xl-5">
                                 <div class="img-holder">
-                                    <img src="{{asset('asset/images/doctor/1.png')}}" alt="Awesome Image">
+                                    <img src="{{asset('images/'.$doctor->images)}}" alt="Awesome Image">
                                     <div class="overlay">
                                         <div class="box">
                                             <div class="content">
-                                                <a class="btn-one" href="#">Appointment</a>
+                                                <a class="btn-one" href="{{route('client.pages.appointment_create')}}">Appointment</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-7">
-                                <div class="text-holder">
+                                <div class="text-holder" style="height:400px">
                                     <span>Implantologist</span>
-                                    <h3>Dr. Daryl Cornelius</h3>
-                                    <p>Dr. Daryl Cornelius is a renowned dental surgeon and a certified Dental Implantologist. He is the Director our hospitals.</p>
+                                    <h3>{{$doctor->fullname}}</h3>
                                     <h6>Qualification</h6>
-                                    <p>BDS , MDS - Plastic And Cosmetic Surgeon,</p>
+                                    <p>{{$doctor->qualification}}</p>
                                     <ul>
-                                        <li><span class="icon-phone"></span>(+760) 987-65-43210</li>
-                                        <li><span class="flaticon-e-mail-envelope"></span>supportyou@example.com</li>
+                                        <li><span class="icon-phone"></span>{{$doctor->phone}}</li>
+                                        <li><span class="flaticon-e-mail-envelope"></span>{{$doctor->email}}</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!--End Single doctor item-->
-                    <!--Start Single doctor item-->
-                    <div class="single-doctor-item wow fadeInUp" data-wow-delay="600ms">
-                        <div class="row">
-                            <div class="col-xl-5">
-                                <div class="img-holder">
-                                    <img src="{{asset('asset/images/doctor/2.png')}}" alt="Awesome Image">
-                                    <div class="overlay">
-                                        <div class="box">
-                                            <div class="content">
-                                                <a class="btn-one" href="#">Appointment</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-7">
-                                <div class="text-holder">
-                                    <span>Periodontist</span>
-                                    <h3>Evelynne Mirando</h3>
-                                    <p>Dr. Evelynne Mirando is a renowned dental surgeon and a certified Dental Implantologist. He is the Director our hospitals.</p>
-                                    <h6>Qualification</h6>
-                                    <p>BDS , MDS - Plastic And Cosmetic Surgeon,</p>
-                                    <ul>
-                                        <li><span class="icon-phone"></span>(+760) 987-65-43210</li>
-                                        <li><span class="flaticon-e-mail-envelope"></span>supportyou@example.com</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End Single doctor item-->
-                    <!--Start Single doctor item-->
-                    <div class="single-doctor-item wow fadeInUp" data-wow-delay="900ms">
-                        <div class="row">
-                            <div class="col-xl-5">
-                                <div class="img-holder">
-                                    <img src="{{asset('asset/images/doctor/3.png')}}" alt="Awesome Image">
-                                    <div class="overlay">
-                                        <div class="box">
-                                            <div class="content">
-                                                <a class="btn-one" href="#">Appointment</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-7">
-                                <div class="text-holder">
-                                    <span>Prosthodontist</span>
-                                    <h3>Dr. Robert B. Moreau</h3>
-                                    <p>Dr. Robert B. Moreau is a renowned dental surgeon and a certified Dental Implantologist. He is the Director our hospitals.</p>
-                                    <h6>Qualification</h6>
-                                    <p>BDS , MDS - Plastic And Cosmetic Surgeon,</p>
-                                    <ul>
-                                        <li><span class="icon-phone"></span>(+760) 987-65-43210</li>
-                                        <li><span class="flaticon-e-mail-envelope"></span>supportyou@example.com</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End Single doctor item--> 
-                    <!--Start Single doctor item-->
-                    <div class="single-doctor-item wow fadeInUp" data-wow-delay="300ms">
-                        <div class="row">
-                            <div class="col-xl-5">
-                                <div class="img-holder">
-                                    <img src="{{asset('asset/images/doctor/4.png')}}" alt="Awesome Image">
-                                    <div class="overlay">
-                                        <div class="box">
-                                            <div class="content">
-                                                <a class="btn-one" href="#">Appointment</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-7">
-                                <div class="text-holder">
-                                    <span>Prosthodontist</span>
-                                    <h3>Dr. Greg House</h3>
-                                    <p>Dr. Greg House is a renowned dental surgeon and a certified Dental Implantologist. He is the Director our hospitals.</p>
-                                    <h6>Qualification</h6>
-                                    <p>BDS , MDS - Plastic And Cosmetic Surgeon,</p>
-                                    <ul>
-                                        <li><span class="icon-phone"></span>(+760) 987-65-43210</li>
-                                        <li><span class="flaticon-e-mail-envelope"></span>supportyou@example.com</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End Single doctor item--> 
-                    <!--Start Single doctor item-->
-                    <div class="single-doctor-item last-child wow fadeInUp" data-wow-delay="600ms">
-                        <div class="row">
-                            <div class="col-xl-5">
-                                <div class="img-holder">
-                                    <img src="{{asset('asset/images/doctor/5.png')}}" alt="Awesome Image">
-                                    <div class="overlay">
-                                        <div class="box">
-                                            <div class="content">
-                                                <a class="btn-one" href="#">Appointment</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-7">
-                                <div class="text-holder">
-                                    <span>Implantologist</span>
-                                    <h3>Dr. Sarah Johnson</h3>
-                                    <p>Dr. Sarah Johnson is a renowned dental surgeon and a certified Dental Implantologist. He is the Director our hospitals.</p>
-                                    <h6>Qualification</h6>
-                                    <p>BDS , MDS - Plastic And Cosmetic Surgeon,</p>
-                                    <ul>
-                                        <li><span class="icon-phone"></span>(+760) 987-65-43210</li>
-                                        <li><span class="flaticon-e-mail-envelope"></span>supportyou@example.com</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End Single doctor item-->                         
                 </div>        
             </div>
+            @endforeach
         </div>
+        {!! $doctors->links('layout.pagination') !!}
     </div>
 </section>
 <!--End Doctor area-->

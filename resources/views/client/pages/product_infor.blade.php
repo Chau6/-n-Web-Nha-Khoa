@@ -27,6 +27,7 @@
                                 @endforeach
                         </div>   
                     </div>
+                    <div>{!!'Price: '. $models->price . '$'!!}</div>
                     <!-- Post content-->
                     <section class="mb-5">
                         <p>{!!$models->content!!}</p>
@@ -34,6 +35,44 @@
                 </article>
                 <!-- Comments section-->
                 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+                <div class="comment-area mt-4">
+                    <div class="card card-body">
+                        <h6 class="card-title">Leave a comment</h6>
+                        <form action="{{route('client.pages.comment')}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="product_slug" value="{{$models->slug}}">
+                            <textarea name="comment" class="form-control" rows="3" required></textarea>
+                            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                        </form>
+                    </div>
+                        
+                    @foreach($comment as $comment)
+                    
+                        <div class="card card-body shadow-sm mt-3">
+                            <div class="detail-area">
+                                <h6 class="user-name mb-1">
+                                    <?php $user = DB::table('user')->where('id', $comment->user_id)->first(); ?>
+                                    @switch($comment->user_id)
+                                        @case($user->id)
+                                            {{$user->first_name . ' ' . $user->last_name}}
+                                            @break
+                                        @default                       
+                                    @endswitch 
+                                    <small class="ms-3 text-primary">Commented on: {{$comment->created_at}}</small>
+                                </h6>
+                                <p class="user-comment mb-1">
+                                    {!! $comment->comment !!}
+                                </p>
+                            </div>
+                        </div>
+                        {{-- @empty
+                            <h6>No comment yet.</h6>
+                        @endempty --}}
+                    @endforeach 
+                    <p></p>
+                    
+                </div>
 {{-- <section class="content-item" id="comments">
     <div class="container">   
     	<div class="">
@@ -213,6 +252,12 @@
 @endsection
 
 @section('js')
+<!-- validate -->
+<script src="{{ asset('asset/client/js/validation.js')}}"></script>
+<script src="{{ asset('asset/pages/plugins/jquery-validation/jquery.validate.js')}}"></script>
+<script src="{{ asset('asset/pages/plugins/jquery-validation/additional-methods.min.js')}}"></script>
+<script src="{{ asset('asset/pages/plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{ asset('asset/pages/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 <script>
 //Make sure that the dom is ready

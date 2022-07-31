@@ -81,6 +81,7 @@
                 <select class="form-control" name="level">
                     <option value="0" {{ $user->level == '0' ? 'selected':'' }}>Member</option>
                     <option value="1" {{ $user->level == '1' ? 'selected':'' }}>Admin</option>
+                    <option value="2" {{ $user->level == '2' ? 'selected':'' }}>Doctor</option>
                 </select>
             </div> 
             @endif

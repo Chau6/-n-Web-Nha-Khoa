@@ -43,21 +43,50 @@
                         <div class="img-holder">
                             <img src="{{ asset('images/'.$product->images)}}" alt="Awesome Image">
                             <div class="categorie-button">
-                                <a class="btn-one" href="#">Healthy Teeth</a>    
+                                <a class="btn-one" href="#">
+                                <?php 
+                                    switch ($product->category_id) {
+                                        case '3':
+                                            echo "Toothbrushes";
+                                            break;
+                                        case '4':
+                                            echo "Toothpaste";
+                                            break;
+                                        case '5':
+                                            echo "Dental Floss";
+                                            break;
+                                        case '6':
+                                            echo "Face Mask";
+                                            break;
+                                        case '7':
+                                            echo "Dental Picks And Sticks";
+                                            break;
+                                        case '8':
+                                            echo "Tongue Scrapers";
+                                            break;
+                                        case '9':
+                                            echo "Oral Medicine";
+                                            break;
+                                        default:
+                                            # code...
+                                            break;
+                                    }   
+                                ?>
+                                </a>    
                             </div>
                         </div>
-                        <div class="text-holder">
+                        <div class="text-holder" style="height:400px">
                             <div class="meta-box">
                                 <div class="author-thumb">
                                     <img src="{{ asset('images/'.$product->images)}}" alt="Image">
                                 </div>
                                 <ul class="meta-info">
-                                    <li>{{$product->created_at}}</li>
+                                    <li>{{date('d-m-Y', strtotime($product->created_at))}}</li>
                                 </ul>    
                             </div>
                             <h3 class="blog-title"><a href="{{route('client.pages.product_infor',['id'=>$product->id, 'slug'=>$category->slug, 'slug_infor'=>$product->slug])}}">{{$product->name}}</a></h3> 
                             <div class="text-box">
-                                <p>{!!$product->intro!!}</p>
+                                <p>{!!'Price: '. $product->price . '$'!!}</p>
                             </div>
                             <div class="readmore-button">
                                 <a class="btn-two" href="{{route('client.pages.product_infor',['id'=>$product->id,'slug'=>$category->slug, 'slug_infor'=>$product->slug])}}"><span class="flaticon-next"></span>Reading</a>

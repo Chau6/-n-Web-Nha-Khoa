@@ -8,7 +8,7 @@
                         <li>
                             <div class="header-style1-logo float-left" style="max-width: 200px; padding-right: 30px; margin-top:10px;">
                                 <a href="{{route('client.pages.index')}}">
-                                    <img src="{{ asset('asset/client/images/resources/logo-3.png') }}" alt="Awesome Logo" weight="30px" height="30px">
+                                    <img src="{{ asset('asset/client/images/resources/logo10.png') }}" alt="Awesome Logo" weight="30px" height="30px">
                                 </a>
                             </div>
                             </li>
@@ -30,8 +30,8 @@
                                         <span class="icon-gps"></span>    
                                     </div>
                                     <div class="text">
-                                        <p>D5 Nguyễn Gia Trí, p.25</p> 
-                                        <span>Bình Thạnh, Hồ Chí Minh</span>   
+                                        <p>D5 Nguyen Gia Tri, p.25</p> 
+                                        <span>Binh Thanh, Ho Chi Minh</span>   
                                     </div>
                                 </div>
                             </li>

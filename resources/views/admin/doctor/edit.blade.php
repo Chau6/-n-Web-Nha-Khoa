@@ -15,7 +15,7 @@
     @csrf
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Edit Doctor</h3>
+            <h3 class="card-title">Edit</h3>
         </div>
         <div class="card-body">
             <div class="form-group">
@@ -39,6 +39,14 @@
             <div class="form-group">
                 <label for="phone">Phone</label>
                 <input type="text" class="form-control" name="phone" value="{{ $doctor->phone }}">
+            </div>
+
+            <div class="form-group">
+                <label for="qualification">Qualification</label>
+                <textarea class="form-control z-depth-1" name="qualification" id="content" rows="3" placeholder="Write something here...">{{ $doctor->qualification}}</textarea>
+                <script>
+                    CKEDITOR.replace('qualification');
+                </script>
             </div>
 
             <div class="card-footer">

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('doctor_day_work', function (Blueprint $table) {
             $table->id();
             $table->string('time')->nullable();
+            $table->string('date');
             $table->unsignedBigInteger('doctor_id');
             $table->foreign('doctor_id')->references('id')->on('doctors');
             $table->timestamps();

@@ -1,31 +1,11 @@
 @extends('client.master')
 
 @section('content')
-@if (Session::has('success') )
-  <div class="alert alert-success alert-block">
-      <button type="button" class="close" data-dismiss="alert">x</button>
-          <strong>{{ Session::get('success') }}</strong>
-  </div>
-@endif
-@if (Session::has('error') )
-  <div class="alert alert-danger ">
-      <button type="button" class="close" data-dismiss="alert">x</button>
-          <strong>{{ Session::get('error') }}</strong>
-  </div>
-@endif
-@if ($errors->any())
-<div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
+
 <section style="background-color: #eee;">
     <div class="container py-5">
         {{-- Top --}}
-      <div class="row">
+      <div class="row" style="margin-top:-25px">
         <div class="col">
           <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
             <ol class="breadcrumb mb-0">
@@ -36,8 +16,28 @@
           </nav>
         </div>
       </div>
-        
-      <div class="row">
+      @if (Session::has('success') )
+      <div class="alert alert-success alert-block">
+          <button type="button" class="close" data-dismiss="alert">x</button>
+              <strong>{{ Session::get('success') }}</strong>
+      </div>
+    @endif
+    @if (Session::has('error') )
+      <div class="alert alert-danger ">
+          <button type="button" class="close" data-dismiss="alert">x</button>
+              <strong>{{ Session::get('error') }}</strong>
+      </div>
+    @endif
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+      <div class="row" style="margin-bottom: -50px">
         <div class="col-lg-4">
         {{-- Infor --}}
           <div class="card mb-4">
@@ -61,7 +61,6 @@
         </div>
         <div class="col-lg-8">
           <div class="card mb-4">
-            
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
@@ -73,7 +72,6 @@
                             {{-- <th>Service</th> --}}
                             <th>Description</th>
                             <th>Edit</th>
-                            <th>Delete</th>
                         </tr>
                     </thead>
                     @foreach ($datas as $item)
@@ -87,12 +85,12 @@
                         {{-- <td>{{$item->service}}</td> --}}
                         <td>{{$item->description}}</td>
                         <td><a href="{{ route('client.pages.appointment_edit', ['id'=>$item->id]) }}">Edit</td>
-                        <td><a onclick="return confirmDelete()" href="{{ route('client.pages.delete', ['id'=>$item->id]) }}">Delete</td>
                     </tr>
                     @endforeach
                     </tbody>
                 </table>
             </div>
+          </div>
         </div>
       </div>
     </div>

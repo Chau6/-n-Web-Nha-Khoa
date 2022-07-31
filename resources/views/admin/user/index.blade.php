@@ -52,8 +52,10 @@
                                 echo "<span class='badge badge-warning' style='color:rgb(76, 98, 117)'>SuperAdmin</span>";
                               }elseif($user->level == 1) {  
                                 echo "<span class='badge badge-danger'>Admin</span>";
-                              } else{
-                                echo "<span class='badge badge-info'>Member</span>";
+                              }elseif($user->level == 2) {
+                                echo "<span class='badge badge-info'>Doctor</span>";
+                              }else{
+                                echo "<span class='badge badge-primary'>Member</span>";
                               }
                             ?>
                           </td>
@@ -62,7 +64,8 @@
                                 $avatar = $user->avatar == NULL ? 'no-avatar.png' : $user->avatar;
                                 $image = asset('images/'. $avatar);
                             @endphp
-                            <img src="{{ $image }}" width="50px" height="70px"></td>
+                            <img src="{{ $image }}" width="50px" height="70px">
+                          </td>
                           <td>{{ $user->first_name }}</td>
                           <td>{{ $user->last_name }}</td>
                           <td>{{ $user->first_name }} {{$user->last_name}}</td>

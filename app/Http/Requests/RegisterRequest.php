@@ -27,7 +27,8 @@ class RegisterRequest extends FormRequest
             "email" => "required|unique:user,email",
             "last_name" => "required|max:20",
             "first_name" => "required|max:20",
-            "password" => "required|min:6",
+            "password" => "required|min:6|max:20",
+            "password_confirm"=>"required|min:6|max:20",
         ];
     }
 
@@ -42,6 +43,10 @@ class RegisterRequest extends FormRequest
             "first_name.max" => "First Name Must Not Exceed 15 Characters",
             "password.required" => "Enter Password",
             "password.min" => "Password at last 6 character",
+            "password.max" => "Password cannot exceed 20 characters",
+            "password_confirm.required"=>"Enter Confirm Password",
+            "password_confirm.min"=>"Confrim Password at last 6 character",
+            "password_confirm.max"=>"Confirm Password cannot exceed 20 characters",
         ];
     }
 }

@@ -47,16 +47,18 @@
               <h5 class="my-3">{{$user->first_name}} {{$user->last_name}}</h5>
               <?php
                     if ($user->level == 1 && $user->id == 1) {
-                    echo "<p><span class='badge badge-warning' style='color:rgb(76, 98, 117)'>SuperAdmin</span></p>";
+                      echo "<span class='badge badge-warning' style='color:rgb(76, 98, 117)'>SuperAdmin</span>";
                     }elseif($user->level == 1) {  
-                    echo "<p><span class='badge badge-danger'>Admin</span></p>";
-                    } else{
-                    echo "<p><span class='badge badge-info'>Member</span></p>";
+                      echo "<span class='badge badge-danger'>Admin</span>";
+                    }elseif($user->level == 2) {
+                      echo "<span class='badge badge-info'>Doctor</span>";
+                    }else{
+                      echo "<span class='badge badge-primary'>Member</span>";
                     }
                 ?>
               
-              <div class="d-flex justify-content-center mb-2">
-                <button type="button" class="btn btn-primary"><a href="{{route('client.pages.edit_profile', ['id'=>Auth::user()->id])}}" style="color:#eee">Edit</a></button>
+              <div class="d-flex justify-content-center mb-2" style="padding-top:20px">
+                <button type="button" class="btn btn-primary"><a href="{{route('client.pages.edit_profile', ['id'=>Auth::user()->id])}}" style="color:#eeee">Edit</a></button>
                 
               </div>
             </div>
@@ -66,9 +68,7 @@
           <div class="card mb-4 mb-lg-0">
             <div class="card-body p-0">
               <ul class="list-group list-group-flush rounded-3">
-                <li class="list-group-item d-flex justify-content-between align-items-center p-3" >
-                  <p class="mb-0" ><a href="" align="center">Contact</a></p>
-                </li>
+                
                 <li class="list-group-item d-flex justify-content-between align-items-center p-3" >
                     <p class="mb-0" ><a href="{{ route('client.pages.appointment_index') }}" align="center">Your Appointment</a></p>
                   </li>
@@ -127,22 +127,7 @@
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="card mb-4 mb-md-0">
-                <div class="card-body">
-                  <p>Abc</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="card mb-4 mb-md-0">
-                <div class="card-body">
-                    <p>DEF</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </div>
     </div>

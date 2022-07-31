@@ -25,7 +25,10 @@ class IndexPageController extends Controller
         ->where('post.status', 1)
         ->get();
 
-        return view('admin.index',['total_user'=>$count_user, 'total_admin'=>$count_admin, 'count_view_product'=>$count_view_product, 'count_view_post'=>$count_view_post, 'show_product_rate'=>$show_product_rate, 'show_post_rate'=>$show_post_rate]);
+        // $show_post_rate = DB::table('rating_post')->where('status', 1)->average('rating');
+        // $show_post_view = DB::table('post')->where('status', 1)->get();
+
+        return view('admin.index',['total_user'=>$count_user, 'total_admin'=>$count_admin, 'count_view_product'=>$count_view_product, 'count_view_post'=>$count_view_post, 'show_product_rate'=>$show_product_rate, 'show_post_rate'=>$show_post_rate]); 
     }
 
     public function contact(){

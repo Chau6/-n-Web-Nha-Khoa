@@ -25,6 +25,7 @@
             <table id="example1" class="table table-bordered table-striped">
               <thead>
                 <tr>
+                    <th>Image</th>
                     <th>Full Name</th>
                     <th>Gender</th>
                     <th>Email</th>
@@ -37,6 +38,13 @@
                 <tbody>
                 @foreach ($doctors as $doctor)
                 <tr>
+                    <td>
+                      @php
+                          $img = $doctor->images == NULL ? 'no-avatar.png' : $doctor->images;
+                          $image = asset('images/'. $img);
+                      @endphp
+                      <img src="{{ $image }}" width="50px" height="70px">
+                    </td>
                     <td>{{ $doctor->fullname }}</td>
                     <td>
                         @switch($doctor->gender)

@@ -16,28 +16,28 @@
                                 <li id="about_us"><a href="{{route('client.pages.about')}}">About Us</a></li>
                                 <li class="dropdown" id="health_screening"><a href="{{route('client.pages.health_screening')}}">Health Screening</a>
                                     <ul>
-                                        <li><a href="{{url('http://127.0.0.1:8000/client/pages/health_screening/toothache')}}">Toothache</a></li>
-                                        <li><a href="{{url('http://127.0.0.1:8000/client/pages/health_screening/stained-teeth')}}">Stained Teeth</a></li>
-                                        <li><a href="{{url('http://127.0.0.1:8000/client/pages/health_screening/cavities')}}">Cavities</a></li>
-                                        <li><a href="{{url('http://127.0.0.1:8000/client/pages/health_screening/cracked-tooth')}}">Cracked Tooth</a></li>
-                                        <li><a href="{{url('http://127.0.0.1:8000/client/pages/health_screening/sensitive-to-cold')}}">Sensitive to Cold</a></li>
+                                        <li><a href="{{url('http://127.0.0.1:8000/health_screening/toothache')}}">Toothache</a></li>
+                                        <li><a href="{{url('http://127.0.0.1:8000/health_screening/stained-teeth')}}">Stained Teeth</a></li>
+                                        <li><a href="{{url('http://127.0.0.1:8000/health_screening/cavities')}}">Cavities</a></li>
+                                        <li><a href="{{url('http://127.0.0.1:8000/health_screening/cracked-tooth')}}">Cracked Tooth</a></li>
+                                        <li><a href="{{url('http://127.0.0.1:8000/health_screening/sensitive-to-cold')}}">Sensitive to Cold</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown"><a href="{{route('client.pages.product')}}">Products</a>
                                     <ul>
-                                        <li><a href="{{url('http://127.0.0.1:8000/client/pages/product/toothbrushes')}}">Toothbrushes</a></li>
-                                        <li><a href="{{url('http://127.0.0.1:8000/client/pages/product/toothpaste')}}">Toothpaste</a></li>
-                                        <li><a href="{{url('http://127.0.0.1:8000/client/pages/product/dental-floss')}}">Dental Floss</a></li>
-                                        <li><a href="{{url('http://127.0.0.1:8000/client/pages/product/face-mask')}}">Face Mask</a></li>
-                                        {{-- <li><a href="{{url('http://127.0.0.1:8000/client/pages/product/dental-picks-and-sticks')}}">Dental Picks And Sticks</a></li>
-                                        <li><a href="{{url('http://127.0.0.1:8000/client/pages/product/tongue-scrapers')}}">Tongue Scrapers</a></li>
-                                        <li><a href="{{url('http://127.0.0.1:8000/client/pages/product/oral-medicine')}}">Oral Medicine</a></li> --}}
+                                        <li><a href="{{url('http://127.0.0.1:8000/product/toothbrushes')}}">Toothbrushes</a></li>
+                                        <li><a href="{{url('http://127.0.0.1:8000/product/toothpaste')}}">Toothpaste</a></li>
+                                        <li><a href="{{url('http://127.0.0.1:8000/product/dental-floss')}}">Dental Floss</a></li>
+                                        <li><a href="{{url('http://127.0.0.1:8000/product/face-mask')}}">Face Mask</a></li>
+                                        {{-- <li><a href="{{url('http://127.0.0.1:8000/product/dental-picks-and-sticks')}}">Dental Picks And Sticks</a></li>
+                                        <li><a href="{{url('http://127.0.0.1:8000/product/tongue-scrapers')}}">Tongue Scrapers</a></li>
+                                        <li><a href="{{url('http://127.0.0.1:8000/product/oral-medicine')}}">Oral Medicine</a></li> --}}
                                     </ul>
                                 </li>
                                 @if (Auth::check())
                                 <li><a href="{{route('client.pages.doctors')}}">Doctors</a></li>
                                 @else
-                                <li><a href="{{route('client.pages.doctors')}}"cclass="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId" style="background: #dddd">Doctors</a></li>
+                                <li><a href="{{route('client.pages.doctors')}}" cclass="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">Doctors</a></li>
                                 
                                 @endif
                                 

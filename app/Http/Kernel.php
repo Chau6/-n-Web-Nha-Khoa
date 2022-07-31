@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'register' =>  \App\Http\Middleware\CheckRegister::class,
         'admin' =>  \App\Http\Middleware\Admin::class,
         'CheckAccount' =>  \App\Http\Middleware\CheckAccount::class,
+        'doctor' =>  \App\Http\Middleware\DoctorCheck::class,
     ];
 }

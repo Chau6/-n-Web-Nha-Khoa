@@ -27,6 +27,8 @@ class PostUpdateRequest extends FormRequest
             "name"=>"required|unique:post,name,".$this->id,
             "content"=>"required",
             "category_id"=>"required",
+            'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'extra_images' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ];
     }
 
@@ -37,6 +39,12 @@ class PostUpdateRequest extends FormRequest
             "name.unique"=> "Post Name Have Exists",
             "content.required"=>"Please Enter Content",
             "category_id.required"=>"Please Enter Category",  
+            'images.required' =>'Pls Enter Image',
+            'images.image' =>'Pls Enter Image',
+            'images.mimes' =>'Image Must Be jpeg, png, jpg, gif, svg',
+            'extra_images.required' =>'Pls Enter Image',
+            'extra_images.image' =>'Pls Enter Image',
+            'extra_images.mimes' =>'Image Must Be jpeg, png, jpg, gif, svg',
         ];
     }
 }

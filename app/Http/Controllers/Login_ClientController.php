@@ -15,7 +15,7 @@ class Login_ClientController extends Controller
 {
     public function getLoginClient(){
         if(Auth::check()){
-            return redirect()->route('client.pages.index');
+            return redirect()->route('client.page.index');
         }
         return view('client.login_client');
     }
@@ -30,8 +30,10 @@ class Login_ClientController extends Controller
         
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            if (Auth::user()->level == 1){
+            if (Auth::user()->level == 1 ){
                 return redirect()->route('admin.index_pages');
+            }elseif(Auth::user()->level == 2){
+                return redirect()->route('doctor.index');
             }else{
                 return redirect()->route('client.pages.index');
             }
@@ -65,6 +67,7 @@ class Login_ClientController extends Controller
     }
 
     public function PostResetPass(ResetPasswordRequest $request, $id){
+        // $password = $request->except('password_confirm');
         $password = bcrypt($request->password);
         DB::table('user')->where('id',$id)->update(['password'=>$password]);
         return redirect()->route('getLoginClient')->with('success', 'Change password successfully');

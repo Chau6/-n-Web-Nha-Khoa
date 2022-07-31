@@ -9,6 +9,7 @@ use App\Models\Rating;
 
 use Illuminate\Http\Request;
 use App\Models\Gallery;
+use Symfony\Polyfill\Intl\Idn\Resources\unidata\Regex;
 
 class HomeController extends Controller
 {
@@ -21,7 +22,10 @@ class HomeController extends Controller
     }
 
     public function index(){
-        return view('client.pages.index');
+        $product = DB::table('products')->orderBy('created_at')->paginate(3);
+        $post = DB::table('post')->paginate(3);
+        $category = DB::table('category')->first();
+        return view('client.pages.index',['category' => $category, 'posts'=>$post,'products'=>$product]);
     }
     
     public function about(){
@@ -31,21 +35,34 @@ class HomeController extends Controller
     public function blog(){
         return view('client.pages.blog');
     }
-
+    // Doctor
     public function doctors(){
-        return view('client.pages.doctors');
+        $doctor = DB::table('doctors')->paginate(9);
+        if($search=request()->search){
+            $doctor = DB::table('doctors')->where('fullname','LIKE','%'.$search.'%')->orwhere('phone','LIKE','%'.$search.'%')->paginate(9);
+        }
+        return view('client.pages.doctors',['doctors'=>$doctor]);
     }
 
     // Product 
     public function product(){
+        // $product = DB::table('products')->paginate(9);
+        $product = DB::table('products')->paginate(9);
+        if($search=request()->search){
+            $product = DB::table('products')->where('name','LIKE','%'.$search.'%')->orwhere('price','LIKE','%'.$search.'%')->paginate(9);
+        }
         $category = DB::table('category')->get();
-        return view('client.pages.product',['products' => $category]);
+        return view('client.pages.product',['category' => $category, 'products'=>$product]);
     }
 
     // Post
     public function health_screening(){
-        $category = DB::table('category')->get();
-        return view('client.pages.post',['posts' => $category]);
+        $post = DB::table('post')->paginate(9);
+        if($search=request()->search){
+            $post = DB::table('post')->where('name','LIKE','%'.$search.'%')->paginate(9);
+        }
+        $category = DB::table('category')->where('slug')->first();
+        return view('client.pages.post',['category' => $category, 'posts'=>$post]);
     }
     
     // Path Product
@@ -73,11 +90,12 @@ class HomeController extends Controller
             ->first();
         $data_product = DB::table('comment')->where('product_id', $id)->first();
         $gallery = Gallery::where('product_id',$id)->get();
+        $comment = DB::table('comment')->get();
         // dd($data_product);
         $userRating = DB::table('rating')->selectRaw("count(case when product_id = $id then 1 end) as user_id")->first();
         $ratingAvg = DB::table('rating')->where('product_id', $id)->avg('rating');
         DB::table('products')->where('id',$id)->increment('view');
-        return view('client.pages.product_infor',['models'=>$product, 'gallery'=>$gallery ,'ratingAvg'=>$ratingAvg, 'userRating'=>$userRating, 'product'=>$data_product]);
+        return view('client.pages.product_infor',['models'=>$product, 'comment'=>$comment, 'gallery'=>$gallery ,'ratingAvg'=>$ratingAvg, 'userRating'=>$userRating, 'product'=>$data_product]);
     }
 
     // Path Post

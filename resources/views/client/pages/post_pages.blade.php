@@ -44,16 +44,38 @@
                             <div class="img-holder">
                                 <img src="{{ asset('images/'.$post->images)}}" alt="Awesome Image">
                                 <div class="categorie-button">
-                                    <a class="btn-one" href="#">Healthy Teeth</a>    
+                                    <a class="btn-one" href="#">
+                                        <?php 
+                                    switch ($post->category_id) {
+                                        case '10':
+                                            echo "Toothache";
+                                            break;
+                                        case '11':
+                                            echo "Stained Teeth";
+                                            break;
+                                        case '12':
+                                            echo "Cavities";
+                                            break;
+                                        case '13':
+                                            echo "Cracked Tooth";
+                                            break;
+                                        case '14':
+                                            echo "Sensitive to Cold";
+                                            break;
+                                        default:
+                                            # code...
+                                            break;
+                                    }   
+                                ?></a>    
                                 </div>
                             </div>
-                            <div class="text-holder">
+                            <div class="text-holder" style="height:400px">
                                 <div class="meta-box">
                                     <div class="author-thumb">
                                         <img src="{{ asset('images/'.$post->images)}}" alt="Image">
                                     </div>
                                     <ul class="meta-info">
-                                        <li>{{$post->created_at}}</li>
+                                        <li>{{date('d-m-Y', strtotime($post->created_at))}}</li>
                                     </ul>    
                                 </div>
                                 <h3 class="blog-title"><a href="{{route('client.pages.post_infor',['id'=>$post->id,'slug'=>$category->slug, 'slug_infor'=>$post->slug])}}">{{$post->name}}</a></h3> 

@@ -27,6 +27,7 @@ class StoreUpdateProduct extends FormRequest
             'name' => 'required|unique:products,name,'.$this->id,
             "content"=>"required",
             "price"=>"required",
+            // 'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ];
     }
 
@@ -36,6 +37,9 @@ class StoreUpdateProduct extends FormRequest
             'name.unique' => "Product already exists",
             "content.required"=>"Please Enter Content",
             "price.required"=>"Please Enter Price",
+            // 'images.required' =>'Pls Enter Image',
+            // 'images.image' =>'Pls Enter Image',
+            // 'images.mimes' =>'Image Must Be jpeg, png, jpg, gif, svg, ',
         ];
     }
 }
