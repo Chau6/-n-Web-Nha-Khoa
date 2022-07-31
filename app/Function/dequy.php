@@ -12,7 +12,7 @@ function recursiveOptionCate ($data,$selected,$parent_name = 0,$str = "") { //đ
             }
             echo '<option value="'.$value["id"].'" '.$selected_option.'>'.$str.$value["name"].'</option>';
             unset($data[$key]);
-            recursiveOptionCate ($data,$selected,$value["id"],$str."---| ");
+            // recursiveOptionCate ($data,$selected,$value["id"],$str."---| ");
         }
     }
 }

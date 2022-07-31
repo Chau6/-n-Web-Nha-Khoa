@@ -10,7 +10,7 @@
     </ul>
 </div>
 @endif
-<form action="{{ route('dat_lich.update', ['id' => $edit->id]) }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('booking.update', ['id' => $edit->id]) }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="card">
         <div class="card-header">

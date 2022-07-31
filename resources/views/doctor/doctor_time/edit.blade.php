@@ -55,6 +55,11 @@
             </select>
         </div>
 
+        <div class="form-group">
+            <label for="date">Date Work</label>
+            <input type="text" value="{{$doctor_day_work->date}}" name="date" class="date-input" id="date_in" placeholder="Date">
+        </div>
+
         <div class="card-footer">
             <button type="submit" class="btn btn-primary">Submit</button>
             <button type="reset" class="btn btn-default float-right">Reset</button>

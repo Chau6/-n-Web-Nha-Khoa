@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dat_lich', function (Blueprint $table) {
+        Schema::create('booking', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('user');
@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('service')->nullable();
             $table->string('description')->nullable();
             $table->string('status')->nullable();
-            $table->string('medical_history')->nullable();
+            $table->string('medical_history')->defaultValue('null');
             $table->timestamps();
         });
     }
@@ -38,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dat_lich');
+        Schema::dropIfExists('booking');
     }
 };

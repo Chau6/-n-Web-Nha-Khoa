@@ -38,37 +38,37 @@
                     <td><?php $data = DB::table('doctors')->where('id', $doctor_time->doctor_id)->first()?>{{$data->fullname}}</td>
                     <td>
                         @switch($doctor_time->time)
-                            @case("9:00am")
-                                9:00am
-                                @break
-                            @case("11:30am")
-                            11:30am
-                                @break
-                            @case("12:00pm")
-                            12:00pm
-                                @break
-                            @case("3:00pm")
-                            3:00pm
-                                @break
-                            @case("4:00pm")
-                            4:00pm
-                                @break
-                            @case("5:00pm")
-                            5:00pm
-                                @break
-                            @case("5:30pm")
-                            5:30pm
-                                @break
-                            @case("6:00pm")
-                            6:00pm
-                                @break
-                            @case("7:00pm")
-                            7:00pm
-                                @break
-                            @case("7:30pm")
-                            7:30pm
-                                @break
-                            @default                       
+                          @case("9:00am")
+                            {{$doctor_time->date}} - 9:00am
+                              @break
+                          @case("11:30am")
+                            {{$doctor_time->date}} - 11:30am
+                              @break
+                          @case("12:00pm")
+                            {{$doctor_time->date}} - 12:00pm
+                              @break
+                          @case("3:00pm")
+                            {{$doctor_time->date}} - 3:00pm
+                              @break
+                          @case("4:00pm")
+                            {{$doctor_time->date}} - 4:00pm
+                              @break
+                          @case("5:00pm")
+                            {{$doctor_time->date}} - 5:00pm
+                              @break
+                          @case("5:30pm")
+                            {{$doctor_time->date}} - 5:30pm
+                              @break
+                          @case("6:00pm")
+                            {{$doctor_time->date}} - 6:00pm
+                              @break
+                          @case("7:00pm")
+                            {{$doctor_time->date}} - 7:00pm
+                              @break
+                          @case("7:30pm")
+                            {{$doctor_time->date}} - 7:30pm
+                              @break
+                          @default                    
                         @endswitch
                     </td>
 

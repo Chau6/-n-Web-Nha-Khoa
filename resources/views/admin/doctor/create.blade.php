@@ -43,7 +43,7 @@
 
             <div class="form-group">
                 <label for="qualification">Qualification</label>
-                <input type="text" class="form-control" name="qualification" value="{{old('qualification')}}">
+                <textarea name="qualification" cols="30" rows="10">{{old('qualification')}}</textarea>
                 <script>
                     CKEDITOR.replace('qualification');
                 </script>

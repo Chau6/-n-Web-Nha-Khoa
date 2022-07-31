@@ -49,7 +49,7 @@
             </tr>
             </thead>
             <tbody>
-            @foreach ($dat_lich as $item)
+            @foreach ($booking as $item)
             <tr>
                 <td>{{$item->name}}</td>
                 <td><a href="" class="one">{{$item->phone}}</a></td>
@@ -72,7 +72,7 @@
                   ?>
                 </td>
                 <td>{{$item->medical_history}}</td>
-                <td><a href="{{ route('dat_lich.edit', ['id' => $item->id]) }}">Edit</a></td>
+                <td><a href="{{ route('booking.edit', ['id' => $item->id]) }}">Edit</a></td>
             </tr>
             @endforeach            
             </tbody>

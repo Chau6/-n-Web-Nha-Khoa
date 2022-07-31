@@ -77,7 +77,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('dat_lich.index')}}" class="nav-link">
+                    <a href="{{ route('booking.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                             Appointment 
@@ -86,7 +86,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('dat_lich.index')}}" class="nav-link">
+                            <a href="{{ route('booking.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>List</p>
                             </a>
@@ -262,7 +262,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('admin.dat_lich.index')}}" class="nav-link">
+                    <a href="{{ route('admin.booking.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                             Appointment 
@@ -271,7 +271,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('admin.dat_lich.index')}}" class="nav-link">
+                            <a href="{{ route('admin.booking.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>List</p>
                             </a>

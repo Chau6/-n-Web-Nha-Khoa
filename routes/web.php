@@ -180,8 +180,8 @@ Route::middleware('admin', 'login')->group(function(){
             
         });
 
-        //Dat_lich
-        Route::prefix('dat_lich')->name('dat_lich.')->group(function(){
+        //Booking
+        Route::prefix('booking')->name('booking.')->group(function(){
             /** Show list of Doctor */
             Route::get('index', [Dat_LichController::class, 'index'])->name('index');
             Route::get('delete/{id}', [Dat_LichController::class, 'delete'])->name('delete')->where('id','[0-9]+');
@@ -220,8 +220,8 @@ Route::middleware('doctor')->group(function(){
         // Route::get('delete/{id}', [DoctorTime::class, 'delete'])->name('delete')->where('id','[0-9]+');       
     });
 
-    //Dat_lich
-    Route::prefix('dat_lich')->name('dat_lich.')->group(function(){
+    //Booking
+    Route::prefix('booking')->name('booking.')->group(function(){
         /** Show list of Doctor */
         Route::get('index', [AppointMent::class, 'index'])->name('index');
         // Route::get('delete/{id}', [AppointMent::class, 'delete'])->name('delete')->where('id','[0-9]+');
