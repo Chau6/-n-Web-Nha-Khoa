@@ -206,30 +206,31 @@ Route::middleware('doctor')->group(function(){
         // /** Delete Doctor */
         // Route::get('delete/{id}', [Doctor::class, 'delete'])->name('delete')->where('id','[0-9]+');
     });
+    //Doctor_Time
+    Route::prefix('doctor_time')->name('doctor_time.')->group(function(){
+        /** Show list of Doctor */
+        Route::get('index', [DoctorTime::class, 'index'])->name('index');
+        // /** Create Doctor */
+        // Route::get('create', [DoctorTime::class, 'create'])->name('create'); //Show form to create doctor
+        // Route::post('store', [DoctorTime::class, 'store'])->name('store'); //set action in form to create doctor
+        // /** Edit Doctor */
+        Route::get('edit/{id}', [DoctorTime::class, 'edit'])->name('edit')->where('id','[0-9]+'); //Show form to edit doctor
+        Route::post('update/{id}', [DoctorTime::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update doctor
+        // /** Delete Doctor */
+        // Route::get('delete/{id}', [DoctorTime::class, 'delete'])->name('delete')->where('id','[0-9]+');       
+    });
+
+    //Dat_lich
+    Route::prefix('dat_lich')->name('dat_lich.')->group(function(){
+        /** Show list of Doctor */
+        Route::get('index', [AppointMent::class, 'index'])->name('index');
+        // Route::get('delete/{id}', [AppointMent::class, 'delete'])->name('delete')->where('id','[0-9]+');
+        Route::get('edit/{id}', [AppointMent::class, 'edit'])->name('edit')->where('id','[0-9]+'); //Show form to edit doctor
+        Route::post('update/{id}', [AppointMent::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update doctor
+    });
 });
 
-//Doctor_Time
-Route::prefix('doctor_time')->name('doctor_time.')->group(function(){
-    /** Show list of Doctor */
-    Route::get('index', [DoctorTime::class, 'index'])->name('index');
-    // /** Create Doctor */
-    // Route::get('create', [DoctorTime::class, 'create'])->name('create'); //Show form to create doctor
-    // Route::post('store', [DoctorTime::class, 'store'])->name('store'); //set action in form to create doctor
-    // /** Edit Doctor */
-    Route::get('edit/{id}', [DoctorTime::class, 'edit'])->name('edit')->where('id','[0-9]+'); //Show form to edit doctor
-    Route::post('update/{id}', [DoctorTime::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update doctor
-    // /** Delete Doctor */
-    // Route::get('delete/{id}', [DoctorTime::class, 'delete'])->name('delete')->where('id','[0-9]+');       
-});
 
-//Dat_lich
-Route::prefix('dat_lich')->name('dat_lich.')->group(function(){
-    /** Show list of Doctor */
-    Route::get('index', [AppointMent::class, 'index'])->name('index');
-    // Route::get('delete/{id}', [AppointMent::class, 'delete'])->name('delete')->where('id','[0-9]+');
-    Route::get('edit/{id}', [AppointMent::class, 'edit'])->name('edit')->where('id','[0-9]+'); //Show form to edit doctor
-    Route::post('update/{id}', [AppointMent::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update doctor
-});
     
 
 //====================Client=====================
