@@ -45,7 +45,10 @@
                 <label for="qualification">Qualification</label>
                 <textarea name="qualification" cols="30" rows="10">{{old('qualification')}}</textarea>
                 <script>
-                    CKEDITOR.replace('qualification');
+                    CKEDITOR.replace('qualification',{
+                            filebrowserUploadUrl: "{{ route('admin.upload', ['_token'=>csrf_token()]) }}",
+                            filebrowserUploadMethod: 'form'
+                        });
                 </script>
             </div>
 

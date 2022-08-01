@@ -54,7 +54,10 @@
                     <label>Product Intro</label>
                     <textarea name="intro" id="intro" class="form-control" placeholder="Enter Product Content">{{old('intro')}}</textarea>
                     <script>
-                        CKEDITOR.replace('intro');
+                        CKEDITOR.replace('intro',{
+                            filebrowserUploadUrl: "{{ route('admin.upload', ['_token'=>csrf_token()]) }}",
+                            filebrowserUploadMethod: 'form'
+                        });
                     </script>
                 </div>
 
@@ -62,7 +65,10 @@
                     <label>Product Content</label>
                     <textarea name="content" id="content" class="form-control" placeholder="Enter Product Content" >{{old('content')}}</textarea>
                     <script>
-                        CKEDITOR.replace('content');
+                        CKEDITOR.replace('content',{
+                            filebrowserUploadUrl: "{{ route('admin.upload', ['_token'=>csrf_token()]) }}",
+                            filebrowserUploadMethod: 'form'
+                        });
                     </script>
                 </div>
 

@@ -55,7 +55,10 @@
                     <textarea class="form-control z-depth-1" name="intro" id="intro" rows="3" placeholder="Write something here...">{{old('intro')}}</textarea>
                   </div>
                   <script>
-                        CKEDITOR.replace('intro');
+                        CKEDITOR.replace('intro',{
+                            filebrowserUploadUrl: "{{ route('admin.upload', ['_token'=>csrf_token()]) }}",
+                            filebrowserUploadMethod: 'form'
+                        });
                   </script>
             </div>
 
@@ -65,7 +68,10 @@
                     <textarea class="form-control z-depth-1" name="content" id="content" rows="3" placeholder="Write something here...">{{old('content')}}</textarea>
                   </div>
                   <script>
-                        CKEDITOR.replace('content');
+                        CKEDITOR.replace('content',{
+                            filebrowserUploadUrl: "{{ route('admin.upload', ['_token'=>csrf_token()]) }}",
+                            filebrowserUploadMethod: 'form'
+                        });
                   </script>
             </div>
 

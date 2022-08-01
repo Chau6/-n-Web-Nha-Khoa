@@ -22,6 +22,8 @@ use App\Http\Controllers\Doctor\AppointMent;
 use App\Http\Controllers\Doctor\Doctor;
 use App\Http\Controllers\Doctor\DoctorTime;
 use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\Admin\CkeditorController;
+
 
 use App\Http\Controllers\CommentController;
 
@@ -88,6 +90,9 @@ Route::middleware('admin', 'login')->group(function(){
         Route::get('index_pages', [IndexPageController::class, 'index'])->name('index_pages');
         Route::get('contact', [IndexPageController::class, 'contact'])->name('contact');
         Route::get('delete/{id}', [IndexPageController::class, 'delete'])->name('delete')->where('id', '[0-9]+');
+
+        //ck
+        Route::post('ckeditor/image_upload',[CkeditorController::class, 'upload'])->name('upload');
 
         //User
         Route::prefix('user')->name('user.')->group(function(){
