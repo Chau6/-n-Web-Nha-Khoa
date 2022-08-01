@@ -74,16 +74,16 @@
         
         @if (Auth::user()->level == 1 && Auth::user()->id == 1 || Auth::user()->level == 1)
             @if ($user->level == 1 && $user->id == 1 || $user->level == 1)
-                
-            @else
             <div class="form-group">
-                <label>Level</label>
-                <select class="form-control" name="level">
-                    <option value="0" {{ $user->level == '0' ? 'selected':'' }}>Member</option>
-                    <option value="1" {{ $user->level == '1' ? 'selected':'' }}>Admin</option>
-                    <option value="2" {{ $user->level == '2' ? 'selected':'' }}>Doctor</option>
-                </select>
+              <label>Level</label>
+              <select class="form-control" name="level">
+                  <option value="0" {{ $user->level == '0' ? 'selected':'' }}>Member</option>
+                  <option value="1" {{ $user->level == '1' ? 'selected':'' }}>Admin</option>
+                  <option value="2" {{ $user->level == '2' ? 'selected':'' }}>Doctor</option>
+              </select>
             </div> 
+            @else
+            
             @endif
          
         @endif
