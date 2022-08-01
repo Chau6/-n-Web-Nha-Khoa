@@ -43,13 +43,7 @@
 
             <div class="form-group">
                 <label for="qualification">Qualification</label>
-                <textarea name="qualification" cols="30" rows="10">{{old('qualification')}}</textarea>
-                <script>
-                    CKEDITOR.replace('qualification',{
-                            filebrowserUploadUrl: "{{ route('admin.upload', ['_token'=>csrf_token()]) }}",
-                            filebrowserUploadMethod: 'form'
-                        });
-                </script>
+                <textarea name="qualification" class="form-control">{{old('qualification')}}</textarea>
             </div>
 
             <div class="form-group">
