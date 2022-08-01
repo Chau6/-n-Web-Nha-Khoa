@@ -68,7 +68,7 @@
                             </a>    
                         </div>
                     </div>
-                    <div class="text-holder">
+                    <div class="text-holder" style="height:300px">
                         <div class="meta-box">
                             <div class="author-thumb">
                                 <img src="{{ asset('images/'.$product->images)}}" alt="Image">
