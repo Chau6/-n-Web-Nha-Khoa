@@ -60,7 +60,7 @@
         @endif --}}
         <div class="row">
             <div class="col-xl-8">
-                <div class="appointment-form-left">
+                <div class="appointment-form-left" style="border: 1px solid; border-radius:10px">
                     <form action="{{ route('client.pages.store') }}" id="checkform" method="POST" enctype="multipart/form-data">
                         @csrf
                         {{ csrf_field() }}
