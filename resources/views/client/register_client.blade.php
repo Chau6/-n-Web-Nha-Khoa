@@ -142,24 +142,24 @@
         },
         password: {
           required: true,
-          minlength: 6,
+          minlength: 2,
           maxlength: 20,
         },
         password_confirm: {
           required: true,
-          minlength: 6,
+          minlength: 2,
           maxlength: 20,
         }
       },
       messages: {
         last_name:{
           required: "Please Enter Last Name",
-          minlength: "Needs at least 8 characters",
+          minlength: "Needs at least 2 characters",
           maxlength: "Cannot exceed 20 characters",
         },
         first_name:{
           required: "Please Enter First Name",
-          minlength: "Needs at least 8 characters",
+          minlength: "Needs at least 2 characters",
           maxlength: "Cannot exceed 20 characters",
         },
         email:{
