@@ -28,6 +28,7 @@ class EditProfileRequest extends FormRequest
             "last_name"=>"required",
             "email"=>"required|unique:user,email,".$this->id,
             "phone"=>"max:15",
+            "avatar"=>"required|image|mimes:jpeg,png,jpg,gif,svg",
         ];
     }
     public function messages()
@@ -38,7 +39,9 @@ class EditProfileRequest extends FormRequest
             "email.required"=>"Please Enter Email",
             "email.unique"=>"Email Have Exists",
             "phone.max"=>"Phone Number Must Not Exceed 15",
-        
+            "avatar.required"=>"Please Enter Avatar",
+            "avatar.image"=>"Image Only",
+            "avatar.mimes"=>"Only jpeg png jpg gif svg",
         ];
     }
 }

@@ -1,0 +1,671 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jul 27, 2022 at 08:00 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `belleville_dental`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `parent_name` int(11) NOT NULL DEFAULT 0,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`id`, `name`, `slug`, `parent_name`, `created_at`, `updated_at`) VALUES
+(1, 'Product', 'product', 0, '2022-07-26 21:40:57', NULL),
+(2, 'Post', 'post', 0, '2022-07-26 21:41:05', NULL),
+(3, 'Toothbrushes', 'toothbrushes', 1, '2022-07-26 21:41:21', NULL),
+(4, 'Toothpaste', 'toothpaste', 1, '2022-07-26 21:41:37', NULL),
+(5, 'Dental Floss', 'dental-floss', 1, '2022-07-26 21:41:54', NULL),
+(6, 'Face Mask', 'face-mask', 1, '2022-07-26 21:42:10', NULL),
+(7, 'Dental Picks And Sticks', 'dental-picks-and-sticks', 1, '2022-07-26 21:42:26', NULL),
+(8, 'Tongue Scrapers', 'tongue-scrapers', 1, '2022-07-26 21:42:41', NULL),
+(9, 'Oral Medicine', 'oral-medicine', 1, '2022-07-26 21:42:52', NULL),
+(10, 'Toothache', 'toothache', 2, '2022-07-26 21:43:12', NULL),
+(11, 'Stained Teeth', 'stained-teeth', 2, '2022-07-26 21:43:25', NULL),
+(12, 'Cavities', 'cavities', 2, '2022-07-26 21:43:39', NULL),
+(13, 'Cracked Tooth', 'cracked-tooth', 2, '2022-07-26 21:44:04', NULL),
+(14, 'Sensitive to Cold', 'sensitive-to-cold', 2, '2022-07-26 21:44:26', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comment`
+--
+
+CREATE TABLE `comment` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `comment` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact`
+--
+
+CREATE TABLE `contact` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `message` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`id`, `username`, `email`, `phone`, `message`, `created_at`, `updated_at`) VALUES
+(1, 'Super Admin', 'khuunhattin13@gmail.com', NULL, 'I need to sell off', '2022-07-26 22:36:33', NULL),
+(2, 'Super Admin', 'khuunhattin13@gmail.com', NULL, 'aaa', '2022-07-26 22:37:42', NULL),
+(3, 'Super Admin', 'khuunhattin13@gmail.com', NULL, 'asd', '2022-07-26 22:39:18', NULL),
+(4, 'Super Admin', 'khuunhattin13@gmail.com', '0777022074', 'ttt', '2022-07-26 22:41:31', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dat_lich`
+--
+
+CREATE TABLE `dat_lich` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `age` tinyint(4) NOT NULL,
+  `date` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `time` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `doctor_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `service` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `doctors`
+--
+
+CREATE TABLE `doctors` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `fullname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gender` tinyint(4) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `doctors`
+--
+
+INSERT INTO `doctors` (`id`, `fullname`, `phone`, `email`, `gender`, `created_at`, `updated_at`) VALUES
+(1, 'Jane', '0457585625', 'jane123@gmail.com', 1, '2022-07-26 22:35:58', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `doctor_day_work`
+--
+
+CREATE TABLE `doctor_day_work` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `time` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `doctor_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gallery`
+--
+
+CREATE TABLE `gallery` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `gallery_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gallery_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_100000_create_password_resets_table', 1),
+(2, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(3, '2022_07_04_132730_create_user_table', 1),
+(4, '2022_07_08_084423_create_category_table', 1),
+(5, '2022_07_08_084703_create_contact_table', 1),
+(6, '2022_07_08_084750_create_admin_table', 1),
+(7, '2022_07_08_155647_create_doctors_table', 1),
+(8, '2022_07_12_142123_create_post_table', 1),
+(9, '2022_07_14_170523_refresh', 1),
+(10, '2022_07_15_071330_create_products_table', 1),
+(11, '2022_07_19_173723_create_doctor_day_work_table', 1),
+(12, '2022_07_19_173902_create_dat_lich_table', 1),
+(13, '2022_07_21_071948_create_rating_table', 1),
+(14, '2022_07_21_145923_create_comment_table', 1),
+(15, '2022_07_25_114605_create_gallery_table', 1),
+(16, '2022_07_25_203142_create_rating_post_table', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `personal_access_tokens`
+--
+
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `post`
+--
+
+CREATE TABLE `post` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image_main` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `intro` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `images` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `extra_images` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `category_id` bigint(20) UNSIGNED NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `view` int(11) NOT NULL DEFAULT 0,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `post`
+--
+
+INSERT INTO `post` (`id`, `name`, `slug`, `image_main`, `intro`, `content`, `images`, `extra_images`, `category_id`, `status`, `view`, `created_at`, `updated_at`) VALUES
+(1, 'Toothache', 'toothache', NULL, '<p>A toothache is a pain in or around a tooth. Minor toothaches can come from a temporary gum irritation that you can treat at home</p>', '<h3>What is a toothache?</h3>\r\n\r\n<p>A toothache is a pain in or around a tooth. Minor toothaches can come from a temporary gum irritation that you can treat at home. More serious toothaches are caused by dental and mouth problems that won&rsquo;t get better on their own and will need to be treated by a dentist.</p>\r\n\r\n<h3>Why is my toothache so painful?</h3>\r\n\r\n<p>The pulp inside your tooth is soft material filled with nerves, tissues and blood vessels. These pulp nerves are among the most sensitive in your body. When these nerves are irritated or infected by bacteria (abscess), they can cause severe pain.</p>\r\n\r\n<h3>What are possible causes of toothache?</h3>\r\n\r\n<p>Toothaches can be caused by:</p>\r\n\r\n<ul>\r\n	<li><a href=\"https://my.clevelandclinic.org/health/diseases/10946-cavities\" target=\"_blank\">Tooth decay</a>.</li>\r\n	<li><a href=\"https://my.clevelandclinic.org/health/diseases/10943-abscessed-tooth\" target=\"_blank\">Abscessed tooth&nbsp;</a>(a bacterial infection inside the center of the tooth).</li>\r\n	<li>Tooth fracture (broken tooth).</li>\r\n	<li>A damaged filling.</li>\r\n	<li>Repetitive motions, such as chewing gum or&nbsp;<a href=\"https://my.clevelandclinic.org/health/diseases/10955-teeth-grinding-bruxism\" target=\"_blank\">grinding or clenching teeth</a>. These motions can wear down your teeth.</li>\r\n	<li><a href=\"https://my.clevelandclinic.org/health/diseases/10950-gingivitis-and-periodontal-disease-gum-disease\" target=\"_blank\">Infected gums</a>.</li>\r\n	<li>Eruption (teeth coming out of the gums) or removal of a tooth (for example, wisdom teeth).</li>\r\n</ul>\r\n\r\n<h3>What are symptoms of toothache?</h3>\r\n\r\n<ul>\r\n	<li>Tooth pain that may be sharp, throbbing, or constant. In some people, pain results only when pressure is applied to the tooth (biting down on something).</li>\r\n	<li>Swelling around the tooth.</li>\r\n	<li>Fever or headache.</li>\r\n	<li>Foul-tasting drainage from the infected tooth.</li>\r\n	<li><a href=\"https://my.clevelandclinic.org/health/symptoms/17771-bad-breath-halitosis\" target=\"_blank\">A bad odor from the mouth</a>.</li>\r\n</ul>\r\n\r\n<p>If you experience trouble breathing and swallowing along with your pain, call a dental professional right away.</p>', '1658899346.jpg', '1658899346.jpg', 10, 1, 2, '2022-07-26 22:22:26', NULL),
+(2, 'Treating toothaches', 'treating-toothaches', NULL, '<p>Toothaches usually require medical treatment. Home treatment may temporarily relieve your pain while you wait for your dentist or doctor&rsquo;s appointment.</p>', '<h3>Dental treatment</h3>\r\n\r\n<p>Most people go to a dentist for a toothache, since most toothaches are caused by problems with your teeth.</p>\r\n\r\n<p>Your dentist will use&nbsp;<a href=\"https://www.healthline.com/health/dental-x-rays\">X-rays</a>&nbsp;and a physical exam of your teeth to detect tooth decay or other dental problems. And they may give you pain medication and antibiotics to treat an infection.</p>\r\n\r\n<p>If your toothache is due to tooth decay, your dentist will remove the decay with a drill and fill the space with dental materials. An impacted tooth may require surgical removal.</p>\r\n\r\n<p>If your dentist can&rsquo;t find the cause of your toothache, they may refer you to a doctor for further diagnosis and treatment.</p>\r\n\r\n<h3>Sinusitis treatment</h3>\r\n\r\n<p>Your doctor may treat sinusitis with antibiotics or decongestant medications. In rare cases, you may need to undergo surgery to open your nasal passages. In this case, your doctor will refer you to a specialist.</p>\r\n\r\n<h3>Treatment for trigeminal neuralgia and occipital neuralgia</h3>\r\n\r\n<p>There&rsquo;s no cure for these conditions. Treatment usually consists of relieving your pain with medications.</p>\r\n\r\n<h3>Treatment for heart attack, heart disease, and lung cancer</h3>\r\n\r\n<p>If your dentist suspects that you&rsquo;re having a heart attack, they&rsquo;ll send you to the emergency department. If your dentist suspects that you have heart or lung disease, they&rsquo;ll refer you to a doctor for further testing.</p>', '1658899444.jpg', '1658899444.jpg', 10, 1, 5, '2022-07-26 22:24:04', NULL),
+(3, 'How Do Teeth Stain', 'how-do-teeth-stain', NULL, '<p>Read for more</p>', '<ul>\r\n	<li><strong>Poor oral hygiene</strong>: Not brushing your teeth will cause tooth enamel to decay and a host of other issues, which may cause many types of stains or tooth discolouration. Try to keep regular brushing as a top priority.</li>\r\n	<li><strong>Smoking tobacco</strong>: Tobacco smoke causes stained teeth and a wide range of other dangerous health issues. Nicotine stains are typically yellow stains with an orange hue &ndash; and can occur on the front and back of the teeth.</li>\r\n	<li><strong>Drinking coffee</strong>: Coffee lovers are well-aware of how that morning cup of coffee can put some pep in your step, but it can also cause brown stains after drinking. Coffee stains are one of the most common teeth stain issues.</li>\r\n	<li><strong>Drinking tea</strong>: Tea stains are extremely common and people have less awareness of them in comparison to coffee, black teas are particularly troublesome for leaving stains. Fruit or green tea can stain your teeth too!</li>\r\n	<li><strong>Drinking red wine</strong>: Red wine can easily cause dark, reddish stains on your teeth. Red wine, and other forms of alcohol, work very similarly to sugar in terms of their effects on your teeth &ndash; so wines will stick to your teeth closely.</li>\r\n	<li><strong>Older age</strong>: Teeth are fully formed at a relatively early age, and tooth enamel naturally wears away as you get older. This can easily make the appearance of stains more apparent. It is common to have yellow staining as you age.</li>\r\n	<li><strong>Tooth decay</strong>: Possibly the most serious cause of stained teeth is tooth decay, which can cause dark, black stains. If a tooth decays and dies you may get tooth pulp necrosis &ndash; a condition that can cause significant pain.</li>\r\n	<li><strong>Black tartar</strong>: This is what happens when you have a build-up of bacteria around the gum line, they cause very dark black stains at the top edge of the teeth, near the gum, which can also spread to the rest of the tooth.</li>\r\n	<li><strong>Infections and disease</strong>: In rare cases, teeth may have a stain due to a non-dental issue &ndash; such as a viral infection. Some treatments for cancers of the mouth or neck areas cause discoloured teeth, such as chemotherapy.</li>\r\n</ul>', '1658900793.jpg', '1658900793.jpg', 11, 1, 0, '2022-07-26 22:46:33', NULL),
+(4, 'How to Clean or Get Rid of Stained Teeth', 'how-to-clean-or-get-rid-of-stained-teeth', NULL, '<p>Lots of the ways to get rid of stained teeth are simple and safe to try at home, although some will require a visit to a dentist</p>', '<p>Methods to get rid of stained teeth include the following:</p>\r\n\r\n<ul>\r\n	<li><strong>Use a teeth whitening toothpaste</strong>: Many kinds of toothpaste incorporate baking soda, or sodium bicarbonate, which will make it easier to remove stains. Baking soda is a strong substance, but this type of toothpaste uses a small amount. You can also have professional&nbsp;<a href=\"https://www.hovedentalclinic.co.uk/blog/teeth-whitening-brighton-hove/\"><strong>teeth whitening treatment</strong></a>.</li>\r\n	<li><strong>Practise better oral hygiene</strong>: If you have early-stage tooth decay it is possible to reverse the development of caries, which may improve the appearance of stains. Better cleaning and hygiene habits are also helpful for reducing the chances of developing black tartar.</li>\r\n	<li><strong>Consider alternative strategies</strong>: You can avoid problem foods and drinks altogether but then again it is entirely possible to find alternatives or ways around staining foods. You can try using a straw or switching from coffee to an alternative caffeine drink. Red wine fans can consider a switch to white.</li>\r\n	<li><strong>Carry gum or mints</strong>: Chewing gum and strong mints can help to clean the stains from your teeth and also give you fresher breath. Adding a small pack of mints or gum to your pocket or bag will mean that you are ready to tackle the problem of stained teeth in a problematic situation.</li>\r\n	<li><strong>Restorative treatments</strong>: For stained teeth that result from tooth decay,&nbsp;<a href=\"https://www.hovedentalclinic.co.uk/restorative/\"><strong>restorative dentistry</strong></a>&nbsp;may be the best option. Options include white coloured fillings, tooth extraction and root canal treatments. This treatment can be uncomfortable but will not be painful.</li>\r\n</ul>\r\n\r\n<p>Even the most badly stained teeth can benefit from a professional cleaning by a dentist. Using special tools to remove plaque and tartar can help to improve the appearance of teeth, particularly for yellow stains. Polishing during a dental teeth cleaning is also a very good way to remove stains from the surface of the enamel.</p>', '1658900913.jpg', '1658900913.jpg', 11, 1, 0, '2022-07-26 22:48:33', NULL),
+(5, 'Cavities', 'cavities', NULL, '<p>People of all ages get cavities. Good dental care &mdash; including brushing, flossing and regular dental checkups &mdash; can prevent tooth decay. Cavities are also called dental caries.</p>', '<h3>What is a cavity?</h3>\r\n\r\n<p>A cavity is a hole in a tooth that develops from tooth decay. Cavities form when acids in the mouth wear down, or erode, a tooth&rsquo;s hard outer layer (enamel). Anyone can get a cavity. Proper brushing, flossing and dental cleanings can prevent cavities (sometimes called dental caries).</p>\r\n\r\n<h3>How common are cavities?</h3>\r\n\r\n<p>More than 80% of Americans have at least one cavity by the time they enter their mid-30s. Cavities are one of the most common chronic diseases that affect all ages.</p>\r\n\r\n<h3>Who might get a cavity?</h3>\r\n\r\n<p>Tooth decay can happen at any age, although cavities are more common in children. They may not brush properly and consume more sugary foods and drinks.</p>\r\n\r\n<p>Adults also get cavities. Sometimes, new decay develops around the edges of cavities treated in childhood. Adults also are more likely to have receding gums. This condition exposes the lower parts of teeth to cavity-causing plaque.</p>\r\n\r\n<h3>What are the types of cavities?</h3>\r\n\r\n<p>Tooth decay can affect all layers of a tooth. It can take three years for a cavity to form in the strong outer layer of tooth enamel. Decay progresses more quickly through the dentin (middle layer) to pulp (innermost layer). Pulp contains a tooth&rsquo;s nerve endings and blood supply. Types of tooth decay include:</p>\r\n\r\n<ul>\r\n	<li><strong>Smooth surface:&nbsp;</strong>This slow-growing cavity dissolves tooth enamel. You can prevent it &mdash; and sometimes reverse it &mdash; with proper brushing, flossing and dental cleanings. People in their 20s often develop this form of tooth decay between their teeth.</li>\r\n	<li><strong>Pit and fissure decay:&nbsp;</strong>Cavities form on the top part of the tooth&rsquo;s chewing surface. Decay also can affect the front side of back teeth. Pit and fissure decay tends to start during the teenage years and progresses quickly.</li>\r\n	<li><strong>Root decay:</strong>&nbsp;Older adults who have receding gums are more prone to root decay. Gum recession exposes the tooth&rsquo;s root to plaque and acid. Root decay is difficult to prevent and treat.</li>\r\n</ul>', '1658901142.jpg', '1658901142.jpg', 12, 1, 0, '2022-07-26 22:52:22', NULL),
+(6, 'SYMPTOMS AND CAUSES CAVITIES', 'symptoms-and-causes-cavities', NULL, '<p>Many factors play a role in the development of cavities</p>', '<h3>What causes cavities?</h3>\r\n\r\n<p>Many factors play a role in the development of cavities. These steps typically occur:</p>\r\n\r\n<ul>\r\n	<li>Bacteria in the mouth feed on sugary, starchy foods and drinks (fruit, candy, bread, cereal, sodas, juice and milk). The bacteria convert these carbohydrates into acids.</li>\r\n	<li>Bacteria, acid, food and saliva mix to form plaque. This sticky substance coats the teeth.</li>\r\n	<li>Without proper brushing and flossing, acids in plaque dissolve tooth enamel, creating cavities, or holes.</li>\r\n</ul>\r\n\r\n<h3>What are the risk factors for cavities?</h3>\r\n\r\n<p>Certain factors increase your risk of cavities:</p>\r\n\r\n<ul>\r\n	<li>Conditions like&nbsp;<a href=\"https://my.clevelandclinic.org/health/diseases/4929-sj%C3%B6grens-syndrome\" target=\"_blank\">Sjogren&rsquo;s syndrome</a>, or medications like&nbsp;<a href=\"https://my.clevelandclinic.org/health/treatments/9301-depression-medicines\" target=\"_blank\">antidepressants</a>, that cause dry mouth.</li>\r\n	<li>Consuming sugary, starchy foods or drinks and snacking between meals.</li>\r\n	<li>Family history of cavities.</li>\r\n	<li>Previous&nbsp;<a href=\"https://my.clevelandclinic.org/health/treatments/16192-head-and-neck-cancer-radiation-therapy\" target=\"_blank\">radiation therapy to treat head and neck cancer</a>.</li>\r\n	<li>Receding gums.</li>\r\n</ul>\r\n\r\n<h3>What are the signs of cavities?</h3>\r\n\r\n<p>Tooth decay on the outer enamel surface doesn&rsquo;t usually cause pain or symptoms. You&rsquo;re more likely to experience symptoms as decay progresses into the dentin and root. Signs of cavities include:</p>\r\n\r\n<ul>\r\n	<li><a href=\"https://my.clevelandclinic.org/health/symptoms/17771-bad-breath-halitosis\" target=\"_blank\">Bad breath</a>&nbsp;or a bad taste in the mouth.</li>\r\n	<li>Bleeding gums or other signs of&nbsp;<a href=\"https://my.clevelandclinic.org/health/diseases/10950-gingivitis-and-periodontal-disease-gum-disease\" target=\"_blank\">gum disease</a>.</li>\r\n	<li>Facial swelling.</li>\r\n	<li><a href=\"https://my.clevelandclinic.org/health/diseases/10957-toothache\" target=\"_blank\">Toothache</a>&nbsp;or mouth pain.</li>\r\n	<li><a href=\"https://my.clevelandclinic.org/health/symptoms/10954-teeth-sensitivity\" target=\"_blank\">Tooth sensitivity</a>&nbsp;to hot or cold foods or drinks.</li>\r\n	<li>Redness around or inside the mouth.</li>\r\n</ul>', '1658901207.jpg', '1658901207.jpg', 12, 1, 0, '2022-07-26 22:53:27', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `intro` varchar(2550) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` int(11) NOT NULL,
+  `images` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `view` int(11) NOT NULL DEFAULT 0,
+  `category_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `slug`, `intro`, `content`, `price`, `images`, `status`, `view`, `category_id`, `created_at`, `updated_at`) VALUES
+(1, 'Oral-B Pulsar Pro-Expert', 'oralb-pulsar-proexpert-35-medium-manual-toothbrush-with-battery-power', '<p>123123</p>', '<p>Oral-B Pulsar Pro-Expert battery toothbrush gives you the control of a regular manual brush and deep interdental reach. Micro-pulse bristles pivot and pulse to penetrate deep between teeth and provide a truly superior clean versus a regular manual brush.</p>\r\n\r\n<ul>\r\n	<li>With vibrating bristles for a superior clean versus a regular manual brush</li>\r\n	<li>Battery-operated toothbrush penetrates deep between teeth</li>\r\n	<li>Pulsar gives you the control of a regular manual brush and enhanced deep cleaning power</li>\r\n	<li>Slim Handle with built-in power supply</li>\r\n</ul>\r\n\r\n<p>Colour and design may vary</p>', 2, '1658897199.png', 1, 0, 3, '2022-07-26 21:46:39', NULL),
+(2, 'Colgate Kids 0-3 Years Extra Soft Toothbrush', 'colgate-kids-03-years-extra-soft-toothbrush', '<p>Look after your child&rsquo;s first teeth with the Colgate Kids 0-3 Years Extra Soft Toothbrush. This toothbrush for kids has extra soft bristles and a small head for an effective, gentle clean.&nbsp;</p>', '<p>Colgate Kids 0-3 Years Extra Soft Toothbrush<br />\r\n<br />\r\nLook after your child&rsquo;s first teeth with the Colgate Kids 0-3 Years Extra Soft Toothbrush. This toothbrush for kids has extra soft bristles and a small head for an effective, gentle clean. The kid&rsquo;s toothbrush also has a non-slip handle making it easy for you to control.</p>\r\n\r\n<h3 dir=\"ltr\">How to use</h3>\r\n\r\n<p dir=\"ltr\">Brush twice a day for 2 minutes with a toothbrush and toothpaste developed for your child&#39;s age. Brush in a circular motion, cleaning all tooth surfaces and gum line.</p>\r\n\r\n<h3 dir=\"ltr\">Hazards and Cautions</h3>\r\n\r\n<p dir=\"ltr\">Children under 4 years old should not use without adult supervision. Do not chew. For toothbrushing only.</p>', 2, '1658897677.png', 1, 0, 3, '2022-07-26 21:54:37', NULL),
+(3, 'Aquafresh Little Teeth Soft Bristles Toothbrush', 'aquafresh-little-teeth-soft-bristles-toothbrush', '<p>Aquafresh Little Teeth toothbrush is specially designed by dental experts for children 3-5 years and have a range of colourful characters to help engage kids and encourage them to brush</p>\r\n\r\n<p>&nbsp;</p>', '<p>Aquafresh Little Teeth Soft Bristles Toothbrush 3-5 Years<br />\r\n<br />\r\nAquafresh Little Teeth toothbrush is specially designed by dental experts for children 3-5 years and have a range of colourful characters to help engage kids and encourage them to brush</p>', 1, '1658897767.png', 1, 0, 3, '2022-07-26 21:56:07', NULL),
+(4, 'Listerine Reach Interdental Medium Toothbrush', 'listerine-reach-interdental-medium-toothbrush', '<p>Reach Interdental Medium Toothbrush provides you benefits</p>', '<p>Reach Interdental Medium Toothbrush provides you benefits of:<br />\r\n&nbsp;</p>\r\n\r\n<ul>\r\n	<li>Multi-level bristles to clean thoroughly between the teeth</li>\r\n	<li>Angled neck for extra reach</li>\r\n	<li>Soft rubber grip for better comfort and control</li>\r\n</ul>\r\n\r\n<h6>Delivery options</h6>\r\n\r\n<p><br />\r\n<strong>Click &amp; Collect</strong><br />\r\nCollect from one of 2,200 stores. &pound;1.50 or free when you spend &pound;15 or more.<br />\r\n<br />\r\n<strong>Standard Delivery</strong><br />\r\n&pound;3.75 or free when you spend &pound;25 or more.<br />\r\n<br />\r\n<strong>Next Day Delivery</strong><br />\r\nOrder by 10pm (subject to change during promotions), available 7 days a week for &pound;4.95. This may not be available during public holidays or weekends in between public holidays. Usually delivered between 8am and 9pm. The earliest delivery date for these orders will be shown at the checkout.<br />\r\n<br />\r\n<strong>Named Day Delivery</strong><br />\r\n&pound;3.95 - choose a weekday within the next 14 days for delivery.<br />\r\n&nbsp;</p>\r\n\r\n<p>&nbsp;</p>', 2, '1658897887.png', 1, 0, 3, '2022-07-26 21:58:07', NULL),
+(5, 'Aquafresh Big Teeth Soft Bristles Toothbrush 6-8 Years', 'aquafresh-big-teeth-soft-bristles-toothbrush-68-years', '<p>Aquafresh My Big Teeth toothbrush is specially designed by dental experts for children 6+ years</p>', '<p><br />\r\nAquafresh My Big Teeth toothbrush is specially designed by dental experts for children 6+ years and has a cool handle design and a mixed bristle head designed to help clean mixed teeth, gaps and gums while you begin to encourage kids to brush for themselves.</p>\r\n\r\n<p><strong>Click &amp; Collect</strong><br />\r\nCollect from one of 2,200 stores. &pound;1.50 or free when you spend &pound;15 or more.<br />\r\n<br />\r\n<strong>Standard Delivery</strong><br />\r\n&pound;3.75 or free when you spend &pound;25 or more.<br />\r\n<br />\r\n<strong>Next Day Delivery</strong><br />\r\nOrder by 10pm (subject to change during promotions), available 7 days a week for &pound;4.95. This may not be available during public holidays or weekends in between public holidays. Usually delivered between 8am and 9pm. The earliest delivery date for these orders will be shown at the checkout.<br />\r\n<br />\r\n<strong>Named Day Delivery</strong><br />\r\n&pound;3.95 - choose a weekday within the next 14 days for delivery.<br />\r\n&nbsp;</p>', 3, '1658897980.png', 1, 0, 3, '2022-07-26 21:59:40', NULL),
+(6, 'Aquafresh Advance Soft Bristles Toothbrush 9-12 Years', 'aquafresh-advance-soft-bristles-toothbrush-912-years', '<p>Aquafresh Advance toothbrush was specially designed by dental experts for children age 9-12.</p>', '<p>Aquafresh Advance toothbrush was specially designed by dental experts for children age 9-12.</p>\r\n\r\n<h3 dir=\"ltr\">Suitable for</h3>\r\n\r\n<p dir=\"ltr\">Aquafresh Advance toothbrush was specially designed by dental experts for children age 9-12.</p>\r\n\r\n<h3 dir=\"ltr\">How to use</h3>\r\n\r\n<p dir=\"ltr\">Brush twice a day and not more than three times.</p>\r\n\r\n<p dir=\"ltr\"><strong>Click &amp; Collect</strong><br />\r\nCollect from one of 2,200 stores. &pound;1.50 or free when you spend &pound;15 or more.<br />\r\n<br />\r\n<strong>Standard Delivery</strong><br />\r\n&pound;3.75 or free when you spend &pound;25 or more.<br />\r\n<br />\r\n<strong>Next Day Delivery</strong><br />\r\nOrder by 10pm (subject to change during promotions), available 7 days a week for &pound;4.95. This may not be available during public holidays or weekends in between public holidays. Usually delivered between 8am and 9pm. The earliest delivery date for these orders will be shown at the checkout.<br />\r\n<br />\r\n<strong>Named Day Delivery</strong><br />\r\n&pound;3.95 - choose a weekday within the next 14 days for delivery.</p>', 3, '1658898070.png', 1, 3, 3, '2022-07-26 22:01:10', NULL),
+(7, 'Listerine Reach Interdental Medium Toothbrush 14', 'listerine-reach-interdental-medium-toothbrush-14', '<p>Reach Interdental Medium Toothbrush provides you benefits of:<br />\r\n&nbsp;</p>\r\n\r\n<ul>\r\n	<li>Multi-level bristles to clean thoroughly between the teeth</li>\r\n	<li>Angled neck for extra reach</li>\r\n	<li>Soft rubber grip for better comfort and control</li>\r\n</ul>', '<p>Reach Interdental Medium Toothbrush provides you benefits of:<br />\r\n&nbsp;</p>\r\n\r\n<ul>\r\n	<li>Multi-level bristles to clean thoroughly between the teeth</li>\r\n	<li>Angled neck for extra reach</li>\r\n	<li>Soft rubber grip for better comfort and control</li>\r\n</ul>\r\n\r\n<p><strong>Click &amp; Collect</strong><br />\r\nCollect from one of 2,200 stores. &pound;1.50 or free when you spend &pound;15 or more.<br />\r\n<br />\r\n<strong>Standard Delivery</strong><br />\r\n&pound;3.75 or free when you spend &pound;25 or more.<br />\r\n<br />\r\n<strong>Next Day Delivery</strong><br />\r\nOrder by 10pm (subject to change during promotions), available 7 days a week for &pound;4.95. This may not be available during public holidays or weekends in between public holidays. Usually delivered between 8am and 9pm. The earliest delivery date for these orders will be shown at the checkout.<br />\r\n<br />\r\n<strong>Named Day Delivery</strong><br />\r\n&pound;3.95 - choose a weekday within the next 14 days for delivery.</p>', 2, '1658898214.png', 1, 1, 3, '2022-07-26 22:03:34', NULL),
+(8, 'Oral B Stage 1 Pooh Bear Manual Toothbrush 0-2 Years', 'oral-b-stage-1-pooh-bear-manual-toothbrush-02-years', '<p>Oral B Stage 1 Pooh Bear Manual Toothbrush 4-24 months is designed for baby&#39;s gums and first teeth&nbsp;with a parent designed handle.&nbsp; The unique cushioned head is designed to help protect tender gums</p>', '<p>Oral B Stage 1 Pooh Bear Manual Toothbrush 4-24 months is designed for baby&#39;s gums and first teeth&nbsp;with a parent designed handle.&nbsp; The unique cushioned head is designed to help protect tender gums.&nbsp; Baby-soft bristles are used for gentle cleaning and massaging of baby&#39;s tender teeth and gums.&nbsp; The non-slip handle is designed to help parents brush baby&#39;s teeth and gums.</p>\r\n\r\n<p><strong><u>Features and Benefits</u></strong></p>\r\n\r\n<ul>\r\n	<li>Cushioned Head.</li>\r\n	<li>Baby-Soft Bristles.</li>\r\n	<li>The Brand Most Dentists Use Themselves.</li>\r\n	<li>Designed for baby&#39;s gums and first teeth. Handle designed for parent&#39;s hand.</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h3 dir=\"ltr\">Important info</h3>\r\n\r\n<p dir=\"ltr\">Features and Benefits<br />\r\n&nbsp;</p>\r\n\r\n<ul>\r\n	<li>Cushioned Head.</li>\r\n	<li>Baby-Soft Bristles.</li>\r\n	<li>The Brand Most Dentists Use Themselves.</li>\r\n	<li>Designed for baby&#39;s gums and first teeth. Handle designed for parent&#39;s hand.</li>\r\n</ul>', 4, '1658898268.png', 1, 0, 3, '2022-07-26 22:04:28', NULL),
+(9, 'Wisdom Re:new Clean Toothbrush Soft Single Pack', 'wisdom-renew-clean-toothbrush-soft-single-pack', '<p>New Wisdom Re:new clean Soft toothbrush with 100% plant based filaments &nbsp;and recycled handle</p>', '<p>New Wisdom Re:new clean Soft toothbrush with 100% plant based filaments &nbsp;and recycled handle. The Wisdom re:new range has been designed to offer everything you need for a great clean whilst keeping the envirnoment in mind. &nbsp;Combining simple design with sustainable and recycled materials to ensure effective cleaning products. &nbsp;Wisdom re:new - sustainability without compromise. 100% Plant based filaments (sustainable castor oil)- end rounded for a gentle, thorough clean. &nbsp;Filaments are held in by brass staples. &nbsp;<br />\r\n&nbsp;</p>\r\n\r\n<ul>\r\n	<li>100% recycled plastic handle - lightweight design with flexible neck to help protect gums &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>\r\n	<li>100% recycled cardboard packaging &nbsp;</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h3 dir=\"ltr\">How to use</h3>\r\n\r\n<p dir=\"ltr\">Use for 2 minutes, twice a day.</p>\r\n\r\n<h3 dir=\"ltr\">Hazards and Cautions</h3>\r\n\r\n<p dir=\"ltr\">Disposal of brush and packaging in the approproate waste stream through your home collection or at your recycling centre. For more information please see www.wisdom-toothbrushes.com</p>', 3, '1658898342.png', 1, 2, 3, '2022-07-26 22:05:42', NULL),
+(10, 'Boots Kids Toothbrush 3-5 Years', 'boots-kids-toothbrush-35-years', '<p>Boots Kids toothbrush for 3-5yrs gently removes plaque from your child&rsquo;s milk teeth &amp; gums</p>', '<p>Boots Kids toothbrush for 3-5yrs gently removes plaque from your child&rsquo;s milk teeth &amp; gums. Specially designed to clean without damaging delicate young gums.<br />\r\n&nbsp;</p>\r\n\r\n<ul>\r\n	<li>Soft bristles to protect gums whilst cleaning effectively</li>\r\n	<li>Non-slip grip for easy brushing</li>\r\n	<li>Small head for small mouths</li>\r\n</ul>\r\n\r\n<p><strong>Click &amp; Collect</strong><br />\r\nCollect from one of 2,200 stores. &pound;1.50 or free when you spend &pound;15 or more.<br />\r\n<br />\r\n<strong>Standard Delivery</strong><br />\r\n&pound;3.75 or free when you spend &pound;25 or more.<br />\r\n<br />\r\n<strong>Next Day Delivery</strong><br />\r\nOrder by 10pm (subject to change during promotions), available 7 days a week for &pound;4.95. This may not be available during public holidays or weekends in between public holidays. Usually delivered between 8am and 9pm. The earliest delivery date for these orders will be shown at the checkout.<br />\r\n<br />\r\n<strong>Named Day Delivery</strong><br />\r\n&pound;3.95 - choose a weekday within the next 14 days for delivery.<br />\r\n&nbsp;</p>', 3, '1658898420.png', 1, 0, 3, '2022-07-26 22:07:00', NULL),
+(11, 'Colgate ZigZag Black Medium Toothbrush x3', 'colgate-zigzag-black-medium-toothbrush-x3', '<p>You can smile with confidence with the Colgate Zig Zag Toothbrushes</p>', '<p><br />\r\nYou can smile with confidence with the Colgate Zig Zag Toothbrushes. Its multi-angle cross-bristles give a deep interdental clean while the soft tongue cleaner gently removes odour-causing bacteria. The flexible neck gives you added comfort and is gentle on your gums.</p>\r\n\r\n<h3 dir=\"ltr\">How to use</h3>\r\n\r\n<p dir=\"ltr\">Wet the brush head and apply toothpaste Place the brush in the mouth and brush. Dentist and hygienists recommend replacing your toothbrush at least every 3 months.</p>\r\n\r\n<p><strong>Click &amp; Collect</strong><br />\r\nCollect from one of 2,200 stores. &pound;1.50 or free when you spend &pound;15 or more.<br />\r\n<br />\r\n<strong>Standard Delivery</strong><br />\r\n&pound;3.75 or free when you spend &pound;25 or more.<br />\r\n<br />\r\n<strong>Next Day Delivery</strong><br />\r\nOrder by 10pm (subject to change during promotions), available 7 days a week for &pound;4.95. This may not be available during public holidays or weekends in between public holidays. Usually delivered between 8am and 9pm. The earliest delivery date for these orders will be shown at the checkout.<br />\r\n<br />\r\n<strong>Named Day Delivery</strong><br />\r\n&pound;3.95 - choose a weekday within the next 14 days for delivery.</p>', 2, '1658898668.png', 1, 4, 3, '2022-07-26 22:11:08', NULL),
+(12, 'Spotlight Oral Care Teeth Whitening System strips', 'spotlight-oral-care-teeth-whitening-system-strips', '<p>The Spotlight Oral Care Teeth Whitening Strips gently whiten teeth gradually &amp; safely</p>', '<p>The Spotlight Oral Care Teeth Whitening Strips gently whiten teeth gradually &amp; safely. Active ingredients include Hydrogen Peroxide. This Teeth Whitening System includes a full 14-day course of strips &amp; a 100 ml Toothpaste for Whitening to maintain results.</p>\r\n\r\n<h3 dir=\"ltr\">How to use</h3>\r\n\r\n<p dir=\"ltr\">Dry your teeth and apply 1 strip to top and bottom row of teeth. Leave on for 1 hour and go about your beauty routine. After, remove the strips and rinse away any residual gel. Use with our Toothpaste for Whitening Teeth for maximum results. Repeat every day for 2 weeks for your dazzling smile.</p>\r\n\r\n<h3 dir=\"ltr\">Hazards and Cautions</h3>\r\n\r\n<p dir=\"ltr\">Not suitable for pregnant or breastfeeding women.</p>\r\n\r\n<h3 dir=\"ltr\">Ingredients</h3>\r\n\r\n<p dir=\"ltr\">PVP, Hydroxypropyl methylcellulose, Glycerin, Aqua, Alcohol, EDTA, Sodium chlorite, Stevioside, Menthol, Hydrogen peroxide.</p>\r\n\r\n<p dir=\"ltr\"><br />\r\n<strong>Click &amp; Collect</strong><br />\r\nCollect from one of 2,200 stores. &pound;1.50 or free when you spend &pound;15 or more.<br />\r\n<br />\r\n<strong>Standard Delivery</strong><br />\r\n&pound;3.75 or free when you spend &pound;25 or more.<br />\r\n<br />\r\n<strong>Next Day Delivery</strong><br />\r\nOrder by 10pm (subject to change during promotions), available 7 days a week for &pound;4.95. This may not be available during public holidays or weekends in between public holidays. Usually delivered between 8am and 9pm. The earliest delivery date for these orders will be shown at the checkout.<br />\r\n<br />\r\n<strong>Named Day Delivery</strong><br />\r\n&pound;3.95 - choose a weekday within the next 14 days for delivery.</p>', 12, '1658898888.png', 1, 0, 4, '2022-07-26 22:14:48', NULL),
+(13, 'Sensodyne Pronamel Intensive Enamel Repair Whitening Toothpaste 75ml', 'sensodyne-pronamel-intensive-enamel-repair-whitening-toothpaste-75ml', '<p>Brush twice a day and not more than three times, minimise swallowing and spit out</p>', '<p>Short Form: 1. Actively repairs weakened enamel caused by dietary acids; 2. Helps restore the natural whiteness of teeth; 3. Locks in minerals Long Form: Sensodyne Pronamel Intensive Enamel Repair Whitening is proven to drive minerals deep into the enamel surface to actively repair &shy;weakened areas of the enamel caused by dietary acids, for stronger, better &shy;protected teeth.<br />\r\nDeep repair for your acid weakened enamel. Acids in modern diets can weaken your enamel surface. Over time, this can lead to your enamel thinning, allowing the yellow dull dentine layer underneath to show through. Once your enamel surface is weakened it needs extra care for the future.<br />\r\nWith twice &shy;daily brushing, Sensodyne Pronamel Intensive Enamel Repair Whitening helps to:<br />\r\n1.Actively repair weakened enamel caused by dietary acids<br />\r\n2. Lock in minerals to help protect against the effects of acid wear<br />\r\n3.Help keep gums healthy with twice daily brushing<br />\r\n4.Helps restore the natrual whiteness of teeth<br />\r\n<br />\r\nSensodyne Pronamel Intensive Enamel Repair Whitening is suitable for sensitive teeth.<br />\r\nNew Sensodyne Pronamel Intensive Enamel Repair Whitening is an advancement in our Enamel Care, proven to drive minerals deep into the enamel surface to actively repair weak areas of the tooth.<br />\r\nOur new unique re-mineralising formula delivers vital minerals deep into the surface structure of the weak enamel, repairing and rebuilding microdamage in the vulnerable areas of the teeth for stronger better protected teeth.</p>\r\n\r\n<h3 dir=\"ltr\">How to use</h3>\r\n\r\n<p dir=\"ltr\">Always follow the label directions: Brush twice a day and not more than three times, minimise swallowing and spit out.</p>\r\n\r\n<h3 dir=\"ltr\">Hazards and Cautions</h3>\r\n\r\n<p dir=\"ltr\">If irritation occurs, discontinue use. Talk to your dentist or doctor as soon as possible if you experience swelling of the mouth or face. Sensitive teeth may indicate an underlying problem that needs prompt care.If symptoms persist or worsen see your dentist. Keep out of reach of children. Not for use by children under 12 years of age unless on advice of a dental professional or doctor. The ends of this carton have been glued down. Do not use if carton ends are open.</p>\r\n\r\n<h3 dir=\"ltr\">Ingredients</h3>\r\n\r\n<p dir=\"ltr\">Aqua, Sorbitol, Hydrated&nbsp;Silica, Glycerin, Potassium&nbsp;Nitrate, PEG&shy;6, Sodium&nbsp;Lactate, Aroma, Cocamidopropyl&nbsp;Betaine, Titanium&nbsp;Dioxide, Xanthan&nbsp;Gum, Sodium&nbsp;Saccharin, Sodium&nbsp;Fluoride, PVM/MA,&nbsp;Copolymer, Sodium&nbsp;Hydroxide, Limonene, Contains:&nbsp;Sodium&nbsp;Fluoride&nbsp;0.315%&nbsp;w/w&nbsp;(1450&nbsp;ppm&nbsp;Fluoride)</p>', 10, '1658898985.png', 1, 0, 4, '2022-07-26 22:16:25', NULL),
+(14, 'Colgate Total Whitening Toothpaste 125ml', 'colgate-total-whitening-toothpaste-125ml', '<p>Brush thoroughly at least twice a day or as directed by a dental professional. Not for use of children under 7 years old.</p>', '<p>Enjoy a dazzling white smile and complete protection for your teeth and whole mouth when you brush with Colgate Total Whitening Toothpaste. With a dual zinc and arginine formula, this teeth whitening toothpaste provides an amazing 24 hours of antibacterial protection*. What&rsquo;s more, this antibacterial toothpaste also protects against cavities, removes plaque, revitalises gums and strengthens and repairs enamel**. It also reduces tartar, protects sensitive teeth, freshens breath and effectively removes stains for a whiter smile. Brush twice a day with Colgate Total Whitening Toothpaste for a confident, whiter smile you can be proud of.&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>*Superior bacteria reduction on teeth, tongue, cheeks and gums vs. non-antibacterial fluoride toothpaste, with 2 x daily continued use after 4 weeks.&nbsp;<br />\r\n**In-vitro on weakened enamel caused by dietary acids.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h3 dir=\"ltr\">Hazards and Cautions</h3>\r\n\r\n<p dir=\"ltr\">&nbsp;</p>\r\n\r\n<p>Not for use of children under 7 years old.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h3 dir=\"ltr\">How to use</h3>\r\n\r\n<p dir=\"ltr\">&nbsp;</p>\r\n\r\n<p>Direction for use: Brush thoroughly at least twice a day or as directed by a dental professional. Not for use of children under 7 years old.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h3 dir=\"ltr\">Ingredients</h3>\r\n\r\n<p dir=\"ltr\">&nbsp;</p>\r\n\r\n<p>Glycerin, Aqua, Hydrated Silica, Sodium Lauryl Sulfate, Arginine, Aroma, Calcium Pyrophosphate, Cellulose Gum, Zinc Oxide, Benzyl Alcohol, Poloxamer 407, Zinc Citrate, Tetrasodium Pyrophosphate, Xanthan Gum, Cocamidopropyl Betaine, Sodium Fluoride, Sodium Saccharin, Phosphoric Acid, Sucralose, CI 74160.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Contains: Sodium Fluoride<br />\r\nTotal Fluoride content: 1450 ppm</p>', 13, '1658899051.png', 1, 0, 4, '2022-07-26 22:17:31', NULL),
+(15, 'Regenerate Enamel Science Advanced Toothpaste', 'regenerate-enamel-science-advanced-toothpaste', '<p>Sodium Monofluorophosphate (1450 ppm fluoride). See enclosed leaflet.</p>', '<p>REGENERATE Enamel Science&trade; is the first oral care system able to regenerate enamel mineral, reversing the early enamel erosion process. Its unique NR-5&trade; ingredients combine to form a fresh supply of enamel minerals which wrap and integrate onto teeth.<br />\r\n<br />\r\nREGENERATE Enamel Science&trade; Advanced Toothpaste regenerates enamel mineral with regular use, protects and strengthens against cavities, helps to restore original whiteness and gives you fresh mint sensation.<br />\r\n<br />\r\n&nbsp;&nbsp;</p>\r\n\r\n<ul>\r\n	<li>Contains patented and ground-breaking NR-5 technology. &nbsp;</li>\r\n	<li>Brush twice daily, replacing your regular toothpaste. &nbsp;</li>\r\n	<li>Fresh mint sensation. &nbsp;</li>\r\n	<li>82% of enamel mineral regenerated** after just 3 days of use when used in conjunction with REGENERATE Enamel cience&trade; Boosting Serum. * Acts on early invisible stages of enamel erosion by restoring its mineral content and micro hardness with regular use. Clinically proven.</li>\r\n	<br />\r\n	<br />\r\n	&nbsp;\r\n</ul>\r\n\r\n<p>** Based on an in vitro test measuring enamel surface micro hardness after 3 days&#39; combined use of toothpaste and serum.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h3 dir=\"ltr\">Hazards and Cautions</h3>\r\n\r\n<p dir=\"ltr\">Children of 6 years and under: use a pea sized amount for supervised brushing to minimise swallowing. In case of intake of fluoride from other sources consult a dentist or doctor.<br />\r\n<br />\r\nContains: Sodium Monofluorophosphate (1450 ppm fluoride). See enclosed leaflet.</p>\r\n\r\n<h3 dir=\"ltr\">Ingredients</h3>\r\n\r\n<p dir=\"ltr\">Glycerin, Calcium Silicate, PEG-8, Hydrated Silica, Trisodium Phosphate, Sodium Phosphate, Aqua, PE-60, Sodium Lauryl Sulfate, Sodium Monofluorophospate, AromaFlavour, Synthetic Fluorphlogopite, Sodium Saccharin, Polyacrylic Acid, Tin Oxide, Limonene, C177891</p>', 13, '1658899105.png', 1, 0, 4, '2022-07-26 22:18:25', NULL),
+(16, 'offer Sensodyne Sensitive Toothpaste Repair & Protect Whitening 75ml', 'offer-sensodyne-sensitive-toothpaste-repair-protect-whitening-75ml', '<p>Not for use by children 12 years and under unless on the advice of a dental professional or doctor</p>', '<p>Sensodyne Repair &amp; Protect Whitening contains patented NovaMin&reg; technology, which seeks out and forms a tooth-like layer over vulnerable areas of the tooth where dentine is exposed whilst, with twice daily brushing, helping restore your teeth to their natural whiteness. Use twice a day, every day, to give stronger repair* protect your teeth from sensitivity.<br />\r\n*Vs. Previous formulation. Forms a protective layer over the sensitive areas of the teeth</p>\r\n\r\n<h3 dir=\"ltr\">Suitable for</h3>\r\n\r\n<p dir=\"ltr\">Adults and children 12 years and above</p>\r\n\r\n<h3 dir=\"ltr\">How to use</h3>\r\n\r\n<p dir=\"ltr\">For long lasting protection brush twice daily and not more than three times, with approximately 2 cm of paste.<br />\r\n<br />\r\nMinimise swallowing and spit out.<br />\r\n<br />\r\nClose cap after each use to protect contents from moisture.<br />\r\n<br />\r\nDo not use if foil seal on the nozzle is broken.<br />\r\n<br />\r\nRemove foil seal before use.</p>\r\n\r\n<h3 dir=\"ltr\">Hazards and Cautions</h3>\r\n\r\n<p dir=\"ltr\">For oral use only.<br />\r\n<br />\r\nKeep out of reach of children. Not for use by children 12 years and under unless on the advice of a dental professional or doctor.<br />\r\n<br />\r\nSensitive teeth may indicate an underlying problem which needs prompt care by a dentist. If symptoms persist or worsen consult your dentist.<br />\r\n<br />\r\nIf irritation occurs, discontinue use.</p>\r\n\r\n<h3 dir=\"ltr\">Ingredients</h3>\r\n\r\n<p dir=\"ltr\">Glycerin, PEG-8, Silica, Calcium Sodium Phosphosilicate (NOVAMIN), Sodium Lauryl Sulfate, Sodium Monofluorophosphate, Titanium Dioxide, Aroma, Carbomer, Sodium Saccharin, Limonene, Contains Sodium Monofluorophosphate 1.08% w/w (1450 ppm Fluoride)</p>', 11, '1658899197.png', 1, 0, 4, '2022-07-26 22:19:57', NULL),
+(17, 'AirFloss for Philips SonicarePRO/Ultra HX8340 Flosser w/o Charger', 'airfloss-for-philips-sonicareproultra-hx8340-flosser-wo-charger', '<p>1 pcs HX8340</p>', '<p>&nbsp;</p>\r\n\r\n<p>New: A brand-new, unused, unopened, undamaged item in its original packaging (where packaging is applicable). Packaging should be the same as what is found in a retail store, unless the item is handmade or was packaged by the manufacturer in non-retail packaging, such as an unprinted box or plastic bag. See the seller&#39;s listing for full details</p>', 34, '1658899943.jpg', 1, 0, 5, '2022-07-26 22:32:23', NULL),
+(18, '10Roll Dental Flosser Built-in Spool Wax Mint Flavored Replacement Wire 50M/Roll', '10roll-dental-flosser-builtin-spool-wax-mint-flavored-replacement-wire-50mroll', '<p>To small</p>', '<p>Item location:</p>\r\n\r\n<p>China, China</p>\r\n\r\n<p>Ships to:&nbsp;</p>\r\n\r\n<p>Worldwide</p>\r\n\r\n<p>Excludes:&nbsp;</p>\r\n\r\n<p>Russian Federation, Ukraine</p>', 22, '1658900051.jpg', 1, 2, 5, '2022-07-26 22:34:11', NULL),
+(19, 'An N95 Mask', 'an-n95-mask', '<p>Most Popular</p>', '<p>N95s are regulated by the US National Institute for Occupational Safety and Health (NIOSH), and the CDC has updated its mask recommendations to note that N95s offer the best protection. (They also offer&nbsp;<a href=\"https://www.cdc.gov/coronavirus/2019-ncov/your-health/free-masks.html\">an online tool</a>&nbsp;to help find the free ones closest to you.)</p>\r\n\r\n<p>This model is one of the CDC&#39;s approved masks, and several WIRED team members have recommended it. Instead of ear loops, it has two comfortable head straps for long-term wear and a molded shape that holds it off the face for easier breathing and less dampness. However, it doesn&#39;t fold, which makes it harder to carry and store. And like most N95s at the moment, it fluctuates in and out of stock, so check back if it&#39;s sold out. For more options, check out our roundup of the&nbsp;<a href=\"https://www.wired.com/story/best-disposable-face-masks-n95-kn95-kf94-surgical/\">Best N95s, KN95, and Surgical Face Masks</a>.&nbsp;</p>', 11, '1658901341.jpg', 1, 0, 6, '2022-07-26 22:55:41', NULL),
+(20, 'Envomask', 'envomask', '<p>t&#39;s easy to assemble and replace the filters, and the gel padding on the nose is shockingly comfortable</p>', '<p dir=\"ltr\" style=\"text-align:left\"><span style=\"font-size:16px\"><span style=\"color:#777777\"><span style=\"font-family:Montserrat,sans-serif\"><span style=\"background-color:#ffffff\"><span style=\"color:#747474\"><span style=\"font-size:12pt\"><span style=\"font-family:montserrat,sans-serif\"><span style=\"font-family:montserrat,sans-serif\">envo</span></span></span></span><strong><sup>&reg;</sup></strong><span style=\"font-size:12pt\"><span style=\"font-family:montserrat,sans-serif\"> <span style=\"color:#747474\">mask N95 respirator is a reusable, NIOSH-approved respirator designed to provide sealed protection and all day comfort. The AIRgel&deg; cushion forms around the face and nose to give a secure yet comfortable seal. </span></span></span></span></span></span></span></p>\r\n\r\n<p dir=\"ltr\" style=\"text-align:left\">&nbsp;</p>\r\n\r\n<p dir=\"ltr\" style=\"text-align:left\"><span style=\"font-size:16px\"><span style=\"color:#777777\"><span style=\"font-family:Montserrat,sans-serif\"><span style=\"background-color:#ffffff\"><span style=\"color:#747474\"><span style=\"font-size:12pt\"><span style=\"font-family:montserrat,sans-serif\">Bundle includes: </span></span></span></span></span></span></span></p>\r\n\r\n<p dir=\"ltr\" style=\"text-align:left\"><span style=\"font-size:16px\"><span style=\"color:#777777\"><span style=\"font-family:Montserrat,sans-serif\"><span style=\"background-color:#ffffff\"><span style=\"color:#747474\"><span style=\"font-size:12pt\"><span style=\"font-family:montserrat,sans-serif\">1. Mask kit (Mask body, filter cover, five filters, plug, storage case, and a choice of headgear).</span></span></span></span></span></span></span></p>\r\n\r\n<p dir=\"ltr\" style=\"text-align:left\"><span style=\"font-size:16px\"><span style=\"color:#777777\"><span style=\"font-family:Montserrat,sans-serif\"><span style=\"background-color:#ffffff\"><span style=\"font-size:12pt\"><span style=\"font-family:montserrat,sans-serif\"><span style=\"color:#747474\">2. Ten additional filters.</span></span></span></span></span></span></span></p>\r\n\r\n<p dir=\"ltr\" style=\"text-align:left\"><span style=\"font-size:16px\"><span style=\"color:#777777\"><span style=\"font-family:Montserrat,sans-serif\"><span style=\"background-color:#ffffff\"><span style=\"font-size:12pt\"><span style=\"font-family:montserrat,sans-serif\"><span style=\"color:#747474\">3. Free Shipping (excluding additional Items purchased outside of the bundle)</span></span></span></span></span></span></span></p>\r\n\r\n<p dir=\"ltr\" style=\"text-align:left\">&nbsp;</p>\r\n\r\n<p dir=\"ltr\" style=\"text-align:left\"><span style=\"font-size:16px\"><span style=\"color:#777777\"><span style=\"font-family:Montserrat,sans-serif\"><span style=\"background-color:#ffffff\"><span style=\"color:#747474\"><span style=\"font-size:12pt\"><span style=\"font-family:montserrat,sans-serif\">Customers may choose between the Holo Headgear, an adjustable strap that secures around the crown of the head, or the QuickFit Headgear, an adjustable strap with earhooks.</span></span></span></span></span></span></span></p>\r\n\r\n<p>&nbsp;</p>', 39, '1658901444.jpg', 1, 0, 6, '2022-07-26 22:57:24', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rating`
+--
+
+CREATE TABLE `rating` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `rating` double(8,2) NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `rating`
+--
+
+INSERT INTO `rating` (`id`, `rating`, `product_id`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 1.00, 11, 1, '2022-07-26 22:29:35', NULL),
+(2, 2.50, 9, 1, '2022-07-26 22:29:51', NULL),
+(3, 2.00, 6, 1, '2022-07-26 22:30:08', NULL),
+(4, 4.50, 18, 1, '2022-07-26 22:34:31', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rating_post`
+--
+
+CREATE TABLE `rating_post` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `rating` double(8,2) NOT NULL,
+  `post_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `rating_post`
+--
+
+INSERT INTO `rating_post` (`id`, `rating`, `post_id`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 4.00, 1, 1, '2022-07-26 22:24:22', NULL),
+(2, 2.50, 2, 1, '2022-07-26 22:24:54', NULL),
+(3, 5.00, 2, 2, '2022-07-26 22:26:02', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `first_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gender` tinyint(4) DEFAULT NULL,
+  `level` tinyint(1) DEFAULT 0,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `avatar`, `email`, `password`, `gender`, `level`, `phone`, `status`, `token`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Super', 'Admin', '1658900121-avatar.jpg', 'khuunhattin13@gmail.com', '$2y$10$4o9ujTqwE7Yn6gylWn0MmOrAuyMFU09tvB2loF16TI5T0hckCAALa', 1, 1, NULL, 0, NULL, NULL, '2022-07-26 21:39:19', NULL),
+(2, 'Admin', 'Bassic', NULL, 'adminbasic@gmail.com', '$2y$10$Sv0XVE9GZeQ2w50HphaCy.yzI1iTNSJLz9wijuDTTiQnWRMC/BYX2', NULL, 0, NULL, 0, NULL, NULL, '2022-07-26 21:40:28', NULL);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `comment_product_id_foreign` (`product_id`),
+  ADD KEY `comment_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `dat_lich`
+--
+ALTER TABLE `dat_lich`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `dat_lich_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `doctors`
+--
+ALTER TABLE `doctors`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `doctor_day_work`
+--
+ALTER TABLE `doctor_day_work`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `doctor_day_work_doctor_id_foreign` (`doctor_id`);
+
+--
+-- Indexes for table `gallery`
+--
+ALTER TABLE `gallery`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Indexes for table `post`
+--
+ALTER TABLE `post`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `post_category_id_foreign` (`category_id`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `products_category_id_foreign` (`category_id`);
+
+--
+-- Indexes for table `rating`
+--
+ALTER TABLE `rating`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `rating_product_id_foreign` (`product_id`),
+  ADD KEY `rating_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `rating_post`
+--
+ALTER TABLE `rating_post`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `rating_post_post_id_foreign` (`post_id`),
+  ADD KEY `rating_post_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `dat_lich`
+--
+ALTER TABLE `dat_lich`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `doctors`
+--
+ALTER TABLE `doctors`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `doctor_day_work`
+--
+ALTER TABLE `doctor_day_work`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `gallery`
+--
+ALTER TABLE `gallery`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `post`
+--
+ALTER TABLE `post`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `rating`
+--
+ALTER TABLE `rating`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `rating_post`
+--
+ALTER TABLE `rating_post`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `comment`
+--
+ALTER TABLE `comment`
+  ADD CONSTRAINT `comment_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `comment_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+--
+-- Constraints for table `dat_lich`
+--
+ALTER TABLE `dat_lich`
+  ADD CONSTRAINT `dat_lich_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+--
+-- Constraints for table `doctor_day_work`
+--
+ALTER TABLE `doctor_day_work`
+  ADD CONSTRAINT `doctor_day_work_doctor_id_foreign` FOREIGN KEY (`doctor_id`) REFERENCES `doctors` (`id`);
+
+--
+-- Constraints for table `post`
+--
+ALTER TABLE `post`
+  ADD CONSTRAINT `post_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`);
+
+--
+-- Constraints for table `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`);
+
+--
+-- Constraints for table `rating`
+--
+ALTER TABLE `rating`
+  ADD CONSTRAINT `rating_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `rating_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+--
+-- Constraints for table `rating_post`
+--
+ALTER TABLE `rating_post`
+  ADD CONSTRAINT `rating_post_post_id_foreign` FOREIGN KEY (`post_id`) REFERENCES `post` (`id`),
+  ADD CONSTRAINT `rating_post_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

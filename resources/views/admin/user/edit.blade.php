@@ -1,15 +1,15 @@
 @extends('admin.master')
 
 @section('content')
-{{-- @if ($errors->any())
-<div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif --}}
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 <form action="{{ route('admin.user.update', ['id'=>$user->id]) }}" method="POST" id="checkform" enctype="multipart/form-data">  
     @csrf
 <div class="card">
@@ -37,7 +37,12 @@
 
         <div class="form-group">
           <label>Old Avatar</label>
-          <img src="{{asset('images/'.$user->avatar)}}" width="120px">
+          @php
+              $avatar = $user->avatar == NULL ? 'no-avatar.png' : $user->avatar;
+              $image = asset('images/'. $avatar);
+          @endphp
+          <img src="{{ $image }}" width="120px">
+          {{-- <img src="{{asset('images/'.$user->avatar)}}" width="120px"> --}}
           
         </div>
         <div class="form-group">
@@ -72,20 +77,29 @@
             @enderror
         </div>
         
-        @if (Auth::user()->level == 1 && Auth::user()->id == 1 || Auth::user()->level == 1)
-            @if ($user->level == 1 && $user->id == 1 || $user->level == 1)
-            <div class="form-group">
-              <label>Level</label>
-              <select class="form-control" name="level">
-                  <option value="0" {{ $user->level == '0' ? 'selected':'' }}>Member</option>
-                  <option value="1" {{ $user->level == '1' ? 'selected':'' }}>Admin</option>
-                  <option value="2" {{ $user->level == '2' ? 'selected':'' }}>Doctor</option>
-              </select>
-            </div> 
-            @else
-            
-            @endif
-         
+        @if (Auth::user()->level == 1 && Auth::user()->id == 1 )
+          @if ($user->id != 1)
+          <div class="form-group">
+            <label>Level</label>
+            <select class="form-control" name="level">
+                <option value="0" {{ $user->level == '0' ? 'selected':'' }}>Member</option>
+                <option value="1" {{ $user->level == '1' ? 'selected':'' }}>Admin</option>
+                <option value="2" {{ $user->level == '2' ? 'selected':'' }}>Doctor</option>
+            </select>
+          </div> 
+          @endif
+        @endif
+        @if (Auth::user()->level == 1)
+          {{-- @if ($user->level == 1) --}}
+          <div class="form-group">
+            <label>Level</label>
+            <select class="form-control" name="level">
+                <option value="0" {{ $user->level == '0' ? 'selected':'' }}>Member</option>
+                <option value="1" {{ $user->level == '1' ? 'selected':'' }}>Admin</option>
+                <option value="2" {{ $user->level == '2' ? 'selected':'' }}>Doctor</option>
+            </select>
+          </div> 
+          {{-- @endif --}}
         @endif
     
         <div class="card-footer">

@@ -46,7 +46,7 @@ class UserController extends Controller
         if(!empty($request->avatar)){
             $data_old = DB::table('user')->where('id',$id)->first();
             $url_old = public_path('images/' .$data_old->avatar);
-            dd($url_old);
+            // dd($url_old);
             // if(file_exists($url_old)){
             //     unlink($url_old);
             // } 
