@@ -77,7 +77,7 @@
             @enderror
         </div>
         
-        @if (Auth::user()->level == 1 && Auth::user()->id == 1 )
+        @if (Auth::user()->level == 1 && Auth::user()->id == 1 || Auth::user()->level == 1)
           @if ($user->id != 1)
           <div class="form-group">
             <label>Level</label>
@@ -89,18 +89,9 @@
           </div> 
           @endif
         @endif
-        @if (Auth::user()->level == 1)
-          {{-- @if ($user->level == 1) --}}
-          <div class="form-group">
-            <label>Level</label>
-            <select class="form-control" name="level">
-                <option value="0" {{ $user->level == '0' ? 'selected':'' }}>Member</option>
-                <option value="1" {{ $user->level == '1' ? 'selected':'' }}>Admin</option>
-                <option value="2" {{ $user->level == '2' ? 'selected':'' }}>Doctor</option>
-            </select>
-          </div> 
-          {{-- @endif --}}
-        @endif
+ 
+        
+        
     
         <div class="card-footer">
             <button type="submit" class="btn btn-primary">Submit</button>
