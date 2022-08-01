@@ -12,7 +12,7 @@ class Register_ClientController extends Controller
         return view('client.register_client');
     }
     public function postRegisterClient(RegisterRequest $request){
-        $data = $request->except('_token');
+        $data = $request->except('_token','password_confirm');
         $data['password'] = bcrypt($request->password);
         $data['created_at'] = new \DateTime();
         $data['level'] = 0;

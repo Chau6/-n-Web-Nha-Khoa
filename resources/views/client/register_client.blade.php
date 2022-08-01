@@ -129,12 +129,12 @@
       rules: {
         last_name:{
           required: true,
-          minlength: 6,
+          minlength: 3,
           maxlength: 20,
         },
         first_name:{
           required: true,
-          minlength: 6,
+          minlength: 3,
           maxlength: 20,
         },
         email:{
