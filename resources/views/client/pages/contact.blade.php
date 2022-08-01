@@ -112,7 +112,8 @@
                         </div>
                         <div class="col-xl-8">
                             <div class="google-map-box">
-                                <div 
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.119429295929!2d106.715772!3d10.802164000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528a44bed643f%3A0xe8537be243dfe495!2zRDUgTmd1eeG7hW4gR2lhIFRyw60sIFBoxrDhu51uZyAyNSwgQsOsbmggVGjhuqFuaCwgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5o!5e0!3m2!1svi!2s!4v1659328463311!5m2!1svi!2s" width="900" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                {{-- <div 
                                     class="google-map" 
                                     id="contact-google-map" 
                                     data-map-lat="10.802406382828494" 
@@ -124,7 +125,7 @@
                                         "marker-1": [10.802406382828494, 106.71573981064437, "<h4>Aptech Home</h4><p>D5 Nguyễn Gia Trí, Phường 25, Bình Thạnh, Thành phố Hồ Chí Minh, Việt Nam</p>"],
                                         "marker-2": [40.602230, -74.689910, "<h4>Head Office</h4><p>44/108 Brooklyn, UK</p>"]
                                     }'>
-                                </div>   
+                                </div>    --}}
                             </div> 
                         </div>
                     </div>
