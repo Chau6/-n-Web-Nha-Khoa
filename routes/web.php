@@ -167,7 +167,7 @@ Route::middleware('admin', 'login')->group(function(){
             Route::get('edit/{id}', [DoctorController::class, 'edit'])->name('edit')->where('id','[0-9]+'); //Show form to edit doctor
             Route::post('update/{id}', [DoctorController::class, 'update'])->name('update')->where('id','[0-9]+'); //set action in form to update doctor
             /** Delete Doctor */
-            Route::get('delete/{}', [DoctorController::class, 'delete'])->name('delete')->where('id','[0-9]+');
+            Route::get('delete/{id}', [DoctorController::class, 'delete'])->name('delete')->where('id','[0-9]+');
         });
 
         //Doctor_Time
